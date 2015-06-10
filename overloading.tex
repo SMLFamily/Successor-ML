@@ -1,0 +1,167 @@
+%!TEX root = root.tex
+%
+
+\section{Overloading}
+\label{overload.sec}
+Two forms of overloading are available:
+\begin{itemize}
+\item Certain special constants are overloaded.  For example,
+{\tt 0w5} may have type $\WORD$ or some other type, depending on
+the surrounding program text;
+\item Certain operators are overloaded. For example,
+{\tt +} may have type $\INT\ast\INT\to\INT$ or
+$\REAL\ast\REAL\to\REAL$, depending on
+the surrounding program text;
+\end{itemize}
+Programmers cannot define their own overloaded constants or operators.
+
+Although a formal treatment of overloading is outside the scope
+of this document, we do give a complete list of the overloaded operators
+and of types with overloaded special constants.
+This list is consistent with the Basis Library\cite{sml-basis-lib}.
+
+Every overloaded constant and value identifier has among its types a 
+{\em default type},
+which is assigned to it, 
+when the surrounding text does not resolve the overloading.
+For this purpose, the surrounding text is \REPL{%
+the smallest enclosing declaration
+}{%
+no larger than the smallest
+enclosing structure-level declaration; an implementation may require
+that a smaller context determines the type}.
+
+\subsection{Overloaded special constants}
+Libraries may extend the set $\T_0$ of
+Appendix~\ref{init-stat-bas-app} with additional type names. Thereafter, certain
+subsets of $T_0$ have a special significance;
+they are called {\sl overloading classes}
+and they are:\medskip
+
+%\halign{\indent#\ \hfil&\ $#$\ &\ $#$\hfil\cr
+%\Int &\supseteq&\{\INT\}\cr
+%\Real &\supseteq&\{\REAL\}\cr
+%\Word &\supseteq&\{\WORD\}\cr
+%\String&\supseteq&\{\STRING\}\cr
+%\Char&\supseteq&\{\CHAR\}\cr
+%\WordInt&=&\Word\cup\INt\cr
+%\RealInt&=&\Real\cup\INt\cr
+%\Num&=&\Word\cup\Real\cup\INt\cr
+%\NumTxt&=&\Word\cup\Real\cup\INt\cup\String\cup\Char\cr}
+%\medskip
+
+\begin{displaymath}
+  \begin{array}{rcl}
+    \Int &\supseteq& \{\INT\}\\
+    \Real &\supseteq& \{\REAL\}\\
+    \Word &\supseteq& \{\WORD\}\\
+    \String &\supseteq& \{\STRING\}\\
+    \Char &\supseteq& \{\CHAR\}\\
+    \WordInt &=& \Word\cup\INt\\
+    \RealInt &=& \Real\cup\INt\\
+    \Num &=& \Word\cup\Real\cup\INt\\
+    \NumTxt &=& \Word\cup\Real\cup\INt\cup\String\cup\Char\\
+  \end{array}%
+\end{displaymath}%
+
+\noindent 
+Among these, the five first ($\Int$, $\Real$, $\Word$, $\String$ and $\Char$) are said to be
+{\sl basic}; the remaining are said to be {\sl composite}.
+The reason that the basic classes are specified using
+$\supseteq$ rather than $=$ is that libraries may extend 
+each of the  basic overloading
+classes with further type names.
+\ADD{But the class $\Real$ may not contain type names taht admit equality.}
+Special constants are overloaded
+within each of the basic overloading classes.  However, the basic
+overloading classes must be arranged so that every special constant can be
+assigned types from at most one of the basic overloading classes.  For
+example, to \boxml{0w5} may be assigned type $\WORD$, or
+some other member of $\Word$, depending on the surrounding text.  If
+the surrounding text does not determine the type of the constant, a
+default type is used. The default types for the five sets are $\INT$,
+$\REAL$, $\WORD$, $\STRING$ and $\CHAR$ respectively.
+
+       Once overloading resolution has determined the type of a special constant,
+       it is a compile-time error if the constant does not make sense or does not 
+       denote a value within the machine representation chosen for the type.
+       For example, an escape sequence of the form $\uconst$ in a string constant
+       of 8-bit characters only makes sense if $xxxx$  denotes
+       a number in the range $[0, 255]$. 
+
+
+\subsection{Overloaded value identifiers}
+Overloaded identifiers all have identifier status $\isv$. An
+overloaded identifier may be re-bound with any status ($\isv$, $\isc$
+and $\ise$) but then it is not overloaded within the scope of
+the binding.
+
+\begin{figure}
+\begin{center}
+\vskip-12pt
+\begin{tabular}{|rl|rl|}
+\multicolumn{2}{c}{NONFIX}&     \multicolumn{2}{c}{INFIX}\\
+\hline
+$\var$     & $\mapsto\ \hbox{set of monotypes}$    
+                          & $\var$ & $\mapsto\ \hbox{set of monotypes}$\\
+\hline
+\boxml{abs} & $\mapsto \REALINT\to\REALINT$ 
+                       & \multicolumn{2}{l|}{Precedence 7, left associative :} \\
+\NEG    & $\mapsto \REALINT\to\REALINT $                      &
+                            \boxml{div} & $\mapsto \WORDINT\ \ast\ \WORDINT
+                                                                 \to\WORDINT$\\
+ &  
+                                             &
+                            \boxml{mod} & $\mapsto \WORDINT\ \ast\ \WORDINT
+                                                                 \to\WORDINT$\\
+  &                       &
+                            \boxml{*} &$\mapsto \NUM\ \ast\ \NUM
+                                                                 \to\NUM$\\
+  &                       &
+                            \boxml{/} &$\mapsto \RREAL\ \ast\ \RREAL
+                                                                 \to\RREAL$\\
+  & &
+                            \multicolumn{2}{l|}{Precedence 6, left associative :} \\
+  &                       &
+                            \boxml{+} &$\mapsto \NUM\ \ast\ \NUM
+                                                                 \to\NUM$\\
+  &                       &
+                            \boxml{-} &$\mapsto \NUM\ \ast\ \NUM\to\NUM$\\
+  & 
+                          & \multicolumn{2}{l|}{Precedence 4, left associative :}\\
+              &           &
+                            \boxml{<} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+              &           &
+                            \boxml{>} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+              &           &
+                            \boxml{<=} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+              &           &
+                            \boxml{>=} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+\hline
+\end{tabular}
+\end{center}
+\vskip-15pt
+\caption{Overloaded identifiers}
+\label{overload.fig}
+\end{figure}%
+The overloaded identifiers are given in Figure~\ref{overload.fig}.
+For example, the entry
+$$\boxml{abs}\mapsto\REALINT\to\REALINT$$
+states that $\boxml{abs}$ may assume one of the types
+$\{\t\to\t\,\mid\,\t\in\RealInt\}$.
+In general, the same type name must be chosen 
+throughout the entire type of the overloaded operator;
+thus $\boxml{abs}$ does not have type $\REAL\to\INT$.
+
+The operator \boxml{/} is overloaded on all members of $\Real$,
+with default type $\REAL\ast\REAL\to\REAL$.
+The default type of any other identifier is that one of its types
+which contains the type name {\tt int}.
+For example, the program ~~\boxml{fun double(x) = x + x;}~~
+declares a function of type $\INT\ \ast\ \INT\to\INT$, while
+~~\boxml{fun double(x:real) = x + x;}~~ declares a function of type
+$\REAL\ \ast\ \REAL\to\REAL$.
+
+The dynamic semantics of the overloaded operators is defined in
+\cite{sml-basis-lib}. 
+

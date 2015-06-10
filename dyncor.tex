@@ -1,0 +1,1061 @@
+%!TEX root = root.tex
+%
+
+\section{Dynamic Semantics for the Core}
+\subsection{Reduced Syntax}
+\replacement{\theconstructors}{
+Since\index{47.1} types are fully dealt with in the static semantics,
+the dynamic semantics ignores them.  The Core syntax is therefore
+reduced by the following transformations, for the purpose of the dynamic
+semantics:}{Since\index{47.1} types are mostly dealt with in the static semantics,
+the Core syntax is 
+reduced by the following transformations, 
+for the purpose of the dynamic
+semantics:}
+\begin{itemize}
+\item All explicit type ascriptions ``\ml{:} $\ty$\,'' are omitted, and
+      qualifications ``$\OF\  \ty\,$'' are omitted from 
+      \insertion{\theconstructors}{constructor and}
+      exception bindings.
+\item The Core phrase classes \deletion{\thedatatyperepl}{TypBind, DatBind, $\ConBind$, }Ty and
+      TyRow are omitted.
+\end{itemize}
+
+
+\subsection{Simple Objects}
+All\index{47.2} objects in the dynamic semantics are built from
+identifier classes together with the simple object classes shown (with the
+variables which range over them) in Figure~\ref{simp-dyn-obj}.
+
+\begin{figure}[h]
+\vspace{2pt}
+\begin{displaymath}
+\begin{array}{rclr}
+\A               & \in   & \Addr	& \mbox{addresses}\\
+\e               & \in   & \Exc 	& \mbox{exception names}\\
+b      		& \in	& \BasVal	& \mbox{basic values}\\
+\sv             & \in   & \SVal         & \mbox{special values}\\
+                &       & \{\FAIL\}     & \mbox{failure}\\   
+\end{array}
+\end{displaymath}
+\caption{Simple Semantic Objects}
+\label{simp-dyn-obj}
+\vspace{3pt}
+\end{figure}
+
+$\Addr$ and $\Exc$ are infinite sets. BasVal is described below.
+{\SVal} is the class of values denoted by the special constants
+\SCon. Each integer\insertion{\thelibrary}{, word} or real constant denotes a value according to normal 
+mathematical conventions; each string \insertion{\thescon}{or character}
+constant denotes a sequence of \deletion{\thelibrary}{ASCII }characters as explained in Section~\ref{cr:speccon}. The value denoted
+by {\scon} is written $\sconval(\scon)$.
+$\FAIL$ is the result of a failing attempt to match a value and a
+pattern. Thus $\FAIL$ is neither a value nor an exception, but simply
+a semantic object used in the rules to express operationally
+how matching proceeds.
+
+Exception constructors evaluate to exception names.
+This is to accommodate the generative
+nature of exception bindings;\index{48.0} each evaluation of a declaration of a
+exception constructor binds it to a new unique name.
+
+\subsection{Compound Objects}
+
+The\index{48.2} compound objects for the dynamic semantics are
+shown in Figure~\ref{comp-dyn-obj}.
+Many conventions and notations are adopted as in the static semantics; in
+particular projection, injection and modification all retain
+their meaning.
+We generally omit the injection functions taking $\VId$,
+$\VId\times\Val$ etc into $\Val$.
+For records $\r\in\Record$ however,
+we write this injection explicitly as ``$\In\ \Val$''; this accords with
+the fact that there is a separate phrase class ExpRow, whose members
+evaluate to records. 
+
+We take $\cup$ to mean disjoint union over
+semantic object classes. We also understand all the defined object
+classes to be disjoint. A particular case deserves mention; $\ExVal$
+and $\Pack$ (exception values and packets) are isomorphic classes,
+but the latter class corresponds to exceptions which have been
+raised, and therefore has different semantic significance from the
+former, which is just a subclass of values.
+
+
+\begin{figure}[t]
+\vspace{2pt}
+\begin{displaymath}
+\begin{array}{rcl}
+        \V	&\in	&\adhocreplacementl{\theidstatus}{-9cm}{\Val =\{\mbox{\tt :=}\}\cup\SVal\cup\BasVal\cup\Con}{\Val =\{\mbox{\tt :=}\}\cup\SVal\cup\BasVal\cup\VId}\\
+                &       &\adhocreplacementl{\theidstatus}{-9cm}{\qquad\cup(\Con\times\Val)\cup\ExVal}{\qquad\cup(\VId\times\Val)\cup\ExVal}\\
+                &       &\qquad\cup\Record\cup\Addr\cup\adhocreplacementl{\theidstatus}{-5cm}{\Closure}{\FcnClosure}\\
+        \r      & \in   & \Record =  \finfun{\Lab}{\Val}\\
+{\exval}      & \in   & \ExVal = \Exc \cup (\Exc\times\Val)\\
+{[\exval]}\ {\rm or}\ \p
+                & \in   & \Pack = \ExVal\\
+(\match,\E,\VE) & \in   & \adhocreplacementl{\theidstatus}{-9cm}{\Closure = \Match\times\Env\times\VarEnv}{\FcnClosure = \Match\times\Env\times\ValEnv}\\
+        \mem    & \in   & \Mem = \finfun{\Addr}{\Val}\\
+        \excs   & \in   & \ExcSet = \Fin(\Exc)\\
+(\mem,\excs)\ {\rm or}\ \s
+                & \in   & \State = \Mem\times\ExcSet\\
+(\SE,\adhocinsertion{\thedatatyperepl}{25mm}{\TE,}\VE\adhocdeletion{\theidstatus}{2cm}{,\EE})\ {\rm or}\ \E
+                & \in   & \adhocreplacementl{\theidstatus}{-9cm}{\Env = \StrEnv\times\VarEnv\times\ExnEnv}{\Env = \StrEnv\times\TyEnv\times\ValEnv}\\
+        \SE     & \in   & \StrEnv = \finfun{\StrId}{\Env}\\
+\adhocinsertion{\thedatatyperepl}{1cm}{        \TE     & \in   & \TyEnv = \finfun{\TyCon}{\ValEnv}\\}
+        \VE	& \in	& \adhocreplacementl{\theidstatus}{-9cm}{\VarEnv = \finfun{\Var}{\Val}}{\ValEnv = \finfun{\VId}{\Val\times\IdStatus}}\\
+\adhocdeletion{\theidstatus}{2mm}{        \EE	& \in	& \ExnEnv = \finfun{\Exn}{\Exc}\\ }
+\end{array}
+\end{displaymath}
+\caption{Compound Semantic Objects\index{48.1}}
+\label{comp-dyn-obj}
+\vspace{3pt}
+\end{figure}
+%
+%
+Although the same names, e.g. $\E$ for an environment, are used
+as in the static semantics, the objects denoted are different.  This need cause
+no confusion since the static and dynamic semantics are presented %completely
+separately. 
+
+\subsection{Basic Values}
+The\index{49.1} basic values in $\BasVal$ are \deletion{\thelibrary}{the }values bound to predefined 
+\replacement{\theidstatus}{identifiers}{value variables}.
+\replacement{\thelibrary}{
+These values are denoted by the identifiers to which they are bound in the
+initial dynamic basis (see Appendix~\ref{init-dyn-bas-app}), 
+and are as follows:
+\begin{verbatim}
+           abs  floor  real  sqrt  sin  cos  arctan  exp  ln
+              size  chr  ord  explode  implode  div  mod
+                  ~  /  *  +  -  =  <>  <  >  <=  >=
+        std_in  std_out  open_in  open_out  close_in  close_out
+                input  output  lookahead  end_of_stream
+\end{verbatim}
+The meaning of basic values (almost all of which are functions) is
+represented by the function
+\[ \APPLY\ :\ \BasVal\times\Val\to\Val\cup\Pack \]
+ which is detailed in Appendix~\ref{init-dyn-bas-app}.
+}{In this document, we take $\BasVal$ to be the singleton set $\{\boxml{=}\}$;
+however, libraries may define a larger set of basic values. 
+The meaning of basic values is
+represented by a function
+\[ \APPLY\ :\ \BasVal\times\Val\to\Val\cup\Pack \]
+which satisfies that $\APPLY(\boxml{=}, \{1\mapsto v_1, 2\mapsto v_2\})$ 
+is {\tt true} or {\tt false} according as the values $\V_1$ and $\V_2$ are, or are
+not, identical values. 
+}
+\subsection{Basic Exceptions}
+\label{bas-exc}
+\replacement{\theidstatus}{
+A\index{49.2} subset $\BasExc\subset\Exc$ of the exception names are bound to predefined
+exception constructors.
+These names are denoted by the identifiers to which they are bound in the
+initial dynamic basis (see Appendix~\ref{init-dyn-bas-app}), 
+and are as follows:}{A\index{49.2} 
+subset $\BasExc\subset\Exc$ of the exception names are bound to predefined
+exception constructors in the initial dynamic basis 
+(see Appendix~\ref{init-dyn-bas-app}).
+These names are denoted by the identifiers 
+to which they are bound in the
+initial basis, 
+and are as follows:}\replacement{\thelibrary}{\begin{verbatim}
+        Abs  Ord  Chr   Div  Mod  Quot  Prod  
+        Neg  Sum  Diff  Floor  Sqrt  Exp  Ln
+        Io   Match  Bind  Interrupt
+\end{verbatim}}{$$\boxml{ Match\ \  Bind}$$}\replacement{\thelibrary}{
+The exceptions on the first two  lines are raised by 
+corresponding basic functions, where \verb+~+ {\tt /} {\tt *}
+{\tt +} {\tt -} correspond respectively to {\tt Neg} {\tt Quot}
+{\tt Prod} {\tt Sum} {\tt Diff}. The details are given
+in Appendix~\ref{init-dyn-bas-app}. The exception $(\mbox{{\tt Io}},s)$,
+where $s$ is a string, is raised
+by certain of the basic input/output functions,
+as detailed in Appendix~\ref{init-dyn-bas-app}.  
+}{The} exceptions ~\ml{Match}~ and
+~\ml{Bind}~
+are raised upon failure of pattern-matching in evaluating a 
+function {\fnexp} or a
+$\valbind$, as detailed in the rules to follow.   
+\deletion{\thelibrary}{
+Finally, ~\ml{Interrupt}~
+is raised by external intervention.}
+Recall from Section~\ref{further-restrictions-sec} 
+that in the context {\fnexp}, the $\match$ 
+must be irredundant and exhaustive and that the compiler should flag
+the {\match} if it violates these restrictions. The exception~\ml{Match}
+can only be raised for a match which is not exhaustive, and has therefore 
+been flagged by the compiler.
+
+%In a match of the form $\pat_1\ \ml{=>}\ \exp_1\ \ml{|}\ \ldots\ \ml{|}\ 
+%            \pat_n\ \ml{=>}\ \exp_n$
+%the pattern sequence $\pat_1,\ldots,\pat_n$ should be {\sl irredundant};
+%that is, each $\pat_j$ must match some value
+%(of the right type) which is not matched by $\pat_i$ for any $i<j$.
+%In the context {\fnexp}, the $\match$ must also be {\sl exhaustive}; that is,
+%every value (of the right type) must be matched by some $\pat_i$.
+%The compiler must give warning on violation of these restrictions, 
+%but should still compile the match. 
+%The \ml{match} exception
+%can only be raised for a match which is not exhaustive, and has therefore
+%been flagged by the compiler.
+%The restrictions are inherited by derived forms; in particular,
+%this means that in the function binding 
+% $\var\ \atpat_1\ \cdots\ \atpat_n\langle : \ty\rangle\ \ml{=}\ \exp$
+%(consisting of one clause only), each separate $\atpat_i$ should be
+%exhaustive by itself.
+
+\replacement{\theidstatus}{\subsection{Closures}}{\subsection{Function Closures}}
+The\index{50.1} informal understanding of a {\sl \insertion{\theidstatus}{function} closure} $(\match,\E,\VE)$ is as follows:
+when the \insertion{\theidstatus}{function} closure is applied to a value $\V$,
+$\match$ will be evaluated against $\V$, in the environment $\E$ modified in
+a special sense by
+$\VE$.  The domain $\Dom\VE$ of this third component contains those \deletion{\thenoimptypes}{function }identifiers to be treated recursively in the evaluation.  To achieve this
+effect, the evaluation of $\match$ will take place not in $\plusmap{\E}{\VE}$
+but in $\plusmap{\E}{\Rec\VE}$, 
+\replacement{\theidstatus}{where\[ \Rec\ :\ \VarEnv\to\VarEnv \]is defined as follows:}{where\[ \Rec\ :\ \ValEnv\to\ValEnv \]is defined as follows:}
+\medskip
+
+\begin{itemize}
+\item $\Dom(\Rec\VE)=\Dom\VE $
+\item If \replacement{\theidstatus}{$\VE(\var)\notin\Closure$}{$\VE(\vid)\notin\FcnClosure\times\{\isv\}$}, 
+then $(\Rec\VE)(\vid)=\VE(\vid)$
+\item \replacement{\theidstatus}{If $\VE(\var)=(\match',\E',\VE')$
+      then $(\Rec\VE)(\var)=(\match',\E',\VE)$}{If $\VE(\vid)=((\match',\E',\VE'), \isv)$
+      then $(\Rec\VE)(\vid)=((\match',\E',\VE), \isv)$}
+\end{itemize}
+The effect is that, before application of $(\match,\E,\VE)$ to $\V$, the
+\replacement{\theidstatus}{closure values}{function closures} 
+in $\Ran\VE$ are ``unrolled'' once, to prepare for their possible
+recursive application during the evaluation of $\match$ upon $\V$.
+
+This device is adopted to ensure that all semantic objects are finite (by
+controlling the unrolling of recursion).  The operator $\Rec$ is invoked in
+just two places in the semantic rules: in the rule for recursive value 
+\REPL{%
+declarations of the form ``$\VAL\ \REC\ \valbind$'' 
+}{%
+bindings of the form ``$\REC\ \valbind$''}, and in the rule for evaluating
+an application expression ``$\exp\ atexp$'' in the case that $\exp$
+evaluates to a \insertion{\theidstatus}{function} closure.
+
+\subsection{Inference Rules}
+\label{dyncor-inf-rules-sec}
+The\index{50.2} semantic rules allow sentences  of the form
+\[ \s,A\ts\phrase\ra A',\s' \]
+to be inferred, where $A$ is usually an environment, $A'$ is some semantic
+object and $\s$,$\s'$ are the states before and after the evaluation
+represented by the sentence.  Some hypotheses in rules are not of this form;
+they are called {\sl side-conditions}.  The convention for options is
+the same as for the Core static semantics.  
+
+In most rules the states $\s$ and $\s'$ are omitted from sentences; they
+are only included for those rules which are directly concerned with the state
+-- either referring to its contents or changing it.  When omitted, the
+convention for restoring them is as follows.  If the rule is presented in the
+form
+\[ \frac{ \begin{array}{r}
+          A_1\ts\phrase_1\ra A_1'\qquad
+          A_2\ts\phrase_2\ra A_2'\quad\cdots\\
+          \cdots\quad A_n\ts\phrase_n\ra A_n'
+          \end{array}
+        }
+        { A\ts\phrase\ra A'} \]
+\oldpagebreak
+then the full form is intended to be
+\[ \frac{ \begin{array}{r}
+          \s_0,A_1\ts\phrase_1\ra A_1',\s_1\qquad
+          \s_1,A_2\ts\phrase_2\ra A_2',\s_2\quad\cdots\\
+          \cdots\quad\s_{n-1},A_n\ts\phrase_n\ra A_n',\s_n
+          \end{array}
+        }
+        { \s_0,A\ts\phrase\ra A',\s_n} \]
+(Any side-conditions are left unaltered).
+Thus the left-to-right order of the hypotheses indicates the order of
+evaluation.  Note that in the case $\n=0$, when there are no hypotheses
+(except possibly side-conditions), we have $\s_n=\s_0$; this implies that the
+rule causes no side effect.
+The convention is called the {\sl state convention},\index{51.1} and
+must be applied to each version of a rule obtained by inclusion or
+omission of its options.
+
+A second convention, the {\sl exception convention}, is adopted to deal
+with the propagation of exception packets $\p$.
+For each rule whose full form (ignoring side-conditions) is
+\[ \frac{ \s_1,A_1\ts\phrase_1\ra A_1',\s_1'\qquad\cdots\qquad
+          \s_n,A_n\ts\phrase_n\ra A_n',\s_n' }
+        { \s,A\ts\phrase\ra A',\s'} \]
+and for each $k$, $1\leq k\leq n$, for which the result $A_k'$ is not a
+packet $\p$, an extra rule is added of the form
+\[ \frac{ \s_1,A_1\ts\phrase_1\ra A_1',\s_1'\qquad\cdots\qquad
+          \s_k,A_k\ts\phrase_k\ra \p',\s' }
+        { \s,A\ts\phrase\ra \p',\s'} \]
+where $\p'$ does not occur in the original rule.\footnote{There is one
+exception to the exception convention; no extra rule is added for
+rule~\ref{handlexp-dyn-rule1} which deals with handlers, 
+since a handler is the only
+means by which propagation of an exception can be arrested.}
+This indicates that evaluation of phrases in the hypothesis terminates with the
+first whose result is a packet (other than one already treated in the rule),
+and this packet is the result of the phrase in the conclusion.
+
+A third convention is that we allow compound variables (variables built
+from the variables in Figure~\ref{comp-dyn-obj} and the symbol ``/'')
+to range over unions of semantic objects. For instance 
+the compound variable $\V/\p$ ranges
+over $\Val\cup\Pack$. 
+We also allow $x/\FAIL$ to range over $X\cup\{\FAIL\}$ where $x$ 
+ranges over $X$;
+furthermore, we extend environment modification to allow for failure
+as follows:
+\[\VE+\FAIL=\FAIL.\]
+%
+%                       Atomic Expressions
+%
+\rulesec{Atomic Expressions}{\E\ts\atexp\ra\V/\p}
+\begin{equation}	% special constant
+%\label{sconexp-dyn-rule}
+\frac{}
+     {\E\ts\scon\ra\sconval(\scon)}\index{51.15}
+\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}	% value variable
+\label{varexp-dyn-rule}
+\frac{\E(\longvar)=\V}
+     {\E\ts\longvar\ra\V}\index{51.2}
+\end{equation}
+\oldpagebreak
+\begin{equation}	% value constructor
+\label{conexp-dyn-rule}
+\frac{\longcon=\strid_1.\cdots.\strid_k.\con}
+     {\E\ts\longcon\ra\con}\index{52.1}
+\end{equation}
+
+\begin{equation}       %  exception constant
+\label{exconexp-dyn-rule}
+\frac{\E(\longexn)=\e}
+     {\E\ts\longexn\ra\e}
+\end{equation}}{\begin{equation}	% value variable
+\label{varexp-dyn-rule}
+\frac{\E(\longvid)=(\V,\is)}
+     {\E\ts\longvid\ra\V}\index{51.2}
+\end{equation}}
+
+
+\begin{equation}	% record expression
+%\label{recexp-dyn-rule}
+\frac{\langle\E\ts\labexps\ra\r\rangle}
+     {\E\ts\lttbrace\ \recexp\ \rttbrace\ra\emptymap
+                                  \langle +\ \r\rangle\ \In\ \Val}
+\end{equation}
+
+\begin{equation}        % local declaration
+%\label{let-dyn-rule}
+\frac{\E\ts\dec\ra\E'\qquad\E+\E'\ts\exp\ra\V}
+     {\E\ts\letexp\ra\V}
+\end{equation}
+
+\begin{equation}	% paren expression
+%\label{parexp-dyn-rule}
+\frac{\E\ts\exp\ra\V}
+     {\E\ts\parexp\ra\V}
+\end{equation}
+\comments
+\begin{description}
+\deletion{\theidstatus}{\item{(\ref{conexp-dyn-rule})}
+   Value constructors denote themselves.}
+
+\insertion{\theidstatus}{\item{(\ref{varexp-dyn-rule})}
+As in the static semantics,
+value identifiers are looked up in the environment and the
+identifier status is not used.}
+
+\deletion{\theidstatus}{
+\item{(\ref{exconexp-dyn-rule})}
+   Exception constructors are looked up in the exception environment
+   component of $\E$.}
+\end{description}
+
+\rulesec{Expression Rows}{\E\ts\labexps\ra\r/\p}
+\begin{equation}	% labelled expressions
+\label{labexps-dyn-rule}
+\frac{\E\ts\exp\ra\V\qquad\langle\E\ts\labexps\ra\r\rangle}
+     {\E\ts\longlabexps\ra\{\lab\mapsto\V\}\langle +\ \r\rangle}\index{52.2}
+\end{equation}%
+
+\BeginNewEqns%
+\begin{equation} % expression row extension
+\color{\addcolor}
+\frac{\E\ts\exp\ra\r\ \In\ \Val}
+     {\E\ts\boxml{...}\ \boxml{=}\ \exp\ra\r}
+\end{equation}%
+\EndNewEqns%
+
+\comments
+\begin{description}
+\item{(\ref{labexps-dyn-rule})}
+  We may think of components as being evaluated from left to right,
+  because of the state and exception conventions.
+\end{description}%
+%
+%                        Expressions
+%
+\rulesec{Expressions}{\E\ts\exp\ra\V/\p}
+\begin{equation}	% atomic
+%\label{atexp-dyn-rule}
+\frac{\E\ts\atexp\ra\V}
+     {\E\ts\atexp\ra\V}\index{52.3}
+\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}	% constructor application
+\label{conapp-dyn-rule}
+\frac{\E\ts\exp\ra\con\qquad\con\neq\REF\qquad\E\ts\atexp\ra\V}
+     {\E\ts\appexp\ra(\con,\V)}
+\end{equation}}{\begin{equation}	% constructor application
+\label{conapp-dyn-rule}
+\frac{\E\ts\exp\ra\vid\qquad\vid\neq\REF\qquad\E\ts\atexp\ra\V}
+     {\E\ts\appexp\ra(\vid,\V)}
+\end{equation}}
+
+\begin{equation}        % exception constructor application
+\frac{\E\ts\exp\ra\e\qquad\E\ts\atexp\ra\V}
+     {\E\ts\appexp\ra(\e,\V)}
+\end{equation}
+
+\begin{equation}	% reference application
+\label{refapp-dyn-rule}
+\frac{\s,\E\ts\exp\ra~\ml{ref}~,\s'\qquad
+      \s',\E\ts\atexp\ra\V,\s''\qquad
+      \A\notin\Dom(\of{\mem}{\s''})}
+     {\s,\E\ts\appexp\ra\A,\ \s''+\{\A\mapsto\V\} }
+\end{equation}
+
+
+\begin{equation}	% assignment application
+\label{assapp-dyn-rule}
+\frac{\s,\E\ts\exp\ra~\mbox{\tt :=}~,\s'\qquad
+      \s',\E\ts\atexp\ra\{{\tt 1}\mapsto\A,\ {\tt 2}\mapsto\V\},\s''}
+     {\s,\E\ts\appexp\ra\emptymap\ \In\ \Val,\ \s''+\{\A\mapsto\V\} }
+\end{equation}
+\oldpagebreak
+\replacement{\thefixtypos}{
+\begin{equation}	% basic function application
+%\label{basapp-dyn-rule}
+\frac{\E\ts\exp\ra b
+      \qquad\E\ts\atexp\ra\V\qquad\APPLY(b,\V)=\V'}
+     {\E\ts\appexp\ra\V'}\index{53.1}
+\end{equation}}{
+\begin{equation}	% basic function application
+%\label{basapp-dyn-rule}
+\frac{\E\ts\exp\ra b
+      \qquad\E\ts\atexp\ra\V\qquad\APPLY(b,\V)=\V'/\p}
+     {\E\ts\appexp\ra\V'/\p}\index{53.1}
+\end{equation}}
+
+\begin{equation}	% closure application
+\label{closapp-dyn-rule}
+\frac{\begin{array}{c}
+      \E\ts\exp\ra(\match,\E',\VE)\qquad\E\ts\atexp\ra\V\\
+      \E'+\Rec\VE,\ \V\ts\match\ra\V'
+      \end{array}
+     }
+     {\E\ts\appexp\ra\V'}
+\end{equation}
+
+\begin{equation}        % failing closure application
+\label{closapp-dyn-rule1}
+\frac{\begin{array}{c}
+      \E\ts\exp\ra(\match,\E',\VE)\qquad\E\ts\atexp\ra\V\\
+      \E'+\Rec\VE,\ \V\ts\match\ra\FAIL
+      \end{array}
+     }
+     {\E\ts\appexp\ra[{\tt Match}]}
+\end{equation}
+
+\begin{equation}        % handle exception 1
+\label{handlexp-dyn-rule1}
+\frac{\E\ts\exp\ra\V}
+     {\E\ts\handlexp\ra\V}
+\end{equation}
+
+\begin{equation}        % handle exception 2
+\label{handlexp-dyn-rule2}
+\frac{\E\ts\exp\ra[\exval]\qquad\E,\exval\ts\match\ra\V}
+     {\E\ts\handlexp\ra\V}
+\end{equation}
+
+\begin{equation}        % handle exception 3
+\label{handlexp-dyn-rule3}
+\frac{\E\ts\exp\ra[\exval]\qquad\E,\exval\ts\match\ra\FAIL}
+     {\E\ts\handlexp\ra[\exval]}
+\end{equation}
+
+\begin{equation}        % raise exception
+%\label{raisexp-dyn-rule}
+\frac{\E\ts\exp\ra\exval}
+     {\E\ts\raisexp\ra[\exval]}
+\end{equation}
+
+\begin{equation}        % function
+\label{fnexp-dyn-rule}
+\frac{}
+     {\E\ts\fnexp\ra(\match,\E,\emptymap)}
+\end{equation}%
+
+\pagebreak
+\noindent\comments
+\begin{description}
+\item{(\ref{refapp-dyn-rule})}
+  The side condition ensures that a new address is chosen. There are
+no rules concerning disposal of inaccessible addresses\deletion{\thefixtypos}{ (``garbage
+collection'')}.
+%
+\item{(\ref{conapp-dyn-rule})--(\ref{closapp-dyn-rule1})}
+  Note that none of the rules for function application has a
+premise in which the operator evaluates to a constructed
+value, a record or an address. This is because we are interested
+in the evaluation of well-typed programs only, and in such programs $\exp$
+will always have a functional type.
+% so $\V$ will be either a closure,
+%a constructor, a basic value or \ml{:=}.
+%
+\item{(\ref{handlexp-dyn-rule1})}
+  This is the only rule to which the exception convention does not apply.
+If the operator evaluates to a packet then rule~\ref{handlexp-dyn-rule2}
+or rule~\ref{handlexp-dyn-rule3} must be used.
+%
+\item{(\ref{handlexp-dyn-rule3})}
+ Packets that are not handled by the $\match$ propagate.
+%
+\item{(\ref{fnexp-dyn-rule})}
+  The third component of the \insertion{\theidstatus}{function} closure is empty because the match does not
+introduce new recursively defined values.
+\end{description}
+%
+%                        Matches
+%
+\rulesec{Matches}{\E,\V\ts\match\ra\V'/\p/\FAIL}
+\begin{equation}	% match 1
+%\label{match-dyn-rule1}
+\frac{\E,\V\ts\mrule\ra\V'}
+     {\E,\V\ts\longmatch\ra\V'}\index{54.1}
+\end{equation}
+
+\begin{equation}	% match 2
+%\label{match-dyn-rule2}
+\frac{\E,\V\ts\mrule\ra\FAIL}
+     {\E,\V\ts\mrule\ra\FAIL}
+\end{equation}
+
+\replacement{\thefixtypos}{
+\begin{equation}	% match 3
+%\label{match-dyn-rule}
+\frac{\E,\V\ts\mrule\ra\FAIL\qquad\E,\V\ts\match\ra\V'/\FAIL}
+     {\E\ts\longmatcha\ra\V'/\FAIL}
+\end{equation}}{\begin{equation}	% match 3
+%\label{match-dyn-rule}
+\frac{\E,\V\ts\mrule\ra\FAIL\qquad\E,\V\ts\match\ra\V'/\FAIL}
+     {\E,\V\ts\longmatcha\ra\V'/\FAIL}
+\end{equation}}\comment A value $\V$ occurs on the left of the turnstile, in evaluating
+a $\match$. We may think of a $\match$ as being evaluated {\sl against}
+a value; similarly, we may think of a pattern as being evaluated {\sl
+against} a value.
+Alternative match rules are tried from left to right.
+
+\rulesec{Match Rules}{\E,\V\ts\mrule\ra\V'/\p/\fail}
+\begin{equation}	% mrule 1
+%\label{mrule-dyn-rule1}
+\frac{\E,\V\ts\pat\ra\VE\qquad\E+\VE\ts\exp\ra\V'}
+     {\E,\V\ts\longmrule\ \ra\V'}\index{54.2}
+\end{equation}
+
+\begin{equation}	% mrule 2
+%\label{mrule-dyn-rule2}
+\frac{\E,\V\ts\pat\ra\FAIL}
+     {\E,\V\ts\longmrule\ \ra\FAIL}
+\end{equation}
+
+%
+%                        Declarations
+%
+\rulesec{Declarations}{\E\ts\dec\ra\E'/\p}
+\begin{equation}	% value declaration
+%\label{valdec-dyn-rule}
+\frac{\E\ts\valbind\ra\VE}
+     {\E\ts\explicitvaldec\ra \ADD{\langle\Rec\rangle} \VE\ \In\ \Env}\index{54.3}
+\end{equation}
+
+\insertion{\thedatatyperepl}{\begin{equation}
+\frac{\ts\typbind\ra\TE}
+     {\E\ts\typedec\ra\TE\ \In\ \Env}
+\end{equation}}
+
+\insertion{\thedatatyperepl}{
+\begin{equation}
+\frac{\ts\datbind\ra\VE,\TE}
+     {\E\ts\datatypedec\ra(\VE,\TE)\ \In\ \Env}
+\end{equation}}
+
+%\insertion{\thedatatyperepl}{\begin{equation}
+%\frac{\E(\longtycon) = \VE}
+%     {\begin{array}{r}
+%          \E\ts\datatyperepldec\ra\qquad\qquad\\
+%          (\VE,\{\tycon\mapsto\VE\})\ \In\ \Env
+%      \end{array}}
+%\end{equation}}
+\insertion{\thedatatyperepl}{\begin{equation}
+\frac{\E(\longtycon) = \VE}
+     {
+          \E\ts\datatyperepldec\ra
+          (\VE,\{\tycon\mapsto\VE\})\ \In\ \Env
+      }
+\end{equation}}
+
+\begin{equation}
+\frac{\CUT{\ts\datbind\ra\VE,\TE\qquad \E+\VE\ts\dec\ra \E'}}
+     {\CUT{\E\ts\abstypedec \ra \E'}}
+\end{equation}%
+
+% \ replacement{\theconstructors}{
+%  \begin{equation}	% exception declaration
+%  %\label{exceptiondec-dyn-rule}
+%  \frac{\E\ts\exnbind\ra\EE }
+%       {\E\ts\exceptiondec\ra\EE\ \In\ \Env }
+%  \end{equation}}{\begin{equation}	% exception declaration
+%  %\label{exceptiondec-dyn-rule}
+%  \frac{\E\ts\exnbind\ra\EE\qquad\VE=\EE }
+%       {\E\ts\exceptiondec\ra(\VE,\EE)\ \In\ \Env }
+%  \end{equation}}
+\replacement{\theidstatus}{
+\begin{equation}	% exception declaration
+%\label{exceptiondec-dyn-rule}
+\frac{\E\ts\exnbind\ra\EE }
+     {\E\ts\exceptiondec\ra\EE\ \In\ \Env }
+\end{equation}}{\begin{equation}	% exception declaration
+%\label{exceptiondec-dyn-rule}
+\frac{\E\ts\exnbind\ra\VE }
+     {\E\ts\exceptiondec\ra\VE\ \In\ \Env }
+\end{equation}}
+
+\begin{equation}	% local declaration
+%\label{localdec-dyn-rule}
+\frac{\E\ts\dec_1\ra\E_1\qquad\E+\E_1\ts\dec_2\ra\E_2}
+     {\E\ts\localdec\ra\E_2}
+\end{equation}
+
+\replacement{\thefixtypos}{
+\begin{equation}                % open declaration
+%\label{open-strdec-dyn-rule}
+\frac{ \E(\longstrid_1)=\E_1
+            \quad\cdots\quad
+       \E(\longstrid_k)=\E_k }
+     { \E\ts\openstrdec\ra \E_1 + \cdots + \E_k }
+\end{equation}}{
+\begin{equation}                % open declaration
+%\label{open-strdec-dyn-rule}
+\frac{ \E(\longstrid_1)=\E_1
+            \quad\cdots\quad
+       \E(\longstrid_n)=\E_n }
+     { \E\ts\openstrdec\ra \E_1 + \cdots + \E_n }
+\end{equation}}
+
+\vspace{6pt}
+\begin{equation}	% empty declaration
+%\label{emptydec-dyn-rule}
+\frac{}
+     {\E\ts\emptydec\ra\emptymap\ \In\ \Env}
+\end{equation}
+
+\begin{equation}	% sequential declaration
+%\label{seqdec-dyn-rule}
+\frac{\E\ts\dec_1\ra\E_1\qquad\E+\E_1\ts\dec_2\ra\E_2}
+     {\E\ts\seqdec\ra\plusmap{E_1}{E_2}}
+\end{equation}
+%
+%                        Bindings
+%
+\rulesec{Value Bindings}{\E\ts\valbind\ra\VE/\p}
+\begin{equation}	% value binding 1
+%\label{valbind-dyn-rule1}
+\frac{\E\ts\exp\ra\V\qquad\E,\V\ts\pat\ra\VE\qquad
+      \langle\E\ts\valbind\ra\VE'\rangle }
+     {\E\ts\longvalbind\ra\VE\ \langle +\ \VE'\rangle}\index{55.1}
+\end{equation}
+
+\begin{equation}	% value binding 2
+%\label{valbind-dyn-rule2}
+\frac{\E\ts\exp\ra\V\qquad\E,\V\ts\pat\ra\FAIL}
+     {\E\ts\longvalbind\ra[\ml{Bind}]}
+\end{equation}
+
+\begin{equation}	% recursive value binding
+%\label{recvalbind-dyn-rule}
+\frac{\CUT{\E\ts\valbind\ra\VE}}
+     {\CUT{\E\ts\recvalbind\ra\Rec\VE}}
+\end{equation}
+
+\insertion{\thedatatyperepl}{
+\rulesec{Type Bindings}{\ts\typbind\ra\TE}
+\begin{equation}
+\frac{\langle\ts\typbind\ra\TE\rangle}
+     {\ts\longtypbind\ra\{\tycon\mapsto\emptymap\}\langle+\TE\rangle}
+\end{equation}}
+
+\insertion{\thedatatyperepl}{
+\rulesec{Datatype Bindings}{\ts\datbind\ra\VE,\TE}
+\begin{equation}
+\frac{\ts\constrs\ra\VE\qquad\langle\ts\datbind'\ra\VE',\TE'\rangle}
+     {\ts\tyvarseq\;\tycon\boxml{=}\constrs\;\langle\boxml{and}\,\datbind'\rangle\ra\VE\langle+\VE'\rangle,\{\tycon\mapsto\VE\}\langle+\TE'\rangle}
+\end{equation}
+
+\rulesec{Constructor Bindings}{\ts\constrs\ra\VE}
+\begin{equation}
+\frac{\langle\ts\constrs\ra\VE\rangle}
+     {\ts\vid\langle\boxml{|}\,\constrs\rangle\ra
+               \{\vid\mapsto(\vid,\isc)\}\,\langle+\VE\rangle}
+\end{equation}
+}
+
+
+% \ replacement{\thefixtypos}{
+% \rulesec{Exception Bindings}{\E\ts\exnbind\ra\EE/\p}}{\rulesec{Exception 
+% Bindings}{\E\ts\exnbind\ra\EE}}
+\replacement{\theidstatus}{
+\rulesec{Exception Bindings}{\E\ts\exnbind\ra\EE/\p}}{\rulesec{Exception 
+Bindings}{\E\ts\exnbind\ra\VE}}
+\replacement{\theidstatus}{
+\begin{equation}	% exception binding 1
+\label{exnbind-dyn-rule1}
+\frac{\e\notin\of{\excs}{\s}\qquad\s'=\s+\{\e\}\qquad
+      \langle\s',\E\ts\exnbind\ra\EE,\s''\rangle }
+     {\s,\E\ts\longexnbindaa\ra\{\exn\mapsto\e\}\langle +\ \EE\rangle,\
+                               \s'\langle'\rangle}\index{55.2}
+\end{equation}}{\begin{equation}	% exception binding 1
+\label{exnbind-dyn-rule1}
+\frac{\e\notin\of{\excs}{\s}\qquad\s'=\s+\{\e\}\qquad
+      \langle\s',\E\ts\exnbind\ra\VE,\s''\rangle }
+     {\s,\E\ts\longvidexnbindaa\ra\{\vid\mapsto(\e,\ise)\}\langle +\ \VE\rangle,\
+                               \s'\langle'\rangle}\index{55.2}
+\end{equation}}
+
+\replacement{\theidstatus}{
+\begin{equation}	% exception binding 2
+%\label{exnbind-dyn-rule2}
+\frac{\E(\longexn)=\e\qquad
+      \langle\E\ts\exnbind\ra\EE\rangle }
+     {\E\ts\longexnbindb\ra\{\exn\mapsto\e\}\langle +\ \EE\rangle}
+\end{equation}}{\begin{equation}	% exception binding 2
+%\label{exnbind-dyn-rule2}
+\frac{\E(\longvid)=(\e,\ise)\qquad
+      \langle\E\ts\exnbind\ra\VE\rangle }
+     {\E\ts\longvidexnbindb\ra\{\vid\mapsto(\e,\ise)\}\langle +\ \VE\rangle}
+\end{equation}}
+\comments
+\begin{description}
+\item{(\ref{exnbind-dyn-rule1})}
+  The two side conditions ensure that a new exception name is generated and 
+recorded as ``used'' in subsequent states.
+\end{description}
+%
+%                        Atomic Patterns
+%
+\rulesec{Atomic Patterns}{\E,\V\ts\atpat\ra\VE/\fail}
+\begin{equation}	% wildcard pattern
+%\label{wildcard-dyn-rule}
+\frac{}
+     {\E,\V\ts\wildpat\ra \emptymap}\index{55.3}
+\end{equation}
+
+\begin{equation}	% special constant in pattern (1)
+%\label{sconpat-dyn-rule1}
+\frac{\V=\sconval(\scon)}
+     {\E,\V\ts\scon\ra \emptymap}\index{55.35}
+\end{equation}
+
+\begin{equation}	% special constant in pattern (2)
+\label{sconpat-dyn-rule2}
+\frac{\V\neq\sconval(\scon)}
+     {\E,\V\ts\scon\ra \FAIL}\index{55.36}
+\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}	% variable pattern
+%\label{varpat-dyn-rule}
+\frac{}
+     {\E,\V\ts\var\ra \{\var\mapsto\V\} }
+\end{equation}}{\begin{equation}	% variable pattern
+%\label{varpat-dyn-rule}
+\frac{\hbox{$\vid\notin\Dom(\E)$ or $\of{\is}{\E(\vid)} = \isv$}}
+     {\E,\V\ts\vid\ra \{\vid\mapsto(\V,\isv)\} }
+\end{equation}}
+
+\deletion{\theidstatus}{\begin{equation}	% constant pattern
+%\label{conapat-dyn-rule1}
+\frac{\longcon=\strid_1.\cdots.\strid_k.\con\qquad\V=\con }
+     {\E,\V\ts\longcon\ra \emptymap}
+\end{equation}
+
+\begin{equation}
+\label{conapat-dyn-rule2}
+\frac{\longcon=\strid_1.\cdots.\strid_k.\con\qquad\V\neq\con}
+     {\E,\V\ts\longcon\ra\FAIL}
+\end{equation}}
+%\begin{equation}	% constant pattern
+%\label{conpat-dyn-rule}
+%\frac{\longcon=\strid_1.\cdots.\strid_k.\con }
+%     {\con\ts\longcon\ra \emptymap}
+%\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}        % exception constant
+%\label{exconapat-dyn-rule1}
+\frac{\E(\longexn)=\V}
+     {\E,\V\ts\longexn\ra\emptymap}
+\end{equation}}{\begin{equation}        % exception constant
+%\label{exconapat-dyn-rule1}
+\frac{\E(\longvid)=(\V,\is)\qquad\is\neq\isv}
+     {\E,\V\ts\longvid\ra\emptymap}
+\end{equation}}
+\oldpagebreak
+\replacement{\theidstatus}{\begin{equation}	
+\label{exconapat-dyn-rule2}
+\frac{\E(\longexn)\neq\V}
+     {\E,\V\ts\longexn\ra\FAIL}\index{56.0}
+\end{equation}}{\begin{equation}	
+\label{exconapat-dyn-rule2}
+\frac{\E(\longvid)=(\V',\is)\qquad\is\neq\isv\qquad\V\neq\V'}
+     {\E,\V\ts\longvid\ra\FAIL}\index{56.0}
+\end{equation}}
+
+
+\begin{equation}	% record pattern
+%\label{recpat-dyn-rule}
+\frac{\V=\emptymap\langle+\r\rangle\ \In\ \Val\qquad
+      \langle\E,\r\ts\labpats\ra\VE/\fail\rangle}
+     {\E,\V\ts\lttbrace\ \langle\labpats\rangle\ \rttbrace\ra\emptymap\langle+\VE/\fail\rangle}
+\end{equation}
+%\begin{equation}	% record pattern
+%\label{recpat-dyn-rule}
+%\frac{\langle\r\ts\labpats\ra\VE\rangle}
+%     {\emptymap\langle +\ \r\rangle\ \In\ \Val
+%      \ts\{\ \recpat\ \}\ra\emptymap\langle +\ \VE\rangle}
+%\end{equation}
+
+\begin{equation}	% parenthesised pattern
+%\label{parpat-dyn-rule}
+\frac{\E,\V\ts\pat\ra\VE/\fail}
+     {\E,\V\ts\parpat\ra\VE/\fail}\index{56.1}
+\end{equation}
+
+%\begin{equation}	% failure of atomic pattern
+%\label{failatpat-dyn-rule}
+%\frac{\forall\VE\ (\V\ts\atpat\not\Rightarrow\VE)}
+%     {\V\ts\atpat\ra\FAIL}
+%\end{equation}
+\comments
+\begin{description}
+\item{(\ref{sconpat-dyn-rule2}),
+\deletion{\theidstatus}{(\ref{conapat-dyn-rule2}),}
+(\ref{exconapat-dyn-rule2})}
+  Any evaluation resulting in $\FAIL$ must do so because 
+rule~\ref{sconpat-dyn-rule2},
+\deletion{\theidstatus}{rule~\ref{conapat-dyn-rule2},}
+rule~\ref{exconapat-dyn-rule2},
+rule~\ref{conpat-dyn-rule2},
+or rule~\ref{exconpat-dyn-rule2} has been
+applied.
+\end{description}
+
+\rulesec{Pattern Rows}{\E,\r\ts\labpats\ra\VE/\fail}
+\begin{equation}	% wildcard record
+%\label{wildrec-dyn-rule}
+\frac{\ADD{\E,r\ \In\ \Val\ts\pat\ra\VE/\fail}}
+     {\E,\r\ts\wildrec\ra\REPL{\VE/\fail }{\emptymap}}\index{56.2}
+\end{equation}
+ 
+
+\begin{equation}	% record component with inherited FAIL
+\label{longlab-dyn-rule1}
+\frac{\E,\r(\lab)\ts\pat\ra\FAIL}
+     {\E,\r\ts\longlabpats\ra\FAIL}
+\end{equation}
+
+\begin{equation}	% record component
+\label{longlab-dyn-rule2}
+\frac{\E,\r(\lab)\ts\pat\ra\VE\qquad
+      \langle\E\ADD{+\VE},\r\ADD{\setminus\{\lab\}}\ts\labpats\ra\VE'/\fail\rangle }
+     {\E,\r\ts\longlabpats\ra
+      \VE\langle +\ \VE'/\fail\rangle}
+\end{equation}
+\comments
+\begin{description}
+\item{(\ref{longlab-dyn-rule1}),(\ref{longlab-dyn-rule2})}
+For well-typed programs $\lab$ will be in the domain of $\r$.
+\end{description}
+%\begin{equation}	% record component
+%\label{longlab-dyn-rule}
+%\frac{\V\ts\pat\ra\VE\qquad
+%      \langle\r\ts\labpats\ra\VE'\qquad\VE\sim\VE'\rangle }
+%     {\{\lab\mapsto\V\}\langle +\r\rangle\ts\longlabpats\ra
+%      \VE\langle +\ \VE'\rangle}
+%\end{equation}
+
+%\begin{equation}	% failure of labelled patterns
+%\label{faillabpats-dyn-rule}
+%\frac{\forall\VE\ (\r\ts\labpats\not\ra\VE)}
+%     {\r\ts\labpats\ra\FAIL}
+%\end{equation}
+%
+%                        Patterns
+%
+
+\rulesec{Patterns}{\E,\V\ts\pat\ra\VE/\fail}
+\begin{equation}	% atomic pattern
+%\label{atpat-dyn-rule}
+\frac{\E,\V\ts\atpat\ra \VE/\fail}
+     {\E,\V\ts\atpat\ra \VE/\fail}\index{56.3}
+\end{equation}
+
+%\begin{equation}	% atomic pattern
+%%\label{atpat-dyn-rule}
+%\frac{\V\ts\atpat\ra \VE}
+%     {\V\ts\atpat\ra \VE}
+%\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}	% construction pattern
+%\label{conpat-dyn-rule1}
+\frac{\begin{array}{c}
+       \longcon=\strid_1.\cdots.\strid_k.\con\neq\REF\qquad
+      \V=(\con,\V')\\
+      \E,\V'\ts\atpat\ra\VE/\fail
+      \end{array}}
+     {\E,\V\ts\conpat\ra \VE/\fail}
+\end{equation}}{\begin{equation}	% construction pattern
+%\label{conpat-dyn-rule1}
+\frac{\begin{array}{c}
+       \E(\longvid) = (\vid,\isc)\qquad\vid\neq\REF\qquad
+      \V=(\vid,\V')\\
+      \E,\V'\ts\atpat\ra\VE/\fail
+      \end{array}}
+     {\E,\V\ts\vidpat\ra \VE/\fail}
+\end{equation}}
+
+\replacement{\theidstatus}{\begin{equation}	% construction pattern
+\label{conpat-dyn-rule2}
+\frac{\longcon=\strid_1.\cdots.\strid_k.\con\neq\REF\qquad
+      \V\notin\{\con\}\times\Val}
+     {\E,\V\ts\conpat\ra \FAIL}
+\end{equation}}{\begin{equation}	% construction pattern
+\label{conpat-dyn-rule2}
+\frac{\E(\longvid) = (\vid,\isc)\qquad\vid\neq\REF\qquad
+      \V\notin\{\vid\}\times\Val}
+     {\E,\V\ts\vidpat\ra \FAIL}
+\end{equation}}
+
+%\begin{equation}	% construction pattern
+%\label{conpat-dyn-rule}
+%\frac{\longcon=\strid_1.\cdots.\strid_k.\con\neq\REF\qquad\V\ts\atpat\ra\VE}
+%     {(\con,\V)\ts\conpat\ra \VE}
+%\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}        % exception construction
+%\label{exconpat-dyn-rule1}
+\frac{\begin{array}{c}
+      \E(\longexn)=\e\qquad\V=(\e,\V')\\
+      \E,\V'\ts\atpat\ra\VE/\FAIL
+      \end{array}
+     }
+     {\E,\V\ts\exconpat\ra\VE/\FAIL}
+\end{equation}}{\begin{equation}        % exception construction
+%\label{exconpat-dyn-rule1}
+\frac{\begin{array}{c}
+      \E(\longvid)=(\e,\ise)\qquad\V=(\e,\V')\\
+      \E,\V'\ts\atpat\ra\VE/\FAIL
+      \end{array}
+     }
+     {\E,\V\ts\vidpat\ra\VE/\FAIL}
+\end{equation}}
+
+\replacement{\theidstatus}{\begin{equation} 
+\label{exconpat-dyn-rule2}
+\frac{\E(\longexn)=\e\qquad\V\notin\{\e\}\times\Val}
+     {\E,\V\ts\exconpat\ra\FAIL}
+\end{equation}}{\begin{equation} 
+\label{exconpat-dyn-rule2}
+\frac{\E(\longvid)=(\e,\ise)\qquad\V\notin\{\e\}\times\Val}
+     {\E,\V\ts\vidpat\ra\FAIL}
+\end{equation}}
+\oldpagebreak
+\begin{equation}	% reference pattern
+%\label{refpat-dyn-rule}
+\frac{\s(\A)=\V\qquad\s,\E,\V\ts\atpat\ra\VE/\fail,\s}
+     {\s,\E,\A\ts\REF\ \atpat\ra \VE/\fail,\s}\index{57.0}
+\end{equation}
+
+%\begin{equation}	% reference pattern
+%\label{refpat-dyn-rule}
+%\frac{\s(\A)=\V\qquad\s,\V\ts\atpat\ra\VE,\s}
+%     {\s,\A\ts\REF\ \atpat\ra \VE,\s}
+%\end{equation}
+
+\begin{equation}	% layered pattern
+\frac{\ADD{\E,\V\ts\pat_1\ra\VE_1 \qquad \plusmap{\E}{\VE_1},\V\ts\pat_2\ra\VE_2/\fail}}
+     {\ADD{\E,\V\ts\aspat\ra(\VE_1+\VE_2)/\fail}}
+\end{equation}
+
+\SameEqn
+\begin{equation}	% layered pattern
+\frac{\CUT{\E,\V\ts\pat\ra\VE/\fail}}
+     {\CUT{\E,\V\ts\layeredvidpata\ra\{\vid\mapsto(\V,\isv)\}+\VE/\fail}}
+\end{equation}
+\NextEqn
+
+\BeginNewEqns
+\begin{equation}	% layered pattern
+\frac{\ADD{\E,\V\ts\pat_1\ra\fail}}
+     {\ADD{\E,\V\ts\aspat\ra\fail}}
+\end{equation}
+
+\begin{equation}	% or pattern
+\frac{\ADD{\E,\V\ts\pat_1\ra\VE}}
+     {\ADD{\E,\V\ts\orpat\ra\VE}}
+\end{equation}
+
+\begin{equation}	% or pattern
+\frac{\ADD{\E,\V\ts\pat_1\ra\fail \qquad \E,\V\ts\pat_2\ra\VE/\fail}}
+     {\ADD{\E,\V\ts\orpat\ra\VE/\fail}}
+\end{equation}
+
+\begin{equation}	% nested match pattern
+\frac{\ADD{\E,\V\ts\pat_1\ra\fail}}
+     {\ADD{\E,\V\ts\nestedpat\ra\fail}}
+\end{equation}
+
+\begin{equation}	% nested match pattern
+\frac{\ADD{\E,\V\ts\pat_1\ra\VE_1 \qquad \plusmap{\E}{\VE_1},\V\ts\exp\ra\V'
+      \qquad \plusmap{\E}{\VE_1},\V'\ts\pat_2\ra\VE/\fail}}
+     {\ADD{\E,\V\ts\nestedpat\ra(\plusmap{\VE_1}{\VE_2})/\fail}}
+\end{equation}
+
+\EndNewEqns
+
+%
+%\begin{equation}	% layered pattern
+%\label{layeredpat-dyn-rule}
+%\frac{\V\ts\pat\ra\VE\qquad\{\var\mapsto\V\}\sim\VE}
+%     {\V\ts\layeredpat\ra\VE}
+%\end{equation}
+%
+%\begin{equation}	% failure of pattern
+%\label{failpat-dyn-rule}
+%\frac{\forall\VE\ (\V\ts\pat\not\ra\VE)}
+%     {\V\ts\pat\ra\FAIL}
+%\end{equation}
+\comments
+\begin{description}
+\item{(\ref{conpat-dyn-rule2}),(\ref{exconpat-dyn-rule2})}
+  Any evaluation resulting in $\FAIL$ must do so because 
+rule~\ref{sconpat-dyn-rule2},
+\deletion{\theidstatus}{rule~\ref{conapat-dyn-rule2},}
+rule~\ref{exconapat-dyn-rule2},
+rule~\ref{conpat-dyn-rule2},
+or rule~\ref{exconpat-dyn-rule2} has been
+applied.\index{57.1}
+\end{description}

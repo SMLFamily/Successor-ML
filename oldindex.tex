@@ -1,0 +1,1196 @@
+\def\see{{\it see\ }}
+\def\seealso{{\it see also\ }}
+\def\tsrefs{vii, 2, 20, 31, 40, 48, 53}
+\def\sigidrefs{13, 33, 50}
+\def\zeroexptuplerefs{56, 62} % included in \zerotuplerefs
+\def\zeropattuplerefs{57, 64} % included in \zerotuplerefs
+\def\zerotuplerefs{56, 57, 62, 64}
+\def\tupleexprefs{56, 62}
+\def\tuplepatrefs{57, 64}
+\def\parexprefs{10, 21, 41, 62}
+\def\parpatrefs{8, 26, 45, 64}
+\def\mulrefs{68}
+\def\dotdotdotrefs{8, 26, 27, 46, 64}
+\def\underscorewildrefs{8, 26, 45, 64}
+\def\recrefs{3, 9, 10, 24, 44, 55}
+\def\bracestyexprefs{8, 27, 64}
+\def\scopefixityrefs{6, 11}
+\def\scopeexpltyvarsrefs{9, 18, 22, 55, 87}
+\def\typabbrinsigsrefs{12, 13, 59, 76--77}
+\def\stridasstrexprefs{13, 31, 49}
+\def\funcapprefs{13, 31, 32, 49, 58, 78}
+\def\startyperefs{57, 64}
+\def\sequenceexprefs{56, 62}
+\def\recordexprefs{10, 21, 41, 62}
+\def\recordpatrefs{8, 26, 46, 64}
+\def\funtyperefs{3, 8, 27, 64}
+\def\unaryminusrefs{3, 68}
+\def\hashrefs{56, 62}
+\def\Lambdarefs{16, 17, 18, 23, 25, 29, 33, 34}
+\def\typefunctionrefs{18, 27, 34}
+\def\commentrefs{4, 5, 86}
+\def\eqtynamerefs{15, 17, 20, 24, 33, 34, 79, 80}
+\def\eqtyvarrefs{5, 15, 17, 18, 19, 65}
+\def\infixapplrefs{6, 60, 62, 86}
+\def\vidinatexprefs{10, 21, 41, 62}
+\def\vidinatpatrefs{8, 26, 45, 64}
+\addcontentsline{toc}{section}{\protect\numberline{}{Index}}
+\label{index-sec}
+\begin{theindex}
+Concepts\note{\thenewpreface}{The Index has been revised; it is not accurate for
+the version that has marginal notes.}
+ that are associated with a
+special name (e.g, a meta-variable or a mathematical symbol)
+are listed under both the special name and the full name,
+often with the former entry being a $\see$ reference to the latter.
+For example, ``value binding'' is indexed as follows:
+\indexspace
+
+\item $\valbind$. \see value binding
+\item ValBind (value bindings), 7
+\item $\cdots$
+\item value binding ($\valbind$), 7, 8, 10, 24, 44
+\subitem recursive (\boxml{rec}), \recrefs 
+\subitem simple, 10, 24, 39, 44
+\indexspace
+
+Items are ordered lexicographically, by extending the 
+usual alphabetical ordering on letters using the rule
+{\it space} $=$ {\it hyphen} $<$ {\it symbol or greek letter}  $<$ {\it digit} $<$ {\it latin letter}.
+Upper and lower case letters are regarded as equal and font does not affect
+ordering.
+
+Adjective-noun compounds are normally found under the noun. For example,
+``non-expansive expression'' is found under ``expression''.
+
+The index includes concepts and identifiers
+which were present in the 1990 Definition but are absent in SML '96.
+
+\indexspace
+
+\item \verb+(   )+
+\subitem around expression, \parexprefs
+\subitem around pattern, \parpatrefs
+\subitem in sequence,  \sequenceexprefs
+\subitem in tuple expression, \tupleexprefs
+\subitem in tuple pattern, \tuplepatrefs
+\subitem in type expression, 8, 27
+\item \verb+[   ]+, 56, 57, 62, 64
+\item \verb+{   }+
+\subitem in atomic expression, \recordexprefs
+\subitem in pattern, \recordpatrefs
+\subitem in record type expression, \bracestyexprefs
+\item \verb+(*  *)+ (comment brackets), \commentrefs
+\item $\langle\ \rangle$. \see option 
+\item \verb+()+ (0-tuple), \zerotuplerefs
+\item $\emptymap$ (empty map), 15
+\item \verb+,+ (comma), 3, 7, 56, 57, 60, 62, 64
+\item \verb+;+ (semicolon), 3, 10, 13, 14, 53, 56, 62, 63, 87
+\item \verb+.+ (period) 
+\subitem in real constants, 3
+\subitem in long identifiers, 4
+\item \verb+...+ (wildcard pattern row), \dotdotdotrefs
+\item \verb+_+ (underbar) 
+\subitem in identifier, 5
+\subitem wildcard pattern, \underscorewildrefs
+\item \verb+|+
+\subitem in identifier, 5
+\subitem reserved word, 3, 10, 62, 63, 64
+\item \verb+=+ 
+\subitem basic value (value equality), 38, 66
+\subitem in identifier, 5
+\subitem reserved word, 3, 5, 8, 10, 13, 14, 57, 58, 59, 62, 63, 64
+\subitem the identifier, 5, 65, 66
+\item $\ra$, vii, 2, 20, 31, 40, 48, 53
+\item $\rightarrow$. \see function type
+\item $\finfun{}{}$ (finite map), 16
+\item \verb+=>+, 3
+\subitem in a match rule, 10, 62
+\item \verb+->+, \funtyperefs
+\item \verb+~+, \unaryminusrefs
+\item \verb+"+, 3
+\item \verb+\"+, 4
+\item \verb+\+, 3, 5
+\item \verb+\\+, 4
+\item \verb+!+, 5, 88
+\item \verb+%+, 5
+\item \verb+&+, 5
+\item \verb+$+, 5
+\item \verb+#+
+\subitem in character constant, 4
+\subitem in record field selection, \hashrefs
+\subitem in identifier, 5
+\item \verb(+(, 5, 68
+\item \verb+-+, 5, 68
+\item \verb+/+, 5, 68
+\item \verb+:+ 
+\subitem in identifier, 5
+\subitem reserved word, 3, 10, 13, 14, 57, 58, 62, 63, 64
+\subitem \seealso structure expression; expression
+\item \verb+::+, 9, 12, 56, 65, 66, 87
+\item \verb+:=+. \see assignment
+\item \verb+:>+, 11, 13, 58 
+\subitem \seealso structure expression
+\item \verb+<+, 5, 68
+\item \verb+>+, 5, 68
+\item \verb+<=+, 68
+\item \verb+>=+, 68
+\item \verb+<>+, 88
+\item \verb+?+, 5
+\item \verb+@+, 5, 88
+\item \verb+'+, 5
+\item \verb+`+, 5
+\item \verb+^+, 5, 88
+\item \verb+*+, 5
+\subitem in type expression, \startyperefs
+\subitem multiplication, \mulrefs
+\item $+$. \see modification
+\item $\oplus$, 17
+\item $\lambda$. \see expression, {\tt fn}
+\item $\Lambda$ (in type function), \Lambdarefs
+\item $\forall$ (in type scheme), 17, 18, 19
+\subitem \seealso generalisation; polymorphism
+\item $\alpha$. \see type variable 
+\item $\varrho$. \see row type 
+
+\item $\tau$. \see type 
+
+\item $\tauk$. \see type vector
+\item $\tych$. \see type scheme
+\item $\longtych$. \see type scheme
+\item $\downarrow$. \see restriction
+\item $\typefcn$. \see type function 
+\item $(\theta,\VE)$. \see type structure 
+\item $\typefcnk$. \see type function 
+\item $\sig$. \see signature 
+\item $\newlongsig{}$. \see signature 
+\item $\funsig$. \see functor signature 
+\item $\newlongfunsig{}$. \see functor signature
+\item $\tyrea$ (formerly type realisation), 81
+\item $\strrea$ (formerly structure realisation), 81
+\item $\rea$. \see type realisation
+\item $\geq$. \see instance 
+\item $\succ$. \see generalisation; enrichment
+\item $\ts$ (turnstile), \tsrefs
+\item $\tsdyn$ (evaluation), 53
+\item $\tsstat$ (elaboration), 53
+\item {\tt 0w}. \see word constant
+\item {\tt 0wx}. \see word constant
+\item {\tt 0x}. \see integer constant
+\indexspace
+\parbox{64mm}{\hfil{\large\bf A}\hfil}
+\indexspace
+\item $a$. \see address 
+\item \verb+\a+, 3
+\item $\Abs$ (abstype operation), 20, 23
+\item {\tt abs}, 68
+\item {\tt Abs}, 88
+\item {\tt abstraction}, 77
+\item $\ABSTYPE$, 3
+\subitem \seealso declaration
+\item addition of numbers (\ml{+}), 5, 68
+\item $\Addr$ (addresses), 37
+\item address ($\A$), 37, 46
+\subitem fresh, 42
+\item admissibility, 85
+\item alphabets (in string and character constants), 3, 4
+\item $\AND$, 3, 10, 13, 14, 58, 59, 63 
+\item \ANDALSO, 3
+\subitem\seealso expression
+\item appending lists (\verb+@+), 88
+\item $\apexp$ (application expression), 60, 62
+\item application
+\subitem infixed, \infixapplrefs
+\subitem of {\tt :=}, 42
+\subitem of basic value ($\APPLY$), 42
+\subitem of exception name, 41
+\subitem of function closure, 42
+\subitem of functor, \funcapprefs
+\subitem of {\tt ref}, 42
+\subitem of type function, \typefunctionrefs
+\subitem of value constructor, 41
+\item $\APPLY$. \see application 
+\item {\tt arctan}, 88
+\item arity 
+\subitem of type function, 17
+\subitem of type name, 15
+\item arrow type. \see function type
+\item \AS, 3
+\subitem \seealso atomic pattern, layered
+\item assignment (\ml{:=}), 38, 42, 65, 66
+\item $\atexp$. \see atomic expression
+\item atomic expression (\atexp), 7, 10, 41, 62
+\subitem \verb+()+ (0-tuple, unit value), \zeroexptuplerefs
+\subitem as expression, 10, 22, 41, 62
+\subitem \boxml{let}, 10, 21, 41, 62, 84
+\subitem list expression  (\verb+[  ,+$\cdots$\verb+, ]+), 56, 62
+\subitem long value identifier, \vidinatexprefs
+\subitem parenthesised (\verb+(  )+), \parexprefs
+\subitem record expression, \recordexprefs
+\subitem record selector (\verb+#+{\it lab}), \hashrefs
+\subitem sequence expression  (\verb+(  ;+$\cdots$\verb+; )+), \sequenceexprefs
+\subitem tuple expression (\verb+(  ,+$\cdots$\verb+, )+), \tupleexprefs
+\subitem \seealso special constant
+\item atomic pattern ($\atpat$), 7, 8, 26, 45, 64
+\subitem \verb+()+ (0-tuple), \zeropattuplerefs
+\subitem as pattern, 8, 26, 46, 64
+\subitem list pattern (\verb+[  ,+$\cdots$\verb+, ]+), 57, 64
+\subitem long value identifier, \vidinatpatrefs
+\subitem parenthesised (\verb+(  )+), \parpatrefs
+\subitem record pattern, \recordpatrefs
+\subitem tuple pattern (\verb+(  ,+$\cdots$\verb+, )+), \tuplepatrefs
+\subitem wildcard (\verb+_+),  \underscorewildrefs
+\subitem \seealso special constant
+\item $\atpat$. \see atomic pattern
+\indexspace
+\parbox{64mm}{\hfil{\large\bf B}\hfil}
+\indexspace
+\item $b$. \see value 
+\item \verb+\b+, 3 
+\item $\B$. \see basis 
+\item $\B_0$ (initial basis) 
+\subitem dynamic, 66, 88
+\subitem static, 65, 88
+\item bare language, 1
+\item $\BasExc$ (basic exception names), 39
+\item basis ($\B$), 1
+\subitem combined, 1, 53
+\subitem dynamic, 1, 47, 53, 66
+\subitem initial. \see $B_0$
+\subitem static, 1, 21, 29, 31, 53, 65
+\item $\Basis$ (bases), 29, 47
+\item Basis Library, 2, 4, 75, 88
+\item $\BasVal$ (basic values), 37, 88
+\item $\Bdyn$ (dynamic basis), 53
+\item {\tt Bind} (exception), 39, 44, 65, 66
+\item $\BOOL$, 65, 66
+\item bound names, 29, 30
+\item $\Bstat$ (static basis), 53
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf C}\hfil}
+
+\indexspace
+
+\item \verb+c+ (value constructor status), 15, 16
+\subitem \seealso identifier status descriptor; value identifier
+\item $\C$. \see context
+\item CAML, 72
+\item Caml Light, 73, 76
+\item \CASE, 3
+\subitem \seealso expression
+\item $\CE$ (constructor environment), 82 
+\item {\tt char} (the type), 15, 65, 66
+\item Char (overloading class), 67
+\item character constant, 4
+\subitem \seealso special constant
+\item {\tt chr}, 88
+\item {\tt Chr}, 88
+\item CLEAR, 70, 71
+\item $\cl{}{}$ (closure of types etc.), 19, 23, 25, 33, 35
+\item \verb+close_in+, 88
+\item \verb+close_out+, 88
+\item closure. \see function closure; functor closure; $\cl{}{}$; closure rules
+\item closure rules (signatures and functors), 87
+\item coercion of numbers (\ml{real}), 88
+\item comment in program, \commentrefs
+\item Commentary on Standard ML, vii
+\item composition of functions (\ml{o}), 88
+\item $\con$ (value constructor), 82
+\item $\Con$ (value constructors), 82
+\item $\constrs$. \see constructor binding
+\item $\ConBind$ (constructor bindings), 7
+\item concatenating strings (\verb+^+), 88
+\item $\condesc$. \see constructor description
+\item ConDesc (constructor descriptions), 12
+\item $\ConEnv$ (constructor environments), 82
+\item ``consing'' an element onto a list. \see \ml{::}
+\item consistency, 85
+\item constant, special. \see special constant 
+\item constructor binding ($\constrs$), 7, 10, 25, 45, 63
+\item constructor description ($\condesc$), 12, 14, 35, 52
+\item constructor environment ($\CE$), 82
+\item $\ConsType$ (constructed types), 16
+\item context ($\C$), 16, 17, 19, 20, 21, 32
+\item $\Context$ (contexts), 16
+\item control character, 3
+\item Core Language, 1
+\subitem dynamic semantics, 37--46
+\subitem static semantics, 15--28
+\subitem syntax, 3--10, 54
+\item Core Language Programs, 54
+\item {\tt cos}, 88
+\item cover, 81
+\item cycle-freedom, 86
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf D}\hfil}
+
+\indexspace
+
+\item \DATATYPE, 3
+\subitem \seealso declaration; specification
+\item datatype binding ($\datbind$), 7, 8, 10, 25, 44, 63
+\item datatype declaration. \see declaration
+\item datatype description ($\datdesc$), 12, 14, 35, 51
+\item datatype replication. \see declaration; specification
+\item datatype specification. \see specification
+\item $\datbind$. \see datatype binding
+\item DatBind (datatype bindings), 7
+\item $\datdesc$. \see datatype description
+\item DatDesc (datatype descriptions), 12
+\item $\dec$. \see declaration
+\item Dec (declarations), 7
+\item decimal notation. \see integer constant; word constant
+\item declaration ($\dec$), 7, 10, 23--24, 43--44, 63
+\subitem \boxml{abstype}, 3, 10, 23, 44, 57, 63
+\subitem as structure-level declaration, 13, 32, 49
+\subitem datatype replication, 10, 23, 43, 63, 82--84
+\subitem \boxml{datatype}, 3, 10, 23, 43, 57, 63
+\subitem empty, 10, 23, 44, 63
+\subitem \boxml{exception}, 3, 10, 23, 44, 63
+\subitem function (\boxml{fun}), 3, 55, 57, 63
+\subitem \boxml{infix}, 3, 6, 10, 63
+\subitem \boxml{infrixr}, 3, 6, 10, 63
+\subitem \boxml{local}, 3, 10, 23, 44, 63
+\subitem \boxml{nonfix}, 3, 6, 10, 63
+\subitem \boxml{open}, 3, 10, 23, 44, 63
+\subitem sequential (\boxml{;}), 3, 10, 24, 44, 63
+\subitem \boxml{type}, 3, 10, 23, 43, 63
+\subitem value (\boxml{val}), 3, 10, 23, 43, 63
+\subitem \seealso structure-level declaration; top-level declaration
+\item dereferencing (\ml{!}), 88
+\item derived forms, 1, 7, 55--59
+\item {\tt Diff}, 88
+\item digit 
+\subitem in identifier, 5
+\subitem in integer- and real constants, 3
+\item {\tt div}, 68
+\item {\tt Div}, 88
+\item division of reals (\ml{/}), 68
+\item \DO, 3
+\subitem \seealso expression
+\item $\Dom$ (domain), 15
+\indexspace
+\parbox{64mm}{\hfil{\large\bf E}\hfil}
+\indexspace
+\item $\exval$. \see exception value
+\item $\ise$ (exception constructor status), 15, 16
+\item \seealso identifier status descriptor; value identifier
+\item $[\exval]$. \see packet 
+\item \verb+e+\ (exponent), 3
+\item \verb+E+\ (exponent), 3
+\item $\E$. \see environment 
+\item Edinburgh ML, 72
+\item $\EE$ (exception constructor environment), 82
+\item elaboration, 1, 2, 21
+\item \ELSE, 3
+\subitem \seealso expression
+\item $\e$. \see exception name
+\item \END, 3, 10, 13, 56, 57, 62, 63
+\item \verb+end_of_stream+, 88
+\item enrichment ($\succ$), 30, 31, 82
+\item $\excs$. \see exception name set
+\item $\Env$ (environments), 16, 38
+\item environment ($E$)
+\subitem dynamic, 38, 39, 41--46, 47, 48, 49-50, 66
+\subitem principal, 85
+\subitem static, 16, 17, 21, 23--24, 29, 30, 31--36
+\item \EQTYPE, 11
+\subitem \seealso specification
+\item equality 
+\subitem admit equality, 15, 17, 20, 29, 33, 34, 65
+\subitem maximise equality, 20, 23, 34
+\subitem on abstract types, 20
+\subitem of structures (sharing), 78
+\subitem of values. \see \boxml{=}
+\subitem respect equality, 20
+\item equality attribute 
+\subitem of type name, \eqtynamerefs
+\subitem of type variable, \eqtyvarrefs
+\item equality type, 17, 65
+\item equality type function, 18
+\item equality type specification. \see specification
+\item equality type variable, \eqtyvarrefs
+\item escape sequence, 3--4
+\item EtyVar (equality type variables), 5, 15 
+\item evaluation, vi, 1, 2, 40, 49
+\item $\exnbind$. \see exception binding
+\item ExBind (exception bindings), 7
+\item \EXCEPTION, 3
+\subitem \seealso declaration; specification
+\item exception binding ($\exnbind$), 7, 8, 10, 25, 44, 63
+\item exception constructor, 16, 82
+\subitem \seealso value identifier
+\item exception constructor environment ($\EE$), 82 
+\item exception convention, 40
+\item exception declaration. \see declaration.
+\item exception description ($\exndesc$), 12, 14, 35, 52
+\item exception name ($\e$), 37
+\subitem fresh, 37, 45
+\subitem as value, 38
+\item exception name set ($\excs$), 38, 45
+\item exception packet. \see packet 
+\item exception specification. \see specification
+\item exception value ($\exval$), 38, 42
+\item $\exn$ (exception constructor), 82
+\item $\Exn$ (exception constructors), 82
+\item $\ExnEnv$ (exception constructor environments), 82
+\item $\exndesc$. \see exception description
+\item ExDesc (exception descriptions), 12
+\item execution, 1, 53
+\item $\EXCN$, 22, 65, 66
+\item $\Exc$ (exception names), 37
+\item $\ExcSet$ (exception name sets), 38
+\item $\exp$. \see expression
+\item Exp (expressions), 7
+\item {\tt exp} (exponential), 88
+\item {\tt Exp} (exception), 88
+\item {\tt explode} (operation on strings), 88
+\item expression ($\exp$), 7, 10, 62
+\subitem application, 10, 22, 62
+\subitem \boxml{case}, 56, 62
+\subitem conditional ($\boxml{if}\cdots\boxml{then}\cdots\boxml{else}$), 56, 62
+\subitem expansive, 19, 20, 81
+\subitem explicitly typed (\boxml{:}),  10, 22, 62
+\subitem \boxml{handle}, 10, 22, 40, 42, 62
+\subitem infixed, 10, 62
+\subitem lambda-abstraction (\boxml{fn}), 10, 22, 42, 62
+\subitem non-expansive, 19, 20, 81, 86
+\subitem \boxml{raise}, 10, 22, 42, 62
+\subitem sequential and (\boxml{andalso}), 56, 62
+\subitem sequential or (\boxml{orelse}), 56, 62
+\subitem \boxml{while}$\cdots$\boxml{do}, 56, 62
+\subitem \seealso atomic expression
+\item expression row ($\labexps$), 7, 8, 10, 22, 41, 62
+\item $\labexps$. \see expression row
+\item ExpRow (expression rows), 7
+\item $\ExVal$ (exception values), 38
+\indexspace
+\parbox{64mm}{\hfil{\large\bf F}\hfil}
+\indexspace
+\item $\F$. \see functor environment
+\item \verb+\f+, 3
+\item $\FAIL$ (failure in pattern matching), 37, 45, 46
+\item \FALSE, 9, 12, 56, 65, 66, 87
+\item FAM (Functional Abstract Machine), 72
+\item FcnClosure (function closures), 38, 39
+\item $\finfun{}{}$ (finite map), 16
+\item $\Fin$ (finite subset), 16
+\item {\tt floor}, 88
+\item {\tt Floor}, 88
+\item \FN ($\lambda$), 3
+\subitem \seealso expression
+\item formatting character, 4
+\item \FUN, 3
+\subitem \seealso declaration
+\item $\funbind$. \see functor binding
+\item FunBind (functor bindings), 12
+\item function closure, 38, 39, 42
+\item function declaration. \see declaration
+\item function type ($\rightarrow$), 16, 22, 25, 26, 27, 35, 65
+\item function type expression (\verb+->+), \funtyperefs
+\item function-value binding ($\fvalbind$), 55, 57, 63
+\subitem exhaustive, 28
+\item \FUNCTOR, 11
+\item \seealso functor declaration
+\item functor application, \funcapprefs
+\item functor binding ($\funbind$), 12, 14, 36, 52, 58
+\item functor closure, 47
+\item functor declaration ($\fundec$), 12, 14, 35, 52, 58
+\subitem in top-level declaration, 14, 36, 52
+\item functor description, 87
+\item functor environment ($\F$)
+\subitem dynamic, 47, 49, 52
+\subitem static, 29, 31, 35, 36
+\item functor identifier ($\funid$), 11
+\item functor signature ($\funsig$), 29, 30, 31, 32, 36
+\item functor signature expression, 87
+\item functor signature matching, 87
+\item functor specification, 87
+\item $\FunctorClosure$ (functor closures), 47
+\item $\fundec$ (functor declaration), 12, 14, 35, 52
+\item FunDec (functor declarations), 12
+\item $\fundesc$ (functor description), 87
+\item FunDesc (functor descriptions), 87
+\item $\FunEnv$ (functor environments), 29, 47
+\item $\funid$. \see functor identifier
+\item $\FunId$ (functor identifiers), 11
+\item FunSig (functor signatures), 29
+\item $\funsigexp$ (functor signature expression), 87
+\item FunSigExp (functor signature expressions), 87
+\item $\funspec$ (functor specification), 87
+\item FunSpec (functor specifications), 87
+\item $\FunType$ (function types), 16
+\item FvalBind (function-value bindings), 55
+\item $\fvalbind$. \see function-value binding
+\indexspace
+\parbox{64mm}{\hfil{\large\bf G}\hfil}
+\indexspace
+\item $\G$. \see signature environment
+\item generalisation ($\succ$), 18, 21, 26, 30
+\item grammar,
+\subitem for the Core, 7--10
+\subitem for Modules, 11--14
+\indexspace
+\parbox{64mm}{\hfil{\large\bf H}\hfil}
+\indexspace
+\item \HANDLE, 3
+\subitem \seealso expression
+\item hexadecimal notation. \see integer constant; word constant
+\item HOPE, 70, 71
+\indexspace
+\parbox{64mm}{\hfil{\large\bf I}\hfil}
+\indexspace
+\item $\I$ \see interface
+\item $\IB$ \see interface basis
+\item identifier ($\id$), 4--5, 11
+\subitem alphanumeric, 5
+\subitem long, 4 
+\subitem qualified, 4, 5
+\subitem rebinding of, 8--9, 12, 24
+\subitem symbolic, 5
+\subitem \seealso  atomic expression; atomic pattern; value identifier
+\item IdStatus (identifier status descriptors), 15
+\item identifier status descriptor ({\tt v}, {\tt c}, {\tt e}), 
+\subitem defined, 15, 16
+\subitem dynamic semantics, 39, 41, 45, 46, 47, 48, 52, 66
+\subitem motivated, 82
+\subitem signature matching, 30, 82
+\subitem static semantics, 19, 21, 25, 26, 27, 30, 35
+\item \IF, 3
+\subitem \seealso expression
+\item implementation, 72--74
+\item {\tt implode} (string operation), 88
+\item $\In$ (injection), 17
+\item \IN, 3, 13, 62, 63
+\item \INCLUDE, 11
+\subitem \seealso specification
+\item inference rules 
+\subitem dynamic semantics (Core), 40--46
+\subitem dynamic semantics (Modules), 48--52
+\subitem programs, 54
+\subitem static semantics (Core), 21--27
+\subitem static semantics (Modules), 31--36
+\item $\inexp$ (infix expression), 60, 62
+\item InfExp (infix expressions), 60, 62
+\item \INFIX, 3
+\subitem \seealso declaration
+\item infix identifier, \infixapplrefs
+\subitem associativity, 6, 86
+\subitem precedence, 6
+\subitem scope of fixity directive, \scopefixityrefs
+\subitem \seealso expression; pattern
+\item \INFIXR, 3
+\subitem \seealso declaration
+\item injection (\In), 17
+\item {\tt input}, 88
+\item input/output, 88
+\item instance ($\geq$) 
+\subitem in matching, 30, 31
+\subitem of functor signature, 30, 31, 32
+\subitem of signature, 30, 31, 
+\item $\INSTREAM$, 88
+\item $\INT$, 15, 65, 66
+\item Int (overloading class), 67
+\item $\Int$ (interfaces), 47
+\item $\IntBasis$ (interface bases), 47
+\item integer constant, 3
+\subitem decimal notation, 3
+\subitem hexadecimal notation, 3
+\subitem \seealso special constant
+\item $\Inter$, 47--48
+\item interaction, 1, 53--54
+\item interface ($\I$), 47, 48, 49, 50, 51, 52
+\item interface basis ($\IB$), 47, 48, 50, 51, 52
+\item {\tt Interrupt}, 88
+\item {\tt Io}, 88
+\item ISWIM, 69
+\item {\tt it}, 9, 12, 58, 87
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf K}\hfil}
+
+\indexspace
+\item keyword. \see reserved word
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf L}\hfil}
+
+\indexspace
+
+\item L (left associative), 6, 8
+\item $\lab$. \see record label
+\item $\Lab$ (record labels), 4
+\item lambda-abstraction ({\tt fn}). \see expression
+\item Lazy ML, 72
+\item LCF, 69, 72
+\item \LET, 3
+\subitem \seealso atomic expression; structure expression
+\item letter in identifer, 5
+\item lexical analysis, 5
+\item libraries, 65, 75
+\subitem \seealso Basis Library
+\item LISP, 69
+\item $\LIST$, 65, 66
+\item list reversal (\ml{rev}), 88
+\item literal. \see special constant
+\item {\tt ln}, 88
+\item {\tt Ln}, 88
+\item \LOCAL, 3
+\subitem \seealso declaration; structure-level declaration
+\item {\tt lookahead}, 88
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf M}\hfil}
+
+\indexspace
+
+\item $\m$ (structure name), 81
+\item $\M$ (structure name set), 81
+\item \ml{map}, 88
+\item match ($\match$), 7, 10, 23, 43, 62
+\subitem exhaustive, 28, 39
+\subitem in function closure, 38, 39, 42
+\subitem irredundant, 28, 39
+\item $\Match$ (matches), 7
+\item {\tt Match} (exception), 39, 42, 65, 66
+\item match rule ($\mrule$), 7, 10, 23, 43, 62
+\item matching 
+\subitem signatures. \see signature matching 
+\subitem functor signatures, 87
+\item maximise equality. \see type environment
+\item $\mem$. \see memory
+\item $\Mem$ (memories), 38
+\item memory ($\mem$), 38, 42, 46
+\item ML Kit, 73
+\item MLWorks, 73
+\item {\tt mod}, 68
+\item {\tt Mod}, 88
+\item modification ($+$) 
+\subitem of finite maps, 16
+\subitem of environments, 17
+\item module, v
+\subitem \seealso structure-level declaration; functor declaration; 
+\item Modules, 1
+\item Moscow ML, 73
+\item $\mrule$.  \see match rule.
+\item Mrule (match rules), 7
+\item multiplication of numbers (\ml{*}), \mulrefs
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf N}\hfil}
+
+\indexspace
+\item \verb+\n+ (newline), 3
+\item name. \see exception name; type name; structure name
+\item Natural Semantics, 2
+\item {\tt Neg}, 88
+\item negation of booleans (\ml{not}), 88
+\item negation of numbers (\verb+~+), \unaryminusrefs
+\item \NIL, 9, 12, 65, 66, 87
+\item \NONFIX, 3
+\subitem \seealso declaration
+\item \ml{not}, 88
+\item Num (overloading class), 67
+\item NumTxt (overloading class), 67
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf O}\hfil}
+
+\indexspace
+
+\item \ml{o} (function composition), 88
+\item $\of{}{}$ (projection), 17, 29
+\item $\OF$, 3
+\subitem in $\CASE$ expression, 57, 62
+\subitem in constructor binding, 10
+\subitem in constructor description, 14
+\subitem in exception binding, 10
+\subitem in exception description, 14
+\item \OP,
+\subitem before value identifier, 6, 10, 63
+\subitem in constructor binding, 10
+\item opaque signature constraint. \see structure expression
+\item \OPEN, 3 
+\subitem \seealso declaration; specification
+\item \verb+open_in+, 88
+\item \verb+open_out+, 88
+\item option, 7, 21
+\subitem first ($\langle\ \rangle$), 21
+\subitem second ($\langle\langle\ \rangle\rangle$), 21
+\item {\tt ord} (of string), 88
+\item {\tt Ord}, 88
+\item \ORELSE, 3
+\subitem \seealso expression
+\item {\tt output}, 88
+\item $\OUTSTREAM$, 88
+\item overloading, 67-68, 88
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf P}\hfil}
+
+\indexspace
+
+\item $\p$. \see packet 
+\item $\Pack$ (packets), 38
+\item packet ($\p$), 38, 40, 41, 42, 43, 44, 54
+\item parsing, 1, 60, 61
+\item $\pat$. \see pattern.
+\item Pat (patterns), 7
+\item $\labpats$. \see pattern row.
+\item PatRow (pattern rows), 7
+\item pattern ($\pat$), 7, 8, 46, 64
+\subitem constructed, 8, 26, 46, 64
+\subitem exhaustive and irredundant, 28
+\subitem infix, 8, 64
+\subitem typed (\boxml{:}), 8, 26, 64
+\subitem layered (\boxml{as}), 8, 27, 46, 57, 64
+\subitem \seealso atomic pattern
+\item pattern matching, 27, 28, 45-46
+\subitem with $\REF$, 46
+\item pattern row ($\labpats$), 7, 8, 26, 46, 64
+\subitem wildcard(\boxml{...}), \dotdotdotrefs
+\item Poly/ML, 72
+\item polymorphism, 18, 19, 20, 21, 23, 24, 26, 30, 69-70, 71, 81 
+\item POP2, 69
+\item POPLOG, 74
+\item precedence, 6
+\item principal types, v, 85
+\item printable character, 3
+\item {\tt Prod}, 88
+\item program ($\program$), 1, 53, 58
+\item Program (programs), 1, 53
+\item projection ($\of{}{}$), 17, 29
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf Q}\hfil}
+
+\indexspace
+
+\item {\tt Quot}, 88
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf R}\hfil}
+
+\indexspace
+
+\item $\r$. \see record
+\item \verb+\r+, 3
+\item R (right associative), 6, 8 
+\item \RAISE, 3
+\subitem \seealso expression
+\item $\Ran$ (range), 15
+\item Real (overloading class), 67
+\item $\REAL$
+\subitem the type, 15, 65, 66, 88
+\subitem coercion, 88
+\item real constant, 3, 9, 65, 88
+\item realisation. \see type realisation
+\item RealNum (overloading class), 67
+\item $\REC$, \recrefs
+\subitem \seealso value binding
+\item $\Rec$ (recursion operator), 39, 42, 44
+\item Record (records), 38
+\item record ($\r$), 38, 41, 46
+\subitem \seealso row type; expression row; pattern row
+\item record label ($\lab$), 4, 5, 8, 64
+\item record selector (\ml{\#}\ {\it lab}), \hashrefs
+\item record type. \see row type
+\item record type expression, \bracestyexprefs
+\item recursion. \see $\REC$; $\Rec$; $\FUN$ 
+\item $\REF$ 
+\subitem the type constructor, 9, 12, 65, 66, 87
+\subitem the type name, 17, 20, 65
+\subitem the value constructor, 9, 12, 19, 42, 46, 65, 66, 87
+\item references
+\subitem creation. \see $\REF$
+\subitem dereferencing. \see $\REF$
+\subitem polymorphic, 19, 70, 81
+\item renaming
+\subitem of type names, 29, 32
+\subitem of type variables, 18
+\item reserved word, 3, 11
+\item respect equality (see equality) 
+\item restrictions 
+\subitem closure rules, 87
+\subitem syntactic (Core), 8--9, 27--28
+\subitem syntactic (Modules), 12
+\item \ml{rev}, 88
+\item row type ($\varrho$), 16, 22, 26, 27
+\item RowType, 16
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf S}\hfil}
+
+\indexspace
+\item $\s$. \see state
+\item {\SCon} (special constants), 4
+\item {\scon}. \see special constant 
+\item scope 
+\subitem of fixity directive, \scopefixityrefs
+\subitem of explicit type variable, \scopeexpltyvarsrefs
+\subitem of constructorhood. \see identifier status descriptor
+\item $\SE$ \see structure environment 
+\item semantic object, 6, 15
+\subitem compound (Core, Dynamic), 37--38
+\subitem compound (Core, Static), 15--16
+\subitem compound (Modules, Dynamic), 47
+\subitem compound (Modules, Static), 29
+\subitem simple (Dynamic), 37
+\subitem simple (Static), 15
+\subitem well-formed, 20, 33
+\item semantics
+\subitem of Core, 15--28, 37--46
+\subitem of Modules, 29--36, 47--52
+\subitem of Programs, 53--54
+\item sentence, \tsrefs
+\item \SHARING, 3
+\subitem \seealso specification
+\item $\SI$. \see structure interface
+\item side-condition, 21
+\item side-effect, 49, 54
+\subitem \seealso assignment; \boxml{ref}
+\item \SIG, 11
+\subitem \seealso signature expression
+\item $\Sig$ (signatures), 29
+\item $\sigbind$. \see signature binding
+\item SigBind (signature bindings), 12
+\item $\sigdec$. \see signature declaration
+\item SigDec (signature declarations), 12
+\item $\SigEnv$ (signature environments), 29, 47
+\item $\sigexp$. \see signature expression
+\item SigExp (signature expressions), 12
+\item $\sigid$. \see signature identifier
+\item $\SigId$ (signature identifiers), 11
+\item signature ($\sig$), 29, 30, 31, 32, 33, 36, 48
+\subitem principal, 76, 86
+\subitem type-explicit, 81
+\item \SIGNATURE, 11
+\subitem \seealso signature declaration
+\item signature binding ($\sigbind$), 12, 13, 33, 50
+\item signature declaration ($\sigdec$), 12, 13, 33, 50
+\subitem in top-level declaration, 14, 36, 52
+\item signature environment ($\G$) 
+\subitem dynamic, 47, 48, 50, 52
+\subitem static, 29, 33, 36
+\item signature expression ($\sigexp$), 12, 13, 32-33, 50
+\subitem basic (\boxml{sig}$\cdots$\boxml{end}), 13, 32, 50
+\subitem signature identifier, \sigidrefs
+\subitem type realisation (\boxml{where type}), 13, 33, 47, 76--77
+\item signature identifier ($\sigid$), 11
+\subitem as signature expression, \sigidrefs
+\item signature instantiation. \see instance 
+\item signature matching, 30, 31, 32
+\subitem \seealso structure expression (\boxml{:} and \boxml{:>})
+\item {\tt sin}, 88
+\item {\tt size} (of strings), 88
+\item $\spec$. \see specification
+\item Spec (specifications), 12
+\item special constant (\scon), 4, 15, 86
+\subitem as atomic expression, 8, 21, 41, 62
+\subitem as atomic pattern, 8, 26, 45, 64
+\item special value ($\sv$), 37
+\item specification ($\spec$), 12, 14, 33-34, 50-51
+\subitem \boxml{datatype}, 14, 33, 50
+\subitem datatype replication (\boxml{datatype} $\cdots$ \linebreak
+\boxml{= datatype}), 14, 33, 51
+\subitem empty, 14, 34, 51
+\subitem equality type (\boxml{eqtype}), 14, 33, 50
+\subitem \boxml{exception}, 14, 34, 51
+\subitem \boxml{include}, 14, 34, 51, 59, 77
+\subitem \boxml{local}, 87
+\subitem \boxml{open}, 87
+\subitem sequential (\boxml{;}), 14, 34, 51, 87
+\subitem \boxml{structure}, 14, 34, 51
+\subitem structure sharing (\boxml{sharing}), 55--56, 59, 80
+\subitem \boxml{type}, 14, 33, 50
+\subitem type abbreviations in, \typabbrinsigsrefs
+\subitem type sharing (\boxml{sharing type}), 14, 34, 47, 78--80
+\subitem value (\boxml{val}), 14, 33, 50
+\item {\tt sqrt} (square root), 88
+\item {\tt Sqrt}, 88
+\item Standard ML (SML), iv, 69--75
+\subitem Bare language, 1
+\subitem Core language, 1, 54, 69--70
+\subitem history of, 69--75
+\subitem implementations, 72--74
+\subitem learning about, vii
+\subitem Modules, 1, 70--71
+\subitem origins of, 69
+\subitem Programs, 1, 54
+\subitem revision of, iii, 76--88
+\subitem semantics, 74--75
+\item Standard ML of New Jersey, 73
+\item state ($\s$), 38, 40, 42, 46, 49, 53, 54
+\item $\State$, 38
+\item state convention, 40, 42
+\item \verb+std_in+, 88
+\item \verb+std_out+, 88
+\item $\strbind$. \see structure binding
+\item StrBind (structure bindings), 12
+\item $\strdec$. \see structure-level declaration
+\item StrDec (structure-level declarations), 12
+\item $\strdesc$. \see structure description
+\item StrDesc (structure descriptions), 12
+\item stream (input/output),  88
+\item $\StrEnv$ (structure environments), 16, 38
+\item $\strexp$. \see  structure expression
+\item $\StrExp$ (structure expressions), 12
+\item $\strid$. \see structure identifier
+\item $\StrId$ (structure identifiers), 4
+\item String (overloading class), 67
+\item $\STRING$, 15, 65, 66
+\item string constant, 3
+\subitem \seealso special constant
+\item StrInt (structure interfaces), 47
+\item $\STRUCT$, 11
+\subitem \seealso structure expression
+\item structure (semantic object), 29
+\item $\STRUCTURE$, 11
+\subitem \seealso structure-level declaration; specification
+\item structure binding ($\strbind$), 12, 32, 50, 58
+\item structure declaration. \see structure-level declaration
+\item structure description ($\strdesc$), 12, 14, 35, 52
+\item structure environment ($\SE$) 
+\subitem dynamic, 38, 48, 50, 66
+\subitem static, 16,  17, 29, 30, 32, 35, 65
+\item structure expression ($\strexp$), 12, 13, 31-32, 49
+\subitem basic (\boxml{struct}$\cdots$\boxml{end}), 13, 31, 49
+\subitem functor application, \funcapprefs
+\subitem \boxml{let}, 13, 31, 49
+\subitem long structure identifier, \stridasstrexprefs
+\subitem opaque signature constraint (\boxml{:>}), 13, 31, 49, 58, 77--78
+\subitem transparent signature constraint (\boxml{:}), 13, 31, 49, 58, 77--78
+\item structure identifier ($\strid$), 4
+\subitem as structure expression, \stridasstrexprefs
+\item structure interface ($\SI$), 47, 48, 52
+\item structure-level declaration ($\strdec$), 12, 13, 32, 49--50
+\subitem empty, 13, 32, 50
+\subitem in top-level declaration, 14, 36, 52
+\subitem local (\boxml{local}$\cdots$\boxml{in}$\cdots$\boxml{end}), 13, 32, 50
+\subitem of structure (\boxml{structure}), 13, 32, 49
+\subitem sequential (\boxml{;}), 13, 32, 50
+\subitem \seealso declaration; structure binding
+\item structure name ($m$), 81
+\item structure realisation ($\strrea$), 81
+\item structure specification. \see specification
+\item subtraction of numbers (\ml{-}), 68
+\item {\tt Sum}, 88
+\item {\SVal} (special values), 37
+\item $\Supp$ (support), 29
+\item $\sv$. \see special value
+\item syntactic sugar. \see derived form
+\item symbol, 5
+\item syntax,
+\subitem of Core, 3--10, 37
+\subitem of Modules, 11-14
+\subitem of Programs, 53
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf T}\hfil}
+
+\indexspace
+
+\item $\t$. \see type name
+\item $\T$. \see type name set
+\item $\TE$. \see type environment
+\item textbooks, vii
+\item \THEN, 3
+\subitem \seealso expression
+\item $T\!I$. \see type interface
+\item TIL, 74
+\item $\topdec$. \see top-level declaration
+\item TopDec (top-level declarations), 12
+\item top-level declaration ($\topdec$),
+\subitem in program, 53--54
+\subitem sequential (no \boxml{;}), 14, 36, 52
+\item $\TRUE$, 9, 12, 56, 65,  66, 87
+\item truncation of reals (\ml{floor}), 88
+\item tuple. \see atomic expression; atomic pattern
+\item $\ty$. \see type expression
+\item Ty (type expressions), 7
+\item $\tycon$. \see type constructor
+\item $\TyCon$ (type constructors), 4
+\item $\TyEnv$ (type environments), 16, 38
+\item TyInt (type interfaces), 47
+\item $\TyNames$ (type names), 15
+\item $\TyNamesFcn$ (free type names), 16, 21, 23, 24, 31, 32, 33, 35, 36
+\item $\TyNameSets$ (type name sets), 16
+\item $\typbind$. \see type binding
+\item TypBind (type bindings), 7
+\item $\typdesc$. \see type description
+\item TypDesc (type descriptions), 12
+\item type ($\tau$), 16, 17, 18, 19, 21--23, 25--27, 33, 34, 35, 65
+\subitem constructed ($\tau^{(k)}t$), 16, 17, 18, 20, 25, 26
+\subitem as type scheme, 18
+\subitem default, 67
+\subitem imperative, 69
+\subitem principal, v, 85
+\subitem product, \startyperefs
+\subitem \seealso type expression; function type
+\item $\Type$ (types), 16
+\item $\TYPE$, 3
+\subitem \seealso declaration; specification
+\item $\scontype$ (function on special constants), 15, 21
+\item type abbreviation in signature, \typabbrinsigsrefs
+\item type binding ($\typbind$),  7, 8, 10, 25, 44, 63
+\item type constraint (\verb+:+). \see expression; pattern 
+\item type constructor ($\tycon$), 4
+\item type constructor name. \see type name 
+\item type declaration. \see declaration
+\item type description ($\typdesc$), 12, 14, 35, 51
+\item type environment ($\TE$)
+\subitem dynamic, 38,  43, 44, 48, 83
+\subitem respect equality, 20, 80
+\subitem maximise equality, 20, 23, 34
+\subitem static, 16, 20, 23, 24, 25, 34, 35, 65
+\item type explication, 81
+\item type expression ($\ty$), 7, 8, 27, 57, 64
+\item type-expression row ($\labtys$), 7, 8, 27, 64
+\item type function ($\typefcn$), \Lambdarefs
+\subitem application of, \typefunctionrefs
+\subitem equality of, 17
+\item type inference, 5
+\subitem \seealso elaboration
+\item type interface ($T\!I$), 47, 48, 50, 51, 83
+\item type name ($\t$), 15
+\subitem equality attribute of, \eqtynamerefs
+\subitem flexible, 33, 34, 79
+\subitem fresh, 23, 24, 32, 34, 35
+\subitem in constructed type, 26
+\subitem in initial basis, 65
+\subitem in type structure, 20, 23, 33, 34, 35
+\subitem substitution for, 18, 29, 30, 33, 34
+\subitem within functor body, 36
+\item type name set ($T$), 16, 17, 21, 24
+\subitem in signatures,  29, 30, 31, 32, 33, 36
+\subitem \seealso type name, fresh
+\item type realisation ($\rea$), 29, 30, 32, 33, 34, 81
+\item type scheme ($\tych$), 16
+\subitem generalising a type ($\sigma\succ\tau$), 18, 21, 26
+\subitem generalising a type scheme ($\sigma\succ\sigma'$), 18, 30
+\subitem equality of, 18
+\item type sharing. \see specification
+\item type specification. \see specification
+\item type structure $(\theta,\VE)$, 16, 23, 25, 27, 33, 34, 35, 48
+\subitem enrichment, 30
+\subitem in initial basis, 65
+\subitem respect equality, 20, 80
+\subitem well-formed, 20
+\item type variable ($\tyvar$, $\alpha$), 4, 5, 15
+\subitem applicative, 81
+\subitem equality, \eqtyvarrefs
+\subitem explicit, \scopeexpltyvarsrefs
+\subitem imperative, 81
+\subitem implicitly scoped, 9, 18
+\subitem in type expression, 8, 27
+\subitem unquarded, 18
+\item type variable set ($U$), 16, 23
+\item type vector ($\tauk$), 16
+\item $\TypeFcn$ (type functions), 16
+\item $\TypeScheme$ (type schemes), 16
+\item $\labtys$. \see type-expression row
+\item TyRow (type-expression rows), 7
+\item $\TyStr$ (type structures), 16
+\item $\tyvar$.  \see type variable
+\item $\TyVar$ (type variables), 4, 15, 16
+\item $\TyVarFcn$ (free type variables), 16, 20, 36
+\item $\tyvarseq$ (type variable sequence), 7, 8, 12
+\item $\TyVarSet$, 16
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf U}\hfil}
+
+\indexspace
+
+\item $\U$. \see type variable set
+\item \verb+\u+, 4
+\item $\UNIT$, 65, 66
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf V}\hfil}
+
+\indexspace
+
+\item $\V$. \see value
+\item \verb+\v+, 3
+\item {\tt v} (value constructor status), 15, 16
+\subitem \seealso identifier status descriptor; value identifier
+\item $\sconval$ (function on special constants), 37
+\item $\Val$ (values), 38
+\item $\VAL$, 3, 9, 18
+\subitem \seealso declaration; specification
+\item $\valbind$. \see value binding
+\item ValBind (value bindings), 7
+\item $\valdesc$. \see value description
+\item ValDesc (value descriptions), 12
+\item value ($v$), 38, 41--46, 47, 66
+\subitem basic ($b$), 37, 38, 42
+\item ValEnv (value environments), 16, 38
+\item ValInt (value interfaces), 47
+\item value binding ($\valbind$), 7, 8, 10, 24, 44
+\subitem recursive (\boxml{rec}), \recrefs
+\subitem simple, 10, 24, 39, 44
+\item value constructor, 16, 82
+\subitem \seealso value identifier
+\item value declaration. \see declaration
+\item value description ($\valdesc$), 12, 14, 34, 51
+\item value environment ($\VE$),
+\subitem dynamic, 38, 39, 41,  44--46, 48, 66
+\subitem static, 16, 17, 20, 23--27, 30, 33--35, 48, 65
+\item value identifier ($\vid$, $\longvid$), 4, 8, 82
+\subitem as atomic expression, \vidinatexprefs
+\subitem as atomic pattern, \vidinatpatrefs
+\subitem as value, 38, 41, 45, 46, 66
+\subitem status of ({\tt c}, {\tt v}, {\tt e}), \see identifier status descriptor
+\item value interface ($\VI$), 47, 48, 50, 51, 52, 82
+\item value polymorphism, 81
+\item value variable, 16, 82
+\subitem \seealso value identifier
+\item value specification. \see specification
+\item $\var$ (value variable) , 82
+\item $\Var$ (value variables), 82
+\item $\VarEnv$ (variable environments), 82
+\item variable. \see value variable
+\item variable environment ($\VE$), 82
+\item $\VE$ (variable environment), 82
+\item $\VI$. \see value interface
+\item $\vid$. \see value identifier
+\item VId (value identifiers), 4, 82
+\item view of a structure, 47
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf W}\hfil}
+
+\indexspace
+
+\item warnings,  28
+\item well-formedness
+
+\subitem of assembly, 20, 33, 86
+\subitem of functor signature, 86
+\subitem of signature, 86
+\subitem of type structure, 20, 86
+\item \WHILE, 3
+\subitem \seealso expression
+\item wildcard pattern (\verb+_+), \underscorewildrefs
+\item wildcard pattern row (\verb+...+), \dotdotdotrefs
+\item \WITH, 3
+\subitem \seealso declaration, {\tt abstype}
+\item \WITHTYPE, 3, 55, 57
+\item Word (overloading class), 67
+\item \boxml{word} (the type), 15, 65, 66
+\item word constant, 3
+\subitem decimal notation, 3
+\subitem hexadecimal notation, 3
+\subitem \seealso special constant
+\item WordInd (overloading class), 67
+\indexspace
+
+\parbox{64mm}{\hfil{\large\bf Y}\hfil}
+
+\indexspace
+
+\item $\Yield$, 29
+\end{theindex}

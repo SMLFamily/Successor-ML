@@ -1,0 +1,49 @@
+%!TEX root = root.tex
+%
+
+\section{Appendix: The Initial Dynamic Basis}
+\label{init-dyn-bas-app}
+We\index{76.1} shall indicate components of the initial basis by the subscript 0.
+\insertion{\thelibrary}
+The initial dynamic basis is $\B_0 = \F_0,\G_0,\E_0$, 
+where $\F_0 = \emptymap$, $\G_0 = \emptymap$ and $\E_0 = (\SE_0, \TE_0,\VE_0)$,
+where $\SE_0 = \emptymap$, $\TE_0$ is shown in Figure~\ref{dynTE0.fig} and
+\medskip
+
+$\VE_0 = \{\boxml{=}\mapsto(\boxml{=},\isv),\,\boxml{:=}\mapsto(\boxml{:=},\isv),\,\boxml{Match}\mapsto(\boxml{Match},\ise), \,\boxml{Bind}\mapsto(\boxml{Bind},\ise),$\\
+       \vrule height0pt width21mm depth 0pt$\boxml{true}\mapsto(\boxml{true},\isc),\,\boxml{false}\mapsto(\boxml{false},\isc),\,$\\
+       \vrule height0pt width21mm depth 0pt$\boxml{nil}\mapsto(\boxml{nil},\isc),\,
+\hbox{\boxml{::}}\mapsto(\hbox{\boxml{::}},\isc),\,
+\hbox{\boxml{ref}}\mapsto(\hbox{\boxml{ref}},\isc)\}$.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tabular}{|rll|}
+\hline
+$\tycon$   & $\mapsto$  & $\{\vid_1\mapsto(\V_1,\is_1),\ldots,\vid_n\mapsto(\V_n,\is_n)\}\quad (n\geq0)$\\
+\hline
+\UNIT      & $\mapsto $ &  $\emptymap$ \\
+\BOOL      & $\mapsto $ & $\{\TRUE\mapsto(\TRUE,\isc),
+                                         \ \FALSE\mapsto(\FALSE,\isc)\}$\\
+\INT       & $\mapsto $ & $\{\}$\\
+\WORD      & $\mapsto $ & $\{\}$\\
+\REAL      & $\mapsto $ & $\{\}$\\
+\STRING    & $\mapsto $ & $\{\}$\\
+%\UNISTRING & $\mapsto $ & $\{\}$\\
+\CHAR      & $\mapsto $ & $\{\}$\\
+%\UNICHAR   & $\mapsto $ & $\{\}$\\
+\LIST      & $\mapsto $ & $\{\NIL\mapsto(\NIL,\isc),\ml{::}\mapsto(\ml{::},\isc)\}$\\
+\ADD{\ARRAY} & \ADD{$\mapsto$} & \ADD{$\{\}$} \\
+\REF       & $\mapsto $ & $\{\REF\mapsto(\REF,\isc)\}$\\
+\EXCN      & $\mapsto $ & $\emptymap$\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Dynamic $\TE_0$}
+\label{dynTE0.fig}
+\end{figure}%
+
+\ADD{Furthermore, the initial state $s_0$ is defined to be}
+\[
+  \ADD{s_0 = (\{\}, \{\boxml{Match},\boxml{Bind}\})}
+\]

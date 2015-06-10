@@ -1,0 +1,135 @@
+%!TEX root = root.tex
+%
+
+\section{Programs}
+\label{prog-sec}
+The phrase class Program of programs is defined as follows
+\[\program ::= \longprog\]
+
+Hitherto,\index{64.1} the semantic rules have not exposed the interactive
+nature of the language.
+During an ML session the user can type in a phrase, more
+precisely a phrase of the form $\topdec$ as defined in Figure~\ref{prog-syn},
+page~\pageref{prog-syn}. Upon the following semicolon,
+the machine will then attempt to parse, elaborate and
+evaluate the phrase returning either a result or, if any
+of the phases fail, an error message.
+The outcome is significant for what the user subsequently types,
+so we need to answer questions such as: if the elaboration
+of a top-level declaration succeeds, but its evaluation
+fails, then does the result of the elaboration get
+recorded in the static basis?
+
+In practice, ML implementations may provide a directive as
+a form of top-level declaration  for including
+programs from files rather than directly from the terminal. 
+In case a file consists of a sequence of top-level declarations 
+(separated by semicolons) and the machine detects an error in one of these,
+it is probably sensible to abort the execution of the directive.
+Rather than introducing a distinction between,
+say, batch programs and interactive programs, we shall tacitly regard
+all programs as interactive, and leave to implementers to
+clarify how the inclusion of files, if provided,  affects the 
+updating of the static and dynamic basis.
+Moreover, we shall focus on elaboration and evaluation and leave the
+handling of parse errors to implementers (since it naturally depends
+on the kind of parser being employed).  Hence, in this section the 
+{\sl execution} of a program means the combined elaboration
+and evaluation of the program.
+
+So far, for simplicity, we have used the same notation $\B$
+to stand for both a static and a dynamic basis, and this has
+been possible because we have never needed to discuss static
+and dynamic semantics at the same time.
+In giving the semantics of programs, however, let us rename as 
+\mbox{StaticBasis} the class  Basis defined in the static
+semantics of modules, Section~\ref{statmod-sem-obj-sec},
+and let us use $\Bstat$ to range over StaticBasis. Similarly, let
+us rename as  \mbox{DynamicBasis} the class Basis defined in the
+dynamic semantics of modules, Section~\ref{dynmod-comp-obj-sec},
+and let us use $\Bdyn$ to range over \mbox{DynamicBasis}.
+We now define
+\[\B\ {\rm or} \ (\Bstat,\Bdyn)\in{\rm Basis}={\rm Static Basis}
+\times {\rm DynamicBasis}.\]
+Further, we shall use $\tsstat$ for elaboration as defined in 
+Section~\ref{statmod-sec}, and $\tsdyn$ for evaluation
+as defined in Section~\ref{dynmod-sec}.
+Then $\ts$ will be reserved for the execution of
+programs, which thus is expressed by a sentence of the
+form
+\[\s,\B\ts\program\ra\B',\s'\]
+This may be read as follows: 
+starting in basis $\B$ with state $\s$ the execution of
+$\program$ results in a basis $\B'$ and a state $\s'$.
+
+It\index{64.2} must be understood  that executing a program never results in an
+exception. If the evaluation of a $\topdec$ yields an exception 
+(for instance because of a $\RAISE$ expression\deletion{\thelibrary}{ or external intervention}) then
+the result of executing the program ``$\topdec\ \mbox{\ml{;}}$'' is the
+original basis together with the state which is in force when the exception is
+generated. In particular, the exception convention\index{65.1} of 
+Section~\ref{dyncor-inf-rules-sec}
+is not applicable to the ensuing rules.
+
+We represent the non-elaboration of a top-level declaration by
+ $\ldots\tsstat\topdec\not\ra$. \deletion{\thelibrary}{(This covers also the case in which a 
+user interrupts the elaboration.)}
+
+\rulesec{Programs}{\s,\B\ts\program\ra\B',s'}
+\begin{equation}            % failing elaboration
+\label{fail-elab-prog-rule}
+\frac{\of{\Bstat}{\B}\tsstat\topdec\not\ra\qquad
+      \langle\s,\B\ts\program\ra\B',s'\rangle}
+     {\s,\B\ts\longprog\ra\B\langle'\rangle,s\langle'\rangle}\index{65.2}
+\end{equation}
+
+\begin{equation}            % evaluation raising exception
+\label{dyn-exc-prog-rule}
+\frac{\begin{array}{lr}
+      \of{\Bstat}{\B}\tsstat\topdec\ra\Bstat^{(1)} & \\
+      \s,\of{\Bdyn}{\B}\tsdyn\topdec\ra\p,\s' &
+                  \langle\s',\B\ts\program\ra\B',\s''\rangle
+      \end{array}}
+     {\s,\B\ts\longprog\ra\B\langle'\rangle,\s'\langle'\rangle}
+\end{equation}
+
+\begin{equation}            % success
+\label{success-prog-rule}
+\frac{\begin{array}{ll}
+       \of{\Bstat}{\B}\tsstat\topdec\ra\Bstat^{(1)} & \\
+       \s,\of{\Bdyn}{\B}\tsdyn\topdec\ra\Bdyn^{(1)},s'&
+                   \B'=\B\oplus(\Bstat^{(1)},\Bdyn^{(1)})\\
+       &           \langle\s',\B'\ts\program\ra\B'',s''\rangle
+      \end{array}
+      }
+      {\s,\B\ts\longprog\ra\B'\langle'\rangle,\s'\langle'\rangle}
+\end{equation}
+\comments
+\begin{description}
+\item{(\ref{fail-elab-prog-rule})}
+  A failing elaboration has no effect whatever\ADD{, except possibly for
+  fixity directives contained in the \topdec}.
+\item{(\ref{dyn-exc-prog-rule})}
+  An evaluation which yields an exception nullifies
+the change in the static basis, but does not
+nullify side-effects on the state which may have occurred
+before the exception was raised.
+\end{description}
+\subsection*{Core language Programs}
+A\index{65.4} program is called a {\sl core language program\/} if it can be
+parsed in the reduced grammar defined as follows:
+\begin{enumerate}
+\item Replace the definition of top-level declarations by
+\[\topdec\ ::=\ \strdec\]
+\item Replace the definition of structure-level declarations by
+\[\strdec\ ::=\ \dec\]
+\deletion{\thelibrary}{
+\item Omit\index{65.5} the {\OPEN} declaration from the syntax class of
+declarations $\dec$
+\item Restrict the long identifier classes to identifiers, i.e.
+omit qualified identifiers.}
+\end{enumerate}
+\deletion{\thelibrary}{
+This means that  several components of a basis, for example the
+signature and functor environments, are irrelevant to the execution
+of a core language program.}

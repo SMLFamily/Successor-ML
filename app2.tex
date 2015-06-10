@@ -1,0 +1,343 @@
+%!TEX root = root.tex
+%
+
+\section{Appendix: Full Grammar}
+\label{core-gram-app}
+%In\index{69.1} this Appendix, the full Core 
+%grammar is given for reference purposes.
+The full grammar of programs is exactly as given at the start of 
+Section~\ref{prog-sec}\ADD{, together with the derived form of
+Figure~\ref{functor-der-forms-fig} in Appendix~\ref{derived-forms-app}}.
+
+The\index{69.1} full grammar of Modules consists of the grammar of 
+Figures \ref{mod-phr}--\ref{prog-syn} in Section~\ref{syn-mod-sec},
+together with the derived forms of \replacement{\thenostrsharing}{Figure~\ref{functor-der-forms-fig}}{Figures~\ref{functor-der-forms-fig} and \ref{spec-der-forms-fig}}
+in Appendix~\ref{derived-forms-app}.
+
+The remainder of this Appendix is devoted to the full grammar of the
+Core. 
+Roughly, it consists of the grammar of Section~\ref{syn-core-sec} augmented by
+the derived forms of Appendix~\ref{derived-forms-app}.  But there is a further
+difference: two additional subclasses of the phrase class ~Exp~ are introduced,
+namely ~AppExp~ (application expressions) and ~InfExp~ (infix expressions).
+The inclusion relation among the four classes is as follows:
+\[ {\rm AtExp}\ \subset\ {\rm AppExp}\
+                \subset\ {\rm InfExp}\ \subset\ {\rm Exp} \]
+The effect is that certain phrases, such as
+``\ml{2 + while $\cdots$ do $\cdots$ }'', are now disallowed.
+\ADD{
+The same applies to patterns, where the extra classes ~AppPat~ and ~InfPat~
+are introduced yielding the following inclusion relation:
+\[
+  {\rm AtPat}\ \subset\ {\rm AppPat}\ \subset\ {\rm InfPat}\ \subset\ {\rm Pat}
+\]
+}
+
+The grammatical rules are displayed in Figures~\ref{exp-gram},
+\ref{dec-gram}, \ref{pat-gram} and \ref{typ-gram}.
+The grammatical conventions are exactly as in
+Section~\ref{syn-core-sec}, namely:
+\begin{itemize}
+  \item The brackets ~$\langle\ \rangle$~ enclose optional phrases.
+  \item For\index{69.3} any syntax class X (over which $x$ ranges)
+we define the syntax class Xseq (over which {\it xseq} ranges) as follows:
+    \begin{quote}
+    \begin{tabular}{rcll}
+       {\it xseq} & $::=$ & $x$ & (singleton sequence)\\
+                  &       &     & (empty sequence)\\
+                  &       & \ml{(}$x_1$\ml{,}$\cdots$\ml{,}$x_n$\ml{)}
+                                & (sequence,~$n\geq 1$) \\
+    \end{tabular}
+    \end{quote}
+(Note that the ``$\cdots$'' used here, a meta-symbol indicating syntactic
+repetition, must not be
+confused with ``$\wildrec$'' which is a reserved word of the language.)
+  \item Alternative\index{69.4} forms for each phrase class are in order of decreasing
+        precedence. This precedence resolves ambiguity in parsing in
+the following way. Suppose that a phrase class --- we take $\exp$ as
+an example --- has two alternative forms $F_1$ and $F_2$, such that $F_1$ ends
+with an $\exp$ and $F_2$ starts with an $\exp$. A specific case is
+\begin{tabbing}
+\qquad\=$F_1$:\quad\=\IF\ $\exp_1$\ \THEN\ $\exp_2$\ \ELSE\ $\exp_3$\+\\
+        $F_2$:     \>\handlexp
+\end{tabbing}
+It will be enough to see how ambiguity is resolved in this specific case.
+
+Suppose that the lexical sequence
+\[\cdots\ \cdots\ \IF\ \cdots\ \THEN\ \cdots\ \ELSE\ \exp\ \HANDLE\ \cdots\ \cdots\]
+is to be parsed, where $\exp$ stands for a lexical sequence which 
+is already determined as a subphrase (if necessary by applying the 
+precedence rule).
+Then the higher precedence of $F_2$ (in this case) dictates that $\exp$
+associates to the right, i.e. that the correct parse takes the form
+\[\cdots\ \cdots\ \IF\ \cdots\ \THEN\ \cdots\ \ELSE\ (\exp\ \HANDLE\ \cdots)\ \cdots\]
+not the form
+\[\cdots\ (\cdots\ \IF\ \cdots\ \THEN\ \cdots\ \ELSE\ \exp)\ \HANDLE\ \cdots\ \cdots\]
+\CUT{Note particularly that the use of precedence does not decrease the class
+of admissible phrases; it merely rejects alternative ways of parsing certain
+phrases. In particular, the purpose is not to prevent a phrase,
+which is an instance of a form with higher precedence, having a constituent
+which is an instance of a form with lower precedence. Thus for example}
+\[\CUT{\IF\ \cdots\ \THEN\ \WHILE\ \cdots\ \DO\ \cdots\ \ELSE\ \WHILE\ \cdots\ \DO\ \cdots}\]
+\CUT{is quite admissible, and will be parsed as}
+\[\CUT{\IF\ \cdots\ \THEN\ (\WHILE\ \cdots\ \DO\ \cdots)\ \ELSE\ (\WHILE\ \cdots\ \DO\ \cdots)}\]%
+\ADD{%
+Note that the use of precedence does not prevent a phrase, which is an instance of a form
+with higher precedence, having a constituent which is an instance of a form
+with lower precedence, as long as they can be resolved unambiguously.
+Thus for example}
+\begin{center}
+  \ADD{\IF\ $\cdots$ \THEN\ \WHILE\ $\cdots$ \ELSE\ \WHILE\ $\cdots$ \DO\ $\cdots$}
+\end{center}%
+\ADD{is quite admissible and parses as}
+\begin{center}
+  \ADD{\IF\ $\cdots$ \THEN\ (\WHILE\ $\cdots$ \DO\ $\cdots$) \ELSE\ (\WHILE\ $\cdots$ \DO\ $\cdots$)}
+\end{center}%
+\ADD{Note, however, that precedence rules out phrases that cannot be disambiguated without
+violating precedence, such as}
+\begin{center}
+  \ADD{$\cdots$ \ANDALSO\ \IF\ $\cdots$ \THEN\ $\cdots$ \ELSE\ $\cdots$ \ORELSE\ $\cdots$}
+\end{center}%
+
+\item L (resp. R)\index{69.5} means left (resp. right) association.
+
+\item The syntax of types binds more tightly than that of expressions.
+
+\item Each\index{69.7} iterated construct (e.g., $\match$, $\cdots$ )
+extends as far
+right as possible; thus, parentheses may be needed around an expression which
+terminates with a match, e.g. ``$\FN\ \match$'', if this occurs within a
+larger
+match.
+
+\item[\textcolor{\addcolor}{$\bullet$}]
+\ADD{Likewise, a conditional ``\IF\ $\exp_1$ \THEN\ $\cdots$'' extends as far right as possible,
+which means that optional \ELSE\ branches croup with innermost conditional.}
+\end{itemize}
+
+\ADD{%
+We impose the following additional restrictions on the syntax:}
+\begin{itemize}
+  \item
+    In the $\fvalbind$ form in Figure~\ref{dec-gram}, if $\vid$ has infix status then either
+    ~\OP~ must be present, or $\vid$ must be infixed.  Thus, at the start of
+    any clause, ``~\OP\ \vid\ \ml{(}\atpat\ml{,}\atpat$'$\ml{)} $\cdots$'' may be
+    written
+    ``\ml{(}\atpat\ \vid\ \atpat$'$\ml{)} $\cdots$''; the parentheses may also be
+    dropped if \ADD{``\IF\ \exp,''} ``\ml{:}\ty,'' or ``\ml{=}'' follows immediately.
+  \item[\textcolor{\addcolor}{$\bullet$}]
+    \ADD{In a $\fmatch$ with $m$ rules, the expressions $\exp_1,\,\ldots,\,\exp_{m-1}$
+    must not end in a $\match$.}
+  \item[\textcolor{\addcolor}{$\bullet$}]
+    \ADD{The pattern \pat\ in a \valbind\ may not nested match or guard, unless enclosed
+    by parentheses.}
+\end{itemize}%
+
+\begin{figure}[h]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
+  \atexp& ::=	& \scon 	& special constant\cr
+        & 	& \opp\longvid	& value identifier\cr
+	&	& \verb+{+ \ADD{$\langle$\atexp\ \WHERE$\rangle$} $\langle$\labexps$\rangle$ \verb+}+
+				& record\cr
+        &       & \ml{\#}\ \lab	& record selector\cr
+        &       & \ml{()}       & 0-tuple\cr
+        &       & \ml{(}$\exp_1$ \ml{,} $\cdots$ \ml{,} $\exp_\n$\ml{)}
+                                & $n$-tuple, $n\geq 2$\cr
+        &       & \ml{[}$\exp_1$ \ml{,} $\cdots$ \ml{,} $\exp_\n$\ml{]}
+                                & list, $n\geq 0$\cr
+        &       & \ml{(}$\exp_1$ \ml{;} $\cdots$ \ml{;} $\exp_\n$ \ADD{$\langle$\ml{;}$\rangle$} \ml{)}
+                                & sequence, $n\geq \REPL{1\ }{2}$\cr
+	&	& \LET\ \dec\ \IN\
+                  $\exp_1$ \ml{;} $\cdots$ \ml{;} $\exp_\n$ \ADD{$\langle$\ml{;}$\rangle$} \END
+	                        & local declaration, $n\geq 1$\cr
+	&	& \CUT{\parexp}	& \cr
+\noalign{\vspace{6pt}}
+\labexps& ::=	& \longlabexps	& expression row\cr
+	&	& \ADD{\vid\ $\langle$\ml{:} \ty$\rangle$ $\langle$ \ml{,} \labexps$\rangle$}
+				& \ADD{label as variable}\cr
+	&	& \ADD{\ml{...} \ml{=} \exp\ $\langle$ \ml{,} \labexps$\rangle$}
+				& \ADD{ellipses}\cr
+\noalign{\vspace{6pt}}
+ \apexp & ::=	& \atexp	& \cr
+        &   	& \apexp\ \atexp& application expression\cr
+\noalign{\vspace{6pt}}
+\inexp & ::=	& \apexp	& \cr
+        &   	& $\inexp_1$\ \vid\ $\inexp_2$
+                                & infix expression\cr
+\noalign{\vspace{6pt}}
+  \exp  & ::=	& \inexp 	& \cr
+	&	& \typedexp	& typed (L)\cr
+        &       & $\exp_1$\ \ANDALSO\ $\exp_2$
+                                & conjunction\cr
+        &       & $\exp_1$\ \ORELSE\ $\exp_2$
+                                & disjunction\cr
+	&	& \exp\ \HANDLE\ \ADD{$\langle$\ml{|}$\rangle$} \match	& handle exception\cr
+	&	& \raisexp     	& raise exception\cr
+        &       & \IF\ $\exp_1$\ \THEN\ $\exp_2$\ \ADD{$\langle$} \ELSE\ $\exp_3$ \ADD{$\rangle$}
+                                & conditional\cr
+        &       & \WHILE\ \exp$_1$\ \DO\ \exp$_2$
+                                & iteration\cr
+        &       & \CASE\ \exp\ \OF\ \ADD{$\langle$\ml{|}$\rangle$} \match
+                                & case analysis\cr
+	&	& \FN\ \ADD{$\langle$\ml{|}$\rangle$} \match	& function\cr
+\noalign{\vspace{6pt}}
+\match  & ::=	& \longmatch    & \cr
+\noalign{\vspace{6pt}}
+\mrule	& ::=	& \longmrule	& \cr
+\noalign{\vspace{6pt}}
+}
+\makeatother
+\vspace{3pt}
+\caption{Grammar: Expressions and Matches\index{70}}
+\label{exp-gram}
+\end{figure}
+
+\begin{figure}[h]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
+  \dec  & ::=	& \explicitvaldec	& value declaration\cr
+	&	& \FUN\ \tyvarseq\  \fvalbind
+	                        & function declaration\cr
+	&	& \typedec	& type declaration\cr
+	&	& \datatypedeca & datatype declaration\cr
+\adhocinsertion{\thedatatyperepl}{2cm}{        &       & \datatyperepldec & datatype replication\cr}
+	&	& \abstypedeca  & abstype declaration\cr
+        &       & \qquad\WITH\ \dec\ \END
+                                & \cr
+	&	& \exceptiondec & exception declaration\cr
+	&	& \localdec	& local declaration\cr
+        &       & \openstrdec   & open declaration, $n\geq 1$\cr
+	&	& \emptydec	& empty declaration\cr
+	&	& \seqdec	& sequential declaration \ADD{(L)} \cr
+        &       & \newlonginfix    & infix (L) directive, $n\geq 1$\cr
+        &       & \newlonginfixr   & infix (R) directive, $n\geq 1$\cr
+        &       & \newlongnonfix   & nonfix directive, $n\geq 1$\cr
+        &	& \ADD{\DO\ \exp} & \ADD{evaluation} \cr
+%        &       & \exp          & expression (top-level only)\cr
+\noalign{\vspace{6pt}}
+\valbind& ::=   & \longvalbind   & \cr
+	&	& \CUT{\recvalbind}	& \cr
+\noalign{\vspace{6pt}}
+\fvalbind& ::=  & \ \ \CUT{$\langle\OP\rangle\vid\ \atpat_{11}\cdots\atpat_{1n}
+                  \langle$\ml{:}\ty$\rangle$\ml{=}\exp$_1$} & \CUT{$m,n\geq 1$}\cr
+        &       & \CUT{\ml{|}$\langle\OP\rangle\vid\ \atpat_{21}\cdots\atpat_{2n}
+                  \langle$\ml{:}\ty$\rangle$\ml{=}\exp$_2$} & \CUT{See also note
+                                                                     below}\cr
+        &       & \CUT{\ml{|}\qquad$\cdots\qquad\cdots$} &\cr
+        &       & \CUT{\ml{|}$\langle\OP\rangle\vid\ \atpat_{m1}\cdots\atpat_{mn}
+                  \langle$\ml{:}\ty$\rangle$\ml{=}\exp$_m$} &\cr
+        &       & \qquad\qquad\qquad\CUT{$\langle\AND\ \fvalbind\rangle$} &\cr
+	&	& \ADD{$\langle$\ml{|}$\rangle$ \fmatch\ $\langle$ \AND\ \fvalbind $\,\rangle$} &\cr
+\ADD{\fmatch} & \ADD{::=}
+		& \ADD{\fmrule\ $\langle$\ml{|} \fmatch $\,\rangle$} &\cr
+\ADD{\fmrule} & \ADD{::=}
+		& \ADD{\fpat\ $\langle$\IF\ \atexp$\,\rangle$ $\langle$\ml{:} \ty$\,\rangle$ \ml{=} \exp} &\cr
+\ADD{\fpat} & \ADD{::=}
+		& \ADD{$\langle\OP\rangle\vid\ \atpat_{1}\,\cdots\,\atpat_{n}$} & \ADD{$n\geq 1$} \cr
+	&	& \ADD{\ml{(} $\atpat_1\ \vid\ \atpat_2$ \ml{)}\ $\atpat_{3}\,\cdots\,\atpat_{n}$} & \ADD{$n\geq 2$} \cr
+	&	& \ADD{$\atpat_1\ \vid\ \atpat_2$} & \cr
+\noalign{\vspace{6pt}}
+\typbind& ::=	& \longtypbind	& \cr
+\noalign{\vspace{6pt}}
+\datbind& ::=	& \tyvarseq\ \tycon\ \ml{=}
+		  \ADD{$\langle$\ml{|}$\rangle$} \constrs\ $\langle\AND\ \datbind\rangle$
+		& \cr
+\noalign{\vspace{6pt}}
+\constrs& ::=	& \opp\longvidconstrs & \cr
+\noalign{\vspace{6pt}}
+\exnbind& ::=	& \generativeexnvidbind	& \cr
+        &       & \eqexnvidbind   & \cr
+\noalign{\vspace{6pt}}
+}
+\makeatother
+\caption{Grammar: Declarations and Bindings\index{71}}
+\label{dec-gram}
+\end{figure}
+
+\begin{figure}[h]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
+  \atpat& ::=	& \wildpat	& wildcard\cr
+  	&	& \scon  	& special constant\cr\adhocdeletion{\theidstatus}{2cm}{
+  	&	& \opp\var  	& variable\cr
+	&	& \opp\longcon  & constant\cr
+        &       & \opp\longexn  & exception constant\cr}\adhocinsertion{\theidstatus}{4cm}{  	&	& \opp\longvid  	& value identifier\cr}
+	&	& \verb+{ +\recpat\verb+ }+       & record\cr
+        &       & \ml{()}       & 0-tuple\cr
+        &       & \ml{(}$\pat_1$ \ml{,} $\cdots$ \ml{,} $\pat_\n$\ml{)}
+                                & $n$-tuple, $n\geq 2$\cr
+        &       & \ml{[}$\pat_1$ \ml{,} $\cdots$ \ml{,} $\pat_\n$\ml{]}
+                                & list, $n\geq 0$\cr
+	&	& \parpat       & \cr
+\noalign{\vspace{6pt}}
+\labpats& ::=	& \wildrec\ \ADD{$\langle$\ml{,} \labpats$\,\rangle$}
+				& \REPL{ellipses }{wildcard}\cr
+  	&	& \longlabpats 	& pattern row\cr
+        &       & \vid\ $\langle$\ml{:}\ty $\rangle
+                  \ \langle\AS\ \pat\rangle
+                  \ \langle$\ml{,} \labpats$\rangle$
+                                & label as variable\cr
+\noalign{\vspace{6pt}}
+\CUT{\pat} & \CUT{::=}	& \CUT{\atpat}	& \CUT{atomic}\cr
+	&	& \CUT{\opp\vidpat}	& \CUT{constructed value}\cr
+	&	& \CUT{\vidinfpat}	& \CUT{constructed value (infix)}\cr
+	&	& \CUT{\typedpat}	& \CUT{typed}\cr
+	&	& \CUT{\opp\layeredvidpat}	& \CUT{layered}\cr
+\noalign{\vspace{6pt}}
+\ADD{\appat} & \ADD{::=}
+		& \ADD{\atpat}		& \ADD{atomic}\cr
+	&	& \ADD{\opp\vidpat}	& \ADD{constructed value}\cr
+\noalign{\vspace{6pt}}
+\ADD{\inpat} & \ADD{::=}
+		& \ADD{\appat}		& \ADD{application}\cr
+	&	& \ADD{\vidinfpat}	& \ADD{constructed value (infix)}\cr
+\noalign{\vspace{6pt}}
+\ADD{\pat} & \ADD{::=}
+		& \ADD{\inpat}		& \ADD{infix}\cr
+	&	& \ADD{\typedpat}	& \ADD{typed}\cr
+	&	& \ADD{\aspat}		& \ADD{conjunctive (R)}\cr
+	&	& \ADD{\orpat}		& \ADD{disjunctive (L)}\cr
+	&	& \ADD{\nestedpat}	& \ADD{nested match}\cr
+	&	& \ADD{\pat\ \IF\ \exp}	& \ADD{guard}\cr
+\noalign{\vspace{6pt}}
+}
+\makeatother
+\vspace{3pt}
+\caption{Grammar: Patterns\index{72.1}}
+\label{pat-gram}
+\end{figure}
+
+\begin{figure}[h]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
+  \ty   & ::=	& \tyvar        & type variable\cr
+	&	& \verb+{ +\rectype\verb+ }+      & record type expression\cr
+	&	& \constype 	& type construction\cr
+        &       & $\ty_1$ \ml{*} $\cdots$ \ml{*} $\ty_\n$
+                                & tuple type, $\n\geq 2$ \cr
+	&	& \funtype      & function type expression \adhocinsertion{\thefixtypos}{-3cm}{(R)}\cr
+	&	& \partype      & \cr
+\noalign{\vspace{6pt}}
+\labtys & ::=	& \longlabtys   & type-expression row\cr
+	&	& \ADD{\ml{...} \ml{:} \ty\ $\langle$ \ml{,} \labtys$\rangle$}
+				& \ADD{ellipses}\cr
+\noalign{\vspace{6pt}}
+}
+\makeatother
+\vspace{3pt}
+\caption{Grammar: Type expressions\index{72.2}}
+\label{typ-gram}
+\end{figure}

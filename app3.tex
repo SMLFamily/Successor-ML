@@ -1,0 +1,96 @@
+%!TEX root = root.tex
+%
+%\appendix
+\section{Appendix: The Initial Static Basis}
+\label{init-stat-bas-app}
+\insertion{\thelibrary}{
+In this appendix (and the next) we define a minimal initial basis for
+execution. Richer bases may be provided by libraries.}
+\insertion{\thelibrary}{
+We\index{73.1} shall indicate components of the initial basis by the subscript 0.
+The initial static basis is
+$\B_0 = \T_0,\F_0,\G_0,\E_0$,
+where $F_0 = \emptymap$, $\G_0 = \emptymap$ and 
+$$\T_0\ =\ \{\BOOL,\INT,\REAL,\STRING,\CHAR,\WORD,\LIST,\ADD{,\ARRAY}\REF,\EXCN\}$$
+The members of $\T_0$ are type names, not type constructors; for convenience
+we have used type-constructor identifiers
+to stand also for the type names which are bound to them in the initial
+static type environment $\TE_0$.  Of these type names,
+\LIST\ADD{, \ARRAY,} and \REF\
+have arity 1, the rest have arity 0;  
+all except $\EXCN$ \insertion{\thelibrary}{and $\REAL$} admit equality.
+Finally, $\E_0 = (\SE_0,\TE_0,\VE_0)$, where $\SE_0 = \emptymap$, 
+while $\TE_0$ and $\VE_0$ are shown in Figures~\ref{stat-te} and \ref{stat-ve},
+respectively.
+}
+ 
+%\vskip-5mm
+\begin{figure}[h]
+\begin{center}
+\begin{tabular}{|rll|}
+\hline
+$\tycon$   & $\mapsto\ (\ \typefcn$, & $\{\vid_1\mapsto(\tych_1,\is_1),\ldots,\vid_n\mapsto(\tych_n,\is_n)\}\ )\quad (n\geq0)$\\
+\hline
+\UNIT      & $\mapsto\ (\ \Lambda().\{ \}$,
+                                      & $\emptymap\ )$ \\
+\BOOL      & $\mapsto\ (\ \BOOL$,    & $\{\TRUE\mapsto(\BOOL,\isc),
+                                         \ \FALSE\mapsto(\BOOL,\isc)\}\ )$\\
+\INT       & $\mapsto\ (\ \INT$,     & $\{\}\ )$\\
+\WORD       & $\mapsto\ (\ \WORD$,     & $\{\}\ )$\\
+\REAL      & $\mapsto\ (\ \REAL$,    & $\{\}\ )$\\
+\STRING    & $\mapsto\ (\ \STRING$,  & $\{\}\ )$\\
+%\UNISTRING    & $\mapsto\ (\ \UNISTRING$,  & $\{\}\ )$\\
+\CHAR    & $\mapsto\ (\ \CHAR$,  & $\{\}\ )$\\
+%\UNICHAR    & $\mapsto\ (\ \UNICHAR$,  & $\{\}\ )$\\
+\LIST      & $\mapsto\ (\ \LIST$,    & $\{\NIL\mapsto(\forall\atyvar\ .\ \atyvar\ \LIST, \isc)$,\\
+           &                          & \ml{::}$\mapsto(\forall\atyvar\ .
+                                           \ \atyvar\ast\atyvar\ \LIST
+                                           \to\atyvar\ \LIST, \isc)\}\ )$\\
+\ADD{\ARRAY}     & \ADD{$\mapsto\ (\ \ARRAY$,}    & \ADD{$\emptymap\ )$} \\
+\REF       & $\mapsto\ (\ \REF$,     & $\{\REF\mapsto(\forall\ \atyvar\ .\ 
+                                           \atyvar\to\atyvar\ \REF,\isc)\}\ )$\\
+\EXCN      & $\mapsto\ (\ \EXCN$,     & $\emptymap\ )$\\
+\hline
+\end{tabular}
+\end{center}
+\vskip-3mm
+\caption{Static $\TE_0$\index{75.2}}
+\vskip-3mm
+\label{stat-te}
+\end{figure}%
+
+\begin{figure}[h]
+\begin{tabular}{|rl|rl|}
+\multicolumn{2}{c}{NONFIX}&     \multicolumn{2}{c}{INFIX}\\
+\hline
+$\vid$     & $\mapsto\ (\tych,\is)$    
+                          & $\vid$ & $\mapsto\ (\tych,\is)$\\
+\hline
+\REF & $\mapsto\ (\forall\ \atyvar\ .\ \atyvar\to\atyvar\ \REF$, \isc)
+                          &     \multicolumn{2}{l|}{Precedence 5, right associative :} \\
+{\tt nil}  & $\mapsto\ (\forall\atyvar.\ \atyvar\ \LIST$, \isc)
+                          & \boxml{::}   & $\mapsto\ (\forall\atyvar.
+                                          \atyvar\;{\ast}\;\atyvar\;\LIST
+                                          \to\atyvar\;\LIST$, \isc)\\
+{\tt true}   & $\mapsto\ (\BOOL,\isc)$
+                          & \multicolumn{2}{l|}{Precedence 4, left associative :}\\
+{\tt false}   & $\mapsto\ (\BOOL,\isc)$
+                          & \boxml{=}    & $\mapsto\ (\forall\aetyvar.\
+                                          \aetyvar\ \ast\ \aetyvar\to\BOOL, \isv)$\\
+{\tt Match}       & $\mapsto\ (\EXCN,\ise)$
+                          & \multicolumn{2}{l|}{Precedence 3, left associative :} \\
+{\tt Bind} & $\mapsto\ (\EXCN, \ise)$
+                          & \boxml{:=}   & $\mapsto\ (\forall\atyvar.\
+                                          \atyvar\ \REF\ \ast\ \atyvar\to\{\}, \isv)$\\
+\hline
+\multicolumn{4}{p{6in}}{
+Note: In type schemes we have taken the liberty of writing
+$\ty_1\ast\ty_2$ in place of
+$\{\mbox{\tt 1}\mapsto\ty_1,\mbox{\tt 2}\mapsto\ty_2\}$.
+}
+\end{tabular}
+%\vskip-4mm
+\caption{Static $\VE_0$\index{74}}
+\vskip-2mm
+\label{stat-ve}
+\end{figure}%

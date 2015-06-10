@@ -1,0 +1,378 @@
+%!TEX root = root.tex
+%
+\section{Appendix: The Development of ML}
+\label{story-app}
+
+This Appendix records the main stages in the development of ML, and the people
+principally involved.  The main emphasis is upon the design of the language;
+there is also a section devoted to implementation. On the other hand, no
+attempt is made to record work on applications of the language.
+\note{\thenewpreface}{This appendix has been revised and extended in 
+several ways. A detailed list of changes is not available.} 
+\subsection*{Origins}
+
+ML and its semantic description have evolved over a period of about
+twenty years.  It is a fusion of many ideas from many people;  in this
+appendix we try to record and to acknowledge the important precursors
+of its ideas, the important influences upon it, and the important
+contributions to its design, implementation and semantic description.
+
+ML, which stands for {\em meta language}, was conceived as a medium for
+finding and performing proofs in a formal logical system.  This application
+was the focus of the initial design effort, by Robin Milner in collaboration
+first with Malcolm Newey and Lockwood Morris, then with Michael Gordon and
+Christopher Wadsworth~\cite{GMMNW}. The intended application to proof affected
+the design considerably.  Higher order functions in full generality seemed
+necessary for programming proof tactics and strategies, and also a robust type
+system (see below).  At the same time, imperative features were important for
+practical reasons; no-one had experience of large useful programs written in a
+pure functional style. In particular, an exception-raising mechanism was
+highly desirable for the natural presentation of tactics.
+
+The full definition of this first version of ML was included in a
+book~\cite{GMW} which describes LCF, the proof system which ML was designed to
+support.  The details of how the proof application exerted an influence on
+design is reported by Milner~\cite{Mil2}.  Other early influences were the
+applicative languages already in use in Artificial Intelligence, principally
+LISP~\cite{McC}, ISWIM~\cite{Lan} and POP2~\cite{BP}.
+
+\subsection*{Polymorphic types}
+
+The polymorphic type discipline and the associated type-assignment algorithm
+were\linebreak
+ prompted by the need for security;  it is vital to know that when
+a program produces an object which it claims to be a theorem, then it
+is indeed a theorem.  A type discipline provides the security, but a
+polymorphic discipline also permits considerable flexibility.
+
+The key ideas of the type discipline were evolved in combinatory logic by
+Haskell Curry and Roger Hindley, who arrived at different but equivalent
+algorithms for computing principal type schemes.  Curry's~\cite{Cur} algorithm
+was by equation-solving; Hindley~\cite{Hin} used the unification algorithm of
+Alan Robinson~\cite{Rob} and also presented the precursor of our type
+inference system.  James Morris~\cite{Mor} independently gave an
+equation-solving algorithm very similar to Curry's.  The idea of an algorithm
+for finding principal type schemes is very natural and may well have been
+known earlier. Roger Hindley has pointed out that Carew
+Meredith's inference rule for propositional logic called Condensed Detachment,
+defined in the early 1950s, clearly suggests that he knew such an algorithm
+\cite{Mer}.
+
+Milner~\cite{Mil1}, during the design of ML, rediscovered principal types and
+their calculation by unification, for a language (slightly richer than
+combinatory logic) containing local declarations.  He and Damas~\cite{DM}
+presented the ML type inference systems following Hindley's style.  Damas
+\cite{Dam}, using ideas from Michael Gordon, also devised the first
+mathematical treatment of polymorphism in the presence of references and
+assignment.  Tofte~\cite{Tof-a} produced a different scheme employing
+so-called {\em imperative types}, which was adopted in the original version of
+the language.  This approach has been superseded in the present language by a
+simpler scheme, suggested by Tofte~\cite{Tof-a}, Andrew Wright~\cite{wright95}, and
+Xavier Leroy~\cite{Ler1}, according to which polymorphic bindings are
+restricted to non-expansive expressions.
+
+\subsection*{Refinement of the Core Language}
+
+Two movements led to the re-design of ML.  One was the work of Rod
+Burstall and his group on specifications, crystallised in the specification
+language CLEAR~\cite{BG} and in the functional programming language HOPE
+\cite{BMS};  the latter was for expressing executable specifications.  The
+outcome of this work which is relevant here was twofold.  First, there were
+elegant programming features in HOPE, particularly pattern matching and
+clausal function definitions; second, there were ideas on modular construction
+of specifications, using signatures in the interfaces.  A smaller but
+significant movement was by Luca Cardelli, who extended the data-type
+repertoire in ML by adding named records and variant types.
+
+In 1983, Milner (prompted by Bernard Sufrin) wrote the first draft of a
+standard form of ML attempting to unite these ideas; over the next three years
+it evolved into the Standard ML core language.  Notable here was the harmony
+found among polymorphism, HOPE patterns and Cardelli records, and the nice
+generalisations of ML exceptions due to ideas from Alan Mycroft, Brian Monahan
+and Don Sannella.  A simple stream-based I/O mechanism was developed from
+ideas of Cardelli by Milner and Harper.  The Standard ML core language is
+described in detail in a composite report~\cite{HMM} which also contains a
+description of the I/O mechanism and MacQueen's proposal for program modules
+(see later for discussion of this). Since then only few changes to the core
+language have occurred.  Milner proposed equality types, and these were added,
+together with a few minor adjustments~\cite{Mil3}.  The 
+last development before the 1990 Definition was in the exception mechanism, by MacQueen using an idea
+from Burstall~\cite{AMMT}; it harmonized the ideas of exception and data type
+construction.
+
+\subsection*{Modules}
+
+Besides contributory ideas to the core language, HOPE~\cite{BMS} contained a
+simple notion of program module.  The most important and original feature of
+ML modules, however, stems from the work on parameterised specifications in
+CLEAR~\cite{BG}.  MacQueen, who was a member of Burstall's group at the time,
+designed~\cite{Mac} a new parametric module feature for HOPE inspired by the
+CLEAR work.  He later extended the parameterisation ideas by a novel method of
+specifying sharing of components among the structure parameters of a functor,
+and produced a draft design which accommodated features already present in ML
+-- in particular the polymorphic type system.  This design was discussed in
+detail at Edinburgh, leading to MacQueen's first report on modules~\cite{HMM}.
+
+Thereafter, the design came under close scrutiny through a draft operational
+static semantics and prototype implementation of it by Harper, through Kevin
+Mitchell's implementation of the evaluation, through a denotational semantics
+written by Don Sannella, and then through further work on operational
+semantics by Harper, Milner, and Tofte.  (More is said about this in the later
+section on Semantics.)  In all of this work the central ideas withstood
+scrutiny, while it also became clear that there were gaps in the design and
+ambiguities in interpretation.  (An example of a gap was the inability to
+specify sharing between a functor argument structure and its result structure;
+an example of an ambiguity was the question of whether sharing exists in a
+structure over and above what is specified in the signature expression which
+accompanies its declaration.)
+
+Much discussion ensued; it was possible for a wider group to comment on
+modules through using Harper's prototype implementation, while Harper, Milner
+and Tofte gained understanding during development of this semantics.  In
+parallel, Sannella and Tarlecki explored the implications of modules for the
+methodology of program development~\cite{ST}.  Tofte, in his thesis
+\cite{tofte88}, proved several technical properties of modules in a skeletal
+language, which generated considerable confidence in this design. A key point
+in this development was the proof of the existence of principal signatures,
+and, in the careful distinction between the notion of {\it enrichment} of
+structures, which allows more polymorphism and more components, and {\it
+realisation} which allows more sharing.
+
+At a meeting in Edinburgh in 1987 a choice of two designs was presented,
+hinging upon whether or not a functor application should coerce its actual
+argument to its argument signature.  The meeting chose coercion, and
+thereafter the production of Section~\ref{statmod-sec} of this report -- the
+static semantics of modules -- was a matter of detailed care.  That section is
+undoubtedly the most original and demanding part of this semantics, just as
+the ideas of MacQueen upon which it is based are the most far-reaching
+extension to the original design of ML.
+
+Considerable experience was gained in implementing, programming with, and
+teaching the language during the nearly ten years since the definition was
+first published.  Based on this experience a number of design decisions were
+revisited at a meeting of the authors in Cambridge at the end of 1995.  At
+this meeting it was decided to make several modest, but significant, changes
+to the language in order to simplify the semantics and to correct some
+shortcomings that had come to light.  The most important of these changes was
+the replacement of the imperative type discipline by the so-called value
+restriction (discussed above), the elimination of structure sharing as a
+separate concept from type sharing, and the introduction of the closely
+connected mechanisms of opaque signature matching and type abbreviations in
+signatures.  An important impetus for these changes to the modules language
+was the work of Leroy~\cite{leroy94}, and Harper and
+Lillibridge~\cite{HL} on the type-theoretic interpretation of
+modules (described below).
+
+\subsection*{Implementation}
+
+The first implementation of ML was by Malcolm Newey, Lockwood Morris and Robin
+Milner in 1974, for the DEC10.  Later Mike Gordon and Chris Wadsworth joined;
+their work was mainly in specialising ML towards machine-assisted reasoning.
+Around 1980 Luca Cardelli implemented a version on VAX; his work was later
+extended by Alan Mycroft, Kevin Mitchell and John Scott.  This version
+contained one or two new data-type features, and was based upon the {\em
+Functional Abstract Machine (FAM)}, a virtual machine which has been a
+considerable stimulus to later implementation.  By providing a reasonably
+efficient implementation, this work enabled the language to be taught to
+students; this, in turn, prompted the idea that it could become a useful
+general purpose language.
+
+In Gothenburg, an implementation was developed by Lennart Augustsson and
+Thomas Johnsson in 1982, using lazy evaluation rather than call-by-value; the
+result was called {\em Lazy ML} and is described in~\cite{Aug}.  This work is
+part of continuing research in many places on implementation of lazy
+evaluation in pure functional languages.  But for ML, which includes
+exceptions and assignment, the emphasis has been mainly upon strict evaluation
+(call-by-value).
+
+In Cambridge, in the early 1980s, Larry Paulson made considerable improvements
+to the Edinburgh ML compiler, as part of his wider programme of improving {\em
+Edinburgh LCF} to become {\em Cambridge LCF}~\cite{Pau}.  This system has
+supported larger proofs than the Edinburgh system, and with greater
+convenience; in particular, the compiled ML code ran four to five times
+faster.
+
+Around the same time G\'{e}rard Huet at INRIA (Versailles) adapted ML to
+Maclisp on Multics, again for use in machine-assisted proof.  There was close
+collaboration between INRIA and Cambridge in this period.  ML has undergone a
+separate development in the group at INRIA on the {\em CAML}
+language~\cite{CCM}.  Work on {\em CAML} included the development of several
+extensions to the core language, notably updatable fields in record types,
+values with dynamic types, support for lazy evaluation, and handling of
+embedded languages with user-defined syntax.  It did not, however, include
+modules.
+
+The first implementation of the Standard ML core language was by Mitchell,
+Mycroft and Scott at Edinburgh, around 1984.  The prototype implementation of
+modules, before that part of the language settled down, was done in 1985-6;
+Mitchell dealt with evaluation, while Harper tackled the elaboration (or
+`signature checking') which raised problems of a kind not previously
+encountered.  Harper's implementation employed a form of unification that was
+later adopted in the static semantics of modules.
+
+At around the same time the {\em Poly/ML} implementation began with a
+suggestion from Mike Gordon that an interesting application of Matthews' Poly
+language would be to implement Standard ML.  Important experience was gained
+through Matthews' early implementation of the core language, followed by
+several versions of the modules language as they were devised.  {\em Poly/ML}
+features arbitrary precision arithmetic, a process package, and a windowing
+system.  Considerable experience has been gained with the compiler, notably by
+Larry Paulson at Cambridge and by Abstract Hardware Limited (AHL).
+
+  The {\em Standard ML of New Jersey (SML/NJ)} system has been in active development
+  since 1986~\cite{am87,am91}.
+  Initially started by David MacQueen at Bell Laboratories and Andrew Appel at Princeton University, 
+  the project has also benefited from significant contributions
+  by Matthias Blume, Emden Gansner, Lal George, John Reppy and Zhong Shao.
+  {\em SML/NJ} is a robust and complete environment for Standard ML that supports
+  the implementation of large software systems and generates efficient code for a
+  number of different hardware and software platforms.  {\em SML/NJ} also serves as
+  a laboratory for compiler research: in implementations of module systems for ML;
+  code optimization based on continuation-passing style; efficient pattern matching;
+  and very fast heap allocation and garbage collection.  Dozens of researchers
+  have contributed to the development of the compiler, in such areas as
+  efficient closure representations, first-class continuations, type-directed
+  compilation, concurrent programming, portable code generators, separate
+  compilation, and register allocation.  
+  {\em SML/NJ} has also been widely used to explore extending SML with
+  concurrency features.
+
+%In 1986 Andrew Appel and David MacQueen began work on the {\em Standard ML of
+%New Jersey (SML/NJ)} compiler~\cite{am87}.  {\em SML/NJ} is a robust and
+%complete environment for Standard ML that supports the implementation of large
+%software systems and generates efficient code for a number of different
+%hardware and software platforms.  {\em SML/NJ} also serves as a laboratory for
+%compiler research: in implementations of module systems for ML; code
+%optimization based on continuation-passing style; efficient pattern matching;
+%and very fast heap allocation and garbage collection.  Dozens of researchers
+%have contributed to the development of the compiler, in such areas as
+%efficient closure representations, first-class continuations, type-directed
+%compilation, concurrent programming, portable code generators, separate
+%compilation, and register allocation.  
+
+
+In 1989, Mads Tofte, Nick Rothwell and David N. Turner started work on the
+{\em ML Kit Compiler} in Edinburgh. The {\em ML Kit} is a direct translation
+of the 1990 Definition into a collection of Standard ML modules, emphasis being
+on clarity rather than efficiency. During 1992 and 1993, Version~1 of the {\em
+ML Kit} was completed, mostly through the work of Nick Rothwell at Edinburgh
+and Lars Birkedal at DIKU\cite{BRTT}. In 1994, region inference was added to
+the {\em ML Kit}, by Mads Tofte. Lars Birkedal wrote a region-based C-code
+generator and a runtime system in C.  In 1995, Martin Elsman and Niels
+Hallenberg extended this work to generate native code for the HP PA-RISC
+architecture.
+
+Harlequin Ltd. began the implementation of a commercial compiler in 1990.  The
+{\em MLWorks} system is a fully-featured graphical programming environment,
+including an interactive debugger, inspector, browser, extensive profiling
+facilities, separate compilation and delivery, a foreign-language interface,
+and libraries for threads and windowing systems.  
+%Harlequin was a major
+%partner in the effort to standardize the revised Standard ML basis library.
+
+{\em Caml Light}, a lightweight reimplementation of {\em CAML} released in
+1991, added a simple module system in the style of Modula-2, targeted towards
+separate compilation of modules: structures and signatures are identified with
+files, functors and multiple views of a structure are not supported.  These
+were added in the {\em Caml Special Light} implementation in 1995, while
+preserving the support for separate compilation. {\em Caml Special Light} and
+the present version of Standard ML share several important simplifications,
+such as the value restriction on polymorphism, type definitions in signatures,
+and the lack of support for structure sharing.  The static semantics for {\em
+Caml Special Light} is based on the type-theoretic properties of dependent
+function types (functor signatures) and manifest types (type definitions in
+signatures)~\cite{leroy94}.
+
+{\em Moscow ML} is an implementation of core Standard ML, created in 1994 by
+Sergei Romanenko in Moscow and Peter Sestoft in Copenhagen.  The {\em Caml
+Light} system was used to implement the dynamic semantics, and the ML Kit
+guided the implementation of the static semantics.  The result is a compact
+and robust implementation, suitable for teaching.
+
+The {\em TIL (Typed Intermediate Languages)} compiler developed at Carnegie
+Mellon
+University by Greg Morrisett, David Tarditi, Perry Cheng, Chris Stone,
+Robert Harper,
+and Peter Lee demonstrates the use of
+types in compilation.  All but the last few stages of {\em TIL} are expressed
+as type-directed and type-preserving transforms.  Types are used at run time
+to support unboxed, untagged data representations and natural calling
+conventions in the presence of variable types and garbage collection.  {\em
+TIL} employs a wide variety of conventional functional language optimizations
+found in other SML compilers, as well as a set of loop-oriented optimizations.
+A description of the compiler and an analysis of its performance appears
+in~\cite{Tar}.
+
+Other currently active implementations are by Michael Hedlund at the
+Rutherford-Appleton Laboratory, by Robert Duncan, Simon Nichols and Aaron
+Sloman at the University of Sussex ({\em POPLOG}) and by Malcolm Newey and his
+group at the Australian National University.
+ 
+\subsection*{Semantics}
+
+The description of the first version of ML~\cite{GMW} was informal, and in an
+operational style; around the same time a denotational semantics was written,
+but never published, by Mike Gordon and Robin Milner.  Meanwhile structured
+operational semantics, presented as an inference system, was gaining credence
+as a tractable medium.  This originates with the reduction rules of
+$\lambda$-calculus, but was developed more widely through the work of Plotkin
+\cite{Plo}, and also by Milner.  This was at first only used for dynamic
+semantics, but later the benefit of using inference systems for both static
+and dynamic semantics became apparent.  This advantage was realised when
+Gilles Kahn and his group at INRIA were able to execute early versions of both
+forms of semantics for the ML core language using their Typol system
+\cite{Des}.  The static and dynamic semantics of the core language reached a
+final form mostly through work by Tofte and Milner.
+
+The modules of ML presented little difficulty as far as dynamic semantics is
+concerned, but the static semantics of modules was a concerted effort by
+several people.  MacQueen's original informal description~\cite{HMM} was the
+starting point; Sannella wrote a denotational semantics for several versions,
+which showed that several issues had not been settled by the informal
+description.  Robert Harper, while writing the first implementation of
+modules, made the first draft of the static semantics.  Harper's version made
+clear the importance of structure names; work by Milner and Tofte introduced
+further ideas including realisation; thereafter a concerted effort by all
+three led to several suggestions for modification of the language, and a small
+range of alternative interpretations; these were assessed in discussion with
+MacQueen, and more widely with the principal users of the language, and an
+agreed form was reached.
+
+Concurrently with the formulation of the Definition of Standard ML, Harper and
+Mitchell took up the challenge adumbrated by MacQueen~\cite{Mac2} to find
+a type-theoretic interpretation of Standard ML~\cite{HM}.  This work led to
+the formulation of the XML language, an explicitly-typed $\lambda$-calculus
+that captured many aspects of Standard ML.  Although incomplete, their
+approach formed the basis for a number of subsequent studies, including the
+work of Harper and Lillibridge~\cite{HL} and Leroy~\cite{leroy94} on the
+type-theoretic interpretation of modules.  This work influenced the decision
+to revise the language, and culminated in a type-theoretic interpretation of
+the present language by Harper and Stone~\cite{SH}.  The TIL/ML compiler
+(described above) is based directly on this interpretation.
+
+There is no doubt that the interaction between design and semantic description
+of modules has been one of the most striking phases in the entire language
+development, leading (in the opinion of those involved) to a high degree of
+confidence both in the language and in the semantics.
+
+
+\subsection*{Program Libraries}
+%During 1989-1991, Dave Berry produced the first program library for
+%Standard ML\cite{mllib91,berry93}. Subsequently, a partnership between
+%the originators of {\em SML/NJ}, {\em MLWorks} and 
+%{\em Moscow ML} was formed, with the goal of creating an industrial strength
+%initial basis for Standard ML. The resulting SML Basis 
+%Library\cite{sml-basis-lib} is a much improved and extended 
+%replacement of the initial basis defined in the 1990 Definition of 
+%Standard ML.
+ During 1989-1991, Dave Berry produced the first program library for
+ Standard ML\cite{mllib91,berry93}.
+ The {\em SML/NJ} system is distributed with a rich library organised by
+ Emden Gansner and John Reppy; this library was the starting point for
+ the SML Basis Library~.
+ The {\em SML Basis Library\/}\cite{sml-basis-lib} has been developed 
+ over the past three years in a
+ partnership between the SML/NJ effort, {\em MLWorks}, and {\em Moscow ML}.
+ The resulting library is a much improved and extended 
+ replacement of the initial basis defined in the 1990 Definition of 
+ Standard ML.

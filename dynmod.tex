@@ -1,0 +1,592 @@
+%!TEX root = root.tex
+%
+\section{Dynamic Semantics for Modules}
+\label{dynmod-sec}
+\subsection{Reduced Syntax}
+Since\index{58.1} signature expressions
+are mostly dealt with in the static semantics,
+the dynamic semantics need only take limited account of them.  
+\replacement{\theconstructors}{Unlike types,
+it cannot ignore them completely; }{However,
+they cannot be ignored completely; }the reason is that an explicit signature
+ascription plays the r\^ole of restricting the ``view'' of a structure -- that is,
+restricting the domains of its component environments\insertion{\theidstatus}{ and 
+imposing identifier status on value identifiers}.  
+\replacement{\thenostrsharing}{However, the types
+and the sharing properties of structures and signatures are irrelevant to
+dynamic evaluation; the syntax is therefore
+reduced by the following transformations (in addition to those for the Core),
+for the purpose of the dynamic semantics of Modules:}{The syntax is therefore
+reduced by the following transformations (in addition to those for the Core),
+for the purpose of the dynamic semantics of Modules:}
+\begin{itemize}
+\item Qualifications ``$\OF\ \ty\,$'' are omitted from \insertion{\theconstructors}{constructor and} exception descriptions.
+\deletion{\thedatatyperepl}{\item Any specification of the form ``$\typespec$'', ``$\eqtypespec$'',
+``$\DATATYPE$\ $\datdesc$\,'' or
+``$\sharingspec$'' is replaced by the empty specification.}
+\item \deletion{\thedatatyperepl}{The Modules phrase classes TypDesc, DatDesc, ConDesc and SharEq
+      are omitted.}
+\insertion{\thenostrsharing}{Any qualification \boxml{sharing type $\cdots$} on
+a specification or \boxml{where type $\cdots$} on a signature expression is omitted.}
+\end{itemize}
+
+\subsection{Compound Objects}
+\label{dynmod-comp-obj-sec}
+The\index{58.2} compound objects for the Modules dynamic semantics, extra to those for the
+Core dynamic semantics, are shown in Figure~\ref{comp-dynmod-obj}.
+\begin{figure}[h]
+\vspace{2pt}
+\begin{displaymath}
+\begin{array}{rcl}
+\adhocreplacementl{\thenostrsharing}{1cm}{(\strid:\I,\strexp\langle:\I'\rangle,\B)}{(\strid:\I,\strexp,\B)}
+                & \in   & \FunctorClosure\\
+                &       & \qquad  = (\StrId\times\Int)\times
+                          \adhocreplacementl{\thenostrsharing}{-5cm}{(\StrExp\langle\times\Int\rangle)\times\Basis}{\StrExp\times\Basis}\\
+\adhocreplacementl{\theidstatus}{5mm}{(\IE,\vars,\exns)\ {\rm or}\ \I}{\I\ {\rm or}\ (\SI,\TI,\VI)}
+                & \in   & \adhocreplacementl{\theidstatus}{-8cm}{\Int = \IntEnv\times\Fin(\Var)\times\Fin(\Exn)}{\Int = \StrInt\times\TyInt\times\ValInt}\\
+        \adhocreplacementl{\theidstatus}{3cm}{\IE}{\SI}     & \in   & \adhocreplacementl{\theidstatus}{-9cm}{\IntEnv}{\StrInt} = \finfun{\StrId}{\Int}\\\adhocinsertion{\theidstatus}{2cm}{
+        \TI     & \in   & \TyInt =  \finfun{\TyCon}{\ValInt}\\
+        \VI     & \in   & \ValInt = \finfun{\VId}{\IdStatus}\\ }
+        \G      & \in   & \SigEnv = \finfun{\SigId}{\Int}\\
+        \F      & \in   & \FunEnv = \finfun{\FunId}{\FunctorClosure}\\
+(\F,\G,\E)\ {\rm or}\ \B
+                & \in   & \Basis = \FunEnv\times\SigEnv\times\Env\\
+(\G,\adhocreplacementl{\thedatatyperepl}{2cm}{\IE}{\I})\ {\rm or}\ \IB
+                & \in   & \IntBasis = \SigEnv\times\adhocreplacementl{\thedatatyperepl}{-4cm}{\IntEnv}{\Int}
+\end{array}
+\end{displaymath}
+\caption{Compound Semantic Objects}
+\label{comp-dynmod-obj}
+\vspace{3pt}
+\end{figure}
+%
+%
+\insertion{\thedatatyperepl}{
+An {\sl interface} $\I\in\Int$ represents a ``view'' of a structure.
+Specifications and signature expressions will evaluate to interfaces;
+moreover, during the evaluation of a specification or signature expression, 
+structures (to which a specification or signature expression may
+refer via datatype replicating specifications) are represented 
+only by their interfaces.  To extract a value interface from
+a dynamic value environment we define the operation $\Inter: \ValEnv \to\ValInt$
+as follows:
+\[\Inter(\VE) = \{\vid\mapsto\is\;;\;\VE(\vid) = (\V,\is)\}\]
+In other words, $\Inter(\VE)$ is the value interface obtained from $\VE$ by
+removing all values from $\VE$. We then extend $\Inter$ to a function
+$\Inter:\Env\to\Int$ as follows:
+\[ \Inter(\SE,\TE,\VE)\ =\ (\SI,\TI,\VI)\]
+where $\VI$ = $\Inter(\VE)$ and 
+\begin{eqnarray*}
+\SI & = & \{\strid\mapsto\Inter\E\;;\;\SE(\strid) = \E\}\\
+\TI & = & \{\tycon\mapsto\Inter\VE'\;;\;\TE(\tycon) = \VE'\}
+\end{eqnarray*}
+An {\sl interface basis} $\IB=(\G,\I)$ is a value-free part of a basis, sufficient to
+evaluate signature expressions and specifications.
+The function $\Inter$ is extended to create an interface basis
+from a basis $\B$ as follows:
+\[ \Inter(\F,\G,\E)\ =\ (\G, \Inter\E) \]
+}
+
+\deletion{\thedatatyperepl}{
+An {\sl interface} $\I\in\Int$ represents a ``view'' of a structure.
+Specifications and signature expressions will evaluate to interfaces; 
+moreover, during the evaluation of a specification or signature expression, 
+structures (to which a specification or signature expression may
+refer via ``$\OPEN$'') are represented only by their interfaces.  To extract an
+interface from a dynamic environment we define the operation
+\[ \Inter\ :\ \Env\to\Int \]
+as follows:
+\[ \Inter(\SE,\VE,\EE)\ =\ (\IE,\Dom\VE,\Dom\EE)\]
+where
+\[ \IE\ =\ \{\strid\mapsto\Inter\E\ ;\ \SE(\strid)=\E\}\ .\]
+An {\sl interface basis}\index{59.1} $\IB=(\G,\IE)$ is that part of a basis needed to
+evaluate signature expressions and specifications.
+The function $\Inter$ is extended to create an interface basis
+from a basis $\B$ as follows:
+\[ \Inter(\F,\G,\E)\ =\ (\G, \of{\IE}{(\Inter\E)}) \]}
+
+\insertion{\thedatatyperepl}{
+A further operation
+\[ \downarrow\ :\ \Env\times\Int\to\Env\]
+is required, to cut down an environment $\E$ to a given interface $\I$,
+representing the effect of an explicit signature ascription. We first
+define $\downarrow: \ValEnv\times\ValInt\to\ValEnv$ by
+\[\VE\downarrow\VI = \{\vid\mapsto(\V,\is)\;;\;\VE(\vid) = (\V,\is')\ {\rm and}\ \VI(\vid) = \is\}\]
+(Note that $\VE$ and $\VI$ need not have the same
+domain and that the identifier status is taken from $\VI$.) 
+We then define $\downarrow: \StrEnv \times \StrInt \to \StrEnv$,
+$\downarrow: \TyEnv \times\TyInt\to\TyEnv$ and
+$\downarrow: \Env\times\Int\to\Env$ simultaneously as follows:
+\label{downarrowdef}
+\begin{center}
+ $\SE\downarrow\SI  =  \{\strid\mapsto\E\downarrow\I\ ;\
+          	\SE(\strid)=\E\ {\rm and}\ \SI(\strid)=\I\}$\\[6pt]
+ $ \TE\downarrow\TI =  \{\tycon\mapsto \VE'\downarrow\VI'\ ;\ 
+               \TE(\tycon) = \VE'\ {\rm and}\ \TI(\tycon) = \VI'\}$ \\[6pt]
+ $
+ (\SE,\TE,\VE)\downarrow(\SI,\REPL{\TI\ }{\TE},\VI)  = 
+               (\SE\downarrow\SI, \TE\downarrow\TI, \VE\downarrow\VI) $
+\end{center}}
+
+\deletion{\thedatatyperepl}{
+A further operation
+\[ \downarrow\ :\ \Env\times\Int\to\Env\]
+is required, to cut down an environment $\E$ to a given interface $\I$,
+representing the effect of an explicit signature ascription.  It is defined
+as follows:
+\[ (\SE,\VE,\EE)\downarrow(\IE,\vars,\exns)\ =\ (\SE',\VE',\EE') \]
+where
+\[ \SE'\ =\ \{\strid\mapsto\E\downarrow\I\ ;\
+          \SE(\strid)=\E\ {\rm and}\ \IE(\strid)=\I\} \]
+and (taking $\downarrow$ now to mean restriction of a function domain)
+\[\VE'=\VE\downarrow\vars,\ \EE'=\EE\downarrow\exns.\]
+}
+
+\noindent
+It is important to note that an interface \replacement{\thedatatyperepl}{is also a projection of}{can
+also be obtained from} the
+{\sl static} value $\Sigma$ of a signature expression; 
+it is obtained by \replacement{\thedatatyperepl}{omitting structure names $\m$ and type environments
+$\TE$,}{first replacing every type
+structure $(\typefcn, \VE)$
+in the range of every type environment $\TE$ by $\VE$}
+and \insertion{\thece}{then} replacing each \replacement{\theidstatus}{variable environment $\VE$ and each 
+exception environment $\EE$ by its domain.}{pair $(\sigma,\is)$ in the range
+of every value environment $\VE$ by $\is$.}
+Thus in an implementation interfaces would naturally be obtained from the
+static elaboration; we choose to give separate rules here for obtaining them
+in the dynamic semantics since we wish to maintain our separation of the
+static and dynamic semantics, for reasons of presentation.
+
+\subsection{Inference Rules}
+The\index{59.2} semantic rules allow sentences  of the form
+\[ \s,A\ts\phrase\ra A',\s' \]
+to be inferred, where $A$ is either a basis\replacement{\theidstatus}{ or an interface basis}{, a signature environment} or empty,
+$A'$ is some semantic
+object and $\s$,$\s'$ are the states before and after the evaluation
+represented by the sentence.  Some hypotheses in rules are not of this form;
+they are called {\sl side-conditions}.  The convention for options is
+the same as for the Core static semantics.  
+
+The state and exception conventions are adopted as in the Core dynamic
+semantics.  However, it may be shown that the only Modules phrases whose 
+evaluation
+may cause a side-effect or generate an exception packet are of the form
+$\strexp$, $\strdec$, $\strbind$ or $\topdec$.
+%Also, as will be seen in Section~\ref{prog-sec}, a phrase of the
+%form $\program$ can have side-effects, but not generate an
+%exception packet.
+
+%               SEMANTICS
+%
+%                       Structure Expressions
+%
+\rulesec{Structure Expressions}{\B\ts\strexp\ra \E/\p}
+\begin{equation}        % generative strexp
+%\label{generative-strexp-dyn-rule}
+\frac{\B\ts\strdec\ra\E}
+     {\B\ts\encstrexp\ra\E}\index{60.1}
+\end{equation}
+
+\begin{equation}        % longstrid
+%\label{longstrid-strexp-dyn-rule}
+\frac{\B(\longstrid)=\E}
+     {\B\ts\longstrid\ra\E}
+\end{equation}
+
+\insertion{\theconstructors}{\begin{equation}        % transparent signature constraint
+\frac{\B\ts\strexp\ra\E\qquad\Inter\B\ts\sigexp\ra\I}
+     {\B\ts\transpconstraint\ra\E\downarrow\I}
+\end{equation}
+
+\begin{equation}        % opaque signature constraint
+\frac{\B\ts\strexp\ra\E\qquad\Inter\B\ts\sigexp\ra\I}
+     {\B\ts\opaqueconstraint\ra\E\downarrow\I}
+\end{equation}}
+
+%\vspace{6pt}
+\replacement{\thenostrsharing}{\begin{equation}                % functor application
+\label{functor-application-dyn-rule}
+\frac{ \begin{array}{c}
+        \B(\funid)=(\strid:\I,\strexp'\langle:\I'\rangle,\B')\\
+        \B\ts\strexp\ra\E\qquad
+       \B'+\{\strid\mapsto\E\downarrow\I\}\ts\strexp'\ra\E'\\
+       \end{array}
+     }
+     {\B\ts\funappstr\ra\E'\langle\downarrow\I'\rangle}
+\end{equation}}{\begin{equation}                % functor application
+\label{functor-application-dyn-rule}
+\frac{ \begin{array}{c}
+        \B(\funid)=(\strid:\I,\strexp',\B')\\
+        \B\ts\strexp\ra\E\qquad
+       \B'+\{\strid\mapsto\E\downarrow\I\}\ts\strexp'\ra\E'\\
+       \end{array}
+     }
+     {\B\ts\funappstr\ra\E'}
+\end{equation}}
+
+%\vspace{6pt}
+\begin{equation}        % let strexp
+%\label{letstrexp-dyn-rule}
+\frac{\B\ts\strdec\ra\E\qquad\B+\E\ts\strexp\ra\E'}
+     {\B\ts\letstrexp\ra\E'}
+\end{equation}
+\comments
+\begin{description}
+\item{(\ref{functor-application-dyn-rule})}
+Before the evaluation of the functor body $\strexp'$, the
+actual argument $\E$ is cut down by the formal parameter
+interface $\I$, so that any opening of $\strid$ resulting
+from the evaluation of $\strexp'$ will produce no more components
+than anticipated during the static elaboration.
+\end{description}
+
+\rulesec{Structure-level Declarations}{\B\ts\strdec\ra\E/\p}
+                % declarations
+\begin{equation}                % core declaration
+%\label{dec-dyn-rule}
+\frac{ \of{\E}{\B}\ts\dec\ra\E' }
+     { \B\ts\dec\ra\E' }\index{60.2}
+\end{equation}
+
+\vspace{6pt}
+\begin{equation}                % structure declaration
+%\label{structure-decl-dyn-rule}
+\frac{ \B\ts\strbind\ra\SE }
+     { \B\ts\singstrdec\ra\SE\ \In\ \Env }
+\end{equation}
+
+\vspace{6pt}
+\begin{equation}                % local structure-level declaration
+%\label{local structure-level declaration-dyn-rule}
+\frac{ \B\ts\strdec_1\ra\E_1\qquad
+       \B+\E_1\ts\strdec_2\ra\E_2 }
+     { \B\ts\localstrdec\ra\E_2 }
+\end{equation}
+
+\vspace{6pt}
+\begin{equation}                % empty declaration
+%\label{empty-strdec-dyn-rule}
+\frac{}
+     {\B\ts\emptystrdec\ra \emptymap{\rm\ in}\ \Env}
+\end{equation}
+
+\vspace{6pt}
+\begin{equation}                % sequential declaration
+%\label{sequential-strdec-dyn-rule}
+\frac{ \B\ts\strdec_1\ra\E_1\qquad
+       \B+\E_1\ts\strdec_2\ra\E_2 }
+     { \B\ts\seqstrdec\ra\plusmap{\E_1}{\E_2} }
+\end{equation}
+
+\rulesec{Structure Bindings}{\B\ts\strbind\ra\SE/\p}
+\replacement{\thenostrsharing}{
+\begin{equation}                % structure binding
+\frac{ \begin{array}{cl}
+       \B\ts\strexp\ra\E\qquad\langle\Inter\B\ts\sigexp\ra\I\rangle\\
+       \langle\langle\B\ts\strbind\ra\SE\rangle\rangle
+       \end{array}
+     }
+     {\begin{array}{c}
+      \B\ts\strbinder\ra\\
+      \qquad\qquad\qquad\{\strid\mapsto\E\langle\downarrow\I\rangle\}
+      \ \langle\langle +\ \SE\rangle\rangle
+      \end{array}
+     }\index{61.1}
+\end{equation}
+\comment As in the static semantics, when present, $\sigexp$ constrains the
+``view'' of the structure. The restriction must be done in the
+dynamic semantics to ensure that any dynamic opening of the structure
+produces no more components than anticipated during the static
+elaboration.}{\begin{equation}                % structure binding
+\frac{ 
+       \B\ts\strexp\ra\E\qquad
+       \langle\B\ts\strbind\ra\SE\rangle
+     }
+     {
+      \B\ts\barestrbindera\ra\{\strid\mapsto\E\}
+      \ \langle +\ \SE\rangle
+     }\index{61.1}
+\end{equation}
+}
+%
+%                   Signature Rules
+%
+
+\rulesec{Signature Expressions}{\IB\ts\sigexp\ra\I}
+\begin{equation}                % encapsulation sigexp
+%\label{encapsulating-sigexp-dyn-rule}
+\frac{\IB\ts\spec\ra\I }
+     {\IB\ts\encsigexp\ra\I}\index{61.2}
+\end{equation}
+
+\begin{equation}                % signature identifier
+%\label{signature-identifier-dyn-rule}
+\frac{ \IB(\sigid)=\I}
+     { \IB\ts\sigid\ra\I }
+\end{equation}
+
+\rulesec{Signature Declarations}{\IB\ts\sigdec\ra\G}
+\begin{equation}        % single signature declaration
+%\label{single-sigdec-dyn-rule}
+\frac{ \IB\ts\sigbind\ra\G }
+     { \IB\ts\singsigdec\ra\G }\index{61.3}
+\end{equation}
+
+\deletion{\thenostrsharing}{
+\begin{equation}        % empty signature declaration
+%\label{empty-sigdec-dyn-rule}
+\frac{}
+     { \IB\ts\emptysigdec\ra\emptymap }
+\end{equation}
+
+\begin{equation}        % sequential signature declaration
+%\label{sequence-sigdec-dyn-rule}
+\frac{ \IB\ts\sigdec_1\ra\G_1 \qquad \plusmap{\IB}{\G_1}\ts\sigdec_2\ra\G_2 }
+     { \IB\ts\seqsigdec\ra\plusmap{\G_1}{\G_2} }
+\end{equation}
+}
+\rulesec{Signature Bindings}{\IB\ts\sigbind\ra\G}
+\begin{equation}        % signature binding
+%\label{sigbind-dyn-rule}
+\frac{ \IB\ts\sigexp\ra\I
+        \qquad\langle\IB\ts\sigbind\ra\G\rangle }
+     { \IB\ts\sigbinder\ra\{\sigid\mapsto\I\}
+       \ \langle +\ \G\rangle }\index{61.4}
+\end{equation}
+%
+                     % Specifications
+%
+\rulesec{Specifications}{\IB\ts\spec\ra\I}
+
+\replacement{\theidstatus}{\begin{equation}        % value specification
+%\label{valspec-dyn-rule}
+\frac{ \ts\valdesc\ra\vars }
+     { \IB\ts\valspec\ra\vars\ \In\ \Int }\index{61.5}
+\end{equation}}{\begin{equation}        % value specification
+%\label{valspec-dyn-rule}
+\frac{ \ts\valdesc\ra\VI }
+     { \IB\ts\valspec\ra\VI\ \In\ \Int }\index{61.5}
+\end{equation}}
+
+\insertion{\thedatatyperepl}{
+\begin{equation}
+\frac{\ts\typdesc\ra\TI}
+     {\IB\ts\typespec\ra\TI\ \In\ \Int}
+\end{equation}
+
+\begin{equation}
+\frac{\ts\typdesc\ra\TI}
+     {\IB\ts\eqtypespec\ra\TI\ \In\ \Int}
+\end{equation}}
+
+\insertion{\thedatatyperepl}{
+\begin{equation}
+\frac{\ts\datdesc\ra\VI,\TI}
+     {\IB\ts\datatypespec\ra(\VI,\TI)\ \In\ \Int}
+\end{equation}
+}
+
+\insertion{\thedatatyperepl}{
+\begin{equation}
+\frac{\IB(\longtycon) = \VI\qquad \TI = \{\tycon\mapsto\VI\}}
+     {\IB\ts\datatypereplspec\ra(\VI,\TI)\ \In\ \Int}
+\end{equation}
+}
+
+\replacement{\theidstatus}{
+\begin{equation}        % exception specification
+%\label{exceptionspec-dyn-rule}
+\frac{ \ts\exndesc\ra\exns}
+     { \IB\ts\exceptionspec\ra\exns\ \In\ \Int }
+\end{equation}}{\begin{equation}        % exception specification
+%\label{exceptionspec-dyn-rule}
+\frac{ \ts\exndesc\ra\VI}
+     { \IB\ts\exceptionspec\ra \VI\ \In\ \Int }
+\end{equation}}
+\oldpagebreak
+\replacement{\theidstatus}{\begin{equation}        % structure specification
+\label{structurespec-dyn-rule}
+\frac{ \IB\ts\strdesc\ra\IE }
+     { \IB\ts\structurespec\ra\IE\ \In\ \Int }\index{62.1}
+\end{equation}}{\begin{equation}        % structure specification
+\label{structurespec-dyn-rule}
+\frac{ \IB\ts\strdesc\ra\SI }
+     { \IB\ts\structurespec\ra\SI\ \In\ \Int }\index{62.1}
+\end{equation}}
+
+\deletion{\thenolocalspec}{
+\begin{equation}        % local specification
+\label{localspec-dyn-rule}
+\frac{ \IB\ts\spec_1\ra\I_1 \qquad
+       \plusmap{\IB}{\of{\IE}{\I_1}}\ts\spec_2\ra\I_2 }
+     { \IB\ts\localspec\ra\I_2 }
+\end{equation}}
+
+\deletion{\thenoopenspec}{
+\begin{equation}        % open specification
+%\label{openspec-dyn-rule}
+\frac{ \IB(\longstrid_1)=\I_1\quad\cdots\quad
+       \IB(\longstrid_n)=\I_n }
+     { \IB\ts\openspec\ra\I_1 + \cdots +\I_n }
+\end{equation}}
+
+\replacement{\thesingleincludespec}{
+\begin{equation}        % include signature specification
+%\label{inclspec-dyn-rule}
+\frac{ \IB(\sigid_1)=\I_1 \quad\cdots\quad
+       \IB(\sigid_n)=\I_n }
+     { \IB\ts\inclspec\ra\I_1 + \cdots +\I_n }
+\end{equation}}{\begin{equation}        % include signature specification
+%\label{inclspec-dyn-rule}
+\frac{ \IB\ts\sigexp\ra\I}
+     { \IB\ts\singleinclspec\ra\I}
+\end{equation}}
+
+\begin{equation}        % empty specification
+%\label{emptyspec-dyn-rule}
+\frac{}
+     { \IB\ts\emptyspec\ra\emptymap{\rm\ in}\ \Int }
+\end{equation}
+
+\replacement{\theidstatus}{\begin{equation}        % sequential specification
+\label{seqspec-dyn-rule}
+\frac{ \IB\ts\spec_1\ra\I_1
+       \qquad \plusmap{\IB}{\of{\IE}{\I_1}}\ts\spec_2\ra\I_2 }
+     { \IB\ts\seqspec\ra\plusmap{\I_1}{\I_2} }
+\end{equation}}{\begin{equation}        % sequential specification
+\label{seqspec-dyn-rule}
+\frac{ \IB\ts\spec_1\ra\I_1
+       \qquad \IB+\I_1\ts\spec_2\ra\I_2 }
+     { \IB\ts\seqspec\ra\plusmap{\I_1}{\I_2} }
+\end{equation}}
+
+%\ insertion{\thenostrsharing}{
+%\begin{equation}
+%\frac{\IB\ts\spec\ra\I}    %  type sharing spec
+%     {\IB\ts\newsharingspec\ra\I}
+%\end{equation}
+%}
+
+\deletion{\thedatatyperepl}{
+\noindent\comments
+\begin{description}
+\item{(\ref{localspec-dyn-rule}),(\ref{seqspec-dyn-rule})}
+Note that $\of{\vars}{\I_1}$ and $\of{\exns}{\I_1}$ are
+not needed for the evaluation of $\spec_2$.
+\end{description}}
+
+                         % Descriptions
+
+\replacement{\theidstatus}{\rulesec{Value Descriptions}{\ts\valdesc\ra\vars}}{\rulesec{Value Descriptions}{\ts\valdesc\ra\VI}}
+\replacement{\theidstatus}{\begin{equation}         % value description
+%\label{valdesc-dyn-rule}
+\frac{ \langle\ts\valdesc\ra\vars\rangle }
+     { \ts\var\ \langle\AND\ \valdesc\rangle\ra
+       \{\var\}\ \langle\cup\ \vars\rangle }\index{62.2}
+\end{equation}}{\begin{equation}         % value description
+%\label{valdesc-dyn-rule}
+\frac{ \langle\ts\valdesc\ra\VI\rangle }
+     { \ts\vid\ \langle\AND\ \valdesc\rangle\ra
+       \{\vid\mapsto\isv\}\ \langle+\,\VI\rangle }\index{62.2}
+\end{equation}}
+
+\insertion{\thedatatyperepl}{
+\rulesec{Type Descriptions}{\ts\typdesc\ra\TI}
+\begin{equation}
+\frac{\langle\ts\typdesc\ra\TI\rangle}
+     {\ts\typdescription\ra\{\tycon\mapsto\emptymap\}\langle+\TI\rangle}
+\end{equation}
+}
+
+\insertion{\thedatatyperepl}{
+\rulesec{Datatype Descriptions}{\ts\datdesc\ra\VI, \TI}
+\begin{equation}
+\frac{\ts\condesc\ra\VI\qquad\langle\ts\datdesc'\ra\VI',\TI'\rangle}
+     {\ts\datdescriptiona\ra\VI\,\langle+\,\VI'\rangle, \{\tycon\mapsto\VI\}\langle+\TI'\rangle}
+\end{equation}
+
+\rulesec{Constructor Descriptions}{\ts\condesc\ra\VI}
+\begin{equation}
+\frac{\langle\ts\condesc\ra\VI\rangle}
+     {\ts\shortconviddesc\ra\{\vid\mapsto\isc\}\,\langle+\VI\rangle}
+\end{equation}
+}
+
+\replacement{\theidstatus}{\rulesec{Exception Descriptions}{\ts\exndesc\ra\exns}}{\rulesec{Exception Descriptions}{\ts\exndesc\ra\VI}}
+\replacement{\thefixtypos}{
+\begin{equation}         % exception description
+%\label{exndesc-dyn-rule}
+\frac{ \langle\ts\exndesc\ra\exns\rangle }
+     { \ts\exn\ \langle\exndesc\rangle\ra\{\exn\}\ \langle\cup\ \exns\rangle }\index{62.3}
+\end{equation}}{\begin{equation}         % exception description
+%\label{exndesc-dyn-rule}
+\frac{ \langle\ts\exndesc\ra\VI\rangle }
+     { \ts\vid\ \langle\boxml{and\ }\exndesc\rangle\ra\{\vid\mapsto\ise\}\ \langle+ \VI\rangle }\index{62.3}
+\end{equation}}
+
+\replacement{\theidstatus}{\rulesec{Structure Descriptions}{\IB\ts\strdesc\ra\IE}}{\rulesec{Structure Descriptions}{\IB\ts\strdesc\ra\SI}}
+\replacement{\theidstatus}{\begin{equation}
+%\label{strdesc-dyn-rule}
+\frac{ \IB\ts\sigexp\ra\I\qquad\langle\IB\ts\strdesc\ra\IE\rangle }
+     { \IB\ts\strdescription\ra\{\strid\mapsto\I\}\ \langle +\ \IE\rangle }\index{62.4}
+\end{equation}}{\begin{equation}
+%\label{strdesc-dyn-rule}
+\frac{ \IB\ts\sigexp\ra\I\qquad\langle\IB\ts\strdesc\ra\SI\rangle }
+     { \IB\ts\strdescription\ra\{\strid\mapsto\I\}\ \langle +\ \SI\rangle }\index{62.4}
+\end{equation}}
+
+%                       Functor and Program rules
+%
+\rulesec{Functor Bindings}{\B\ts\funbind\ra\F}
+\begin{equation}        % functor binding
+%\label{funbind-dyn-rule}
+\frac{
+      \Inter\B\ts\sigexp\ra\I\qquad
+      \langle\REPL{\B\ }{\IB}\ts\funbind\ra\F\rangle
+     }
+     {
+      \begin{array}{c}
+       \REPL{\B\ }{\IB}\ts\barefunstrbinder\ \optfunbinda\ra\\
+       \qquad\qquad \qquad
+              \{\funid\mapsto(\strid:\I,\strexp,\B)\}
+              \ \langle +\ \F\rangle
+      \end{array}
+     }\index{62.5}
+\end{equation}
+\oldpagebreak
+\rulesec{Functor Declarations}{\B\ts\fundec\ra\F}
+\begin{equation}        % single functor declaration
+%\label{singfundec-dyn-rule}
+\frac{ \B\ts\funbind\ra\F }
+     { \B\ts\singfundec\ra\F }\index{63.1}
+\end{equation}
+
+\rulesec{Top-level Declarations}{\B\ts\topdec\ra\B'/\p}
+\begin{equation}        % structure-level declaration
+%\label{strdectopdec-dyn-rule}
+\frac{\B\ts\strdec\ra\E\quad\B' =\E\ \In\ \Basis\quad\langle \B+\B'\ts\topdec\ra\B''\rangle }
+     {\B\ts\strdecintopdec\ra\B'\langle\REPL{+\B\ }{'}\rangle
+     }\index{63.2}
+\end{equation}
+
+\vspace{6pt}
+\begin{equation}        % signature declaration
+%\label{sigdectopdec-dyn-rule}
+\frac{\Inter\B\ts\sigdec\ra\G\quad B' = \G\ \In\ \Basis\quad
+       \langle \B + \B'\ts\topdec\ra\B''\rangle}
+     {\B\ts\sigdecintopdec\ra \B'\langle\REPL{+\B\ }{'}\rangle 
+     }
+\end{equation}
+
+\vspace{6pt}
+\begin{equation}        % functor declaration
+%\label{fundectopdec-dyn-rule}
+\frac{\B\ts\fundec\ra\F\quad \B' = \F\ \In\ \Basis\quad
+       \langle \B + \B'\ts\topdec\ra\B''\rangle}
+     {\B\ts\fundecintopdec\ra\B'\langle\REPL{+\B\ }{'}\rangle
+     }
+\end{equation}
+
+
+

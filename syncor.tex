@@ -1,0 +1,593 @@
+%!TEX root = root.tex
+%
+\section{Syntax of the Core}
+\label{syn-core-sec}
+
+\subsection{Reserved Words}
+The\index{6.1}
+following are the {\sl reserved words} used in the Core.   They
+may not (except~~{\tt =}~) be used as identifiers.   
+%In this document the alphabetic reserved words are 
+%always shown in typewriter font.
+
+\vspace*{-6pt}
+\begin{verbatim}
+     abstype   and   andalso   as   case   datatype  do    else
+     end    exception    fn    fun    handle    if   in   infix
+     infixr   let     local    nonfix   of   op   open   orelse
+     raise   rec   then   type   val   with   withtype    while
+     (  )   [  ]   {  }  ,  :  ;  ...    _   |  =   =>   ->   #   
+\end{verbatim}
+\vspace*{-6pt}
+
+\subsection{Special constants}
+\label{cr:speccon}
+\REPL{A {\sl positive integer constant (in decimal notation)} is
+a non-empty sequence of decimal digits 
+$\boxml{0},\twoldots,\boxml{9}$ and the underscore (\wildpat) that
+neither starts nor ends with an underscore.
+An\index{6.2} {\sl integer constant} is an optional negation symbol
+(\tttilde) followed by a positive integer constant. }{%
+An\index{6.2} {\sl integer constant (in
+decimal notation)} is an optional negation symbol (\tttilde)
+followed by a non-empty sequence of decimal digits 
+$\boxml{0},\twoldots,\boxml{9}$.}
+An {\sl integer constant (in
+hexadecimal notation)} is an optional negation symbol 
+followed by \boxml{0x} followed by a non-empty sequence of
+hexadecimal digits $\boxml{0},\twoldots,\boxml{9}$ 
+and $\boxml{a},\twoldots,\boxml{f}$\ADD{, and the underscore that does not
+end with an underscore}.
+($\boxml{A},\twoldots,\boxml{F}$
+may be used as alternatives for $\boxml{a},\twoldots,\boxml{f}$.)
+\ADD{
+An {\sl integer constant (in binary notation)} is an optional negation
+symbol followed by a non-empty sequence of binary digits \boxml{0}, \boxml{1},
+and the underscore that does not end with an underscore.
+}
+
+A {\sl word constant (in decimal notation)} is \boxml{0w}  followed
+by a non-empty sequence of decimal digits\ADD{ and the underscore that does not
+end with an underscore}.
+A {\sl word constant
+(in hexadecimal notation)} is \boxml{0wx} followed by a non-empty
+sequence of hexadecimal digits\ADD{ and the underscore that does not
+end with an underscore}.
+\ADD{A word constant (in binary notation) is \boxml{0wb} followed by a non-empty
+sequence of binary digits \boxml{0}, \boxml{1}, and the underscore not ending with
+an underscore.}
+
+A {\sl real constant} is an integer constant in decimal notation,
+possibly followed by a point ({\tt .}) and \REPL{a positive integer constant in decimal notation}{ one or
+more decimal digits}, possibly followed by an exponent symbol ~({\tt E} or {\tt e})~ and an integer
+constant in decimal notation; at least one of the optional parts must occur, hence no integer
+constant is a real constant.
+Examples:
+\begin{center}
+  {\tt 0.7}~~~{\tt 3.32E5}~~~\verb(3E~7(~~~\ADD{\tt 3.141\wildpat592\wildpat653}
+\end{center}%
+Non-examples:
+\begin{center}
+  {\tt 23}~~~{\tt .3}~~~{\tt 4.E5}~~~{\tt 1E2.0}~~~\ADD{\tt 1\wildpat.5}~~~\ADD{\tt 3.\wildpat{}678}
+~~~\ADD{\tt 1.\wildpat{}E2}
+\end{center}%
+
+We assume an underlying alphabet of $N$ characters ($N \geq 256$), numbered
+     $0$ to $N-1$, which agrees with the ASCII character set on the characters
+     numbered 0 to 127. The interval $[0, N-1]$ is called the {\sl ordinal range} of
+     the alphabet.
+A {\sl string constant} is a sequence, between quotes ({\tt "}), of zero or
+more printable characters (i.e., numbered 33--126), spaces or escape 
+sequences.
+Each escape sequence starts with the
+escape character ~\verb+\+~, and stands for a character sequence. The
+escape sequences are:
+\bigskip
+
+\note{\thescon}{Inserted additional escape sequences in figure concerning
+string constants and unicodes}          %   hack: can't deal with verb in arg of replacement
+\halign{\indent#\hfil&\quad\parbox[t]{12cm}{\strut#\strut}\cr
+\verb+\a+   & A single character interpreted by the system as alert (ASCII~7)\cr
+\verb+\b+   & Backspace (ASCII 8)\cr
+\verb+\t+   & Horizontal tab (ASCII 9)\cr
+\verb+\n+   & Linefeed, also known as newline (ASCII 10)\cr
+\verb+\v+   & Vertical tab (ASCII 11)\cr
+\verb+\f+   & Form feed (ASCII 12)\cr
+\verb+\r+   & Carriage return (ASCII 13)\cr
+\verb+\^+$c$  & The control character $c$, where $c$ may
+                be any character with number 64--95. The number
+                of ~{\tt\char'134\char'136}$c$~ is 64 less than the 
+                number of $c$.\cr
+\verb+\+$ddd$ & The single character with number $ddd$ (3 decimal digits
+denoting an integer in the ordinal range of the alphabet).\cr
+\uconst & The single character with number $xxxx$ (4 hexadecimal digits
+denoting an integer in the ordinal range of the alphabet).\cr
+\verb+\"+   & {\tt "}\cr
+\verb+\\+   & {\tt\char'134}\cr
+\verb+\+$f\cdot\cdot f$\verb+\+
+            & This sequence is ignored,
+              where $f\cdot\cdot f$ stands for a sequence 
+             of one or more formatting characters.\cr
+}
+\medskip
+
+The {\sl formatting characters}\index{6.3} are a subset of the non-printable
+            characters including at least space, tab, newline, form feed\ADD{, vertical tab, and carriage return}.
+The last form allows long strings to be written on more than one line, by
+            writing ~\verb+\+~ at the end of one line and at the start of the
+            next.\nopagebreak
+
+\insertion{\thescon}{A {\sl character constant} is a sequence of the form
+{\tt\#}$s$, where $s$ is a string constant denoting a string of size one character.
+
+Libraries may provide multiple numeric types and multiple string types.
+To each string type 
+corresponds an alphabet with ordinal range $[0, N-1]$
+for some $N\geq 256$; each alphabet must agree with the ASCII character set on 
+the characters numbered 0 to 127. When multiple alphabets are supported,
+all characters of a given string constant are interpreted over the same
+alphabet. For each special constant, overloading
+resolution is used for determining the type of the constant 
+(see Appendix~\ref{overload.sec}).
+
+%   All the escape sequences in a given string constant are interpreted
+%   over the same underlying alphabet (either 8-bit characters or 16-bit 
+%   characters), and for each string constant this alphabet is determined 
+%   by overloading resolution (see Appendix~\ref{overload.sec}).  
+%   It is a compile-time error 
+% if the
+%constant contains an escape sequence of the form $\uconst$ where
+%$xxxx$ denotes an integer outside the ordinal range of the alphabet so
+%determined. For example, within a sequence of 8-bit characters, the
+%two leftmost hexadecimal digits of $\uconst$ must be {\tt 0} (zero).
+}
+
+We denote by {\SCon} the class of {\sl special constants}, i.e., the integer,
+real, \insertion{\thescon}{word, character} and string constants; we shall use {\scon}
+to range over \SCon.\index{6.4}
+
+\subsection{Comments}
+\REPL{
+A\index{7.1} {\sl comment} is either {\sl line comment} or a {\sl block comment}.
+A line comment is any character sequence between the comment delimiter \boxml{(*)}
+and the following end of line.
+A block comment is any character sequence within comment brackets ~{\tt (* *)}~
+in which other comments are properly nested.
+No space is allowed between the characters that make up a comment bracket
+\ml{(*)}, \ml{(*} or \ml{*)}.
+An unmatched \boxml{(*} should be detected by the compiler.
+}{%
+A\index{7.1} {\sl comment} 
+is any character sequence within comment brackets ~{\tt (* *)}~
+in which
+comment brackets are properly nested.
+No space is allowed between 
+            the two characters which make up
+            a comment bracket \ml{(*} or \ml{*)}.  An unmatched
+            \boxml{(*} should be detected by the compiler.
+}
+%
+\subsection{Identifiers}
+\label{cyn-core-identifiers-sec}
+The classes of {\sl identifiers}\index{7.2} for the Core are shown in
+Figure~\ref{identifiers}.
+% \begin{figure}[b]
+% \vspace{4pt}
+% \makeatletter{}
+% \tabskip\@centering
+% \halign to\textwidth
+% {#\hfil\tabskip1em&(#)\hfil\tabskip1em&#\hfil\tabskip\@centering\cr
+% \Var    & value variables       & long\cr
+% \Con    & value constructors    & long\cr
+% \Exn    & exception constructors& long\cr
+% \TyVar  & type variables        & \cr
+% \TyCon  & type constructors     & long\cr
+% \Lab    & record labels         & \cr
+% \StrId  & structure identifiers & long\cr
+% }
+% \makeatother
+% \caption{Identifiers}
+% \label{identifiers}
+% \vspace*{-3mm}
+% \end{figure}
+\note{\theidstatus}{Figure 1 replaced by new figure (Var, Con and ExCon 
+merged into VId)}
+\begin{figure}[b]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&(#)\hfil\tabskip1em&#\hfil\tabskip\@centering\cr
+\VId    & value identifiers     & long\cr
+\TyVar  & type variables        & \cr
+\TyCon  & type constructors     & long\cr
+\Lab    & record labels         & \cr
+\StrId  & structure identifiers & long\cr
+}
+\makeatother
+\caption{Identifiers}
+\label{identifiers}
+\vspace*{-3mm}
+\end{figure}
+We use $\vid$, $\tyvar$ to range over 
+$\VId$, TyVar etc.  For each class
+X marked ``long'' there is a class longX of {\sl long identifiers}; if
+$x$ ranges over X then {\it longx} ranges over longX.  The syntax of
+these long identifiers is given by the following: 
+\vspace*{-6pt}
+\begin{quote}
+\begin{tabular}{rcll} {\it longx} & $::=$ & $x$ & identifier\\
+& &$\strid_1.\cdots.\strid_n.x$ & qualified identifier ($n\geq 1$)
+\end{tabular} 
+\end{quote}
+\vspace*{-6pt}
+The qualified identifiers constitute a link between the Core and the
+Modules. Throughout this document, the term ``identifier'', occurring 
+without an adjective, refers to non-qualified identifiers only.
+%version 2: For each class X marked
+%``long'' there is also a class
+%\[ {\rm LongX} = \StrId^\ast \times {\rm X} \]
+%If $x$ ranges over X, then {\it longx}, or
+%$\strid_1.\cdots.\strid_k.x$, $k\geq 0$, ranges over LongX.
+%These long identifiers constitute the only link between the Core
+%and the language constructs for Modules; by omitting them, and the $\OPEN$
+%declaration,
+%we obtain the Core as a complete programming language in
+%its own right. (The corresponding adjustment to the Core static and
+%dynamic semantics is simply to omit structure environments $\SE$.).
+
+An identifier is either {\sl alphanumeric}: any sequence of
+letters, digits, primes ({\tt '}) and underbars (\wildpat) starting
+with a letter or prime, or {\sl symbolic}: any non-empty sequence of the
+following {\sl symbols}\index{7.3}
+\vspace*{-6pt}
+\begin{center}
+%\verb(!  %  &  $  +  -  /  :  <  =  >  ?  (@\verb(  \  ~  `  ^  |  *(
+\verb(!  %  &  $  #  +  -  /  :  <  =  >  ?  @  \  ~  `  ^  |  *(
+\end{center}
+\vspace*{-6pt}
+In either case, however, reserved words are excluded.   This means that for
+example ~\verb+#+~ and ~{\tt |}~ are not identifiers, but  ~\verb+##+~ and
+~{\tt |=|}~ are identifiers.
+The only exception to this rule is that the symbol ~{\tt =}~, which is
+a reserved word, is also allowed as an identifier to stand for
+the equality predicate.
+The identifier ~{\tt =}~ may not be re-bound;
+this precludes any syntactic ambiguity.
+
+A type variable $\tyvar$\index{7.4}\label{etyvar-lab} may be any
+alphanumeric identifier starting with a prime; the subclass EtyVar of
+TyVar, the {\sl equality} type variables, consists of those \REPL{which}
+start with two or more primes.  
+%poly   
+The classes {\VId}, 
+{\TyCon} and  {\Lab} are represented by identifiers
+not starting with a prime.
+However,\index{7.5} {\tt *} is excluded from {\TyCon},
+to avoid confusion with the derived form of tuple type (see
+Figure~\ref{typ-gram}). The class Lab\index{8.2} is extended to
+include the {\em numeric} labels ~{\tt 1}~~{\tt 2}~~{\tt 3}~ $\cdots$,
+i.e. any numeral not starting with~{\tt 0}. \insertion{\theidstatus}{The
+identifier class $\hbox{\StrId}$ is represented by alphanumeric
+identifiers not starting with a prime.}
+
+TyVar is therefore disjoint from the other four classes.   
+Otherwise, the syntax class of an occurrence of
+identifier $\id$ in a Core phrase (ignoring derived forms, 
+Section~\ref{cor-der-form-sec}) is determined thus:
+\begin{enumerate}
+  \item Immediately before ``.'' -- i.e. in a long identifier -- or in an
+        $\OPEN$ declaration, $\id$ is a structure
+        identifier.  The following rules assume that all occurrences of
+        structure identifiers have been removed.
+  \item At the start of a component in a record type, record pattern or record
+        expression,  $\id$ is a record label.
+  \item Elsewhere in types $\id$ is a type constructor.
+%  \item Elsewhere $\id$ is an exception name if it occurs immediately after
+%        $\RAISE$, at the start of a handler rule $\hanrule$, or within an
+%        $\EXCEPTION$ declaration or specification.
+  \item Elsewhere, $\id$ is a value identifier.
+\end{enumerate}%
+
+By means of the above rules a compiler can determine the class to which each
+identifier occurrence belongs; for the remainder of this document we shall
+therefore assume that the classes are all disjoint.
+
+\subsection{Lexical analysis}
+Each\index{8.4} item of lexical analysis is either a reserved word, a numeric label, a
+special constant or a long identifier.
+Comments and formatting characters
+separate items (except within string constants; see Section~\ref{cr:speccon})
+and are otherwise
+ignored.   At each stage the longest next item is taken.
+
+\subsection{Infixed operators}
+\label{infop.sec}
+An\index{8.5} identifier may be given {\sl infix status} by the
+~$\INFIX$~ or ~$\INFIXR$~ directive, which may occur as a
+declaration; this status only pertains to its use as a 
+$\vid$ within the scope (see below) of the 
+directive, and in these uses it is called an {\sl infixed operator}.
+(Note that qualified identifiers never have infix status.)  If 
+$\vid$
+has infix status, then ``$\exp_1\ \vid\ \exp_2$''
+(resp.\ ``$\pat_1\ \vid\ \pat_2$'') may occur -- in parentheses if necessary -- wherever
+the application ``$\vid$\verb+{+{\tt 1=}$\exp_1$\verb+,+{\tt
+2=}$\exp_2$\verb+}+'' or its derived form
+``$\vid$\verb+(+$\exp_1$\verb+,+$\exp_2$\verb+)+'' (resp
+``$\vid$\verb+(+$\pat_1$\verb+,+$\pat_2$\verb+)+'') would otherwise
+occur.  On the other hand, an occurrence of any long identifier (qualified
+or not) prefixed by {\OP} is treated as non-infixed. The only required
+use of {\OP} is in prefixing a non-infixed occurrence of an
+identifier $\vid$ \REPL{that}{which} has infix status\ADD{ in an expression or pattern}; elsewhere {\OP}, where
+permitted, has no effect.\index{9.1}
+Infix status is cancelled by the ~$\NONFIX$~
+directive.  We refer to the three directives collectively as {\sl fixity directives}.
+
+The form of the fixity directives is as follows ($n\geq 1$):
+\[ \newlonginfix \]
+\[ \newlonginfixr \]
+\[ \newlongnonfix \] where $\langle d\rangle$ is an optional decimal digit $d$ indicating
+binding precedence. A higher value of $d$ indicates tighter binding;
+the default is {\tt 0}. ~$\INFIX$~ and ~$\INFIXR$~ dictate left and right
+associativity respectively. In an expression of the form  $\exp_1\, \vid_1\, \exp_2\, \vid_2\, \exp_3$, where
+      $\vid_1$ and $\vid_2$ are infixed operators with the same precedence, 
+      either both must associate to the left or both must
+associate to the right.
+For example, suppose that {\tt <<} and {\tt >>} have equal precedence,
+but associate to the left and right respectively; then
+\medskip
+
+\tabskip4cm
+\halign to\hsize{\indent\hfil{\tt #}\tabskip1em&\hfil#\hfil\ &\ {\tt #}\hfil\cr
+x << y << z&parses as&(x << y) << z\cr
+x >> y >> z&parses as&x >> (y >> z)\cr
+x << y >> z&is illegal\cr
+x >> y << z&is illegal\cr}
+\medskip
+The precedence of infixed operators relative
+to other expression and pattern constructions is given in
+Appendix~\ref{core-gram-app}.
+
+The {\sl scope}\index{9.2} of a fixity directive $\dir$ is the ensuing program text,
+except that if $\dir$ occurs in a declaration $\dec$ in either of the phrases
+\[ \LET\ \dec\ \IN\ \cdots\ \END \]
+\[ \LOCAL\ \dec\ \IN\ \cdots\ \END \]
+then the scope of $\dir$ does not extend beyond the phrase. Further scope
+limitations are imposed for Modules\insertion{\theidstatus}{ (see 
+Section~\ref{infixopmod.sec})}.
+
+These directives and ~$\OP$~ are omitted from the semantic rules, since they
+affect only parsing.
+
+\subsection{Derived Forms}
+\label{cor-der-form-sec}
+There\index{9.3} are many standard syntactic forms in ML whose meaning can be expressed
+in terms of a smaller number of syntactic forms, called the {\sl bare} language.
+These derived forms, and their equivalent forms in the bare language, are
+given in
+Appendix~\ref{derived-forms-app}.
+
+%With one exception, these derived forms use no new lexical items.  The
+%exception is that the symbol \verb+#+ prefixed to an identifier of the
+%class Lab constitutes a
+%lexical item;  \verb+#+{\it lab} denotes a selector function on records, cf. page~\pageref{der-exp}.
+
+
+\subsection{Grammar}
+
+The phrase classes for the Core are shown in Figure~\ref{cor-phr}.
+We use the variable $\atexp$ to range over AtExp, etc.
+The grammatical rules for the Core are shown in Figures~\ref{pat-syn} and~\ref{exp-syn}.
+
+%\clearpage
+\begin{figure}[t]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&#\hfil\tabskip\@centering\cr
+AtExp   & atomic expressions \cr
+ExpRow  & expression rows \cr
+Exp     & expressions \cr
+Match   & matches \cr
+Mrule   & match rules \cr
+\noalign{\vspace{2mm}}
+%\cr
+Dec     & declarations \cr
+ValBind & value bindings \cr
+TypBind & type bindings \cr
+DatBind & datatype bindings \cr
+ConBind & constructor bindings \cr
+%version 1: Constrs & datatype constructions \cr
+ExBind  & exception bindings \cr
+\noalign{\vspace{2mm}}
+%\cr
+AtPat   & atomic patterns \cr
+PatRow  & pattern rows \cr
+Pat     & patterns \cr
+\noalign{\vspace{2mm}}
+%\cr
+Ty      & type expressions \cr
+TyRow   & type-expression rows \cr
+}
+\makeatother
+\caption{Core Phrase Classes}
+\label{cor-phr}
+\end{figure}
+
+The following\index{10.1} conventions are adopted in presenting the grammatical rules,
+and in their interpretation:
+\begin{itemize}
+  \item The brackets\index{10.2} ~$\langle\ \rangle$~ enclose optional phrases.
+  \item For any syntax class X (over which $x$ ranges)
+we define the syntax class Xseq (over which {\it xseq} ranges) as follows:
+    \begin{quote}
+    \begin{tabular}{rcll}
+       {\it xseq} & $::=$ & $x$ & (singleton sequence)\\
+                  &       &     & (empty sequence)\\
+                  &       & \ml{(}$x_1$\ml{,}$\cdots$\ml{,}$x_n$\ml{)}
+                                & (sequence,~$n\geq 1$) \\
+    \end{tabular}
+    \end{quote}
+(Note that the ``$\cdots$'' used here, meaning syntactic iteration, must not be
+confused with ``$\mbox{\ml{...}}$'' which is a reserved word of the language.)
+  \item Alternative forms for each phrase class are in order of decreasing
+        precedence; this resolves ambiguity in parsing, as explained
+        in Appendix~\ref{core-gram-app}.\index{10.3}
+  \item L (resp. R)\index{10.4} means left (resp. right) association.
+
+\item The syntax of types binds more tightly than that of expressions.
+
+\item Each\index{10.6} iterated construct (e.g. $\match$, $\cdots$)
+extends as far
+right as possible; thus, parentheses may be needed around an expression which
+terminates with a match, e.g. ``$\FN\ \match$'', if this occurs within a
+larger
+match.
+\end{itemize}
+
+\begin{figure}[h]
+%\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
+  \atpat& ::=   & \wildpat      & wildcard\cr
+        &       & \scon         & special constant\cr
+        &       & \opp\longvid  & value identifier\cr
+        &       & \verb+{ +\recpat\verb+ }+
+                                & record\cr
+        &       & \parpat       & \cr
+\noalign{\vspace{6pt}}
+\labpats& ::=   & \wildrec      & \REPL{ellipses }{wildcard}\cr
+        &       & \longlabpats  & pattern row\cr
+\noalign{\vspace{6pt}}
+  \pat  & ::=   & \atpat        & atomic\cr
+        &  	& \opp\vidpat   & constructed pattern\cr
+        &       & \vidinfpat	& infixed value construction\cr
+        &       & \typedpat     & typed \ADD{(L)}\cr
+        &       & \CUT{\opp\layeredvidpat} & \CUT{layered}\cr
+        &	& \ADD{\aspat}	& \ADD{conjunction (R)}\cr
+        &	& \ADD{\orpat}	& \ADD{disjunction (R)}\cr
+        &	& \ADD{\nestedpat} & \ADD{nested match}\cr
+\noalign{\vspace{6pt}}
+  \ty   & ::=   & \tyvar        & type variable\cr
+        &       & \verb+{ +\rectype\verb+ }+
+                                & record type expression\cr
+        &       & \constype     & type construction\cr
+        &       & \funtype      & function type expression (R)\cr
+        &       & \partype      & \cr
+\noalign{\vspace{6pt}}
+\labtys & ::=   & \longlabtys   & type-expression row\cr
+        &       & \ADD{\extrecty} & \ADD{ellipses}\cr
+\noalign{\vspace{6pt}}
+}
+\makeatother
+\vspace{-2mm}
+\caption{Grammar: Patterns and Type expressions\index{12.2}\index{13.1}}
+\label{pat-syn}
+\end{figure}
+%\nopagebreak[4]
+
+\begin{figure}[t]
+\vspace{4pt}
+\makeatletter{}
+\tabskip\@centering
+\halign to\textwidth
+{#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
+  \atexp& ::=   & \scon         & special constant\cr\adhocdeletion{\theidstatus}{1cm}{
+        &       & \opp\longvar  & value variable\cr
+        &       & \opp\longcon  & value constructor\cr
+        &       & \opp\longexn  & exception constructor\cr}\adhocinsertion{\theidstatus}{-10cm}{
+        &       & \opp\longvid  & value identifier\cr}
+        &       & \verb+{ +\recexp\verb+ }+
+                                & record\cr
+        &       & \letexp       & local declaration\cr
+        &       & \parexp       & \cr
+\noalign{\vspace{6pt}}
+\labexps& ::=   & \longlabexps  & expression row\cr
+        &       & \ADD{\extrecexp} & \ADD{ellipses}\cr
+\noalign{\vspace{6pt}}
+  \exp  & ::=   & \atexp        & atomic\cr
+        &       & \appexp       & application (L)\cr
+        &       & \adhocreplacementl{\theidstatus}{1cm}{\infexp}{\vidinfexp}       & infixed application\cr
+        &       & \typedexp     & typed (L)\cr
+        &       & \handlexp     & handle exception\cr
+        &       & \raisexp      & raise exception\cr
+        &       & \fnexp        & function\cr
+\noalign{\vspace{6pt}}
+\match  & ::=   & \longmatch    & \cr
+\noalign{\vspace{6pt}}
+\mrule  & ::=   & \longmrule    & \cr
+\noalign{\vspace{6pt}}
+  \dec  & ::=   & \explicitvaldec & value declaration\cr
+        &       & \typedec      & type declaration\cr
+        &       & \datatypedec  & datatype declaration\cr
+        &       & \datatyperepldec & datatype replication\cr
+        &       & \CUT{\abstypedec} & \CUT{abstype declaration}\cr
+        &       & \exceptiondec & exception declaration\cr
+        &       & \localdec     & local declaration\cr
+        &       & \openstrdec   & open declaration ($n\geq 1$) \cr
+        &       & \emptydec     & empty declaration\cr
+        &       & \seqdec       & sequential declaration \ADD{(L)} \cr
+        &       & \newlonginfix & infix (L) directive\cr
+        &       & \newlonginfixr & infix (R) directive\cr
+        &       & \newlongnonfix & nonfix directive\cr
+\noalign{\vspace{6pt}}
+\valbind& ::=   & \longvalbind   & \cr
+        &       & \CUT{\recvalbind}   & \cr
+\noalign{\vspace{6pt}}
+\typbind& ::=   & \longtypbind  & \cr
+\noalign{\vspace{6pt}}
+\datbind& ::=   & \longdatbind  & \cr
+\noalign{\vspace{6pt}}
+\constrs& ::=   & \opp\longvidconstrs & \cr
+\noalign{\vspace{6pt}}
+\exnbind& ::=   & \generativeexnvidbind    & \cr
+        &       & \eqexnvidbind   & \cr
+\noalign{\vspace{6pt}}
+}
+\makeatother
+\vspace{-2mm}
+\caption{Grammar: Expressions, Matches, Declarations and Bindings\index{11}\index{12.1}}
+\label{exp-syn}
+\end{figure}
+%\clearpage % 1 August
+
+\subsection{Syntactic Restrictions}\index{13.2}
+\label{synres.sec}
+\begin{itemize}
+\item \CUT{No expression row,
+      pattern row or type-expression row may bind the same $\lab$ twice.}\footnote{
+        \ADD{This restriction is enforced by the static semantics of the core.}}
+\item No binding $\valbind$, $\typbind$, $\datbind$ or $\exnbind$ may bind
+      the same identifier twice; this applies also to value identifiers within
+      a $\datbind$.
+      \ADD{Identifiers appearing in both branches of a disjunctive pattern are bound
+      only once.}
+\item No $\tyvarseq$ may contain the same $\tyvar$ twice.
+\item For each value binding \pat\ \ml{=} \exp\ \REPL{in a value declaration with $\REC$, }{within $\REC$,}
+      $\exp$ must be of the form \fnexp. The derived form
+      of function-value binding given in Appendix~\ref{derived-forms-app},
+      page~\pageref{der-dec}, necessarily obeys this restriction.
+\item No $\datbind$, $\valbind$ or $\exnbind$ may bind $\TRUE$, $\FALSE$, $\NIL$, \boxml{::} or $\REF$. 
+      No $\datbind$ or $\exnbind$ may bind {\tt it}.
+\item No real constant may occur in a pattern.
+\item In a value declaration  $\VAL\, \tyvarseq\, \valbind$, if $\valbind$
+      contains another value declaration  $\VAL\, \tyvarseq'\, \valbind'$ 
+      then $\tyvarseq$ and $\tyvarseq'$ must be disjoint.  In other 
+      words, no type variable may be scoped by two value
+      declarations of which one occurs inside the other.  This
+      restriction applies after $\tyvarseq$ and $\tyvarseq'$ have been
+      extended to include implicitly scoped type variables, as
+      explained in Section~\ref{scope-sec}.
+\item[\textcolor{\addcolor}{$\bullet$}]
+      \ADD{Any $\tyvar$ occurring on the right-hand side of a $\typbind$ or $\datbind$ of the form
+      ``$\tyvarseq$ $\tycon$ \ml{=} $\ldots$'' must occur in $\tyvarseq$.}
+\item[\textcolor{\addcolor}{$\bullet$}]
+      \ADD{The pattern $\pat_1$ in a nested match ``$\nestedpat$'' may not itself be a nested
+      match, unless enclosed by parentheses.}
+\item[\textcolor{\addcolor}{$\bullet$}]
+      \ADD{The pattern $\pat$ in a $\valbind$ may not be a nested match, unless enclosed by parentheses.}
+\end{itemize}

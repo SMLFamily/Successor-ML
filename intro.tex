@@ -1,0 +1,131 @@
+%!TEX root = root.tex
+%
+\section{Introduction}
+
+This document formally defines \REPL{Successor }{Standard} ML.
+\ADD{It is derived from the 1997 \emph{Definition of Standard ML} by adding the
+changes suggested by Andreas Rossberg in the HaMLet S documentation.}
+
+To understand the method of definition, at least in broad terms, it helps to
+consider how an implementation of ML is naturally
+organised.  ML is an interactive
+language,\index{4.1} 
+and a {\sl program}\index{4.2}  consists of a sequence of {\sl top-level
+declarations};\index{4.3} the execution
+of each declaration modifies the top-level environment, which we call
+a {\sl basis}, and reports the modification to the user.
+
+In the execution of a declaration there are three phases:
+{\sl parsing}, {\sl elaboration}, and {\sl evaluation}.  
+Parsing
+determines the grammatical form of a declaration.  Elaboration, the
+{\sl static} phase, determines whether it is well-typed and
+well-formed in other ways, and records relevant type or form information
+in the basis. Finally evaluation, the {\sl dynamic} phase, determines the
+value of the declaration and records relevant value information in the
+basis.  Corresponding to these phases, our formal definition divides
+into three parts:  grammatical rules, elaboration rules, and evaluation
+rules.  Furthermore, the basis is divided into the {\sl static} 
+basis and the {\sl dynamic} basis; for example, a variable which has been
+declared is associated with a type in the static basis and with a value in
+the dynamic basis.
+
+In an implementation, the basis need not be so divided.  But for the
+purpose of formal definition, it eases presentation and understanding to
+keep the static and dynamic parts of the basis separate.
+This is further justified by programming experience.  A large proportion
+of errors in ML programs are discovered during elaboration, and identified
+as errors of type or form, so it follows that it is useful to perform
+the elaboration phase separately.  In fact, elaboration without
+evaluation is \replacement{\thenewpreface}{just}{part of} what is normally called {\sl compilation};  
+once
+a declaration (or larger entity) is compiled one wishes to evaluate it --
+repeatedly -- without re-elaboration, from which it follows that it is
+useful to perform the evaluation phase separately.
+
+A further factoring of the formal definition is possible,
+because of the structure of the language.  ML consists of a lower level
+called the {\sl Core language} (or {\sl Core} for short), a middle level
+concerned  with programming-in-the-large called {\sl Modules},
+and a very small upper level called {\sl Programs}.
+With the three phases described above, there is therefore
+a possibility of nine components in the
+complete language definition. We have allotted one section to each
+of these components, except that we have combined the parsing,
+elaboration and evaluation of Programs in one section. The
+scheme for the ensuing seven sections is therefore as follows:
+
+\vspace*{3mm}
+\begin{tabular}{rccc}
+                & {\em Core} & {\em Modules} & {\em Programs} \\
+\cline{2-4}
+{\em Syntax}    &\multicolumn{1}{|c}{Section 2}
+                             &\multicolumn{1}{|c}{Section 3}
+                                             &\multicolumn{1}{|c|}{ }\\
+\cline{2-3}
+{\em Static Semantics}
+                &\multicolumn{1}{|c}{Section 4}
+                             &\multicolumn{1}{|c}{Section 5}
+                                             &\multicolumn{1}{|c|}{Section 8}\\
+\cline{2-3}
+{\em Dynamic Semantics}
+                &\multicolumn{1}{|c}{Section 6}
+                             &\multicolumn{1}{|c}{Section 7}
+                                             &\multicolumn{1}{|c|}{}\\
+\cline{2-4}
+\end{tabular}
+\vspace*{3mm}
+
+%The Core is
+%a complete language in its own right, and its embedding in the full
+%language is simple;  therefore each of the three parts of the formal
+%description is further divided into two -- one for the Core, and one for
+%Modules.
+
+The Core provides many phrase classes, for programming convenience.
+But about half of these classes are derived forms, whose meaning can be
+given by translation into the other half which we call the
+{\sl Bare} language.   
+Thus each of the three parts for the Core treats only the bare language;
+the derived forms are treated in  Appendix~\ref{derived-forms-app}.
+This appendix also contains a few derived forms for Modules.
+A full grammar for the language is presented in
+Appendix~\ref{core-gram-app}.
+
+In\index{5.0} Appendices~\ref{init-stat-bas-app} and~\ref{init-dyn-bas-app} 
+the {\sl initial basis} is detailed.  This basis,
+divided into its static and dynamic parts, contains the static and
+dynamic meanings of \replacement{\thelibrary}{all predefined identifiers.}{a
+small set of predefined identifiers. A richer basis is defined
+in a separate document\cite{sml-basis-lib}.}
+
+The semantics is presented in a form  known as Natural
+Semantics.\index{5.1}  It consists of a set of rules allowing 
+{\sl sentences} of the form
+\[ A \vdash phrase \Rightarrow A' \]
+to be inferred, where $A$ is often a basis (static or dynamic) and $A'$ a
+semantic object
+-- often a type in the static semantics and a value in the dynamic
+semantics. One should read such a sentence as follows: ``against
+the background provided by
+$A$, the phrase $phrase$ elaborates -- or evaluates -- to the object
+$A'$''.
+Although the rules themselves are formal the semantic
+objects, particularly the static ones, are the subject of a mathematical
+theory which is presented in a succinct form in the relevant sections.\deletion{\thenostrsharing}{
+This theory, particularly the theory of types and signatures, will
+benefit from a more pedagogic treatment in other publications; the
+treatment here is
+probably the minimum required to understand the meaning of the rules.}
+
+The robustness of the semantics depends upon theorems.  
+Usually these have been proven, but the proof is not included.
+\deletion{\thenostrsharing}{In two cases, however, they are presented as ``claims'' rather than
+theorems; these are the claim of principal environments in 
+Section~\ref{principal-env-sec}, and the claim of principal signatures
+in Section~\ref{prinsig-sec}. We need further confirmation of our
+detailed proofs of these claims, before asserting them as theorems.}
+
+
+
+

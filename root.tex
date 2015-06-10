@@ -1,0 +1,206 @@
+% this is file `root', the root of the whole semantics
+%\documentclass[12pt,twoside]{article}
+%\usepackage{a4}
+\documentclass[12pt]{article}
+
+\usepackage[textwidth=6.5in,textheight=8.5in,includehead,includefoot]{geometry}
+\usepackage{url}
+
+\title{The Definition of Successor ML\thanks{
+  This document is derived from
+  \emph{The Definition of Standard ML} (Milner, Tofte, Harper, and MacQueen,
+  MIT Press, 1997), and
+  \emph{HaMLet S: To Become Or Not To Become Successor ML} (Rossberg 2008).}}
+\author{Robert Harper and David MacQueen(ed.)}
+\date{\today}
+%\includeonly{mac,syncor}
+\include{mac} % macros
+
+%% support for SuccML changes
+\usepackage[deletedmarkup=xout,authormarkup=none]{changes}
+\newcommand{\addcolor}{magenta}
+\newcommand{\delcolor}{gray}
+\definechangesauthor[color=\addcolor]{SuccML}
+\newcommand\redsout{\bgroup\markoverwith{\textcolor{red}{\rule[0.5ex]{2pt}{0.6pt}}}\ULon}
+\setdeletedmarkup{{\color{\delcolor}\redsout{#1}}}
+\newcommand{\ADD}[1]{\added[id=SuccML]{#1}}
+\newcommand{\CUT}[1]{\deleted[id=SuccML]{#1}}
+\newcommand{\REPL}[2]{\replaced[id=SuccML]{#1}{#2}}
+%%
+%% commands to support inserting equations without screwing up the original numbers
+%%
+\newcounter{saveeqn}
+\newcommand{\BeginNewEqns}{%
+  \setcounter{saveeqn}{\value{equation}}%
+  \setcounter{equation}{0}%
+  \renewcommand{\theequation}{\mbox{\textcolor{\addcolor}{\arabic{saveeqn}\alph{equation}}}}}
+\newcommand{\EndNewEqns}{%
+  \setcounter{equation}{\value{saveeqn}}%
+  \renewcommand{\theequation}{\mbox{\arabic{equation}}}}
+\newcommand{\SameEqn}{%
+  \addtocounter{equation}{-1}%
+  \renewcommand{\theequation}{\mbox{\CUT{\arabic{equation}}}}}
+\newcommand{\NextEqn}{%
+  \renewcommand{\theequation}{\mbox{\arabic{equation}}}}
+%%
+ 
+\usepackage{makeidx}
+% Disable index printing
+% \makeindex
+
+%
+%\includeonly{dynmod,overloading}
+%for agfa: \voffset -12mm
+%4 Sept. 89, for lw16:
+%\advance\hoffset by -8mm
+%AT DIKU:
+%\addtolength{\textwidth}{-13mm}
+%\addtolength{\textheight}{0.4mm}
+%\nofiles
+\begin{document}
+\bibliographystyle{plain}
+
+\pagestyle{empty}
+\begin{flushleft}
+{\Large\bf The Definition of \REPL{Successor}{Standard} ML}
+\end{flushleft}
+\vfill
+\begin{flushleft}
+%\normalsize\bf The MIT Press\\
+%Cambridge, Massachusetts\\
+%London, England
+\end{flushleft}
+\vspace*{1cm}
+\clearpage
+{This page is blank}
+\clearpage
+\pagestyle{headings}
+\thispagestyle{empty}
+\setcounter{page}{5}
+\renewcommand{\thepage}{\roman{page}}
+\tableofcontents
+\clearpage
+%\listofchanges  %% SuccML
+%\clearpage %% SuccML
+\pagestyle{empty}
+\ \clearpage
+\pagestyle{myheadings}
+\pagestyle{empty}
+\include{preface}
+\clearpage
+\pagestyle{empty}
+\ \clearpage
+\pagestyle{headings}
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\thispagestyle{empty}
+\include{intro}
+\thispagestyle{empty}
+\include{syncor}
+\thispagestyle{empty}
+\include{synmod}
+\thispagestyle{empty}
+\include{statcor}
+\thispagestyle{empty}
+\include{statmod}
+\thispagestyle{empty}
+\include{dyncor}
+\thispagestyle{empty}
+\include{dynmod}
+\thispagestyle{empty}
+\include{prog}
+\appendix
+\thispagestyle{empty}
+\include{app1}
+\blankPage
+\thispagestyle{empty}
+\include{app2}
+\blankPage
+\thispagestyle{empty}
+\include{app3}
+\blankPage
+\thispagestyle{empty}
+\include{app4}
+\blankPage
+\thispagestyle{empty}
+\include{overloading}
+%\thispagestyle{empty}
+%\include{app5}
+%\blankPage
+\thispagestyle{empty}
+\include{whatisnew}
+\blankPage
+\addcontentsline{toc}{section}{\protect\numberline{}{\vrule width0pt height2cm depth0pt References}}
+\thispagestyle{empty}
+\bibliography{tofte,bob,succ-ml}
+\clearpage
+\blankPage
+\thispagestyle{empty}
+
+% Disable index printing
+%\printindex
+\end{document}
+
+ HOW TO REVISE THE INDEX 
+
+The index is made using partly LaTex and partly an ML progam;
+the latter is found on the file ``index.ml''. 
+
+When LaTex is run on input ``root.tex'' it produces a file ``root.idx''.
+Each line in this file is of the form
+
+               \indexentry{idxkey}{pageref}
+
+where idxkey is a key inserted precisely one place in the document 
+(in the form of a LaTex command \index{idxkey})
+and pageref is the page number of the page LaTex was printing
+by the time it encountered the \index{idxkey} command.
+
+A typical idxkey is 45.1 , which will occur in the TeX file 
+somewhere near what produces page 45 in the final document. 
+In fact, when the keys were first inserted in the TeX file, 
+45.1 would be the first key on page 45, but as the document changes, 
+one cannot get the pageref from the idxkey simple by taking the 
+prefix of the idxkey up to the full stop.
+
+There are many entries in the index that refer to the same
+idxkey. Thus the number of idxkeys has been kept relatively
+small, typically 2 or 3 pr page. The basic idea, then, is that
+there is an ML program (on file ``index.ml'') which
+associates entries in the final index with idxkeys by 
+a sequence of expressions
+
+              .......
+              item ``handle'' [p``45.4'',``57.3''to``59.1'',p``78.2''];
+              item ``{\\it happiness}'' [p''38.1''];
+              ......
+ 
+The program will first build a conversion table from idxkeys
+(such as ``45.4'') to page references by reading thrugh
+``root.idx''. Then it will evaluate all the item and subitem
+expressions. The item function produces a line in the
+latex file (``index.tex'') using the conversion table.
+Thus the above lines may produce
+
+               ...........
+               \item ``handle'' 46, 57--58, 78
+               \item {\it happiness} 38
+               ...........
+
+If insertion of more text in the source files result in 
+new page splits, then one should manually check that
+the item expressions in ``index.ml'' refer to the
+right idxkeys. It may be necessary to change some of the
+lists in the item expressions and it may be desirable to
+insert new \index commands in the source text. However,
+if we for simplicity assume that we simply insert new
+material corresponding to a new chapter (not affecting
+the page splits in other chapters) then one would proceed
+as follows:
+First add new item expressions in the index.ml file corre-
+sponding to new entries in the index (one will have new
+\index commands in the new input, of course). Then one
+runs latex on ``root.tex'' to produce the ``root.idx'' file. 
+Then one runs index.ml (enter ML and type use ``index.ml'').
+Then one runs latex on root again, this time giving the 
+correct index.

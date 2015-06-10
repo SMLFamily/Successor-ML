@@ -1,0 +1,321 @@
+%!TEX root = root.tex
+%
+%
+
+\section*{Preface}
+\markboth{}{}
+A precise description of a programming language is a prerequisite for its 
+implementation and for its use.  The description can take many forms, 
+each suited to a different purpose.  A common form is a reference manual,
+which is usually a careful narrative description of the meaning of each
+construction in the language, often backed up with a formal presentation
+of the grammar (for example, in Backus-Naur form). 
+This gives the programmer enough 
+understanding for many of his purposes.  But it is ill-suited for use
+by an implementer, or by someone who wants to formulate laws for
+equivalence of programs, or by a programmer who wants to design programs with
+mathematical rigour. 
+
+This document is a formal description of both the {\sl grammar} and the
+{\sl meaning} of a language which is both designed for large projects and
+widely used.  As such, it aims to serve the whole community of people
+seriously concerned with the language.  At a time when it is increasingly
+understood that programs must withstand rigorous analysis, particularly for 
+systems where safety is critical, a rigorous language presentation is even
+important for negotiators and contractors; for a robust program
+written in an insecure language is like a house built upon sand.
+
+
+Most people have not looked at a rigorous language presentation before.
+To help them particularly, but also to put the present work in perspective
+for those more theoretically prepared,  it will be useful here to say something
+about three things: the nature of Standard ML, the task of language definition 
+in general, and the form of the present Definition.
+We also briefly describe the recent revisions to the Definition.
+\vspace*{-8pt}
+
+\subsubsection*{Standard ML}
+\vspace*{-4pt}
+Standard ML is a functional programming language, in the sense that the
+full power of mathematical functions is present.  But it grew in response
+to a particular programming task, for which it was equipped also
+with full imperative power, and a sophisticated exception mechanism.  
+It has an advanced form of parametric modules, aimed at organised
+development of large programs.  Finally it is strongly typed, and it was
+the first language to provide a particular form of polymorphic type which 
+makes the strong typing remarkably flexible.  This combination of
+ingredients has not made it unduly large, but their novelty has been
+a fascinating challenge to semantic method (of which we say more below).
+ 
+ML has evolved over \replacement{\thenewpreface}{fourteen}{twenty} years as a fusion of many ideas 
+from many people. This evolution is
+described in some detail in Appendix~\ref{story-app} of the book, where also we
+acknowledge all those who have contributed to it, both in design
+and in implementation.
+
+`ML' stands for 
+{\sl meta language}; this is the term logicians use for a language in which
+other (formal or informal) languages are discussed and analysed.  
+Originally ML was conceived as a medium for finding and performing 
+proofs in a logical language.   Conducting rigorous argument as dialogue 
+between person and machine has been a \replacement{\thenostrsharing}{strong research interest at Edinburgh 
+and elsewhere, throughout these fourteen years.}{growing research topic 
+throughout these twenty years.} The difficulties are enormous, 
+and make stern demands
+upon the programming language which is used for this dialogue.   Those who are
+not familiar with computer-assisted reasoning may be surprised that a 
+programming language, which was designed for this rather esoteric activity, 
+should ever lay claim to being {\sl generally} useful.
+On reflection, they should not be surprised.  LISP is a prime example of
+a language invented for esoteric purposes and becoming widely used.  LISP
+was invented for use in artificial intelligence (AI); the important thing
+about AI here is not that it is esoteric,  but that
+it is difficult and varied; so much so, that anything which works well for
+it must work well for many other applications too.
+
+The same can be said about the initial purpose of ML, but with a different
+emphasis.  Rigorous proofs are complex things, which need varied
+and sophisticated presentation -- particularly on the screen in interactive
+mode. Furthermore the proof methods, or
+strategies, involved are some of the most complex algorithms which we know.   
+This all applies equally to AI, but one demand is made more strongly 
+by proof than perhaps by any other application: the demand for rigour.  
+
+This demand established the character of ML.  In order to be sure that,
+when the user and the computer claim to have together performed a rigorous
+argument, their claim is justified, it was seen 
+that the language must be strongly typed. On the other hand, to be
+useful in a difficult  application, the type system had to be rather
+flexible, and permit the machine to guide the user rather than impose
+a burden upon him.   A reasonable solution was found, in which the machine
+helps the user significantly  by
+inferring his types for him. Thereby the machine also confers complete
+reliability on his programs, in this sense: 
+If a program claims that a certain result 
+follows from the rules of reasoning which the user has supplied, then the 
+claim may be fully trusted.
+
+The principle of inferring useful structural information about programs
+is also represented, at the level of program modules, by the inference of 
+{\sl signatures}.
+Signatures describe the interfaces between modules, and are vital for robust
+large-scale programs.  When the user combines modules, the signature
+discipline prevents him from mismatching their interfaces.  By programming
+with interfaces and parametric modules, it becomes possible to focus on the
+structure of a large system, and to compile parts of it in isolation from
+one another -- even when the system is incomplete.
+
+This emphasis on types and signatures has had a profound effect on the 
+language Definition. Over half this document is devoted to inferring types 
+and signatures for programs.  But the method used is exactly the same as for 
+inferring what {\sl values} a program delivers; indeed, a type or signature is 
+the result of a kind of abstract evaluation of a program phrase. 
+
+In designing ML, 
+the interplay among three activities -- language design, definition and 
+implementation -- was extremely close. This was particularly true for the
+newest part, the parametric modules. This part of the language grew from an 
+initial proposal by David MacQueen, itself highly developed; but both 
+formal definition and implementation had a strong influence on the detailed
+design.  In general, those who took part in the three activities cannot now 
+imagine how they could have been properly done separately.  
+
+\subsubsection*{Language Definition}
+Every programming language presents  its own conceptual view of 
+computation.  This view is usually indicated by the names used for the phrase 
+classes of the language, or by its keywords: terms like package, module, 
+structure, exception, channel, type, procedure, reference, sharing, \ldots. 
+These terms also have their abstract counterparts,  which may be called
+{\sl semantic objects}; these are what people really have in mind when they use
+the language, or discuss it, or think in it.  Also, it is these objects,
+not the syntax, which represent the particular conceptual view of each
+language; they are the character of the language.  Therefore a definition
+of the language must be in terms of these objects.  
+
+As is commonly done in programming language semantics, we shall loosely
+talk of these semantic objects as {\sl meanings}. Of course, it is 
+perfectly possible to understand the semantic theory of a language, and
+yet be unable to understand the meaning of a particular program, in the
+sense of its {\sl intention} or {\sl purpose}.  The aim of a language
+definition is not to formalise everything which could possibly be called the
+meaning of a program, but to establish a theory of semantic objects  
+upon which the understanding of particular programs may rest.
+
+The job of a language-definer is twofold.  First -- as we have already 
+suggested -- he must create a world of meanings appropriate for the language, 
+and must find a way of saying
+what these meanings precisely are.  Here, he meets a problem; notation
+of {\sl some} kind must be used to denote and describe these meanings --
+but not a {\sl programming language} notation, unless he is passing the
+buck and defining one programming language in terms of another. Given
+a concern for rigour, mathematical notation is an obvious choice.  Moreover, 
+it is not enough just to
+write down mathematical definitions. The world of meanings only becomes
+meaningful if the objects possess nice properties, which make them tractable.
+So the language-definer really has to develop a small {\sl theory} of his 
+meanings, in the same way that a mathematician develops a theory.  
+Typically, after initially defining some objects, the mathematician goes on to 
+verify properties which indicate that they are objects worth studying. 
+It is this part, a kind of scene-setting, which the language-definer shares 
+with the 
+mathematician.  Of course he can take many objects and their theories 
+directly from mathematics,  such as functions, relations,
+trees, sequences, \ldots. But he must also give some special theory for the
+objects which make his language particular, as we do for types, structures and 
+signatures in this book; otherwise his language definition may be 
+formal but will give no insight.
+
+The second part of the definer's job is to define {\sl evaluation} precisely.
+This means that he must define at least {\sl what} meaning, $M$, results
+from evaluating any phrase $P$ of his language (though he need not explain
+exactly {\sl how} the meaning results; that is he need not give the full 
+detail of every computation).  This part of his job must be formal
+to some extent, if only because the phrases $P$ of his language are indeed
+formal objects.  But there is another reason for formality.  The task is
+complex and error-prone, and therefore demands a high level of explicit
+organisation (which is, largely, the meaning of `formality'); moreover,
+it will be used to specify an equally complex, error-prone and formal
+construction: an implementation.
+
+We shall now explain the keystone of our semantic method.  First, we need a
+slight but important refinement. A phrase $P$ is never evaluated {\sl in
+vacuo} to a meaning $M$, but always {\sl against a background}; this 
+background -- call it $B$ -- is itself a semantic object, 
+being a distillation of the meanings
+preserved from evaluation of earlier phrases (typically variable declarations,
+procedure declarations, etc.).  In fact evaluation is background-dependent
+-- $M$ depends upon $B$ as well as upon $P$.   
+
+The keystone of the method, then, is a certain kind of assertion about
+evaluation; it takes the form
+\[ B\vdash P\Rightarrow M\]
+and may be pronounced: `Against the background $B$, the phrase $P$ evaluates
+to the meaning $M$'.  {\sl The formal purpose of this Definition is no more, 
+and no less, than to decree exactly which assertions of this form are true.}
+This could be achieved in many ways. We have chosen to do it in a structured
+way, as others have, by giving rules which allow assertions about a 
+{\sl compound} phrase $P$ to be inferred from assertions about its
+{\sl constituent} phrases $P_1,\ldots,P_n$.
+
+We have written the Definition in a form suggested by the previous remarks.
+That is, we have defined our semantic objects in mathematical
+notation which is completely independent of Standard ML, and we have
+developed just enough of their theory to give sense to our rules of
+evaluation. 
+
+   Following another suggestion above, we have factored our task
+by describing {\sl abstract} evaluation -- the inference and checking of
+types and signatures (which can be done at compile-time) -- completely 
+separately from {\sl concrete} evaluation.  
+It really is a factorisation, because a {\sl full} value in all its glory --
+you can think of it as a concrete object with a type
+attached -- never has to be presented.\note{\thecommentary}{Paragraph moved}
+
+\deletion{\thenewpreface}{
+\subsubsection*{The form of the Definition
+\footnote{
+   The Definition has evolved through a sequence of three previous versions,
+   circulated as Technical Reports.  For those who have followed the
+   sequence, we should point out that the treatment of {\sl equality types}
+   and of {\sl admissibility} has been slightly modified in this publication 
+   to meet the claim for principal signatures.  The changes are mainly
+   in Sections~4.9, 5.5 and 5.13 and in the inference rules~19, 20,
+   29 and 65.}}}
+
+\subsubsection*{The Revision of Standard ML}
+{\it The Definition of Standard ML} was published in 1990.  
+Since then the implementation technology of
+the language has advanced enormously, and its users have 
+multiplied.  The language and its Definition 
+have therefore incited close scrutiny, evaluation, much approval, 
+sometimes strong criticism.\note{\thenostrsharing}{Section added.}
+
+The originators of the language have sifted this response, and
+found that there are inadequacies in the original language and its 
+formal Definition.  They are of three kinds: missing features which
+many users want;  complex and little-used features which most
+users can do without; and mistakes of definition.  What is
+remarkable is that these inadequacies are rather few, and that they
+are rather uncontroversial.  
+
+This new version of the Definition addresses the three kinds
+of inadequacy respectively by additions, subtractions and corrections.
+But we have only made such amendments when one or more aspects of
+SML -- the language itself, its usage, its implementation, its formal 
+Definition -- have thus become simpler, without complicating the
+other aspects.  It is worth noting that even the additions meet this 
+criterion; for example we have introduced type abbreviations
+in signatures to simplify the use of the language, but the way we
+have done it has even simplified the Definition too.   In fact,
+after our changes the formal Definition has fewer rules.
+
+In this exercise we have consulted the major implementers and several
+users, and have found broad agreement.  In the 1990 Definition it was
+predicted that further versions of the Definition would be produced as
+the language develops, with the intention to minimise the number of
+versions.  This is the first revised version, and we foresee no
+others. The changes that have been made to the 1990~Definition are
+enumerated in Appendix~\ref{whatisnew-app}.
+
+The resulting document is, we hope, valuable as the essential point of 
+reference for Standard ML.  If it is to play this role well, it must
+be supplemented by other literature.  \replacement{\thenewpreface}{Some}{Many}
+expository books have already been 
+written, and this Definition will be useful as a 
+background reference for their readers. 
+We \replacement{\thenewpreface}{have also become}{became}
+convinced, while
+writing the \insertion{\thenewpreface}{1990} Definition, that we could 
+not discuss many questions without 
+making it far too long.  Such questions are: Why were certain design choices
+made?  What are their implications for programming?  
+Was there a good alternative meaning for some constructs, or was our
+hand forced?  What different forms of phrase are equivalent? What is the proof
+of certain claims?  Many of these
+questions \replacement{\thenewpreface}{will not be}{are not} 
+answered by pedagogic texts either. 
+\replacement{\thenewpreface}{So we are writing
+a Commentary\cite{mt91} on the Definition which will assist people in reading it, and
+which will serve as a bridge between the Definition and other texts.}
+{We therefore wrote a 
+Commentary on the 1990
+Definition to
+assist people in reading it, and to
+serve as a bridge between the Definition and other texts. Though in
+part outdated by the present revision, the Commentary still largely fulfils its 
+purpose.}
+
+\insertion{\thenewpreface}{There exist several textbooks on programming
+with Standard ML\cite{paulson96,mcp93,Ullman94,stansifer92}. The second
+edition of Paulson's book\cite{paulson96} conforms with the present revision.}
+
+
+We wish to thank Dave Berry, Lars Birkedal, Martin Elsman, Stefan Kahrs
+and John Reppy for many detailed comments and suggestions which have assisted
+the revision.
+
+\begin{flushright}
+Robin Milner\quad Mads Tofte\quad Robert Harper\quad David MacQueen\\[1cm]
+November 1996
+\end{flushright}
+
+%\newpage
+\deletion{\thenewpreface}{\begin{flushright} Edinburgh\\August 1989 \end{flushright}}
+
+\subsection*{Successor ML}
+{\it The Definition of Standard ML (Revised)} was published in 1997~\cite{sml97-definition}, and
+{\it The Standard ML Basis Library} was published in 2004~\cite{sml-basis-lib}.
+Since that time, while SML implementations have matured, the language that they
+implement has remained static.
+Successor ML is a collection of proposed changes and extensions to SML that both
+address problems in the Definition and improve and grow the language in natural ways.
+This document merges the formal description of Successor ML features developed
+by Andreas Rossberg~\cite{hamlet-s} into the Standard ML Revised Definition.
+It is hoped that the resulting document will serve as basis for the future development
+of Standard ML.
+
+\begin{flushright}
+John Reppy\\[1cm]
+June 2015
+\end{flushright}
+
