@@ -984,7 +984,7 @@ Section~\ref{tyfun-sec} and they ensure $tycon\notin\Dom\TE$.
      {\begin{array}{l}
         \C\ts\newlongdatbind\ra\\
         \qquad(\cl{}{\VE}\langle +\ \VE'\rangle,\
-        \{\tycon\mapsto(\t,\cl{}{\VE})\}\ \langle +\ \TE'\rangle\ADD{)}
+        \{\tycon\mapsto(\t,\cl{}{\VE})\}\ \langle +\ \TE'\rangle\FIX{)}
       \end{array}
      }\index{30.1}
 \end{equation}%
@@ -1341,19 +1341,8 @@ There\index{32.2} are a few restrictions on programs which should be enforced by
 compiler, but are better expressed apart from the preceding
 Inference Rules.  They are:
 \begin{enumerate}
-%poly
-%The following restriction has been removed from Version 1 because
-%of polymorphic references and exceptions
-%\item \label{monotypes-res}
-%The reference value constructor ~{\tt ref}~ may occur in patterns
-%with polymorphic type, but in an expression it must always elaborate to
-%a monotype, i.e. a type containing no type variables.  
-%Moreover, exception constructors can have monotypes only.
-%These restrictions
-%will be relaxed in future Versions, but some restrictions will always be
-%necessary to ensure soundness of the type discipline.
 \item
-\ADD{%
+\FIX{%
 For each occurrence of a record expression containing ellipses,
 i.e., of the form
 %\begin{quote}
@@ -1382,7 +1371,7 @@ to be matched by the wildcard. For this purpose, an explicit type
 constraint may be needed.
 }
 
-\item
+\item\label{irredundant-pat-restriction}
 In a match of the form ${\it pat}_1$ \ml{=>} $\exp_1$ \ml{|}$\;\cdots\;$
 \ml{|} ${\tt pat}_n$ \ml{=>} $\exp_n$ 
 the pattern sequence $\pat_1,\ldots,\pat_n$ should be {\sl irredundant};
@@ -1412,6 +1401,8 @@ exhaustive by itself.
 \ADD{%
 	A disjunctive pattern of the form ``$\orpat$ should be {\sl irredundant};
 	that is, $\pat_2$ should match some value not matched by $\pat_1$.
+	As in \ref{irredundant-pat-restriction} above, a pattern that contains a guard
+	may be assumed to possibly fail.
 }
 
 \item

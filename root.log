@@ -1,0 +1,617 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 AUG 2015 11:41
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**root.tex
+(./root.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\@input{mac.aux}
+\openout2 = `mac.aux'.
+
+(./mac.tex
+\c@changeno=\count90
+\c@fixtypos=\count91
+\c@noimptypes=\count92
+\c@typabbr=\count93
+\c@nostrsharing=\count94
+\c@newpreface=\count95
+\c@noinfixinspec=\count96
+\c@nofuncspec=\count97
+\c@noeqtypespec=\count98
+\c@nolocalspec=\count99
+\c@library=\count100
+\c@ce=\count101
+\c@noopenspec=\count102
+\c@noclosurerestriction=\count103
+\c@notypexplication=\count104
+\c@singleincludespec=\count105
+\c@idstatus=\count106
+\c@infixassociativity=\count107
+\c@explicittyvars=\count108
+\c@constructors=\count109
+\c@comments=\count110
+\c@commentary=\count111
+\c@safelet=\count112
+\c@principalenv=\count113
+\c@scon=\count114
+\c@datatyperepl=\count115
+\c@marginalnote=\count116
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/changes/changes.sty
+Package: changes 2015/04/27 v2.0.4 changes package
+
+*** changes package 2015/04/27 v2.0.4 ***
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+)
+\XKV@depth=\count117
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xifthen/xifthen.sty
+Package: xifthen 2009/04/17 v1.3 Extended ifthen features
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 2015/03/02 v2.1 eTeX basic definition package (PEB,DPC)
+\et@xins=\count118
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count119
+\calc@Bcount=\count120
+\calc@Adimen=\dimen111
+\calc@Bdimen=\dimen112
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count121
+\calc@Cskip=\skip45
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
+Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
+))
+changes-option 'deletedmarkup=xout'
+changes-option 'authormarkup=none'
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count122
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/pdfcolmk.sty
+Package: pdfcolmk 2008/08/11 v1.2 Color support for pdfTeX via marks (HO)
+Package pdfcolmk Info: The color stack of pdfTeX >= 1.40 is used. Therefore
+(pdfcolmk)             this package is not necessary and not loaded.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box26
+\UL@hyphenbox=\box27
+\UL@skip=\skip46
+\UL@hook=\toks18
+\UL@height=\dimen113
+\UL@pe=\count123
+\UL@pixel=\dimen114
+\ULC@box=\box28
+Package: ulem 2012/05/18
+\ULdepth=\dimen115
+)
+\c@Changes@AuthorCount=\count124
+\c@Changes@Author=\count125
+\c@Changes@AddCount=\count126
+\c@Changes@DeleteCount=\count127
+\c@Changes@ReplaceCount=\count128
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/truncate/truncate.sty
+Package: truncate 2001/08/20  ver 3.6
+\@Trunc@RestHyph=\toks19
+)
+\Changes@Len@summ=\skip47
+)
+\c@Changes@AddCountFixSML=\count129
+\c@Changes@DeleteCountFixSML=\count130
+\c@Changes@ReplaceCountFixSML=\count131
+\c@Changes@AddCountSuccML=\count132
+\c@Changes@DeleteCountSuccML=\count133
+\c@Changes@ReplaceCountSuccML=\count134
+\c@saveeqn=\count135
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+) (./root.aux
+(./preface.aux) (./intro.aux) (./syncor.aux) (./synmod.aux) (./statcor.aux)
+(./statmod.aux) (./dyncor.aux) (./dynmod.aux) (./prog.aux) (./app1.aux)
+(./app2.aux) (./app3.aux) (./app4.aux) (./overloading.aux) (./whatisnew.aux))
+\openout1 = `root.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot 
+* h-part:(L,W,R)=(72.27pt, 469.75499pt, 72.27pt)
+* v-part:(T,H,B)=(45.46997pt, 681.295pt, 68.20502pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75499pt
+* \textheight=614.295pt
+* \oddsidemargin=0.00002pt
+* \evensidemargin=0.00002pt
+* \topmargin=-26.80002pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count136
+\scratchdimen=\dimen116
+\scratchbox=\box29
+\nofMPsegments=\count137
+\nofMParguments=\count138
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count139
+\MPscratchDim=\dimen117
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
+\everyMPtoPDFconversion=\toks21
+) [1
+
+
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2
+
+] (./root.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
+ [5
+
+])
+\tf@toc=\write3
+\openout3 = `root.toc'.
+
+ [6] [7
+
+]
+\openout2 = `preface.aux'.
+
+ (./preface.tex
+
+LaTeX Warning: Reference `story-app' on page viii undefined on input line 52.
+
+[8
+
+
+] [9] [10] [11]
+
+LaTeX Warning: Citation `paulson96' on page xii undefined on input line 290.
+
+
+LaTeX Warning: Citation `mcp93' on page xii undefined on input line 290.
+
+
+LaTeX Warning: Citation `Ullman94' on page xii undefined on input line 290.
+
+
+LaTeX Warning: Citation `stansifer92' on page xii undefined on input line 290.
+
+
+LaTeX Warning: Citation `paulson96' on page xii undefined on input line 290.
+
+
+LaTeX Warning: Citation `sml97-definition' on page xii undefined on input line 
+306.
+
+
+LaTeX Warning: Citation `sml-basis-lib' on page xii undefined on input line 307
+.
+
+
+LaTeX Warning: Citation `hamlet-s' on page xii undefined on input line 313.
+
+) [12] [13
+
+
+]
+\openout2 = `intro.aux'.
+
+ (./intro.tex [1
+
+
+]
+
+LaTeX Warning: Citation `sml-basis-lib' on page 2 undefined on input line 100.
+
+) [2]
+\openout2 = `syncor.aux'.
+
+ (./syncor.tex [3
+
+
+] [4] [5] [6]
+Underfull \hbox (badness 10000) in alignment at lines 342--346
+ [] [] [] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 422.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 422.
+ [7]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 563.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 563.
+[8] [9]) [10] [11]
+\openout2 = `synmod.aux'.
+
+ (./synmod.tex
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12
+
+
+] [13]
+Underfull \hbox (badness 10000) detected at line 283
+\OT1/cmr/m/it/12 strdec
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 284
+\OT1/cmr/m/it/12 sigdec
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 285
+\OT1/cmr/m/it/12 fundec
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [14] [15]
+\openout2 = `statcor.aux'.
+
+ (./statcor.tex [16
+
+
+]
+Overfull \hbox (12.20038pt too wide) in paragraph at lines 179--185
+\OT1/cmr/bx/n/12 Projection\OT1/cmr/m/n/12 : We of-ten need to se-lect com-po-n
+ents of tu-ples -- for ex-am-ple, the value-environment
+ []
+
+[17]
+Underfull \hbox (badness 5939) in paragraph at lines 226--229
+[]\OT1/cmr/bx/n/12 Injection\OT1/cmr/m/n/12 : Com-po-nents may be in-jected int
+o tu-ple classes; for ex-am-ple,
+ []
+
+[18] [19] [20] [21]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 600.
+ [22] [23] [24] [25] [26] [27] [28]
+Overfull \hbox (9.33134pt too wide) in paragraph at lines 1358--1359
+[]\OT1/cmr/m/n/12 For each oc-cur-rence of a record ex-pres-sion con-tain-ing e
+l-lipses, i.e., of the form []$[][]$\OT1/cmtt/m/n/12 =$[][]$,
+ []
+
+[29]) [30]
+\openout2 = `statmod.aux'.
+
+ (./statmod.tex [31
+
+
+]
+Overfull \hbox (13.46788pt too wide) in paragraph at lines 309--313
+\OT1/cmr/m/n/12 Finally, a type struc-ture $(\OML/cmm/m/it/12 ^^R[]; [][]\OT1/c
+mr/m/n/12 )$ \OT1/cmr/m/sl/12 en-riches \OT1/cmr/m/n/12 an-other type struc-tur
+e $(\OML/cmm/m/it/12 ^^R[]; [][]\OT1/cmr/m/n/12 )$, writ-ten $(\OML/cmm/m/it/12
+ ^^R[]; [][]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^_
+ []
+
+[32] [33]
+Underfull \hbox (badness 6364) in paragraph at lines 556--577
+[]\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 B\OT1/cmr/m/n/12 ([]) = (\OML/cmm/m/it/
+12 T\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 E[]; \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 T
+[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 E[]\OT1/cmr/m/n/12 )$. Let $\OML/cmm/m/it/1
+2 '$ \OT1/cmr/m/n/12 be a re-al-i-sa-tion such that
+ []
+
+[34] [35] [36] [37]
+Underfull \hbox (badness 10000) detected at line 1281
+\OT1/cmr/m/it/12 strdec
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1297
+\OT1/cmr/m/it/12 sigdec
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1313
+\OT1/cmr/m/it/12 fundec
+ []
+
+[38]) [39]
+\openout2 = `dyncor.aux'.
+
+ (./dyncor.tex [40
+
+
+] [41] [42] [43] [44] [45] [46] [47] [48] [49])
+[50]
+\openout2 = `dynmod.aux'.
+
+ (./dynmod.tex [51
+
+
+] [52] [53] [54] [55]
+Underfull \hbox (badness 10000) detected at line 570
+\OT1/cmr/m/it/12 strdec
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 579
+\OT1/cmr/m/it/12 sigdec
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 588
+\OT1/cmr/m/it/12 fundec
+ []
+
+[56]) [57]
+\openout2 = `prog.aux'.
+
+ (./prog.tex [58
+
+
+]) [59]
+\openout2 = `app1.aux'.
+
+ (./app1.tex [60
+
+
+]) [61] [62] [63] [64]
+[65] [66] [67
+
+]
+\openout2 = `app2.aux'.
+
+ (./app2.tex [68
+
+
+] [69]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [70] [71] [72] [73] [74
+
+]
+\openout2 = `app3.aux'.
+
+ (./app3.tex) [75
+
+
+] [76
+
+]
+\openout2 = `app4.aux'.
+
+ (./app4.tex) [77
+
+
+] [78
+
+]
+\openout2 = `overloading.aux'.
+
+
+(./overloading.tex
+
+LaTeX Warning: Citation `sml-basis-lib' on page 79 undefined on input line 21.
+
+[79
+
+
+]
+
+LaTeX Warning: Citation `sml-basis-lib' on page 80 undefined on input line 166.
+
+
+) [80]
+\openout2 = `whatisnew.aux'.
+
+ (./whatisnew.tex
+
+LaTeX Warning: Citation `hamlet-s' on page 81 undefined on input line 14.
+
+[81
+
+
+]
+
+LaTeX Warning: Citation `hamlet-s' on page 82 undefined on input line 70.
+
+) [82] [83
+
+]
+No file root.bbl.
+[84
+
+
+]
+\Changes@OutFile=\write4
+\openout4 = `root.soc'.
+
+ (./root.aux (./preface.aux) (./intro.aux) (./syncor.aux) (./synmod.aux)
+(./statcor.aux) (./statmod.aux) (./dyncor.aux) (./dynmod.aux) (./prog.aux)
+(./app1.aux) (./app2.aux) (./app3.aux) (./app4.aux) (./overloading.aux)
+(./whatisnew.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3759 strings out of 493089
+ 49125 string characters out of 6134842
+ 192691 words of memory out of 5000000
+ 7103 multiletter control sequences out of 15000+600000
+ 12584 words of font info for 46 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 32i,21n,41p,1101b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on root.pdf (95 pages, 462445 bytes).
+PDF statistics:
+ 367 PDF objects out of 1000 (max. 8388607)
+ 253 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

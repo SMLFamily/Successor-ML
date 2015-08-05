@@ -112,7 +112,7 @@ denoting an integer in the ordinal range of the alphabet).\cr
 \medskip
 
 The {\sl formatting characters}\index{6.3} are a subset of the non-printable
-            characters including at least space, tab, newline, form feed\ADD{, vertical tab, and carriage return}.
+            characters including at least space, tab, newline, form feed\FIX{, vertical tab, and carriage return}.
 The last form allows long strings to be written on more than one line, by
             writing ~\verb+\+~ at the end of one line and at the start of the
             next.\nopagebreak
@@ -319,7 +319,7 @@ the application ``$\vid$\verb+{+{\tt 1=}$\exp_1$\verb+,+{\tt
 occur.  On the other hand, an occurrence of any long identifier (qualified
 or not) prefixed by {\OP} is treated as non-infixed. The only required
 use of {\OP} is in prefixing a non-infixed occurrence of an
-identifier $\vid$ \REPL{that}{which} has infix status\ADD{ in an expression or pattern}; elsewhere {\OP}, where
+identifier $\vid$ \REPL{that}{which} has infix status\FIX{ in an expression or pattern}; elsewhere {\OP}, where
 permitted, has no effect.\index{9.1}
 Infix status is cancelled by the ~$\NONFIX$~
 directive.  We refer to the three directives collectively as {\sl fixity directives}.
@@ -582,8 +582,8 @@ match.
       restriction applies after $\tyvarseq$ and $\tyvarseq'$ have been
       extended to include implicitly scoped type variables, as
       explained in Section~\ref{scope-sec}.
-\item[\textcolor{\addcolor}{$\bullet$}]
-      \ADD{Any $\tyvar$ occurring on the right-hand side of a $\typbind$ or $\datbind$ of the form
+\item[\textcolor{\fixcolor}{$\bullet$}]
+      \FIX{Any $\tyvar$ occurring on the right-hand side of a $\typbind$ or $\datbind$ of the form
       ``$\tyvarseq$ $\tycon$ \ml{=} $\ldots$'' must occur in $\tyvarseq$.}
 \item[\textcolor{\addcolor}{$\bullet$}]
       \ADD{The pattern $\pat_1$ in a nested match ``$\nestedpat$'' may not itself be a nested

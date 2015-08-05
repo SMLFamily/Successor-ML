@@ -303,23 +303,23 @@ $\ty_1$ \ml{*} $\cdots$ \ml{*} $\ty_\n$
 \ \ $\langle\OP\rangle\vid\ \atpat_{11}\cdots\atpat_{1n}$
 		& \ \ \ml{(}\atpat$_{11}$\ml{,}$\cdots$\ml{,}\atpat$_{1n}$\ml{)} \ADD{$\langle\IF\ \atexp_1\rangle$} \\
 		$\qquad\qquad$ \ADD{$\langle\IF\ \atexp_1\rangle$}
-		  $\langle$\ml{:}\ty$_{\ADD{1}}\rangle$
+		  $\langle$\ml{:}\ty$_{\FIX{1}}\rangle$
 		  \ml{=} \exp$_1$
-		&\ \ \ \ \ \ml{=>} \exp$_1\langle$\ml{:}\ty$_{\ADD{1}}\rangle$\\
+		&\ \ \ \ \ \ml{=>} \exp$_1\langle$\ml{:}\ty$_{\FIX{1}}\rangle$\\
 \ml{|}$\langle\OP\rangle\vid\ \atpat_{21}\cdots\atpat_{2n}$
 		& \ml{| (}\atpat$_{21}$\ml{,}$\cdots$\ml{,}\atpat$_{2n}$\ml{)} \ADD{$\langle\IF\ \atexp_2\rangle$} \\
 		$\qquad\qquad$ \ADD{$\langle\IF\ \atexp_2\rangle$}
-		  $\langle$\ml{:}\ty$_{\ADD{2}}\rangle$
+		  $\langle$\ml{:}\ty$_{\FIX{2}}\rangle$
 		  \ml{=} \exp$_2$
-		&\ \ \ \ \ \ml{=>} \exp$_2\langle$\ml{:}\ty$_{\ADD{2}}\rangle$\\
+		&\ \ \ \ \ \ml{=>} \exp$_2\langle$\ml{:}\ty$_{\FIX{2}}\rangle$\\
 \ml{|}\qquad$\cdots\qquad\cdots$
                & \ml{|}\qquad$\cdots\qquad\cdots$\\
 \ml{|}$\langle\OP\rangle\vid\ \atpat_{m1}\cdots\atpat_{mn}$
 		& \ml{| (}\atpat$_{m1}$\ml{,}$\cdots$\ml{,}\atpat$_{mn}$\ml{)} \ADD{$\langle\IF\ \atexp_m\rangle$} \\
 		$\qquad\qquad$ \ADD{$\langle\IF\ \atexp_m\rangle$}
-		  $\langle$\ml{:}\ty$_{\ADD{m}}\rangle$
+		  $\langle$\ml{:}\ty$_{\FIX{m}}\rangle$
 		  \ml{=} \exp$_m$
-		&\ \ \ \ \ \ml{=>} \exp$_m\langle$\ml{:}\ty$_{\ADD{m}}\rangle$\\
+		&\ \ \ \ \ \ml{=>} \exp$_m\langle$\ml{:}\ty$_{\FIX{m}}\rangle$\\
 $\langle\AND\ \fvalbind\rangle$
                & $\langle\AND\ \fvalbind\rangle$\\
 \hline

@@ -24,7 +24,7 @@ Every overloaded constant and value identifier has among its types a
 {\em default type},
 which is assigned to it, 
 when the surrounding text does not resolve the overloading.
-For this purpose, the surrounding text is \REPL{%
+For this purpose, the surrounding text is \FIXREPL{%
 the smallest enclosing declaration
 }{%
 no larger than the smallest
@@ -71,7 +71,7 @@ The reason that the basic classes are specified using
 $\supseteq$ rather than $=$ is that libraries may extend 
 each of the  basic overloading
 classes with further type names.
-\ADD{But the class $\Real$ may not contain type names taht admit equality.}
+\FIX{But the class $\Real$ may not contain type names that admit equality.}
 Special constants are overloaded
 within each of the basic overloading classes.  However, the basic
 overloading classes must be arranged so that every special constant can be
@@ -130,13 +130,13 @@ $\var$     & $\mapsto\ \hbox{set of monotypes}$
   & 
                           & \multicolumn{2}{l|}{Precedence 4, left associative :}\\
               &           &
-                            \boxml{<} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+                            \boxml{<} & $\mapsto\NUMTEXT *\NUMTEXT \to \FIXREPL{\BOOL\ }{\NUMTEXT}$\\
               &           &
-                            \boxml{>} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+                            \boxml{>} & $\mapsto\NUMTEXT *\NUMTEXT \to \FIXREPL{\BOOL\ }{\NUMTEXT}$\\
               &           &
-                            \boxml{<=} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+                            \boxml{<=} & $\mapsto\NUMTEXT *\NUMTEXT \to \FIXREPL{\BOOL\ }{\NUMTEXT}$\\
               &           &
-                            \boxml{>=} & $\mapsto\NUMTEXT *\NUMTEXT \to \REPL{\BOOL\ }{\NUMTEXT}$\\
+                            \boxml{>=} & $\mapsto\NUMTEXT *\NUMTEXT \to \FIXREPL{\BOOL\ }{\NUMTEXT}$\\
 \hline
 \end{tabular}
 \end{center}

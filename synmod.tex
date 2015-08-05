@@ -153,10 +153,10 @@ containing the declaration of $g$ may be loaded.}
 \begin{itemize}
 \item No\index{16.2} binding $\strbind$, $\sigbind$, or $\funbind$ may bind the
       same identifier twice.
-\item[\textcolor{\addcolor}{$\bullet$}]
-	\ADD{A declaration \dec\ appearing in a \strdec\ may not be a sequential or local declaration.}
-\item[\textcolor{\addcolor}{$\bullet$}]
-	\ADD{In a sequential specification ``$\seqspec$,'' $\spec_2$ may not contain a sharing specification.}
+\item[\textcolor{\fixcolor}{$\bullet$}]
+	\FIX{A declaration \dec\ appearing in a \strdec\ may not be a sequential or local declaration.}
+\item[\textcolor{\fixcolor}{$\bullet$}]
+	\FIX{In a sequential specification ``$\seqspec$,'' $\spec_2$ may not contain a sharing specification.}
 \item No description $\valdesc$, $\typdesc$, $\datdesc$, 
       $\exndesc$
       or $\strdesc$ may describe the same identifier
@@ -172,12 +172,12 @@ containing the declaration of $g$ may be loaded.}
 	or $\exndesc$ may describe 
 	$\TRUE$, $\FALSE$, $\NIL$, \boxml{::} or $\REF$.
 	No $\datdesc$ or $\exndesc$ may describe {\tt it}.
-\item[\textcolor{\addcolor}{$\bullet$}]
-	\ADD{No $\topdec$ may contain, as an initial segment, a $\strdec$ followed by a semicolon.
-	Furthermore, the \strdec\ man not be a sequential declaration ``\seqdec.''}
+\item[\textcolor{\fixcolor}{$\bullet$}]
+	\FIX{No $\topdec$ may contain, as an initial segment, a $\strdec$ followed by a semicolon.
+	Furthermore, the \strdec\ may not be a sequential declaration ``\seqdec.''}
 \end{itemize}
 %\clearpage %containing figure 'Grammar: Specifications'
-\begin{figure}[m]
+\begin{figure}[t]
 \vspace{4pt}
 \makeatletter{}
 \tabskip\@centering
@@ -194,7 +194,7 @@ containing the declaration of $g$ may be loaded.}
         &       & \openspec             & open ($n\geq 1$)\cr }\adhocreplacementtexl{\thesingleincludespec}{0mm}{        &       & \inclspec           
   & include ($n\geq 1$)\cr}{        &       & \singleinclspec             & include \cr} 
         &       & \emptyspec            & empty \cr
-        &       & \seqspec              & sequential \ADD{(L)}\cr
+        &       & \seqspec              & sequential \FIX{(L)}\cr
 \adhocinsertion{\thetypabbr}{0mm}{&     & \boxml{$\spec$ sharing type}      &  sharing\cr &&\boxml{\qquad$\longtycon_1$ = $\cdots$ = $\longtycon_n$}& $(n\geq 2)$\cr}
 \noalign{\vspace{6pt}}
 \valdesc & ::=   & \adhocreplacementl{\theidstatus}{3cm}{\valdescription}{\valviddescription} \cr

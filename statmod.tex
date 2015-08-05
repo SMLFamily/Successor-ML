@@ -673,7 +673,7 @@ general as possible.
 \frac{
   \begin{array}{c}
      \B\ts\sigexp\ra \E\quad \tyvarseq = \alphak\quad \of{\C}{\B}\ts\ty\ra \tau\\
-     \E(\longtycon) = (\t, \VE)\quad t\notin\of{\T}{\B} \quad \ADD{t\in\TyNamesk} \\
+     \E(\longtycon) = (\t, \VE)\quad t\notin\of{\T}{\B} \quad \FIX{t\in\TyNamesk} \\
      \rea = \{\t\mapsto \Lambda\alphak.\tau\}\quad
      \hbox{$\Lambda\alphak.\tau$ admits equality, if $\t$ does\quad $\rea(\E)$ well-formed}
   \end{array}
@@ -897,7 +897,7 @@ or types; hence the use of $+$ instead of $\oplus$.
 \label{sharspec-rule}
 \frac{\begin{array}{c}
         \B\ts \spec \ra \E\quad
-          \hbox{$\E(\longtycon_i) = (\t_i,\VE_i)$ \ADD{and $\t_i\in\TyNamesk$}, $i = 1..n$}\\
+          \hbox{$\E(\longtycon_i) = (\t_i,\VE_i)$ \FIX{and $\t_i\in\TyNamesk$}, $i = 1..n$}\\
         t\in\{\t_1,\ldots,\t_n\}\quad\hbox{$\t$ admits equality, if some $\t_i$ does}\\
         \{\t_1,\ldots,\t_n\}\cap\of{\T}{\B} = \emptyset\quad
            \rea = \{\t_1\mapsto\t,\ldots,\t_n\mapsto \t\}

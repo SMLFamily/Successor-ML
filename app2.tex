@@ -6,7 +6,7 @@
 %In\index{69.1} this Appendix, the full Core 
 %grammar is given for reference purposes.
 The full grammar of programs is exactly as given at the start of 
-Section~\ref{prog-sec}\ADD{, together with the derived form of
+Section~\ref{prog-sec}\FIX{, together with the derived form of
 Figure~\ref{functor-der-forms-fig} in Appendix~\ref{derived-forms-app}}.
 
 The\index{69.1} full grammar of Modules consists of the grammar of 
@@ -25,7 +25,7 @@ The inclusion relation among the four classes is as follows:
                 \subset\ {\rm InfExp}\ \subset\ {\rm Exp} \]
 The effect is that certain phrases, such as
 ``\ml{2 + while $\cdots$ do $\cdots$ }'', are now disallowed.
-\ADD{
+\FIX{
 The same applies to patterns, where the extra classes ~AppPat~ and ~InfPat~
 are introduced yielding the following inclusion relation:
 \[
@@ -73,33 +73,33 @@ associates to the right, i.e. that the correct parse takes the form
 \[\cdots\ \cdots\ \IF\ \cdots\ \THEN\ \cdots\ \ELSE\ (\exp\ \HANDLE\ \cdots)\ \cdots\]
 not the form
 \[\cdots\ (\cdots\ \IF\ \cdots\ \THEN\ \cdots\ \ELSE\ \exp)\ \HANDLE\ \cdots\ \cdots\]
-\CUT{Note particularly that the use of precedence does not decrease the class
+\FIXCUT{Note particularly that the use of precedence does not decrease the class
 of admissible phrases; it merely rejects alternative ways of parsing certain
 phrases. In particular, the purpose is not to prevent a phrase,
 which is an instance of a form with higher precedence, having a constituent
 which is an instance of a form with lower precedence. Thus for example}
-\[\CUT{\IF\ \cdots\ \THEN\ \WHILE\ \cdots\ \DO\ \cdots\ \ELSE\ \WHILE\ \cdots\ \DO\ \cdots}\]
-\CUT{is quite admissible, and will be parsed as}
-\[\CUT{\IF\ \cdots\ \THEN\ (\WHILE\ \cdots\ \DO\ \cdots)\ \ELSE\ (\WHILE\ \cdots\ \DO\ \cdots)}\]%
-\ADD{%
+\[\FIXCUT{\IF\ \cdots\\FIX \THEN\ \WHILE\ \cdots\ \DO\ \cdots\ \ELSE\ \WHILE\ \cdots\ \DO\ \cdots}\]
+\FIXCUT{is quite admissible, and will be parsed as}
+\[\FIXCUT{\IF\ \cdots\ \THEN\ (\WHILE\ \cdots\ \DO\ \cdots)\ \ELSE\ (\WHILE\ \cdots\ \DO\ \cdots)}\]%
+\FIX{%
 Note that the use of precedence does not prevent a phrase, which is an instance of a form
 with higher precedence, having a constituent which is an instance of a form
 with lower precedence, as long as they can be resolved unambiguously.
 Thus for example}
 \begin{center}
-  \ADD{\IF\ $\cdots$ \THEN\ \WHILE\ $\cdots$ \ELSE\ \WHILE\ $\cdots$ \DO\ $\cdots$}
+  \FIX{\IF\ $\cdots$ \THEN\ \WHILE\ $\cdots$ \ELSE\ \WHILE\ $\cdots$ \DO\ $\cdots$}
 \end{center}%
-\ADD{is quite admissible and parses as}
+\FIX{is quite admissible and parses as}
 \begin{center}
-  \ADD{\IF\ $\cdots$ \THEN\ (\WHILE\ $\cdots$ \DO\ $\cdots$) \ELSE\ (\WHILE\ $\cdots$ \DO\ $\cdots$)}
+  \FIX{\IF\ $\cdots$ \THEN\ (\WHILE\ $\cdots$ \DO\ $\cdots$) \ELSE\ (\WHILE\ $\cdots$ \DO\ $\cdots$)}
 \end{center}%
-\ADD{Note, however, that precedence rules out phrases that cannot be disambiguated without
+\FIX{Note, however, that precedence rules out phrases that cannot be disambiguated without
 violating precedence, such as}
 \begin{center}
-  \ADD{$\cdots$ \ANDALSO\ \IF\ $\cdots$ \THEN\ $\cdots$ \ELSE\ $\cdots$ \ORELSE\ $\cdots$}
+  \FIX{$\cdots$ \ANDALSO\ \IF\ $\cdots$ \THEN\ $\cdots$ \ELSE\ $\cdots$ \ORELSE\ $\cdots$}
 \end{center}%
 
-\item L (resp. R)\index{69.5} means left (resp. right) association.
+\item L (resp. R)\index{69.5} means left (resp.\ right) association.
 
 \item The syntax of types binds more tightly than that of expressions.
 
@@ -112,10 +112,10 @@ match.
 
 \item[\textcolor{\addcolor}{$\bullet$}]
 \ADD{Likewise, a conditional ``\IF\ $\exp_1$ \THEN\ $\cdots$'' extends as far right as possible,
-which means that optional \ELSE\ branches croup with innermost conditional.}
+which means that optional \ELSE\ branches group with innermost conditional.}
 \end{itemize}
 
-\ADD{%
+\FIX{%
 We impose the following additional restrictions on the syntax:}
 \begin{itemize}
   \item
@@ -125,8 +125,8 @@ We impose the following additional restrictions on the syntax:}
     written
     ``\ml{(}\atpat\ \vid\ \atpat$'$\ml{)} $\cdots$''; the parentheses may also be
     dropped if \ADD{``\IF\ \exp,''} ``\ml{:}\ty,'' or ``\ml{=}'' follows immediately.
-  \item[\textcolor{\addcolor}{$\bullet$}]
-    \ADD{In a $\fmatch$ with $m$ rules, the expressions $\exp_1,\,\ldots,\,\exp_{m-1}$
+  \item[\textcolor{\fixcolor}{$\bullet$}]
+    \FIX{In a $\fmatch$ with $m$ rules, the expressions $\exp_1,\,\ldots,\,\exp_{m-1}$
     must not end in a $\match$.}
   \item[\textcolor{\addcolor}{$\bullet$}]
     \ADD{The pattern \pat\ in a \valbind\ may not nested match or guard, unless enclosed
@@ -234,15 +234,15 @@ We impose the following additional restrictions on the syntax:}
         &       & \CUT{\ml{|}$\langle\OP\rangle\vid\ \atpat_{m1}\cdots\atpat_{mn}
                   \langle$\ml{:}\ty$\rangle$\ml{=}\exp$_m$} &\cr
         &       & \qquad\qquad\qquad\CUT{$\langle\AND\ \fvalbind\rangle$} &\cr
-	&	& \ADD{$\langle$\ml{|}$\rangle$ \fmatch\ $\langle$ \AND\ \fvalbind $\,\rangle$} &\cr
-\ADD{\fmatch} & \ADD{::=}
-		& \ADD{\fmrule\ $\langle$\ml{|} \fmatch $\,\rangle$} &\cr
-\ADD{\fmrule} & \ADD{::=}
-		& \ADD{\fpat\ $\langle$\IF\ \atexp$\,\rangle$ $\langle$\ml{:} \ty$\,\rangle$ \ml{=} \exp} &\cr
-\ADD{\fpat} & \ADD{::=}
-		& \ADD{$\langle\OP\rangle\vid\ \atpat_{1}\,\cdots\,\atpat_{n}$} & \ADD{$n\geq 1$} \cr
-	&	& \ADD{\ml{(} $\atpat_1\ \vid\ \atpat_2$ \ml{)}\ $\atpat_{3}\,\cdots\,\atpat_{n}$} & \ADD{$n\geq 2$} \cr
-	&	& \ADD{$\atpat_1\ \vid\ \atpat_2$} & \cr
+	&	& \ADD{$\langle$\ml{|}$\rangle$} \FIX{\fmatch\ $\langle$ \AND\ \fvalbind $\,\rangle$} &\cr
+\FIX{\fmatch} & \FIX{::=}
+		& \FIX{\fmrule\ $\langle$\ml{|} \fmatch $\,\rangle$} &\cr
+\FIX{\fmrule} & \FIX{::=}
+		& \FIX{\fpat}\ \ADD{$\langle$\IF\ \atexp$\,\rangle$} \FIX{$\langle$\ml{:} \ty$\,\rangle$ \ml{=} \exp} &\cr
+\FIX{\fpat} & \FIX{::=}
+		& \FIX{$\langle\OP\rangle\vid\ \atpat_{1}\,\cdots\,\atpat_{n}$} & \FIX{$n\geq 1$} \cr
+	&	& \FIX{\ml{(} $\atpat_1\ \vid\ \atpat_2$ \ml{)}\ $\atpat_{3}\,\cdots\,\atpat_{n}$} & \FIX{$n\geq 2$} \cr
+	&	& \FIX{$\atpat_1\ \vid\ \atpat_2$} & \cr
 \noalign{\vspace{6pt}}
 \typbind& ::=	& \longtypbind	& \cr
 \noalign{\vspace{6pt}}
@@ -290,21 +290,21 @@ We impose the following additional restrictions on the syntax:}
 \noalign{\vspace{6pt}}
 \CUT{\pat} & \CUT{::=}	& \CUT{\atpat}	& \CUT{atomic}\cr
 	&	& \CUT{\opp\vidpat}	& \CUT{constructed value}\cr
-	&	& \CUT{\vidinfpat}	& \CUT{constructed value (infix)}\cr
+	&	& \CUT{\mbox{$\pat_1\ \vid\ \pat_2$}}	& \CUT{constructed value (infix)}\cr
 	&	& \CUT{\typedpat}	& \CUT{typed}\cr
 	&	& \CUT{\opp\layeredvidpat}	& \CUT{layered}\cr
 \noalign{\vspace{6pt}}
-\ADD{\appat} & \ADD{::=}
-		& \ADD{\atpat}		& \ADD{atomic}\cr
-	&	& \ADD{\opp\vidpat}	& \ADD{constructed value}\cr
+\FIX{\appat} & \FIX{::=}
+		& \FIX{\atpat}		& \FIX{atomic}\cr
+	&	& \FIX{\opp\vidpat}	& \FIX{constructed value}\cr
 \noalign{\vspace{6pt}}
-\ADD{\inpat} & \ADD{::=}
-		& \ADD{\appat}		& \ADD{application}\cr
-	&	& \ADD{\vidinfpat}	& \ADD{constructed value (infix)}\cr
+\FIX{\inpat} & \FIX{::=}
+		& \FIX{\appat}		& \FIX{application}\cr
+	&	& \FIX{\vidinfpat}	& \FIX{constructed value (infix)}\cr
 \noalign{\vspace{6pt}}
-\ADD{\pat} & \ADD{::=}
-		& \ADD{\inpat}		& \ADD{infix}\cr
-	&	& \ADD{\typedpat}	& \ADD{typed}\cr
+\FIX{\pat} & \FIX{::=}
+		& \FIX{\inpat}		& \FIX{infix}\cr
+	&	& \FIX{\typedpat}	& \FIX{typed}\cr
 	&	& \ADD{\aspat}		& \ADD{conjunctive (R)}\cr
 	&	& \ADD{\orpat}		& \ADD{disjunctive (L)}\cr
 	&	& \ADD{\nestedpat}	& \ADD{nested match}\cr

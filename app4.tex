@@ -33,7 +33,7 @@ $\tycon$   & $\mapsto$  & $\{\vid_1\mapsto(\V_1,\is_1),\ldots,\vid_n\mapsto(\V_n
 \CHAR      & $\mapsto $ & $\{\}$\\
 %\UNICHAR   & $\mapsto $ & $\{\}$\\
 \LIST      & $\mapsto $ & $\{\NIL\mapsto(\NIL,\isc),\ml{::}\mapsto(\ml{::},\isc)\}$\\
-\ADD{\ARRAY} & \ADD{$\mapsto$} & \ADD{$\{\}$} \\
+\FIX{\ARRAY} & \FIX{$\mapsto$} & \FIX{$\{\}$} \\
 \REF       & $\mapsto $ & $\{\REF\mapsto(\REF,\isc)\}$\\
 \EXCN      & $\mapsto $ & $\emptymap$\\
 \hline
@@ -43,7 +43,7 @@ $\tycon$   & $\mapsto$  & $\{\vid_1\mapsto(\V_1,\is_1),\ldots,\vid_n\mapsto(\V_n
 \label{dynTE0.fig}
 \end{figure}%
 
-\ADD{Furthermore, the initial state $s_0$ is defined to be}
+\FIX{Furthermore, the initial state $s_0$ is defined to be}
 \[
-  \ADD{s_0 = (\{\}, \{\boxml{Match},\boxml{Bind}\})}
+  \FIX{s_0 = (\{\}, \{\boxml{Match},\boxml{Bind}\})}
 \]

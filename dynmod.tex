@@ -124,7 +124,7 @@ $\downarrow: \Env\times\Int\to\Env$ simultaneously as follows:
  $ \TE\downarrow\TI =  \{\tycon\mapsto \VE'\downarrow\VI'\ ;\ 
                \TE(\tycon) = \VE'\ {\rm and}\ \TI(\tycon) = \VI'\}$ \\[6pt]
  $
- (\SE,\TE,\VE)\downarrow(\SI,\REPL{\TI\ }{\TE},\VI)  = 
+ (\SE,\TE,\VE)\downarrow(\SI,\FIXREPL{\TI\ }{\TE},\VI)  = 
                (\SE\downarrow\SI, \TE\downarrow\TI, \VE\downarrow\VI) $
 \end{center}}
 
@@ -543,11 +543,11 @@ not needed for the evaluation of $\spec_2$.
 %\label{funbind-dyn-rule}
 \frac{
       \Inter\B\ts\sigexp\ra\I\qquad
-      \langle\REPL{\B\ }{\IB}\ts\funbind\ra\F\rangle
+      \langle\FIXREPL{\B\ }{\IB}\ts\funbind\ra\F\rangle
      }
      {
       \begin{array}{c}
-       \REPL{\B\ }{\IB}\ts\barefunstrbinder\ \optfunbinda\ra\\
+       \FIXREPL{\B\ }{\IB}\ts\barefunstrbinder\ \optfunbinda\ra\\
        \qquad\qquad \qquad
               \{\funid\mapsto(\strid:\I,\strexp,\B)\}
               \ \langle +\ \F\rangle
@@ -566,7 +566,7 @@ not needed for the evaluation of $\spec_2$.
 \begin{equation}        % structure-level declaration
 %\label{strdectopdec-dyn-rule}
 \frac{\B\ts\strdec\ra\E\quad\B' =\E\ \In\ \Basis\quad\langle \B+\B'\ts\topdec\ra\B''\rangle }
-     {\B\ts\strdecintopdec\ra\B'\langle\REPL{+\B\ }{'}\rangle
+     {\B\ts\strdecintopdec\ra\FIXREPL{\B'\langle+\B''\rangle}{\B'\langle{}'\rangle}
      }\index{63.2}
 \end{equation}
 
@@ -575,7 +575,7 @@ not needed for the evaluation of $\spec_2$.
 %\label{sigdectopdec-dyn-rule}
 \frac{\Inter\B\ts\sigdec\ra\G\quad B' = \G\ \In\ \Basis\quad
        \langle \B + \B'\ts\topdec\ra\B''\rangle}
-     {\B\ts\sigdecintopdec\ra \B'\langle\REPL{+\B\ }{'}\rangle 
+     {\B\ts\sigdecintopdec\ra \FIXREPL{\B'\langle+\B''\rangle}{\B'\langle{}'\rangle}
      }
 \end{equation}
 
@@ -584,7 +584,7 @@ not needed for the evaluation of $\spec_2$.
 %\label{fundectopdec-dyn-rule}
 \frac{\B\ts\fundec\ra\F\quad \B' = \F\ \In\ \Basis\quad
        \langle \B + \B'\ts\topdec\ra\B''\rangle}
-     {\B\ts\fundecintopdec\ra\B'\langle\REPL{+\B\ }{'}\rangle
+     {\B\ts\fundecintopdec\ra\FIXREPL{\B'\langle+\B''\rangle}{\B'\langle{}'\rangle}
      }
 \end{equation}
 

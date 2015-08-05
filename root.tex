@@ -16,13 +16,20 @@
 %\includeonly{mac,syncor}
 \include{mac} % macros
 
+%%
 %% support for SuccML changes
+%%
 \usepackage[deletedmarkup=xout,authormarkup=none]{changes}
-\newcommand{\addcolor}{magenta}
+\newcommand{\fixcolor}{blue}  % corrections to definition
+\newcommand{\addcolor}{magenta}  % new SuccML features
 \newcommand{\delcolor}{gray}
+\definechangesauthor[color=\fixcolor]{FixSML}
 \definechangesauthor[color=\addcolor]{SuccML}
 \newcommand\redsout{\bgroup\markoverwith{\textcolor{red}{\rule[0.5ex]{2pt}{0.6pt}}}\ULon}
 \setdeletedmarkup{{\color{\delcolor}\redsout{#1}}}
+\newcommand{\FIX}[1]{\added[id=FixSML]{#1}}
+\newcommand{\FIXCUT}[1]{\deleted[id=FixSML]{#1}}
+\newcommand{\FIXREPL}[2]{\replaced[id=FixSML]{#1}{#2}}
 \newcommand{\ADD}[1]{\added[id=SuccML]{#1}}
 \newcommand{\CUT}[1]{\deleted[id=SuccML]{#1}}
 \newcommand{\REPL}[2]{\replaced[id=SuccML]{#1}{#2}}
