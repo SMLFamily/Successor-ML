@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 AUG 2015 11:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 AUG 2015 13:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -58,11 +58,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-\@input{mac.aux}
-\openout2 = `mac.aux'.
-
-(./mac.tex
+) (./mac.tex
 \c@changeno=\count90
 \c@fixtypos=\count91
 \c@noimptypes=\count92
@@ -90,7 +86,8 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \c@scon=\count114
 \c@datatyperepl=\count115
 \c@marginalnote=\count116
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/changes/changes.sty
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/changes/changes.sty
 Package: changes 2015/04/27 v2.0.4 changes package
 
 *** changes package 2015/04/27 v2.0.4 ***
@@ -201,24 +198,21 @@ Package: truncate 2001/08/20  ver 3.6
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
-) (./root.aux
-(./preface.aux) (./intro.aux) (./syncor.aux) (./synmod.aux) (./statcor.aux)
-(./statmod.aux) (./dyncor.aux) (./dynmod.aux) (./prog.aux) (./app1.aux)
-(./app2.aux) (./app3.aux) (./app4.aux) (./overloading.aux) (./whatisnew.aux))
+) (./root.aux)
 \openout1 = `root.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
-LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -269,8 +263,6 @@ LaTeX Font Info:    ... okay on input line 67.
 \everyMPtoPDFconversion=\toks21
 ) [1
 
-
-
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2
 
@@ -289,63 +281,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [6] [7
 
-]
-\openout2 = `preface.aux'.
-
- (./preface.tex
+] (./preface.tex
 
 LaTeX Warning: Reference `story-app' on page viii undefined on input line 52.
 
 [8
 
+] [9] [10] [11]) [12] [13
 
-] [9] [10] [11]
-
-LaTeX Warning: Citation `paulson96' on page xii undefined on input line 290.
-
-
-LaTeX Warning: Citation `mcp93' on page xii undefined on input line 290.
+] (./intro.tex [1
 
 
-LaTeX Warning: Citation `Ullman94' on page xii undefined on input line 290.
+]) [2] (./syncor.tex [3
 
-
-LaTeX Warning: Citation `stansifer92' on page xii undefined on input line 290.
-
-
-LaTeX Warning: Citation `paulson96' on page xii undefined on input line 290.
-
-
-LaTeX Warning: Citation `sml97-definition' on page xii undefined on input line 
-306.
-
-
-LaTeX Warning: Citation `sml-basis-lib' on page xii undefined on input line 307
-.
-
-
-LaTeX Warning: Citation `hamlet-s' on page xii undefined on input line 313.
-
-) [12] [13
-
-
-]
-\openout2 = `intro.aux'.
-
- (./intro.tex [1
-
-
-]
-
-LaTeX Warning: Citation `sml-basis-lib' on page 2 undefined on input line 100.
-
-) [2]
-\openout2 = `syncor.aux'.
-
- (./syncor.tex [3
-
-
-] [4] [5] [6]
+] [4]
+[5] [6]
 Underfull \hbox (badness 10000) in alignment at lines 342--346
  [] [] [] 
  []
@@ -365,15 +315,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 563.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 563.
-[8] [9]) [10] [11]
-\openout2 = `synmod.aux'.
-
- (./synmod.tex
+[8] [9]) [10] [11] (./synmod.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [12
-
 
 ] [13]
 Underfull \hbox (badness 10000) detected at line 283
@@ -393,11 +339,7 @@ Underfull \hbox (badness 10000) detected at line 285
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [14] [15]
-\openout2 = `statcor.aux'.
-
- (./statcor.tex [16
-
+) [14] [15] (./statcor.tex [16
 
 ]
 Overfull \hbox (12.20038pt too wide) in paragraph at lines 179--185
@@ -420,11 +362,7 @@ Overfull \hbox (9.33134pt too wide) in paragraph at lines 1358--1359
 l-lipses, i.e., of the form []$[][]$\OT1/cmtt/m/n/12 =$[][]$,
  []
 
-[29]) [30]
-\openout2 = `statmod.aux'.
-
- (./statmod.tex [31
-
+[29]) [30] (./statmod.tex [31
 
 ]
 Overfull \hbox (13.46788pt too wide) in paragraph at lines 309--313
@@ -457,18 +395,10 @@ Underfull \hbox (badness 10000) detected at line 1313
 \OT1/cmr/m/it/12 fundec
  []
 
-[38]) [39]
-\openout2 = `dyncor.aux'.
-
- (./dyncor.tex [40
-
+[38]) [39] (./dyncor.tex [40
 
 ] [41] [42] [43] [44] [45] [46] [47] [48] [49])
-[50]
-\openout2 = `dynmod.aux'.
-
- (./dynmod.tex [51
-
+[50] (./dynmod.tex [51
 
 ] [52] [53] [54] [55]
 Underfull \hbox (badness 10000) detected at line 570
@@ -485,28 +415,14 @@ Underfull \hbox (badness 10000) detected at line 588
 \OT1/cmr/m/it/12 fundec
  []
 
-[56]) [57]
-\openout2 = `prog.aux'.
+[56]) [57] (./prog.tex [58
 
- (./prog.tex [58
-
-
-]) [59]
-\openout2 = `app1.aux'.
-
- (./app1.tex [60
-
+]) [59] (./app1.tex [60
 
 ]) [61] [62] [63] [64]
-[65] [66] [67
+[65] [66] (./app2.tex [67
 
-]
-\openout2 = `app2.aux'.
-
- (./app2.tex [68
-
-
-] [69]
+] [68]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -519,81 +435,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [70] [71] [72] [73] [74
+) [69] [70] [71] [72] (./app3.tex) [73
 
-]
-\openout2 = `app3.aux'.
+] (./app4.tex) [74
 
- (./app3.tex) [75
+] (./overloading.tex
+[75
 
+]) (./whatisnew.tex [76] [77]) [78] (./root.bbl) [79
 
-] [76
-
-]
-\openout2 = `app4.aux'.
-
- (./app4.tex) [77
-
-
-] [78
-
-]
-\openout2 = `overloading.aux'.
-
-
-(./overloading.tex
-
-LaTeX Warning: Citation `sml-basis-lib' on page 79 undefined on input line 21.
-
-[79
-
-
-]
-
-LaTeX Warning: Citation `sml-basis-lib' on page 80 undefined on input line 166.
-
-
-) [80]
-\openout2 = `whatisnew.aux'.
-
- (./whatisnew.tex
-
-LaTeX Warning: Citation `hamlet-s' on page 81 undefined on input line 14.
-
-[81
-
-
-]
-
-LaTeX Warning: Citation `hamlet-s' on page 82 undefined on input line 70.
-
-) [82] [83
-
-]
-No file root.bbl.
-[84
-
+] [80
 
 ]
 \Changes@OutFile=\write4
 \openout4 = `root.soc'.
 
- (./root.aux (./preface.aux) (./intro.aux) (./syncor.aux) (./synmod.aux)
-(./statcor.aux) (./statmod.aux) (./dyncor.aux) (./dynmod.aux) (./prog.aux)
-(./app1.aux) (./app2.aux) (./app3.aux) (./app4.aux) (./overloading.aux)
-(./whatisnew.aux))
+ (./root.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3759 strings out of 493089
- 49125 string characters out of 6134842
- 192691 words of memory out of 5000000
- 7103 multiletter control sequences out of 15000+600000
+ 3686 strings out of 493089
+ 48348 string characters out of 6134842
+ 176971 words of memory out of 5000000
+ 7088 multiletter control sequences out of 15000+600000
  12584 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,21n,41p,1101b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,21n,39p,1080b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -608,10 +477,10 @@ live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on root.pdf (95 pages, 462445 bytes).
+Output written on root.pdf (91 pages, 464948 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
+ 355 PDF objects out of 1000 (max. 8388607)
+ 245 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

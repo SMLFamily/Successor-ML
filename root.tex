@@ -13,8 +13,8 @@
   \emph{HaMLet S: To Become Or Not To Become Successor ML} (Rossberg 2008).}}
 \author{Robert Harper and David MacQueen(ed.)}
 \date{\today}
-%\includeonly{mac,syncor}
-\include{mac} % macros
+%\inputonly{mac,syncor}
+\input{mac} % macros
 
 %%
 %% support for SuccML changes
@@ -56,7 +56,7 @@
 % \makeindex
 
 %
-%\includeonly{dynmod,overloading}
+%\inputonly{dynmod,overloading}
 %for agfa: \voffset -12mm
 %4 Sept. 89, for lw16:
 %\advance\hoffset by -8mm
@@ -64,8 +64,10 @@
 %\addtolength{\textwidth}{-13mm}
 %\addtolength{\textheight}{0.4mm}
 %\nofiles
+
+%\usepackage{hyperref}
+
 \begin{document}
-\bibliographystyle{plain}
 
 \pagestyle{empty}
 \begin{flushleft}
@@ -93,52 +95,62 @@
 \ \clearpage
 \pagestyle{myheadings}
 \pagestyle{empty}
-\include{preface}
+\input{preface}
 \clearpage
 \pagestyle{empty}
 \ \clearpage
 \pagestyle{headings}
 \setcounter{page}{1}
 \renewcommand{\thepage}{\arabic{page}}
+\clearpage{}
 \thispagestyle{empty}
-\include{intro}
+\input{intro}
+\clearpage{}
 \thispagestyle{empty}
-\include{syncor}
+\input{syncor}
+\clearpage{}
 \thispagestyle{empty}
-\include{synmod}
+\input{synmod}
+\clearpage{}
 \thispagestyle{empty}
-\include{statcor}
+\input{statcor}
+\clearpage{}
 \thispagestyle{empty}
-\include{statmod}
+\input{statmod}
+\clearpage{}
 \thispagestyle{empty}
-\include{dyncor}
+\input{dyncor}
+\clearpage{}
 \thispagestyle{empty}
-\include{dynmod}
+\input{dynmod}
+\clearpage{}
 \thispagestyle{empty}
-\include{prog}
+\input{prog}
 \appendix
+\clearpage{}
 \thispagestyle{empty}
-\include{app1}
+\input{app1}
 \blankPage
 \thispagestyle{empty}
-\include{app2}
+\input{app2}
 \blankPage
 \thispagestyle{empty}
-\include{app3}
+\input{app3}
 \blankPage
 \thispagestyle{empty}
-\include{app4}
+\input{app4}
 \blankPage
 \thispagestyle{empty}
-\include{overloading}
+\input{overloading}
 %\thispagestyle{empty}
-%\include{app5}
+%\input{app5}
 %\blankPage
 \thispagestyle{empty}
-\include{whatisnew}
+\input{whatisnew}
 \blankPage
 \addcontentsline{toc}{section}{\protect\numberline{}{\vrule width0pt height2cm depth0pt References}}
 \thispagestyle{empty}
+\bibliographystyle{plain}
 \bibliography{tofte,bob,succ-ml}
 \clearpage
 \blankPage

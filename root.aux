@@ -1,20 +1,642 @@
 \relax 
-\bibstyle{plain}
 \@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Successor}}{1}}
-\@input{preface.aux}
-\@input{intro.aux}
-\@input{syncor.aux}
-\@input{synmod.aux}
-\@input{statcor.aux}
-\@input{statmod.aux}
-\@input{dyncor.aux}
-\@input{dynmod.aux}
-\@input{prog.aux}
-\@input{app1.aux}
-\@input{app2.aux}
-\@input{app3.aux}
-\@input{app4.aux}
-\@input{overloading.aux}
-\@input{whatisnew.aux}
+\citation{paulson96}
+\citation{mcp93}
+\citation{Ullman94}
+\citation{stansifer92}
+\citation{paulson96}
+\citation{sml97-definition}
+\citation{sml-basis-lib}
+\citation{hamlet-s}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{grayed and struck out}}{xii}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{rendered in blue text}}{xii}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{rendered in magenta}}{xii}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Successor }}{1}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{It is derived from the 1997 \emph  {Definition of Standard ML} by adding the changes suggested by Andreas Rossberg in the HaMLet S documentation.}}{1}}
+\citation{sml-basis-lib}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Syntax of the Core}{3}}
+\newlabel{syn-core-sec}{{2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Reserved Words}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Special constants}{3}}
+\newlabel{cr:speccon}{{2.2}{3}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{A {\sl  positive integer constant (in decimal notation)} is a non-empty sequence of decimal digits $\hbox {\tt  0},\mathinner {\ldotp \ldotp },\hbox {\tt  9}$ and the underscore (\unhbox \voidb@x \hbox {{\tt  \char `\_}}) that neither starts nor ends with an underscore. An {\sl  integer constant} is an optional negation symbol (\unhbox \voidb@x \hbox {\tt  \char '176}) followed by a positive integer constant. }}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{, and the underscore that does not end with an underscore}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ An {\sl  integer constant (in binary notation)} is an optional negation symbol followed by a non-empty sequence of binary digits \hbox {\tt  0}, \hbox {\tt  1}, and the underscore that does not end with an underscore. }}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ and the underscore that does not end with an underscore}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ and the underscore that does not end with an underscore}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{A word constant (in binary notation) is \hbox {\tt  0wb} followed by a non-empty sequence of binary digits \hbox {\tt  0}, \hbox {\tt  1}, and the underscore not ending with an underscore.}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{a positive integer constant in decimal notation}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\tt  3.141\unhbox \voidb@x \hbox {{\tt  \char `\_}}592\unhbox \voidb@x \hbox {{\tt  \char `\_}}653}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\tt  1\unhbox \voidb@x \hbox {{\tt  \char `\_}}.5}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\tt  3.\unhbox \voidb@x \hbox {{\tt  \char `\_}}{}678}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\tt  1.\unhbox \voidb@x \hbox {{\tt  \char `\_}}{}E2}}{3}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{, vertical tab, and carriage return}}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Comments}{4}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ A {\sl  comment} is either {\sl  line comment} or a {\sl  block comment}. A line comment is any character sequence between the comment delimiter \hbox {\tt  (*)} and the following end of line. A block comment is any character sequence within comment brackets \nobreakspace  {}{\tt  (* *)}\nobreakspace  {} in which other comments are properly nested. No space is allowed between the characters that make up a comment bracket {\tt  (*)}, {\tt  (*} or {\tt  *)}. An unmatched \hbox {\tt  (*} should be detected by the compiler. }}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Identifiers}{5}}
+\newlabel{cyn-core-identifiers-sec}{{2.4}{5}}
+\newlabel{etyvar-lab}{{2.4}{5}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{which}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Identifiers}}{5}}
+\newlabel{identifiers}{{1}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Lexical analysis}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Infixed operators}{6}}
+\newlabel{infop.sec}{{2.6}{6}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{that}}{6}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{ in an expression or pattern}}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Derived Forms}{7}}
+\newlabel{cor-der-form-sec}{{2.7}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.8}Grammar}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Core Phrase Classes}}{8}}
+\newlabel{cor-phr}{{2}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.9}Syntactic Restrictions}{8}}
+\newlabel{synres.sec}{{2.9}{8}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{No expression row, pattern row or type-expression row may bind the same ${\it  lab}$ twice.}}{8}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{This restriction is enforced by the static semantics of the core.}}{8}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\ {\tt  =} {\it  pat}}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ellipses }}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(L)}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$\delimiter "426830A {\tt  op}\delimiter "526930B $}\unhbox \voidb@x \hbox {{\it  vid}$\delimiter "426830A ${\tt  :} {\it  ty}$\delimiter "526930B $ {\tt  as}\ {\it  pat}}}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{layered}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  as}\ ${\it  pat}_2$}}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{conjunction (R)}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  |}\ ${\it  pat}_2$}}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{disjunction (R)}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{nested match}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  ...}\ {\tt  :}\ {\it  ty}}}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ellipses}}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Grammar: Patterns and Type expressions}}{9}}
+\newlabel{pat-syn}{{3}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Identifiers appearing in both branches of a disjunctive pattern are bound only once.}}{9}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{in a value declaration with ${\tt  rec}$, }}{9}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{Any ${\it  tyvar}$ occurring on the right-hand side of a ${\it  typbind}$ or ${\it  datbind\/}$ of the form ``${\it  tyvarseq}$ ${\it  tycon}$ {\tt  =} $\dots  $'' must occur in ${\it  tyvarseq}$.}}{10}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{The pattern ${\it  pat}_1$ in a nested match ``$\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}$'' may not itself be a nested match, unless enclosed by parentheses.}}{10}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{The pattern ${\it  pat}$ in a ${\it  valbind}$ may not be a nested match, unless enclosed by parentheses.}}{10}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  ...}\ {\tt  =}\ {\it  exp}}}}{11}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ellipses}}{11}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  rec}\delimiter "526930B $}}{11}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  abstype}\ {\it  datbind\/}\ {\tt  with}\ {\it  dec}\ {\tt  end}}}}{11}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{abstype declaration}}{11}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(L)}}{11}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  rec}\ {\it  valbind}}}}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Grammar: Expressions, Matches, Declarations and Bindings}}{11}}
+\newlabel{exp-syn}{{4}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Syntax of Modules}{12}}
+\newlabel{syn-mod-sec}{{3}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Reserved Words}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Identifiers}{12}}
+\newlabel{syn-mod-identifiers-sec}{{3.2}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Infixed operators}{12}}
+\newlabel{infixopmod.sec}{{3.3}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Grammar for Modules}{12}}
+\newlabel{mod-gram-sec}{{3.4}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Modules Phrase Classes}}{13}}
+\newlabel{mod-phr}{{5}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Syntactic Restrictions}{13}}
+\newlabel{synresmod.sec}{{3.5}{13}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{A declaration {\it  dec}\ appearing in a {\it  strdec}\ may not be a sequential or local declaration.}}{13}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{In a sequential specification ``$\unhbox \voidb@x \hbox {${\it  spec}_1\ \delimiter "426830A ${\tt  ;}$\delimiter "526930B \ {\it  spec}_2$}$,'' ${\it  spec}_2$ may not contain a sharing specification.}}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Grammar: Structure and Signature Expressions}}{14}}
+\newlabel{str-syn}{{6}{14}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{No ${\it  topdec}$ may contain, as an initial segment, a ${\it  strdec}$ followed by a semicolon. Furthermore, the {\it  strdec}\ may not be a sequential declaration ``\unhbox \voidb@x \hbox {${\it  dec}_1\ \delimiter "426830A \hbox {\tt  ;}\delimiter "526930B \ {\it  dec}_2$}.''}}{14}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{(L)}}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Grammar: Specifications}}{15}}
+\newlabel{spec-syn}{{7}{15}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\sl  Restriction:}\/ No ${\it  topdec}$ may contain, as an initial segment, a ${\it  strdec}$ followed by a semicolon.}}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Grammar: Functors and Top-level Declarations}}{15}}
+\newlabel{prog-syn}{{8}{15}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Static Semantics for the Core}{16}}
+\newlabel{statcor.sec}{{4}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Simple Objects}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Simple Semantic Objects}}{16}}
+\newlabel{simple-objects}{{9}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Compound Objects}{16}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{The restriction of a map $f$ by a set $S$, written $f \setminus S$ is defined to be}}{17}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{f \setminus S = \{x \mapstochar \rightarrow f(s); x\in \mathop {\rm  Dom}\nolimits f \setminus S\}}}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Compound Semantic Objects}}{17}}
+\newlabel{compound-objects}{{10}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Projection, Injection and Modification}{18}}
+\newlabel{stat-proj}{{4.3}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Types and Type functions}{18}}
+\newlabel{tyfun-sec}{{4.4}{18}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{or $(tau')\unhbox \voidb@x \hbox {\tt  array}$}}{18}}
+\newlabel{tyfcn-lab}{{4.4}{18}}
+\newlabel{imp-ty-lab}{{4.4}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Type Schemes}{19}}
+\newlabel{type-scheme-sec}{{4.5}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Scope of Explicit Type Variables}{19}}
+\newlabel{scope-sec}{{4.6}{19}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  rec}\delimiter "526930B $}}{19}}
+\newlabel{scope-def-lab}{{4.6}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Non-expansive Expressions}{20}}
+\newlabel{expansive-sec}{{4.7}{20}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  ...}\ \hbox {\tt  =}\ {\it  nexp}}}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Closure}{20}}
+\newlabel{closure-sec}{{4.8}{20}}
+\newlabel{clos-def-lab}{{4.8}{21}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{${\it  pat}$ is exhaustive and }}{21}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{otherwise }}{21}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Where a pattern is said to be {\sl  exhaustive} if it matches all possible values of its type (cf.\ Section\nobreakspace  {}4.11\hbox {}). Since whether a nested match matches a value is undecidable in general, we classify any pattern involving a nested match as non-exhaustive.}}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}Type Structures and Type Environments}{21}}
+\newlabel{typeenv-wf-sec}{{4.9}{21}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{For any $\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}$ of the form}}{21}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}=\{{\it  tycon}_i\mapstochar \rightarrow (t_i,\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_i)\ ;\ 1\leq i\leq k\},}}{21}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{where no $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_i$ is the empty map, and for any $E$ we define $\mathop {\rm  Abs}\nolimits (\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$},E)$ to be the environment obtained from $E$ and $\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}$ as follows. First, let $\mathop {\rm  Abs}\nolimits (\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$})$ be the type environment}}{21}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\{{\it  tycon}_i \mapstochar \rightarrow (t_i,\{\})\ ;\ 1\leq i\leq k\}$ in which all value environments $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_i$ have been replaced by the empty map. Let $t_1',\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $},t_k'$ be new distinct type names none of which admit equality. Then $\mathop {\rm  Abs}\nolimits (\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$},E)$ is the result of simultaneously substituting $t_i'$ for $t_i$, $1\leq i\leq k$, throughout $\mathop {\rm  Abs}\nolimits (\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$})+E$. (The effect of the latter substitution is to ensure that the use of equality on an ${\tt  abstype}$ is restricted to the ${\tt  with}$ part.)}}{21}}
+\newlabel{abs-lab}{{4.9}{21}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.10}Inference Rules}{22}}
+\newlabel{stat-cor-inf-rules}{{4.10}{22}}
+\newlabel{sconexp-rule}{{1}{22}}
+\newlabel{varexp-rule}{{2}{22}}
+\newlabel{let-rule}{{4}{22}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  lab}\not \in \mathop {\rm  Dom}\nolimits \varrho }}{23}}
+\newlabel{atexp-rule}{{\unhbox \voidb@x \hbox {7}}{23}}
+\newlabel{typedexp-rule}{{\unhbox \voidb@x \hbox {9}}{23}}
+\newlabel{raiseexp-rule}{{\unhbox \voidb@x \hbox {11}}{23}}
+\newlabel{mrule-rule}{{\unhbox \voidb@x \hbox {14}}{24}}
+\newlabel{valdec-rule}{{\unhbox \voidb@x \hbox {15}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\delimiter "426830A \mathop {\rm  tynames}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\subseteq T \mathbin {\rm  of} C \delimiter "526930B }}{24}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\delimiter "426830A \,\forall {\it  vid}\in \mathop {\rm  Dom}\nolimits \ \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\,\unhbox \voidb@x \hbox {either ${\it  vid}\not \in \mathop {\rm  Dom}\nolimits \ C$ or $\hbox {\it  is} \mathbin {\rm  of} C = \hbox {\tt  v}$}\,\delimiter "526930B }}{24}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\delimiter "426830A +\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\delimiter "526930B }}{24}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A $rec$\delimiter "526930B $}}{24}}
+\newlabel{datatypedec-rule}{{\unhbox \voidb@x \hbox {17}}{24}}
+\newlabel{datatyperepldec-rule}{{\unhbox \voidb@x \hbox {18}}{24}}
+\newlabel{abstypedec-rule}{{\unhbox \voidb@x \hbox {19}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\oplus \unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}\vdash {\it  datbind\/}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\forall (t,\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}')\in \mathop {\rm  Ran}\nolimits \unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$},\ t\notin  (T \mathbin {\rm  of} C)}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\oplus (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$})\vdash {\it  dec}\Rightarrow E}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}$ maximises equality}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash \unhbox \voidb@x \hbox {{\tt  abstype}\ {\it  datbind\/}\ {\tt  with}\ {\it  dec}\ {\tt  end}}\Rightarrow \mathop {\rm  Abs}\nolimits (\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$},E)}}{24}}
+\newlabel{exceptiondec-rule}{{\unhbox \voidb@x \hbox {20}}{24}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Modifying $C$ by $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}$ on the left captures the recursive nature of the binding. From rule\nobreakspace  {}\unhbox \voidb@x \hbox {25}\hbox {} we see that any type scheme occurring in $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}$ will have to be a type. Thus each use of a recursive function in its own body must be assigned the same type. The side condition on the value identifiers in $C$ ensures that $C + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}$ does not overwrite identifier status in the recursive case. For example, the program}}{25}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  datatype t = f; val rec f = fn x => x;}}}{25}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{is not legal.}}{25}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{,(\unhbox \voidb@x \hbox {19}\hbox {}}}{25}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(\unhbox \voidb@x \hbox {19}\hbox {})}}{25}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{The $\mathop {\rm  Abs}\nolimits $ operation was defined in Section\nobreakspace  {}4.9\hbox {}, page\nobreakspace  {}21\hbox {}.}}{25}}
+\newlabel{valbind-rule}{{\unhbox \voidb@x \hbox {25}}{26}}
+\newlabel{recvalbind-rule}{{\unhbox \voidb@x \hbox {26}}{26}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\vdash {\it  valbind}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\hskip 2em\relax \mathop {\rm  tynames}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\subseteq T \mathbin {\rm  of} C}}{26}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash \unhbox \voidb@x \hbox {{\tt  rec}\ {\it  valbind}}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{26}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(\unhbox \voidb@x \hbox {26}\hbox {})}}{26}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Modifying $C$ by $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}$ on the left captures the recursive nature of the binding. From rule\nobreakspace  {}\unhbox \voidb@x \hbox {25}\hbox {} we see that any type scheme occurring in $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}$ will have to be a type. Thus each use of a recursive function in its own body must be assigned the same type. Also note that $C+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}$ may overwrite identifier status. For example, the program {\tt  datatype t = f; val rec f = fn x => x;}\nobreakspace  {}\nobreakspace  {} is legal.}}{26}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{)}}{26}}
+\newlabel{exnbind1-rule}{{\unhbox \voidb@x \hbox {30}}{27}}
+\newlabel{exnbind2-rule}{{\unhbox \voidb@x \hbox {31}}{27}}
+\newlabel{varpat-rule}{{\unhbox \voidb@x \hbox {34}}{27}}
+\newlabel{constpat-rule}{{\unhbox \voidb@x \hbox {35}}{27}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash {\it  pat}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\varrho \ \unhbox \voidb@x \hbox {\rm  in}\ {\rm  Type})}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\ {\tt  =} {\it  pat}}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\ }}{28}}
+\newlabel{longlab-rule}{{\unhbox \voidb@x \hbox {39}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  lab}\not \in \mathop {\rm  Dom}\nolimits \varrho }}{28}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(\unhbox \voidb@x \hbox {39}\hbox {})}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{The syntactic restrictions ensure ${\it  lab}\notin  \mathop {\rm  Dom}\nolimits \varrho $.}}{28}}
+\newlabel{layeredpat-rule}{{\unhbox \voidb@x \hbox {43}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash {\it  pat}_1\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1,\tau ) \hskip 2em\relax C + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1\vdash {\it  pat}_2\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2,\tau ) \hskip 2em\relax \mathop {\rm  Dom}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_0\cap \mathop {\rm  Dom}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1 = \emptyset }}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  as}\ ${\it  pat}_2$}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1 + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2,\tau )}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {${\it  vid}\notin  \mathop {\rm  Dom}\nolimits (C)$ or $\hbox {\it  is} \mathbin {\rm  of} C({\it  vid}) = \hbox {\tt  v}$}}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\delimiter "426830A C\vdash {\it  ty}\Rightarrow \tau \delimiter "526930B \hskip 2em\relax C\vdash {\it  pat}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\tau )\hskip 2em\relax {\it  vid}\notin  \mathop {\rm  Dom}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash \unhbox \voidb@x \hbox {{\it  vid}$\delimiter "426830A ${\tt  :} {\it  ty}$\delimiter "526930B $ {\tt  as}\ {\it  pat}}\Rightarrow (\{{\it  vid}\mapstochar \rightarrow (\tau ,\hbox {\tt  v})\} + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\tau )}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{43}}{28}}
+\newlabel{orpat-rule}{{\unhbox \voidb@x \hbox {\leavevmode {\color  {magenta}43a}}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash {\it  pat}_1\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\tau ) \hskip 2em\relax C\vdash {\it  pat}_2\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\tau )}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  |}\ ${\it  pat}_2$}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\tau )}}{28}}
+\newlabel{nestedmatch-rule}{{\unhbox \voidb@x \hbox {\leavevmode {\color  {magenta}43b}}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash {\it  pat}_1\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1,\tau )}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1\vdash {\it  exp}\Rightarrow \tau '}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1\vdash {\it  pat}_2\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2,\tau ')}}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\mathop {\rm  Dom}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1\cap \mathop {\rm  Dom}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2=\emptyset }}{28}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{C\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1 + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2,\tau )}}{28}}
+\newlabel{constype-rule}{{\unhbox \voidb@x \hbox {46}}{29}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  lab}\not \in \mathop {\rm  Dom}\nolimits \varrho }}{29}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  Comment:\ }The syntactic constraints ensure ${\it  lab}\notin  \mathop {\rm  Dom}\nolimits \varrho $.}}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11}Further Restrictions}{29}}
+\newlabel{further-restrictions-sec}{{4.11}{29}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{For each occurrence of a record expression containing ellipses, i.e., of the form \unhbox \voidb@x \hbox {\tt  \char '173}${\it  lab}_1${\tt  =}${\it  exp}_1${\tt  ,} $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}${\tt  ,} ${\it  lab}_m${\tt  =}${\it  exp}_m${\tt  ,...=}${\it  exp}_0$\unhbox \voidb@x \hbox {\tt  \char '175}\ the program context consisting of the smallest enclosing declaration must determine uniquely the domain $\{{\it  lab}_1,\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $},{\it  lab}_n\}$ of its row type, where $m\leq n$; thus, the context must determine the labels $\{{\it  lab}_{m+1},\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $},{\it  lab}_n\}$ of the fields of ${\it  exp}_0$. Likewise for record patterns that contain ellipses. In these situations, an explicit type constraint may be needed. }}{29}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ For each occurrence of a record pattern containing a record wildcard, i.e., of the form \unhbox \voidb@x \hbox {\tt  \char '173}${\it  lab}_1${\tt  =}${\it  pat}_1${\tt  ,}$\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}${\tt  ,}${\it  lab}_m${\tt  =}${\it  pat}_m${\tt  ,...}\unhbox \voidb@x \hbox {\tt  \char '175}\ the program context must determine uniquely the domain $\{{\it  lab}_1,\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $},{\it  lab}_n\}$ of its row type, where $m\leq n$; thus, the context must determine the labels $\{{\it  lab}_{m+1},\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $},{\it  lab}_n\}$ of the fields to be matched by the wildcard. For this purpose, an explicit type constraint may be needed. }}{30}}
+\newlabel{irredundant-pat-restriction}{{2}{30}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{For the purposes of checking exhaustiveness, any contained nested match ``$\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}$'' may be assumed to fail, unless ${\it  pat}_2$ is exhaustive itself. Furthermore, note that ${\it  exp}$ may contain side effects that could alter the contents of any ref cells being matched against. }}{30}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{A disjunctive pattern of the form ``$\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  |}\ ${\it  pat}_2$}$ should be {\sl  irredundant}; that is, ${\it  pat}_2$ should match some value not matched by ${\it  pat}_1$. As in 2\hbox {} above, a pattern that contains a guard may be assumed to possibly fail. }}{30}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Every pattern of the form ``$\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  as}\ ${\it  pat}_2$}$'' must be consistent; i.e., there must exist at least one value that is matched by both ${\it  pat}_1$ and ${\it  pat}_2$.}}{30}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Static Semantics for Modules}{31}}
+\newlabel{statmod-sec}{{5}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Semantic Objects}{31}}
+\newlabel{statmod-sem-obj-sec}{{5.1}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Further Compound Semantic Objects}}{31}}
+\newlabel{module-objects}{{11}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Type Realisation}{31}}
+\newlabel{tyrea.sec}{{5.2}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Signature Instantiation}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Functor Signature Instantiation}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Enrichment}{32}}
+\newlabel{enrichment-sec}{{5.5}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Signature Matching}{32}}
+\newlabel{sigmatch-sec}{{5.6}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Inference Rules}{33}}
+\newlabel{statmod-rules-sec}{{5.7}{33}}
+\newlabel{generative-strexp-rule}{{\unhbox \voidb@x \hbox {50}}{33}}
+\newlabel{transparent-constraint-rule}{{\unhbox \voidb@x \hbox {52}}{33}}
+\newlabel{opaque-constraint-rule}{{\unhbox \voidb@x \hbox {53}}{33}}
+\newlabel{functor-application-rule}{{\unhbox \voidb@x \hbox {54}}{33}}
+\newlabel{letstrexp-rule}{{\unhbox \voidb@x \hbox {55}}{34}}
+\newlabel{dec-rule}{{\unhbox \voidb@x \hbox {56}}{34}}
+\newlabel{structure-binding-rule}{{\unhbox \voidb@x \hbox {61}}{34}}
+\newlabel{encapsulating-sigexp-rule}{{\unhbox \voidb@x \hbox {62}}{35}}
+\newlabel{signature-identifier-rule}{{\unhbox \voidb@x \hbox {63}}{35}}
+\newlabel{wheretype-rule}{{\unhbox \voidb@x \hbox {64}}{35}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{t\in {\rm  TyName}^{(k)}}}{35}}
+\newlabel{topmost-sigexp-rule}{{\unhbox \voidb@x \hbox {65}}{35}}
+\newlabel{single-sigdec-rule}{{\unhbox \voidb@x \hbox {66}}{35}}
+\newlabel{sigbind-rule}{{\unhbox \voidb@x \hbox {67}}{35}}
+\newlabel{valspec-rule}{{\unhbox \voidb@x \hbox {68}}{36}}
+\newlabel{typespec-rule}{{\unhbox \voidb@x \hbox {69}}{36}}
+\newlabel{eqtypspec-rule}{{\unhbox \voidb@x \hbox {70}}{36}}
+\newlabel{datatypespec-rule}{{\unhbox \voidb@x \hbox {71}}{36}}
+\newlabel{datatypereplspec-rule}{{\unhbox \voidb@x \hbox {72}}{36}}
+\newlabel{exceptionspec-rule}{{\unhbox \voidb@x \hbox {73}}{36}}
+\newlabel{inclspec-rule}{{\unhbox \voidb@x \hbox {75}}{36}}
+\newlabel{seqspec-rule}{{\unhbox \voidb@x \hbox {77}}{36}}
+\newlabel{sharspec-rule}{{\unhbox \voidb@x \hbox {78}}{36}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{and $t_i\in {\rm  TyName}^{(k)}$}}{36}}
+\newlabel{typdesc-rule}{{\unhbox \voidb@x \hbox {80}}{37}}
+\newlabel{datdesc-rule}{{\unhbox \voidb@x \hbox {81}}{37}}
+\newlabel{exndesc-rule}{{\unhbox \voidb@x \hbox {83}}{38}}
+\newlabel{strdesc-rule}{{\unhbox \voidb@x \hbox {84}}{38}}
+\newlabel{singfundec-rule}{{\unhbox \voidb@x \hbox {85}}{38}}
+\newlabel{funbind-rule}{{\unhbox \voidb@x \hbox {86}}{38}}
+\newlabel{strdectopdec-rule}{{\unhbox \voidb@x \hbox {87}}{38}}
+\newlabel{fundectopdec-rule}{{\unhbox \voidb@x \hbox {89}}{39}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Dynamic Semantics for the Core}{40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Reduced Syntax}{40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Simple Objects}{40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Simple Semantic Objects}}{40}}
+\newlabel{simp-dyn-obj}{{12}{40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Compound Objects}{40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Compound Semantic Objects}}{41}}
+\newlabel{comp-dyn-obj}{{13}{41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Basic Values}{41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Basic Exceptions}{42}}
+\newlabel{bas-exc}{{6.5}{42}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Function Closures}{42}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{declarations of the form ``${\tt  val}\ {\tt  rec}\ {\it  valbind}$'' }}{42}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Inference Rules}{43}}
+\newlabel{dyncor-inf-rules-sec}{{6.7}{43}}
+\newlabel{varexp-dyn-rule}{{\unhbox \voidb@x \hbox {91}}{44}}
+\newlabel{labexps-dyn-rule}{{\unhbox \voidb@x \hbox {95}}{44}}
+\newlabel{conapp-dyn-rule}{{\unhbox \voidb@x \hbox {97}}{45}}
+\newlabel{refapp-dyn-rule}{{\unhbox \voidb@x \hbox {99}}{45}}
+\newlabel{assapp-dyn-rule}{{\unhbox \voidb@x \hbox {100}}{45}}
+\newlabel{closapp-dyn-rule}{{\unhbox \voidb@x \hbox {102}}{45}}
+\newlabel{closapp-dyn-rule1}{{\unhbox \voidb@x \hbox {103}}{45}}
+\newlabel{handlexp-dyn-rule1}{{\unhbox \voidb@x \hbox {104}}{45}}
+\newlabel{handlexp-dyn-rule2}{{\unhbox \voidb@x \hbox {105}}{45}}
+\newlabel{handlexp-dyn-rule3}{{\unhbox \voidb@x \hbox {106}}{45}}
+\newlabel{fnexp-dyn-rule}{{\unhbox \voidb@x \hbox {108}}{45}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  rec}\delimiter "526930B $}}{47}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\delimiter "426830A \mathop {\rm  Rec}\nolimits \delimiter "526930B }}{47}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\vdash {\it  datbind\/}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$},\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}\hskip 2em\relax E+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}\vdash {\it  dec}\Rightarrow E'}}{47}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E\vdash \unhbox \voidb@x \hbox {{\tt  abstype}\ {\it  datbind\/}\ {\tt  with}\ {\it  dec}\ {\tt  end}}\Rightarrow E'}}{47}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E\vdash {\it  valbind}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{48}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E\vdash \unhbox \voidb@x \hbox {{\tt  rec}\ {\it  valbind}}\Rightarrow \mathop {\rm  Rec}\nolimits \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{48}}
+\newlabel{exnbind-dyn-rule1}{{\unhbox \voidb@x \hbox {130}}{48}}
+\newlabel{sconpat-dyn-rule2}{{\unhbox \voidb@x \hbox {134}}{48}}
+\newlabel{exconapat-dyn-rule2}{{\unhbox \voidb@x \hbox {137}}{49}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,r\ \unhbox \voidb@x \hbox {\rm  in}\ {\rm  Val}\vdash {\it  pat}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{49}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\ {\tt  =} {\it  pat}}}{49}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{49}}
+\newlabel{longlab-dyn-rule1}{{\unhbox \voidb@x \hbox {141}}{49}}
+\newlabel{longlab-dyn-rule2}{{\unhbox \voidb@x \hbox {142}}{49}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{49}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\setminus \{{\it  lab}\}}}{49}}
+\newlabel{conpat-dyn-rule2}{{\unhbox \voidb@x \hbox {145}}{50}}
+\newlabel{exconpat-dyn-rule2}{{\unhbox \voidb@x \hbox {147}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}_1\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1 \hskip 2em\relax E + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1,v\vdash {\it  pat}_2\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  as}\ ${\it  pat}_2$}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2)/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {{\it  vid}\ {\tt  as}\ {\it  pat}}\Rightarrow \{{\it  vid}\mapstochar \rightarrow (v,\hbox {\tt  v})\}+\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{149}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}_1\Rightarrow {\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  as}\ ${\it  pat}_2$}\Rightarrow {\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}_1\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  |}\ ${\it  pat}_2$}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}_1\Rightarrow {\rm  FAIL}\hskip 2em\relax E,v\vdash {\it  pat}_2\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  |}\ ${\it  pat}_2$}\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}_1\Rightarrow {\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}\Rightarrow {\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash {\it  pat}_1\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1 \hskip 2em\relax E + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1,v\vdash {\it  exp}\Rightarrow v' \hskip 2em\relax E + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1,v'\vdash {\it  pat}_2\Rightarrow \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}/{\rm  FAIL}}}{50}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{E,v\vdash \unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}\Rightarrow (\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_1 + \unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_2)/{\rm  FAIL}}}{50}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Dynamic Semantics for Modules}{51}}
+\newlabel{dynmod-sec}{{7}{51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Reduced Syntax}{51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Compound Objects}{51}}
+\newlabel{dynmod-comp-obj-sec}{{7.2}{51}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Compound Semantic Objects}}{51}}
+\newlabel{comp-dynmod-obj}{{14}{51}}
+\newlabel{downarrowdef}{{7.2}{52}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip I$}\ }}{52}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Inference Rules}{52}}
+\newlabel{functor-application-dyn-rule}{{\unhbox \voidb@x \hbox {154}}{53}}
+\newlabel{structurespec-dyn-rule}{{\unhbox \voidb@x \hbox {172}}{55}}
+\newlabel{seqspec-dyn-rule}{{\unhbox \voidb@x \hbox {175}}{55}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{B\ }}{56}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{B\ }}{56}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{B'\delimiter "426830A +B''\delimiter "526930B }}{56}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{B'\delimiter "426830A +B''\delimiter "526930B }}{56}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{B'\delimiter "426830A +B''\delimiter "526930B }}{57}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Programs}{58}}
+\newlabel{prog-sec}{{8}{58}}
+\newlabel{fail-elab-prog-rule}{{\unhbox \voidb@x \hbox {187}}{59}}
+\newlabel{dyn-exc-prog-rule}{{\unhbox \voidb@x \hbox {188}}{59}}
+\newlabel{success-prog-rule}{{\unhbox \voidb@x \hbox {189}}{59}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{, except possibly for fixity directives contained in the {\it  topdec}}}{59}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix: Derived Forms}{60}}
+\newlabel{derived-forms-app}{{A}{60}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\nobreakspace  {}{\tt  val}\ {\tt  rec}\ {\it  tyvarseq}\ {\it  fvalbind}\nobreakspace  {}}}{60}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ In the derived form for record update in Figure\nobreakspace  {}15\hbox {}, the {\it  exprow}\ may not contain ellipses. Furthermore, the term {\it  patrow}\ is obtained from {\it  exprow}\ by replacing all of the right-hand sides by wildcards. The derived form for ellipses in the middle of expression rows is only valid if it can be transformed to bare syntax. This restriction implies that the remaining rows may not again contain ellipses. }}{60}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ Note that the derived forms in Figure\nobreakspace  {}16\hbox {} for ellipses in the middle of pattern and type-expression rows are only valid if they can be transformed to bare syntax. This restriction implies that the remaining rows may not again contain ellipses. }}{60}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{In the abstype form, ${\it  typbind}'$ is obtained from {\it  datbind\/}\ by replacing all right-hand sides with the corresponding left-hand side, i.e.,\ ``{\it  tyvarseq}\ {\it  tycon}\ {\tt  =} {\it  conbind}\ $\delimiter "426830A ${\tt  |} {\it  datbind\/}$\delimiter "526930B $'' becomes ``{\it  tyvarseq}\ {\it  tycon}\ {\tt  =} {\it  tyvarseq}\ {\it  tycon}\ $\delimiter "426830A ${\tt  |} ${\it  typbind}'\ \delimiter "526930B $''}}{60}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{and signature expressions}}{61}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ In the form involving {\tt  withtype}, the identifiers bound by {\it  datdesc}\ and by {\it  typbind}\ must be distinct. The transformed description ${\it  datdesc}'$ is obtained from {\it  datdesc}\ by expanding out all the definitions made by {\it  typbind}, analogous to {\it  datbind\/}\ above. The phrase ``{\tt  type}\ {\it  typbind}'' can be reinterpreted as a type specification that is subject to further transformation. }}{61}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  if}\ ${\it  exp}_1$\ {\tt  then}\ ${\it  exp}_2$}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  if}\ ${\it  exp}_1$\ {\tt  then}\ ${\it  exp}_2$\ {\tt  else}\ {\tt  ()}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  ;}\delimiter "526930B {}$}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  ;}\delimiter "526930B {}$}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  case}\ {\it  exp}\ {\tt  of}\ {\tt  |}\ {\it  match}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  case}\ {\it  exp}\ {\tt  of}\ {\it  match}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  exp}\ {\tt  handle}\ {\tt  |}\ {\it  match}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\it  exp}\ {\tt  handle}\ {\it  match}}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  fn}\ {\tt  |}\ {\it  match}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  fn}\ {\it  match}}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  (}${\it  exp}_1$ {\tt  ;} $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  ;} ${\it  exp}_n$ {\tt  ;} {\tt  )}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  (}${\it  exp}_1$ {\tt  ;} $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  ;} ${\it  exp}_n$ {\tt  )}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  \char '173}\ {\it  atexp}\ {\tt  where}\ $\delimiter "426830A ${\it  exprow}$\,\delimiter "526930B $ \unhbox \voidb@x \hbox {\tt  \char '175}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  let}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{({\it  vid}\ new)}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  val}\ \unhbox \voidb@x \hbox {\tt  \char '173}$\delimiter "426830A ${\it  patrow}\ {\tt  ,}$\,\delimiter "526930B $ {\tt  ...} {\tt  =} {\it  vid}\ \unhbox \voidb@x \hbox {\tt  \char '175}\ {\tt  =}\ {\it  atexp}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  in}\ \unhbox \voidb@x \hbox {\tt  \char '173}$\delimiter "426830A ${\it  exprow}\ {\tt  ,}$\,\delimiter "526930B $ {\tt  ...} {\tt  =} {\it  vid}\ \unhbox \voidb@x \hbox {\tt  \char '175}\ {\tt  end}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(see note in text concerning {\it  patrow})}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\bf  Expression Rows} {\it  exprow}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  vid}\ $\delimiter "426830A ${\tt  :} {\it  ty}$\delimiter "526930B $ $\delimiter "426830A ${\tt  ,} {\it  exprow}$\,\delimiter "526930B $ }}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  vid}\ {\tt  =}\ {\it  vid}\ $\delimiter "426830A ${\tt  :} {\it  ty}$\delimiter "526930B $ $\delimiter "426830A ${\tt  ,} {\it  exprow}$\,\delimiter "526930B $}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} {\tt  =}\ {\it  exp}{\tt  ,} {\it  exprow}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} {\tt  =} {\tt  let}\ {\tt  val}\ {\it  vid}\ {\tt  =}\ {\it  exp}\ {\tt  in}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{({\it  vid}\ new)}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ \ \ \ \ \unhbox \voidb@x \hbox {\tt  \char '173}}\ {\it  exprow}{\tt  ,}\ {\it  vid}\ \unhbox \voidb@x \hbox {\tt  \char '175}\ {\tt  end}}}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(see note in text concerning {\it  exprow})}}{62}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Derived forms of Expressions}}{62}}
+\newlabel{der-exp}{{15}{62}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  pat}\ {\tt  if}\ {\it  exp}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  pat}\ {\tt  with}\ {\tt  true}\ {\tt  =}\ {\it  exp}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  vid}$\delimiter "426830A ${\tt  :}{\it  ty}$\delimiter "526930B \ \delimiter "426830A {\tt  as}\ {\it  pat}\delimiter "526930B \ \delimiter "426830A ${\tt  ,} {\it  patrow}$\delimiter "526930B $}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  vid}{\tt   = }{\it  vid}$\delimiter "426830A ${\tt  :}{\it  ty}$\delimiter "526930B \ \delimiter "426830A {\tt  as}\ {\it  pat}\delimiter "526930B \ \delimiter "426830A ${\tt  ,} {\it  patrow}$\delimiter "526930B $}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} {\tt  =} {\tt  \char `\_}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} $\delimiter "426830A ${\tt  =} {\it  pat}$\delimiter "526930B ${\tt  ,}\ {\it  patrow}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  patrow}{\tt  ,}\ {\tt  ...} $\delimiter "426830A ${\tt  =} {\it  pat}$\delimiter "526930B $}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(see note in text concerning {\it  patrow})}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} {\tt  :} {\it  ty}{\tt  ,}\ {\it  tyrow}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  tyrow}{\tt  ,}\ {\tt  ...} {\tt  :} {\it  ty}}}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(see note in text concerning {\it  tyrow})}}{63}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Derived forms of Patterns and Type Expressions}}{63}}
+\newlabel{der-pat}{{16}{63}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  if}\ {\it  atexp}_1\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  if}\ {\it  atexp}_1\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{1}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{1}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  if}\ {\it  atexp}_2\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  if}\ {\it  atexp}_2\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{2}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{2}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  if}\ {\it  atexp}_m\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  if}\ {\it  atexp}_m\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{m}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{m}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\bf  Datatype bindings} {\it  datbind\/}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  tyvarseq}\ {\it  tycon}\ {\tt  =} {\tt  |}\ {\it  conbind}\ }}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  tyvarseq}\ {\it  tycon}\ {\tt  =} {\it  conbind}\ }}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\hskip 2em\relax \hskip 2em\relax \hskip 2em\relax \delimiter "426830A {\tt  and}\ {\it  datbind\/}\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\hskip 2em\relax \hskip 2em\relax \hskip 2em\relax \delimiter "426830A {\tt  and}\ {\it  datbind\/}\delimiter "526930B $}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  |}$\delimiter "526930B {}$}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  val}\ {\it  tyvarseq}\ {\tt  rec}\ {\it  fvalbind}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  val}\ {\tt  rec}\ {\it  tyvarseq}\ {\it  fvalbind}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  abstype}\ {\it  datbind\/}\ {\tt  with}\ {\it  dec}\ {\tt  end}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  local}\ {\tt  datatype}\ {\it  datbind\/}\ {\tt  in}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hskip 2em\relax {\tt  type}\ ${\it  typbind}'$\ {\tt  ;}\ {\it  dec}\ {\tt  end}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  do}\ {\it  exp}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  val}\ {\tt  ()} {\tt  =} {\it  exp}}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{and ${\it  typbind}'$}}{64}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Derived forms of \deleted [id=SuccML]{Function-value} Bindings and Declarations}}{64}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Function-value}}{64}}
+\newlabel{der-dec}{{17}{64}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Derived forms of Functors, Structure Bindings and Programs}}{65}}
+\newlabel{functor-der-forms-fig}{{18}{65}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{${\tt  type}\mskip \thickmuskip {\it  tyvarseq}\mskip \thickmuskip {\it  tycon}\,\hbox {\tt  =}\,{\it  ty}$}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  include}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ sig ${\tt  type}\mskip \thickmuskip {\it  tyvarseq}\mskip \thickmuskip {\it  tycon}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ end where type ${\it  tyvarseq}\mskip \thickmuskip {\it  tycon}\,\hbox {\tt  =}\,{\it  ty}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  type ${\it  tyvarseq}_1\mskip \thickmuskip {\it  tycon}_1$ = ${\it  ty}_1$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  type $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt   $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  type ${\it  tyvarseq}_n\mskip \thickmuskip {\it  tycon}_n$ = ${\it  ty}_n$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  include}\ {\tt  sig}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ type ${\it  tyvarseq}_1\mskip \thickmuskip {\it  tycon}_1$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ type $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ \ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ type ${\it  tyvarseq}_n\mskip \thickmuskip {\it  tycon}_n$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  end where type ${\it  tyvarseq}_1\mskip \thickmuskip {\it  tycon}_1$ = ${\it  ty}_1$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ \ \ where type $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ \ \ \ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ \ \ where type ${\it  tyvarseq}_n\mskip \thickmuskip {\it  tycon}_n$ = ${\it  ty}_n$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  datatype}\ {\it  datdesc}\ {\tt  withtype}\ {\it  typbind}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  datatype}\ ${\it  datdesc}'$\ {\tt  ;} {\tt  type}\ {\it  typbind}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{and ${\it  datdesc}'$}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\bf  Datatype Descriptions} {\it  datdesc}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  tyvarseq}\ {\it  tycon}\ {\tt  =} {\tt  |} {\it  condesc}\ $\delimiter "426830A {\tt  and}\ {\it  datdesc}\delimiter "526930B $}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\it  tyvarseq}\ {\it  tycon}\ {\tt  =} {\it  condesc}\ $\delimiter "426830A {\tt  and}\ {\it  datdesc}\delimiter "526930B $}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\bf  Signature Expressions} {\it  sigexp}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  ${\it  sigexp}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  ${\it  sigexp}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  where type ${\it  tyvarseq}_1\mskip \thickmuskip  {\it  longtycon}_1$ = ${\it  ty}_1$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ where type ${\it  tyvarseq}_1\mskip \thickmuskip  {\it  longtycon}_1$ = ${\it  ty}_1$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ and\ type $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ where type $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ \ and\ type ${\it  tyvarseq}_n\mskip \thickmuskip {\it  longtycon}_n$ = ${\it  ty}_n$}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\hbox {\tt  \ where type ${\it  tyvarseq}_n\mskip \thickmuskip {\it  longtycon}_n$ = ${\it  ty}_n$}}}{66}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Derived forms of Specifications \deleted [id=SuccML]{and Signature Expressions}}}{66}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{and Signature Expressions}}{66}}
+\newlabel{spec-der-forms-fig}{{19}{66}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Appendix: Full Grammar}{67}}
+\newlabel{core-gram-app}{{B}{67}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{, together with the derived form of Figure\nobreakspace  {}18\hbox {} in Appendix\nobreakspace  {}A\hbox {}}}{67}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{ The same applies to patterns, where the extra classes \nobreakspace  {}AppPat\nobreakspace  {} and \nobreakspace  {}InfPat\nobreakspace  {} are introduced yielding the following inclusion relation: \[ {\rm  AtPat}\ \subset \ {\rm  AppPat}\ \subset \ {\rm  InfPat}\ \subset \ {\rm  Pat} \] }}{67}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\ {\tt  =} {\it  pat}}}{67}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{Note particularly that the use of precedence does not decrease the class of admissible phrases; it merely rejects alternative ways of parsing certain phrases. In particular, the purpose is not to prevent a phrase, which is an instance of a form with higher precedence, having a constituent which is an instance of a form with lower precedence. Thus for example}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\tt  if}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\\FIX {\tt  then}\ {\tt  while}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\ {\tt  do}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\ {\tt  else}\ {\tt  while}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\ {\tt  do}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{is quite admissible, and will be parsed as}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\tt  if}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\ {\tt  then}\ ({\tt  while}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\ {\tt  do}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $})\ {\tt  else}\ ({\tt  while}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\ {\tt  do}\ \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $})}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{Note that the use of precedence does not prevent a phrase, which is an instance of a form with higher precedence, having a constituent which is an instance of a form with lower precedence, as long as they can be resolved unambiguously. Thus for example}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\tt  if}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  then}\ {\tt  while}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  else}\ {\tt  while}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  do}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{is quite admissible and parses as}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\tt  if}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  then}\ ({\tt  while}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  do}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$) {\tt  else}\ ({\tt  while}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  do}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$)}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{Note, however, that precedence rules out phrases that cannot be disambiguated without violating precedence, such as}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  andalso}\ {\tt  if}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  then}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  else}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$ {\tt  orelse}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}{68}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{Likewise, a conditional ``{\tt  if}\ ${\it  exp}_1$ {\tt  then}\ $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$'' extends as far right as possible, which means that optional {\tt  else}\ branches group with innermost conditional.}}{69}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{We impose the following additional restrictions on the syntax:}}{69}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{``{\tt  if}\ {\it  exp},''}}{69}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{In a ${\it  fmatch}$ with $m$ rules, the expressions ${\it  exp}_1,\,\dots  ,\,{\it  exp}_{m-1}$ must not end in a ${\it  match}$.}}{69}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{The pattern {\it  pat}\ in a {\it  valbind}\ may not nested match or guard, unless enclosed by parentheses.}}{69}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\it  atexp}\ {\tt  where}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  ;}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{1\ }}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  ;}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  (} {\it  exp}\ {\tt  )}}}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  vid}\ $\delimiter "426830A ${\tt  :} {\it  ty}$\delimiter "526930B $ $\delimiter "426830A $ {\tt  ,} {\it  exprow}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{label as variable}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} {\tt  =} {\it  exp}\ $\delimiter "426830A $ {\tt  ,} {\it  exprow}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ellipses}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  |}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  |}$\delimiter "526930B $}}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  |}$\delimiter "526930B $}}{70}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Grammar: Expressions and Matches}}{70}}
+\newlabel{exp-gram}{{20}{70}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  rec}\delimiter "526930B $}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{(L)}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  do}\ {\it  exp}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{evaluation}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\tt  rec}\ {\it  valbind}}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  op}\delimiter "526930B {\it  vid}\ {\it  atpat}_{11}\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}{\it  atpat}_{1n} \delimiter "426830A ${\tt  :}{\it  ty}$\delimiter "526930B ${\tt  =}{\it  exp}$_1$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$m,n\geq 1$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  |}$\delimiter "426830A {\tt  op}\delimiter "526930B {\it  vid}\ {\it  atpat}_{21}\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}{\it  atpat}_{2n} \delimiter "426830A ${\tt  :}{\it  ty}$\delimiter "526930B ${\tt  =}{\it  exp}$_2$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{See also note below}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  |}\hskip 2em\relax $\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\hskip 2em\relax \unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  |}$\delimiter "426830A {\tt  op}\delimiter "526930B {\it  vid}\ {\it  atpat}_{m1}\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}{\it  atpat}_{mn} \delimiter "426830A ${\tt  :}{\it  ty}$\delimiter "526930B ${\tt  =}{\it  exp}$_m$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  and}\ {\it  fvalbind}\delimiter "526930B $}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  |}$\delimiter "526930B $}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  fmatch}\ $\delimiter "426830A $ {\tt  and}\ {\it  fvalbind}$\,\delimiter "526930B $}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  fmatch}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{::=}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  fmrule}\ $\delimiter "426830A ${\tt  |} {\it  fmatch}$\,\delimiter "526930B $}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  fmrule}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{::=}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  fpat}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  if}\ {\it  atexp}$\,\delimiter "526930B $}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  :} {\it  ty}$\,\delimiter "526930B $ {\tt  =} {\it  exp}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  fpat}}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{::=}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\delimiter "426830A {\tt  op}\delimiter "526930B {\it  vid}\ {\it  atpat}_{1}\,\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\,{\it  atpat}_{n}$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$n\geq 1$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\tt  (} ${\it  atpat}_1\ {\it  vid}\ {\it  atpat}_2$ {\tt  )}\ ${\it  atpat}_{3}\,\unhbox \voidb@x \hbox {$\cdot \mskip -\thinmuskip \cdot \mskip -\thinmuskip \cdot $}\,{\it  atpat}_{n}$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$n\geq 2$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{${\it  atpat}_1\ {\it  vid}\ {\it  atpat}_2$}}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  |}$\delimiter "526930B $}}{71}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Grammar: Declarations and Bindings}}{71}}
+\newlabel{dec-gram}{{21}{71}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\ {\tt  =} {\it  pat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{$\delimiter "426830A ${\tt  ,} {\it  patrow}$\,\delimiter "526930B $}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ellipses }}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  pat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{::=}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  atpat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{atomic}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$\delimiter "426830A {\tt  op}\delimiter "526930B $}\unhbox \voidb@x \hbox {{\it  longvid}\ {\it  atpat}}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{constructed value}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1\ {\it  vid}\ {\it  pat}_2$}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{constructed value (infix)}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\it  pat}\ {\tt  :} {\it  ty}}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{typed}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$\delimiter "426830A {\tt  op}\delimiter "526930B $}\unhbox \voidb@x \hbox {{\it  vid}$\delimiter "426830A ${\tt  :} {\it  ty}$\delimiter "526930B $ {\tt  as}\ {\it  pat}}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Deleted\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{layered}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  apppat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{::=}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  atpat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{atomic}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {$\delimiter "426830A {\tt  op}\delimiter "526930B $}\unhbox \voidb@x \hbox {{\it  longvid}\ {\it  atpat}}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{constructed value}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  infpat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{::=}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  apppat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{application}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  infpat}_1\ {\it  vid}\ {\it  infpat}_2$}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{constructed value (infix)}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  pat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{::=}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{{\it  infpat}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{infix}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {{\it  pat}\ {\tt  :} {\it  ty}}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{typed}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  as}\ ${\it  pat}_2$}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{conjunctive (R)}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  |}\ ${\it  pat}_2$}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{disjunctive (L)}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {${\it  pat}_1$\ {\tt  with}\ ${\it  pat}_2$\ {\tt  =}\ {\it  exp}}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{nested match}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\it  pat}\ {\tt  if}\ {\it  exp}}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{guard}}{72}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Grammar: Patterns}}{72}}
+\newlabel{pat-gram}{{22}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{{\tt  ...} {\tt  :} {\it  ty}\ $\delimiter "426830A $ {\tt  ,} {\it  tyrow}$\delimiter "526930B $}}{72}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{ellipses}}{72}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Grammar: Type expressions}}{72}}
+\newlabel{typ-gram}{{23}{72}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Appendix: The Initial Static Basis}{73}}
+\newlabel{init-stat-bas-app}{{C}{73}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  array},}}{73}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{, \unhbox \voidb@x \hbox {\tt  array},}}{73}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  array}}}{73}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\mapstochar \rightarrow \ (\ \unhbox \voidb@x \hbox {\tt  array}$,}}{73}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\{\}\ )$}}{73}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Static $\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}_0$}}{73}}
+\newlabel{stat-te}{{24}{73}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Static $\unhbox \voidb@x \hbox {$V\mskip -\thinmuskip E$}_0$}}{73}}
+\newlabel{stat-ve}{{25}{73}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Appendix: The Initial Dynamic Basis}{74}}
+\newlabel{init-dyn-bas-app}{{D}{74}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  array}}}{74}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\mapstochar \rightarrow $}}{74}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{$\{\}$}}{74}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Dynamic $\unhbox \voidb@x \hbox {$T\mskip -\thinmuskip E$}_0$}}{74}}
+\newlabel{dynTE0.fig}{{26}{74}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{Furthermore, the initial state $s_0$ is defined to be}}{74}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{s_0 = (\{\}, \{\hbox {\tt  Match},\hbox {\tt  Bind}\})}}{74}}
+\citation{sml-basis-lib}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Overloading}{75}}
+\newlabel{overload.sec}{{E}{75}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{the smallest enclosing declaration }}{75}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.1}Overloaded special constants}{75}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{But the class $\unhbox \voidb@x \hbox {\rm  Real}$ may not contain type names that admit equality.}}{75}}
+\citation{sml-basis-lib}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  bool}\ }}{76}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  bool}\ }}{76}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  bool}\ }}{76}}
+\@writefile{loc}{\contentsline {subsection}{Replaced\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{\unhbox \voidb@x \hbox {\tt  bool}\ }}{76}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces Overloaded identifiers}}{76}}
+\newlabel{overload.fig}{{27}{76}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.2}Overloaded value identifiers}{76}}
+\citation{hamlet-s}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Appendix: What is New?}{77}}
+\newlabel{whatisnew-app}{{F}{77}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.1}Changes from SML '97}{77}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {F.1.1}Fixes and simplifications}{77}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(FixSML): \truncate {.3\textwidth }{blue text.}}{77}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {F.1.2}Extensions}{77}}
+\@writefile{loc}{\contentsline {subsection}{Added\nobreakspace  {}(SuccML): \truncate {.3\textwidth }{magenta text}}{77}}
+\citation{hamlet-s}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F.2}Changed from HaMLet S}{78}}
+\bibstyle{plain}
 \bibdata{tofte,bob,succ-ml}
-\@writefile{toc}{\contentsline {section}{\numberline {}{\vrule width0pt height2cm depth0pt References}}{84}}
+\bibcite{sml-basis-lib}{1}
+\bibcite{sml97-definition}{2}
+\bibcite{mcp93}{3}
+\bibcite{paulson96}{4}
+\bibcite{hamlet-s}{5}
+\bibcite{stansifer92}{6}
+\bibcite{Ullman94}{7}
+\@writefile{toc}{\contentsline {section}{\numberline {}{\vrule width0pt height2cm depth0pt References}}{79}}

@@ -49,15 +49,15 @@
 \contentsline {subsection}{\numberline {7.3}Inference Rules}{52}
 \contentsline {section}{\numberline {8}Programs}{58}
 \contentsline {section}{\numberline {A}Appendix: Derived Forms}{60}
-\contentsline {section}{\numberline {B}Appendix: Full Grammar}{68}
-\contentsline {section}{\numberline {C}Appendix: The Initial Static Basis}{75}
-\contentsline {section}{\numberline {D}Appendix: The Initial Dynamic Basis}{77}
-\contentsline {section}{\numberline {E}Overloading}{79}
-\contentsline {subsection}{\numberline {E.1}Overloaded special constants}{79}
-\contentsline {subsection}{\numberline {E.2}Overloaded value identifiers}{80}
-\contentsline {section}{\numberline {F}Appendix: What is New?}{81}
-\contentsline {subsection}{\numberline {F.1}Changes from SML '97}{81}
-\contentsline {subsubsection}{\numberline {F.1.1}Fixes and simplifications}{81}
-\contentsline {subsubsection}{\numberline {F.1.2}Extensions}{81}
-\contentsline {subsection}{\numberline {F.2}Changed from HaMLet S}{82}
-\contentsline {section}{\numberline {}{\vrule width0pt height2cm depth0pt References}}{84}
+\contentsline {section}{\numberline {B}Appendix: Full Grammar}{67}
+\contentsline {section}{\numberline {C}Appendix: The Initial Static Basis}{73}
+\contentsline {section}{\numberline {D}Appendix: The Initial Dynamic Basis}{74}
+\contentsline {section}{\numberline {E}Overloading}{75}
+\contentsline {subsection}{\numberline {E.1}Overloaded special constants}{75}
+\contentsline {subsection}{\numberline {E.2}Overloaded value identifiers}{76}
+\contentsline {section}{\numberline {F}Appendix: What is New?}{77}
+\contentsline {subsection}{\numberline {F.1}Changes from SML '97}{77}
+\contentsline {subsubsection}{\numberline {F.1.1}Fixes and simplifications}{77}
+\contentsline {subsubsection}{\numberline {F.1.2}Extensions}{77}
+\contentsline {subsection}{\numberline {F.2}Changed from HaMLet S}{78}
+\contentsline {section}{\numberline {}{\vrule width0pt height2cm depth0pt References}}{79}
