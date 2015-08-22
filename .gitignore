@@ -10,6 +10,9 @@
 *.toc
 *.soc
 *.blg
+*.fdb_latexmk
+*.fls
+*.pdf
 
 # OS generated files #
 ######################
