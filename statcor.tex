@@ -503,7 +503,7 @@ be well-formed.}
 
 A type structure \replacement{\thece}{$(\t,\CE)$}{$(\t,\VE)$}\ is said to
 {\sl respect equality} if, whenever $\t$ admits equality, then
-either $\t=\REF$ (see Appendix~\ref{init-stat-bas-app}) or,
+either $\t=\REF$ \ADD{or $\t=\ARRAY$} (see Appendix~\ref{init-stat-bas-app}) or,
 for each \replacement{\theidstatus}{$\CE(\con)$}{$\VE(\vid)$} of the form 
 \replacement{\thece}{$\forall\alphak.(\tau\rightarrow\alphak\t)$,}{$(\forall\alphak.(\tau\rightarrow\alphak\t), \is)$,}
 the type function $\Lambda\alphak.\tau$ also admits equality.
