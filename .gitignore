@@ -1,3 +1,7 @@
+# Editor backups #
+##################
+*.swp
+
 # LaTeX generated files #
 #########################
 *.aux
