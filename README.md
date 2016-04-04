@@ -7,14 +7,14 @@ to its clean and elegant design.
 A related effort is the evolution of the
 [**Standard ML Basis Library**](https://github.com/SMLFamily/BasisLibrary).
 
-== Definition
+## Definition
 
 The LaTeX sources for **The Definition of Successor ML** can be found in the
 `definition` directory.
 
-== Design proposals
+## Design proposals
 
-== Implementation efforts
+## Implementation efforts
 
 At this time, there are three implementation efforts to support Successor ML.
 
