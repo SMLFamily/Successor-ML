@@ -8,8 +8,8 @@ A related effort is the evolution of the
 [**Standard ML Basis Library**](https://github.com/SMLFamily/BasisLibrary).
 
 Note that this repository used to be called `Proposed-Definition-of-Successor-ML`, but
-it has been renamed to `Successor-ML`.  You can redirect the URL of any repository
-clones using the command:
+it has been renamed to `Successor-ML`.  Github will automatically redirect the old URL,
+but you can also updating any existing local clones using the command:
 ```sh
 $ git remote set-url origin https://github.com/SMLFamily/Successor-ML.git
 ```
