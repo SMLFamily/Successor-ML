@@ -6,8 +6,8 @@
 \subsection{Reserved Words}
 The\index{6.1}
 following are the {\sl reserved words} used in the Core.   They
-may not (except~~{\tt =}~) be used as identifiers.   
-%In this document the alphabetic reserved words are 
+may not (except~~{\tt =}~) be used as identifiers.
+%In this document the alphabetic reserved words are
 %always shown in typewriter font.
 
 \vspace*{-6pt}
@@ -16,26 +16,26 @@ may not (except~~{\tt =}~) be used as identifiers.
      end    exception    fn    fun    handle    if   in   infix
      infixr   let     local    nonfix   of   op   open   orelse
      raise   rec   then   type   val   with   withtype    while
-     (  )   [  ]   {  }  ,  :  ;  ...    _   |  =   =>   ->   #   
+     (  )   [  ]   {  }  ,  :  ;  ...    _   |  =   =>   ->   #
 \end{verbatim}
 \vspace*{-6pt}
 
 \subsection{Special constants}
 \label{cr:speccon}
 \REPL{A {\sl positive integer constant (in decimal notation)} is
-a non-empty sequence of decimal digits 
+a non-empty sequence of decimal digits
 $\boxml{0},\twoldots,\boxml{9}$ and the underscore (\wildpat) that
 neither starts nor ends with an underscore.
 An\index{6.2} {\sl integer constant} is an optional negation symbol
 (\tttilde) followed by a positive integer constant. }{%
 An\index{6.2} {\sl integer constant (in
 decimal notation)} is an optional negation symbol (\tttilde)
-followed by a non-empty sequence of decimal digits 
+followed by a non-empty sequence of decimal digits
 $\boxml{0},\twoldots,\boxml{9}$.}
 An {\sl integer constant (in
-hexadecimal notation)} is an optional negation symbol 
+hexadecimal notation)} is an optional negation symbol
 followed by \boxml{0x} followed by a non-empty sequence of
-hexadecimal digits $\boxml{0},\twoldots,\boxml{9}$ 
+hexadecimal digits $\boxml{0},\twoldots,\boxml{9}$
 and $\boxml{a},\twoldots,\boxml{f}$\ADD{, and the underscore that does not
 end with an underscore}.
 ($\boxml{A},\twoldots,\boxml{F}$
@@ -73,11 +73,11 @@ Non-examples:
 \end{center}%
 
 We assume an underlying alphabet of $N$ characters ($N \geq 256$), numbered
-     $0$ to $N-1$, which agrees with the ASCII character set on the characters
-     numbered 0 to 127. The interval $[0, N-1]$ is called the {\sl ordinal range} of
-     the alphabet.
+$0$ to $N-1$, which agrees with the ASCII character set on the characters
+numbered 0 to 127. The interval $[0, N-1]$ is called the {\sl ordinal range} of
+the alphabet.
 A {\sl string constant} is a sequence, between quotes ({\tt "}), of zero or
-more printable characters (i.e., numbered 33--126), spaces or escape 
+more printable characters (i.e., numbered 33--126), spaces or escape
 sequences.
 Each escape sequence starts with the
 escape character ~\verb+\+~, and stands for a character sequence. The
@@ -96,17 +96,19 @@ string constants and unicodes}          %   hack: can't deal with verb in arg of
 \verb+\r+   & Carriage return (ASCII 13)\cr
 \verb+\^+$c$  & The control character $c$, where $c$ may
                 be any character with number 64--95. The number
-                of ~{\tt\char'134\char'136}$c$~ is 64 less than the 
+                of ~{\tt\char'134\char'136}$c$~ is 64 less than the
                 number of $c$.\cr
 \verb+\+$ddd$ & The single character with number $ddd$ (3 decimal digits
 denoting an integer in the ordinal range of the alphabet).\cr
 \uconst & The single character with number $xxxx$ (4 hexadecimal digits
 denoting an integer in the ordinal range of the alphabet).\cr
+\ADD{\Uconst} & \ADD{The single character with number $xxxxxxxx$ (8 hexadecimal digits
+denoting an integer in the ordinal range of the alphabet).}\cr
 \verb+\"+   & {\tt "}\cr
 \verb+\\+   & {\tt\char'134}\cr
 \verb+\+$f\cdot\cdot f$\verb+\+
             & This sequence is ignored,
-              where $f\cdot\cdot f$ stands for a sequence 
+              where $f\cdot\cdot f$ stands for a sequence
              of one or more formatting characters.\cr
 }
 \medskip
@@ -121,20 +123,20 @@ The last form allows long strings to be written on more than one line, by
 {\tt\#}$s$, where $s$ is a string constant denoting a string of size one character.
 
 Libraries may provide multiple numeric types and multiple string types.
-To each string type 
+To each string type
 corresponds an alphabet with ordinal range $[0, N-1]$
-for some $N\geq 256$; each alphabet must agree with the ASCII character set on 
+for some $N\geq 256$; each alphabet must agree with the ASCII character set on
 the characters numbered 0 to 127. When multiple alphabets are supported,
 all characters of a given string constant are interpreted over the same
 alphabet. For each special constant, overloading
-resolution is used for determining the type of the constant 
+resolution is used for determining the type of the constant
 (see Appendix~\ref{overload.sec}).
 
 %   All the escape sequences in a given string constant are interpreted
-%   over the same underlying alphabet (either 8-bit characters or 16-bit 
-%   characters), and for each string constant this alphabet is determined 
-%   by overloading resolution (see Appendix~\ref{overload.sec}).  
-%   It is a compile-time error 
+%   over the same underlying alphabet (either 8-bit characters or 16-bit
+%   characters), and for each string constant this alphabet is determined
+%   by overloading resolution (see Appendix~\ref{overload.sec}).
+%   It is a compile-time error
 % if the
 %constant contains an escape sequence of the form $\uconst$ where
 %$xxxx$ denotes an integer outside the ordinal range of the alphabet so
@@ -157,11 +159,11 @@ No space is allowed between the characters that make up a comment bracket
 \ml{(*)}, \ml{(*} or \ml{*)}.
 An unmatched \boxml{(*} should be detected by the compiler.
 }{%
-A\index{7.1} {\sl comment} 
+A\index{7.1} {\sl comment}
 is any character sequence within comment brackets ~{\tt (* *)}~
 in which
 comment brackets are properly nested.
-No space is allowed between 
+No space is allowed between
             the two characters which make up
             a comment bracket \ml{(*} or \ml{*)}.  An unmatched
             \boxml{(*} should be detected by the compiler.
@@ -190,7 +192,7 @@ Figure~\ref{identifiers}.
 % \label{identifiers}
 % \vspace*{-3mm}
 % \end{figure}
-\note{\theidstatus}{Figure 1 replaced by new figure (Var, Con and ExCon 
+\note{\theidstatus}{Figure 1 replaced by new figure (Var, Con and ExCon
 merged into VId)}
 \begin{figure}[b]
 \vspace{4pt}
@@ -209,20 +211,20 @@ merged into VId)}
 \label{identifiers}
 \vspace*{-3mm}
 \end{figure}
-We use $\vid$, $\tyvar$ to range over 
+We use $\vid$, $\tyvar$ to range over
 $\VId$, TyVar etc.  For each class
 X marked ``long'' there is a class longX of {\sl long identifiers}; if
 $x$ ranges over X then {\it longx} ranges over longX.  The syntax of
-these long identifiers is given by the following: 
+these long identifiers is given by the following:
 \vspace*{-6pt}
 \begin{quote}
 \begin{tabular}{rcll} {\it longx} & $::=$ & $x$ & identifier\\
 & &$\strid_1.\cdots.\strid_n.x$ & qualified identifier ($n\geq 1$)
-\end{tabular} 
+\end{tabular}
 \end{quote}
 \vspace*{-6pt}
 The qualified identifiers constitute a link between the Core and the
-Modules. Throughout this document, the term ``identifier'', occurring 
+Modules. Throughout this document, the term ``identifier'', occurring
 without an adjective, refers to non-qualified identifiers only.
 %version 2: For each class X marked
 %``long'' there is also a class
@@ -257,10 +259,10 @@ this precludes any syntactic ambiguity.
 
 A type variable $\tyvar$\index{7.4}\label{etyvar-lab} may be any
 alphanumeric identifier starting with a prime; the subclass EtyVar of
-TyVar, the {\sl equality} type variables, consists of those \REPL{which}
-start with two or more primes.  
-%poly   
-The classes {\VId}, 
+TyVar, the {\sl equality} type variables, consists of those \ADD{which}
+start with two or more primes.
+%poly
+The classes {\VId},
 {\TyCon} and  {\Lab} are represented by identifiers
 not starting with a prime.
 However,\index{7.5} {\tt *} is excluded from {\TyCon},
@@ -271,9 +273,9 @@ i.e. any numeral not starting with~{\tt 0}. \insertion{\theidstatus}{The
 identifier class $\hbox{\StrId}$ is represented by alphanumeric
 identifiers not starting with a prime.}
 
-TyVar is therefore disjoint from the other four classes.   
+TyVar is therefore disjoint from the other four classes.
 Otherwise, the syntax class of an occurrence of
-identifier $\id$ in a Core phrase (ignoring derived forms, 
+identifier $\id$ in a Core phrase (ignoring derived forms,
 Section~\ref{cor-der-form-sec}) is determined thus:
 \begin{enumerate}
   \item Immediately before ``.'' -- i.e. in a long identifier -- or in an
@@ -305,10 +307,10 @@ ignored.   At each stage the longest next item is taken.
 \label{infop.sec}
 An\index{8.5} identifier may be given {\sl infix status} by the
 ~$\INFIX$~ or ~$\INFIXR$~ directive, which may occur as a
-declaration; this status only pertains to its use as a 
-$\vid$ within the scope (see below) of the 
+declaration; this status only pertains to its use as a
+$\vid$ within the scope (see below) of the
 directive, and in these uses it is called an {\sl infixed operator}.
-(Note that qualified identifiers never have infix status.)  If 
+(Note that qualified identifiers never have infix status.)  If
 $\vid$
 has infix status, then ``$\exp_1\ \vid\ \exp_2$''
 (resp.\ ``$\pat_1\ \vid\ \pat_2$'') may occur -- in parentheses if necessary -- wherever
@@ -331,7 +333,7 @@ The form of the fixity directives is as follows ($n\geq 1$):
 binding precedence. A higher value of $d$ indicates tighter binding;
 the default is {\tt 0}. ~$\INFIX$~ and ~$\INFIXR$~ dictate left and right
 associativity respectively. In an expression of the form  $\exp_1\, \vid_1\, \exp_2\, \vid_2\, \exp_3$, where
-      $\vid_1$ and $\vid_2$ are infixed operators with the same precedence, 
+      $\vid_1$ and $\vid_2$ are infixed operators with the same precedence,
       either both must associate to the left or both must
 associate to the right.
 For example, suppose that {\tt <<} and {\tt >>} have equal precedence,
@@ -354,7 +356,7 @@ except that if $\dir$ occurs in a declaration $\dec$ in either of the phrases
 \[ \LET\ \dec\ \IN\ \cdots\ \END \]
 \[ \LOCAL\ \dec\ \IN\ \cdots\ \END \]
 then the scope of $\dir$ does not extend beyond the phrase. Further scope
-limitations are imposed for Modules\insertion{\theidstatus}{ (see 
+limitations are imposed for Modules\insertion{\theidstatus}{ (see
 Section~\ref{infixopmod.sec})}.
 
 These directives and ~$\OP$~ are omitted from the semantic rules, since they
@@ -571,12 +573,12 @@ match.
       $\exp$ must be of the form \fnexp. The derived form
       of function-value binding given in Appendix~\ref{derived-forms-app},
       page~\pageref{der-dec}, necessarily obeys this restriction.
-\item No $\datbind$, $\valbind$ or $\exnbind$ may bind $\TRUE$, $\FALSE$, $\NIL$, \boxml{::} or $\REF$. 
+\item No $\datbind$, $\valbind$ or $\exnbind$ may bind $\TRUE$, $\FALSE$, $\NIL$, \boxml{::} or $\REF$.
       No $\datbind$ or $\exnbind$ may bind {\tt it}.
 \item No real constant may occur in a pattern.
 \item In a value declaration  $\VAL\, \tyvarseq\, \valbind$, if $\valbind$
-      contains another value declaration  $\VAL\, \tyvarseq'\, \valbind'$ 
-      then $\tyvarseq$ and $\tyvarseq'$ must be disjoint.  In other 
+      contains another value declaration  $\VAL\, \tyvarseq'\, \valbind'$
+      then $\tyvarseq$ and $\tyvarseq'$ must be disjoint.  In other
       words, no type variable may be scoped by two value
       declarations of which one occurs inside the other.  This
       restriction applies after $\tyvarseq$ and $\tyvarseq'$ have been

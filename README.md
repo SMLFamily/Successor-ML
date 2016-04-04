@@ -1,27 +1,30 @@
-The Definition of Successor ML
-==========
+Successor ML
+============
 
-These sources are derived from the 1997 version of the **Definition of Standard ML**
-by integrating the changes documented in the [HaMLet 1.3.1S documentation](http://www.mpi-sws.org/~rossberg/hamlet/hamlet-succ-1.3.1S5.pdf).
-See Appendix F in the document for a detailed list of the changes.
+Successor ML is an effort to *evolve* the Standard ML language while keeping true
+to its clean and elegant design.
 
-To build a PDF, perform the following steps in a terminal window:
-```
-latexmk -pdf root
-```
+A related effort is the evolution of the
+[**Standard ML Basis Library**](https://github.com/SMLFamily/BasisLibrary).
 
-The file root.pdf will be produced.
+== Definition
 
-## Obtaining a printed copy of the Definition of Standard ML (Revised)
+The LaTeX sources for **The Definition of Successor ML** can be found in the
+`definition` directory.
 
-MIT Press has graciously allowed the Defintion of Standard ML to be
-released in electronic form.  If you would like a printed copy of the
-original work, please purchase one from their site:
+== Design proposals
 
-> <http://mitpress.mit.edu/books/definition-standard-ml>
+== Implementation efforts
 
-## License
+At this time, there are three implementation efforts to support Successor ML.
 
-This work is licensed under the [Creative Comments
-Attribution-NonCommercial-ShareAlike 3.0
-Unported](http://creativecommons.org/licenses/by-nc-sa/3.0/) license.
++ The most complete is Andreas Rossberg's [**HaMLet S**](https://www.mpi-sws.org/~rossberg/hamlet/)
+  implementation, which implements all of the features described in the
+  **The Definition of Successor ML** (and more).
+
++ The [**MLton**](https://mlton.org) implementation of Standard ML is implementing
+  Successor ML features.  See [http://mlton.org/SuccessorML] for details.
+
++ The [**Standard ML of New Jersey**](https://smlnj.org) implementation of Standard ML
+  is also implementing Successor ML features
+  (as of [Version 110.79](http://smlnj.org/dist/working/110.79/110.79-README.html)).
