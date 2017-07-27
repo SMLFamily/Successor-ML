@@ -150,13 +150,15 @@ to range over \SCon.\index{6.4}
 
 \subsection{Comments}
 \REPL{
-A\index{7.1} {\sl comment} is either {\sl line comment} or a {\sl block comment}.
+A\index{7.1} {\sl comment} is either a {\sl line comment} or a {\sl block comment}.
 A line comment is any character sequence between the comment delimiter \boxml{(*)}
 and the following end of line.
 A block comment is any character sequence within comment brackets ~{\tt (* *)}~
 in which other comments are properly nested.
-No space is allowed between the characters that make up a comment bracket
-\ml{(*)}, \ml{(*} or \ml{*)}.
+No space is allowed between the characters that make up a comment delimiter
+\ml{(*)}
+or comment bracket
+\ml{(*} or \ml{*)}.
 An unmatched \boxml{(*} should be detected by the compiler.
 }{%
 A\index{7.1} {\sl comment}
