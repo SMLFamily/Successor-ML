@@ -8,13 +8,13 @@ Since\index{47.1} types are fully dealt with in the static semantics,
 the dynamic semantics ignores them.  The Core syntax is therefore
 reduced by the following transformations, for the purpose of the dynamic
 semantics:}{Since\index{47.1} types are mostly dealt with in the static semantics,
-the Core syntax is 
-reduced by the following transformations, 
+the Core syntax is
+reduced by the following transformations,
 for the purpose of the dynamic
 semantics:}
 \begin{itemize}
 \item All explicit type ascriptions ``\ml{:} $\ty$\,'' are omitted, and
-      qualifications ``$\OF\  \ty\,$'' are omitted from 
+      qualifications ``$\OF\  \ty\,$'' are omitted from
       \insertion{\theconstructors}{constructor and}
       exception bindings.
 \item The Core phrase classes \deletion{\thedatatyperepl}{TypBind, DatBind, $\ConBind$, }Ty and
@@ -35,7 +35,7 @@ variables which range over them) in Figure~\ref{simp-dyn-obj}.
 \e               & \in   & \Exc 	& \mbox{exception names}\\
 b      		& \in	& \BasVal	& \mbox{basic values}\\
 \sv             & \in   & \SVal         & \mbox{special values}\\
-                &       & \{\FAIL\}     & \mbox{failure}\\   
+                &       & \{\FAIL\}     & \mbox{failure}\\
 \end{array}
 \end{displaymath}
 \caption{Simple Semantic Objects}
@@ -45,7 +45,7 @@ b      		& \in	& \BasVal	& \mbox{basic values}\\
 
 $\Addr$ and $\Exc$ are infinite sets. BasVal is described below.
 {\SVal} is the class of values denoted by the special constants
-\SCon. Each integer\insertion{\thelibrary}{, word} or real constant denotes a value according to normal 
+\SCon. Each integer\insertion{\thelibrary}{, word} or real constant denotes a value according to normal
 mathematical conventions; each string \insertion{\thescon}{or character}
 constant denotes a sequence of \deletion{\thelibrary}{ASCII }characters as explained in Section~\ref{cr:speccon}. The value denoted
 by {\scon} is written $\sconval(\scon)$.
@@ -71,7 +71,7 @@ $\VId\times\Val$ etc into $\Val$.
 For records $\r\in\Record$ however,
 we write this injection explicitly as ``$\In\ \Val$''; this accords with
 the fact that there is a separate phrase class ExpRow, whose members
-evaluate to records. 
+evaluate to records.
 
 We take $\cup$ to mean disjoint union over
 semantic object classes. We also understand all the defined object
@@ -115,14 +115,14 @@ former, which is just a subclass of values.
 Although the same names, e.g. $\E$ for an environment, are used
 as in the static semantics, the objects denoted are different.  This need cause
 no confusion since the static and dynamic semantics are presented %completely
-separately. 
+separately.
 
 \subsection{Basic Values}
-The\index{49.1} basic values in $\BasVal$ are \deletion{\thelibrary}{the }values bound to predefined 
+The\index{49.1} basic values in $\BasVal$ are \deletion{\thelibrary}{the }values bound to predefined
 \replacement{\theidstatus}{identifiers}{value variables}.
 \replacement{\thelibrary}{
 These values are denoted by the identifiers to which they are bound in the
-initial dynamic basis (see Appendix~\ref{init-dyn-bas-app}), 
+initial dynamic basis (see Appendix~\ref{init-dyn-bas-app}),
 and are as follows:
 \begin{verbatim}
            abs  floor  real  sqrt  sin  cos  arctan  exp  ln
@@ -136,13 +136,13 @@ represented by the function
 \[ \APPLY\ :\ \BasVal\times\Val\to\Val\cup\Pack \]
  which is detailed in Appendix~\ref{init-dyn-bas-app}.
 }{In this document, we take $\BasVal$ to be the singleton set $\{\boxml{=}\}$;
-however, libraries may define a larger set of basic values. 
+however, libraries may define a larger set of basic values.
 The meaning of basic values is
 represented by a function
 \[ \APPLY\ :\ \BasVal\times\Val\to\Val\cup\Pack \]
-which satisfies that $\APPLY(\boxml{=}, \{1\mapsto v_1, 2\mapsto v_2\})$ 
+which satisfies that $\APPLY(\boxml{=}, \{1\mapsto v_1, 2\mapsto v_2\})$
 is {\tt true} or {\tt false} according as the values $\V_1$ and $\V_2$ are, or are
-not, identical values. 
+not, identical values.
 }
 \subsection{Basic Exceptions}
 \label{bas-exc}
@@ -150,56 +150,56 @@ not, identical values.
 A\index{49.2} subset $\BasExc\subset\Exc$ of the exception names are bound to predefined
 exception constructors.
 These names are denoted by the identifiers to which they are bound in the
-initial dynamic basis (see Appendix~\ref{init-dyn-bas-app}), 
-and are as follows:}{A\index{49.2} 
+initial dynamic basis (see Appendix~\ref{init-dyn-bas-app}),
+and are as follows:}{A\index{49.2}
 subset $\BasExc\subset\Exc$ of the exception names are bound to predefined
-exception constructors in the initial dynamic basis 
+exception constructors in the initial dynamic basis
 (see Appendix~\ref{init-dyn-bas-app}).
-These names are denoted by the identifiers 
+These names are denoted by the identifiers
 to which they are bound in the
-initial basis, 
+initial basis,
 and are as follows:}\replacement{\thelibrary}{\begin{verbatim}
-        Abs  Ord  Chr   Div  Mod  Quot  Prod  
+        Abs  Ord  Chr   Div  Mod  Quot  Prod
         Neg  Sum  Diff  Floor  Sqrt  Exp  Ln
         Io   Match  Bind  Interrupt
 \end{verbatim}}{$$\boxml{ Match\ \  Bind}$$}\replacement{\thelibrary}{
-The exceptions on the first two  lines are raised by 
+The exceptions on the first two  lines are raised by
 corresponding basic functions, where \verb+~+ {\tt /} {\tt *}
 {\tt +} {\tt -} correspond respectively to {\tt Neg} {\tt Quot}
 {\tt Prod} {\tt Sum} {\tt Diff}. The details are given
 in Appendix~\ref{init-dyn-bas-app}. The exception $(\mbox{{\tt Io}},s)$,
 where $s$ is a string, is raised
 by certain of the basic input/output functions,
-as detailed in Appendix~\ref{init-dyn-bas-app}.  
+as detailed in Appendix~\ref{init-dyn-bas-app}.
 }{The} exceptions ~\ml{Match}~ and
 ~\ml{Bind}~
-are raised upon failure of pattern-matching in evaluating a 
+are raised upon failure of pattern-matching in evaluating a
 function {\fnexp} or a
-$\valbind$, as detailed in the rules to follow.   
+$\valbind$, as detailed in the rules to follow.
 \deletion{\thelibrary}{
 Finally, ~\ml{Interrupt}~
 is raised by external intervention.}
-Recall from Section~\ref{further-restrictions-sec} 
-that in the context {\fnexp}, the $\match$ 
+Recall from Section~\ref{further-restrictions-sec}
+that in the context {\fnexp}, the $\match$
 must be irredundant and exhaustive and that the compiler should flag
 the {\match} if it violates these restrictions. The exception~\ml{Match}
-can only be raised for a match which is not exhaustive, and has therefore 
+can only be raised for a match which is not exhaustive, and has therefore
 been flagged by the compiler.
 
-%In a match of the form $\pat_1\ \ml{=>}\ \exp_1\ \ml{|}\ \ldots\ \ml{|}\ 
+%In a match of the form $\pat_1\ \ml{=>}\ \exp_1\ \ml{|}\ \ldots\ \ml{|}\
 %            \pat_n\ \ml{=>}\ \exp_n$
 %the pattern sequence $\pat_1,\ldots,\pat_n$ should be {\sl irredundant};
 %that is, each $\pat_j$ must match some value
 %(of the right type) which is not matched by $\pat_i$ for any $i<j$.
 %In the context {\fnexp}, the $\match$ must also be {\sl exhaustive}; that is,
 %every value (of the right type) must be matched by some $\pat_i$.
-%The compiler must give warning on violation of these restrictions, 
-%but should still compile the match. 
+%The compiler must give warning on violation of these restrictions,
+%but should still compile the match.
 %The \ml{match} exception
 %can only be raised for a match which is not exhaustive, and has therefore
 %been flagged by the compiler.
 %The restrictions are inherited by derived forms; in particular,
-%this means that in the function binding 
+%this means that in the function binding
 % $\var\ \atpat_1\ \cdots\ \atpat_n\langle : \ty\rangle\ \ml{=}\ \exp$
 %(consisting of one clause only), each separate $\atpat_i$ should be
 %exhaustive by itself.
@@ -211,28 +211,28 @@ $\match$ will be evaluated against $\V$, in the environment $\E$ modified in
 a special sense by
 $\VE$.  The domain $\Dom\VE$ of this third component contains those \deletion{\thenoimptypes}{function }identifiers to be treated recursively in the evaluation.  To achieve this
 effect, the evaluation of $\match$ will take place not in $\plusmap{\E}{\VE}$
-but in $\plusmap{\E}{\Rec\VE}$, 
+but in $\plusmap{\E}{\Rec\VE}$,
 \replacement{\theidstatus}{where\[ \Rec\ :\ \VarEnv\to\VarEnv \]is defined as follows:}{where\[ \Rec\ :\ \ValEnv\to\ValEnv \]is defined as follows:}
 \medskip
 
 \begin{itemize}
 \item $\Dom(\Rec\VE)=\Dom\VE $
-\item If \replacement{\theidstatus}{$\VE(\var)\notin\Closure$}{$\VE(\vid)\notin\FcnClosure\times\{\isv\}$}, 
+\item If \replacement{\theidstatus}{$\VE(\var)\notin\Closure$}{$\VE(\vid)\notin\FcnClosure\times\{\isv\}$},
 then $(\Rec\VE)(\vid)=\VE(\vid)$
 \item \replacement{\theidstatus}{If $\VE(\var)=(\match',\E',\VE')$
       then $(\Rec\VE)(\var)=(\match',\E',\VE)$}{If $\VE(\vid)=((\match',\E',\VE'), \isv)$
       then $(\Rec\VE)(\vid)=((\match',\E',\VE), \isv)$}
 \end{itemize}
 The effect is that, before application of $(\match,\E,\VE)$ to $\V$, the
-\replacement{\theidstatus}{closure values}{function closures} 
+\replacement{\theidstatus}{closure values}{function closures}
 in $\Ran\VE$ are ``unrolled'' once, to prepare for their possible
 recursive application during the evaluation of $\match$ upon $\V$.
 
 This device is adopted to ensure that all semantic objects are finite (by
 controlling the unrolling of recursion).  The operator $\Rec$ is invoked in
-just two places in the semantic rules: in the rule for recursive value 
+just two places in the semantic rules: in the rule for recursive value
 \REPL{%
-declarations of the form ``$\VAL\ \REC\ \valbind$'' 
+declarations of the form ``$\VAL\ \REC\ \valbind$''
 }{%
 bindings of the form ``$\REC\ \valbind$''}, and in the rule for evaluating
 an application expression ``$\exp\ atexp$'' in the case that $\exp$
@@ -246,7 +246,7 @@ to be inferred, where $A$ is usually an environment, $A'$ is some semantic
 object and $\s$,$\s'$ are the states before and after the evaluation
 represented by the sentence.  Some hypotheses in rules are not of this form;
 they are called {\sl side-conditions}.  The convention for options is
-the same as for the Core static semantics.  
+the same as for the Core static semantics.
 
 In most rules the states $\s$ and $\s'$ are omitted from sentences; they
 are only included for those rules which are directly concerned with the state
@@ -291,7 +291,7 @@ packet $\p$, an extra rule is added of the form
         { \s,A\ts\phrase\ra \p',\s'} \]
 where $\p'$ does not occur in the original rule.\footnote{There is one
 exception to the exception convention; no extra rule is added for
-rule~\ref{handlexp-dyn-rule1} which deals with handlers, 
+rule~\ref{handlexp-dyn-rule1} which deals with handlers,
 since a handler is the only
 means by which propagation of an exception can be arrested.}
 This indicates that evaluation of phrases in the hypothesis terminates with the
@@ -300,10 +300,10 @@ and this packet is the result of the phrase in the conclusion.
 
 A third convention is that we allow compound variables (variables built
 from the variables in Figure~\ref{comp-dyn-obj} and the symbol ``/'')
-to range over unions of semantic objects. For instance 
+to range over unions of semantic objects. For instance
 the compound variable $\V/\p$ ranges
-over $\Val\cup\Pack$. 
-We also allow $x/\FAIL$ to range over $X\cup\{\FAIL\}$ where $x$ 
+over $\Val\cup\Pack$.
+We also allow $x/\FAIL$ to range over $X\cup\{\FAIL\}$ where $x$
 ranges over $X$;
 furthermore, we extend environment modification to allow for failure
 as follows:
@@ -717,10 +717,10 @@ Alternative match rules are tried from left to right.
 
 
 % \ replacement{\thefixtypos}{
-% \rulesec{Exception Bindings}{\E\ts\exnbind\ra\EE/\p}}{\rulesec{Exception 
+% \rulesec{Exception Bindings}{\E\ts\exnbind\ra\EE/\p}}{\rulesec{Exception
 % Bindings}{\E\ts\exnbind\ra\EE}}
 \replacement{\theidstatus}{
-\rulesec{Exception Bindings}{\E\ts\exnbind\ra\EE/\p}}{\rulesec{Exception 
+\rulesec{Exception Bindings}{\E\ts\exnbind\ra\EE/\p}}{\rulesec{Exception
 Bindings}{\E\ts\exnbind\ra\VE}}
 \replacement{\theidstatus}{
 \begin{equation}	% exception binding 1
@@ -752,7 +752,7 @@ Bindings}{\E\ts\exnbind\ra\VE}}
 \comments
 \begin{description}
 \item{(\ref{exnbind-dyn-rule1})}
-  The two side conditions ensure that a new exception name is generated and 
+  The two side conditions ensure that a new exception name is generated and
 recorded as ``used'' in subsequent states.
 \end{description}
 %
@@ -814,11 +814,11 @@ recorded as ``used'' in subsequent states.
      {\E,\V\ts\longvid\ra\emptymap}
 \end{equation}}
 \oldpagebreak
-\replacement{\theidstatus}{\begin{equation}	
+\replacement{\theidstatus}{\begin{equation}
 \label{exconapat-dyn-rule2}
 \frac{\E(\longexn)\neq\V}
      {\E,\V\ts\longexn\ra\FAIL}\index{56.0}
-\end{equation}}{\begin{equation}	
+\end{equation}}{\begin{equation}
 \label{exconapat-dyn-rule2}
 \frac{\E(\longvid)=(\V',\is)\qquad\is\neq\isv\qquad\V\neq\V'}
      {\E,\V\ts\longvid\ra\FAIL}\index{56.0}
@@ -854,7 +854,7 @@ recorded as ``used'' in subsequent states.
 \item{(\ref{sconpat-dyn-rule2}),
 \deletion{\theidstatus}{(\ref{conapat-dyn-rule2}),}
 (\ref{exconapat-dyn-rule2})}
-  Any evaluation resulting in $\FAIL$ must do so because 
+  Any evaluation resulting in $\FAIL$ must do so because
 rule~\ref{sconpat-dyn-rule2},
 \deletion{\theidstatus}{rule~\ref{conapat-dyn-rule2},}
 rule~\ref{exconapat-dyn-rule2},
@@ -869,7 +869,7 @@ applied.
 \frac{\ADD{\E,r\ \In\ \Val\ts\pat\ra\VE/\fail}}
      {\E,\r\ts\wildrec\ra\REPL{\VE/\fail }{\emptymap}}\index{56.2}
 \end{equation}
- 
+
 
 \begin{equation}	% record component with inherited FAIL
 \label{longlab-dyn-rule1}
@@ -973,11 +973,11 @@ For well-typed programs $\lab$ will be in the domain of $\r$.
      {\E,\V\ts\vidpat\ra\VE/\FAIL}
 \end{equation}}
 
-\replacement{\theidstatus}{\begin{equation} 
+\replacement{\theidstatus}{\begin{equation}
 \label{exconpat-dyn-rule2}
 \frac{\E(\longexn)=\e\qquad\V\notin\{\e\}\times\Val}
      {\E,\V\ts\exconpat\ra\FAIL}
-\end{equation}}{\begin{equation} 
+\end{equation}}{\begin{equation}
 \label{exconpat-dyn-rule2}
 \frac{\E(\longvid)=(\e,\ise)\qquad\V\notin\{\e\}\times\Val}
      {\E,\V\ts\vidpat\ra\FAIL}
@@ -1029,8 +1029,8 @@ For well-typed programs $\lab$ will be in the domain of $\r$.
 \end{equation}
 
 \begin{equation}	% nested match pattern
-\frac{\ADD{\E,\V\ts\pat_1\ra\VE_1 \qquad \plusmap{\E}{\VE_1},\V\ts\exp\ra\V'
-      \qquad \plusmap{\E}{\VE_1},\V'\ts\pat_2\ra\VE/\fail}}
+\frac{\ADD{\E,\V\ts\pat_1\ra\VE_1 \qquad \plusmap{\E}{\VE_1}\ts\exp\ra\V'
+      \qquad \plusmap{\E}{\VE_1},\V'\ts\pat_2\ra\VE_2/\fail}}
      {\ADD{\E,\V\ts\nestedpat\ra(\plusmap{\VE_1}{\VE_2})/\fail}}
 \end{equation}
 
@@ -1051,7 +1051,7 @@ For well-typed programs $\lab$ will be in the domain of $\r$.
 \comments
 \begin{description}
 \item{(\ref{conpat-dyn-rule2}),(\ref{exconpat-dyn-rule2})}
-  Any evaluation resulting in $\FAIL$ must do so because 
+  Any evaluation resulting in $\FAIL$ must do so because
 rule~\ref{sconpat-dyn-rule2},
 \deletion{\theidstatus}{rule~\ref{conapat-dyn-rule2},}
 rule~\ref{exconapat-dyn-rule2},
