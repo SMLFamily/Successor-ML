@@ -423,13 +423,13 @@ TyRow   & type-expression rows \cr
 The following\index{10.1} conventions are adopted in presenting the grammatical rules,
 and in their interpretation:
 \begin{itemize}
-  \item The brackets\index{10.2} ~$\langle\ \rangle$~ enclose optional phrases.
+  \item The brackets\index{10.2} ~$\langle\ \rangle$~ enclose empty and optional phrases.
   \item For any syntax class X (over which $x$ ranges)
 we define the syntax class Xseq (over which {\it xseq} ranges) as follows:
     \begin{quote}
     \begin{tabular}{rcll}
        {\it xseq} & $::=$ & $x$ & (singleton sequence)\\
-                  &       &     & (empty sequence)\\
+                  & 	  & $\langle \rangle$ & (empty sequence)\\
                   &       & \ml{(}$x_1$\ml{,}$\cdots$\ml{,}$x_n$\ml{)}
                                 & (sequence,~$n\geq 1$) \\
     \end{tabular}

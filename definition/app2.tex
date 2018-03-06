@@ -38,13 +38,13 @@ The grammatical rules are displayed in Figures~\ref{exp-gram},
 The grammatical conventions are exactly as in
 Section~\ref{syn-core-sec}, namely:
 \begin{itemize}
-  \item The brackets ~$\langle\ \rangle$~ enclose optional phrases.
+  \item The brackets ~$\langle\ \rangle$~ enclose empty and optional phrases.
   \item For\index{69.3} any syntax class X (over which $x$ ranges)
 we define the syntax class Xseq (over which {\it xseq} ranges) as follows:
     \begin{quote}
     \begin{tabular}{rcll}
        {\it xseq} & $::=$ & $x$ & (singleton sequence)\\
-                  &       &     & (empty sequence)\\
+                  &       & $\langle \rangle$ & (empty sequence)\\
                   &       & \ml{(}$x_1$\ml{,}$\cdots$\ml{,}$x_n$\ml{)}
                                 & (sequence,~$n\geq 1$) \\
     \end{tabular}
