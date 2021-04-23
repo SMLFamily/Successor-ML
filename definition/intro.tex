@@ -9,14 +9,14 @@ changes suggested by Andreas Rossberg in the HaMLet S documentation.}
 To understand the method of definition, at least in broad terms, it helps to
 consider how an implementation of ML is naturally
 organised.  ML is an interactive
-language,\index{4.1} 
+language,\index{4.1}
 and a {\sl program}\index{4.2}  consists of a sequence of {\sl top-level
 declarations};\index{4.3} the execution
 of each declaration modifies the top-level environment, which we call
 a {\sl basis}, and reports the modification to the user.
 
 In the execution of a declaration there are three phases:
-{\sl parsing}, {\sl elaboration}, and {\sl evaluation}.  
+{\sl parsing}, {\sl elaboration}, and {\sl evaluation}.
 Parsing
 determines the grammatical form of a declaration.  Elaboration, the
 {\sl static} phase, determines whether it is well-typed and
@@ -25,7 +25,7 @@ in the basis. Finally evaluation, the {\sl dynamic} phase, determines the
 value of the declaration and records relevant value information in the
 basis.  Corresponding to these phases, our formal definition divides
 into three parts:  grammatical rules, elaboration rules, and evaluation
-rules.  Furthermore, the basis is divided into the {\sl static} 
+rules.  Furthermore, the basis is divided into the {\sl static}
 basis and the {\sl dynamic} basis; for example, a variable which has been
 declared is associated with a type in the static basis and with a value in
 the dynamic basis.
@@ -37,7 +37,7 @@ This is further justified by programming experience.  A large proportion
 of errors in ML programs are discovered during elaboration, and identified
 as errors of type or form, so it follows that it is useful to perform
 the elaboration phase separately.  In fact, elaboration without
-evaluation is \replacement{\thenewpreface}{just}{part of} what is normally called {\sl compilation};  
+evaluation is \replacement{\thenewpreface}{just}{part of} what is normally called {\sl compilation};
 once
 a declaration (or larger entity) is compiled one wishes to evaluate it --
 repeatedly -- without re-elaboration, from which it follows that it is
@@ -85,14 +85,14 @@ scheme for the ensuing seven sections is therefore as follows:
 The Core provides many phrase classes, for programming convenience.
 But about half of these classes are derived forms, whose meaning can be
 given by translation into the other half which we call the
-{\sl Bare} language.   
+{\sl Bare} language.
 Thus each of the three parts for the Core treats only the bare language;
 the derived forms are treated in  Appendix~\ref{derived-forms-app}.
 This appendix also contains a few derived forms for Modules.
 A full grammar for the language is presented in
 Appendix~\ref{core-gram-app}.
 
-In\index{5.0} Appendices~\ref{init-stat-bas-app} and~\ref{init-dyn-bas-app} 
+In\index{5.0} Appendices~\ref{init-stat-bas-app} and~\ref{init-dyn-bas-app}
 the {\sl initial basis} is detailed.  This basis,
 divided into its static and dynamic parts, contains the static and
 dynamic meanings of \replacement{\thelibrary}{all predefined identifiers.}{a
@@ -100,7 +100,7 @@ small set of predefined identifiers. A richer basis is defined
 in a separate document\cite{sml-basis-lib}.}
 
 The semantics is presented in a form  known as Natural
-Semantics.\index{5.1}  It consists of a set of rules allowing 
+Semantics.\index{5.1}  It consists of a set of rules allowing
 {\sl sentences} of the form
 \[ A \vdash phrase \Rightarrow A' \]
 to be inferred, where $A$ is often a basis (static or dynamic) and $A'$ a
@@ -118,14 +118,10 @@ benefit from a more pedagogic treatment in other publications; the
 treatment here is
 probably the minimum required to understand the meaning of the rules.}
 
-The robustness of the semantics depends upon theorems.  
+The robustness of the semantics depends upon theorems.
 Usually these have been proven, but the proof is not included.
 \deletion{\thenostrsharing}{In two cases, however, they are presented as ``claims'' rather than
-theorems; these are the claim of principal environments in 
+theorems; these are the claim of principal environments in
 Section~\ref{principal-env-sec}, and the claim of principal signatures
 in Section~\ref{prinsig-sec}. We need further confirmation of our
 detailed proofs of these claims, before asserting them as theorems.}
-
-
-
-
