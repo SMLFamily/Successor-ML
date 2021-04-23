@@ -1,0 +1,11 @@
+name: Source Checks
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the Repository
+        uses: actions/checkout@v2
+
+      - name: 'Trailing white spaces ?'
+        uses: harupy/find-trailing-whitespace@master
