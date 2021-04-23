@@ -22,18 +22,18 @@ recorded in the static basis?
 
 In practice, ML implementations may provide a directive as
 a form of top-level declaration  for including
-programs from files rather than directly from the terminal. 
-In case a file consists of a sequence of top-level declarations 
+programs from files rather than directly from the terminal.
+In case a file consists of a sequence of top-level declarations
 (separated by semicolons) and the machine detects an error in one of these,
 it is probably sensible to abort the execution of the directive.
 Rather than introducing a distinction between,
 say, batch programs and interactive programs, we shall tacitly regard
 all programs as interactive, and leave to implementers to
-clarify how the inclusion of files, if provided,  affects the 
+clarify how the inclusion of files, if provided,  affects the
 updating of the static and dynamic basis.
 Moreover, we shall focus on elaboration and evaluation and leave the
 handling of parse errors to implementers (since it naturally depends
-on the kind of parser being employed).  Hence, in this section the 
+on the kind of parser being employed).  Hence, in this section the
 {\sl execution} of a program means the combined elaboration
 and evaluation of the program.
 
@@ -41,7 +41,7 @@ So far, for simplicity, we have used the same notation $\B$
 to stand for both a static and a dynamic basis, and this has
 been possible because we have never needed to discuss static
 and dynamic semantics at the same time.
-In giving the semantics of programs, however, let us rename as 
+In giving the semantics of programs, however, let us rename as
 \mbox{StaticBasis} the class  Basis defined in the static
 semantics of modules, Section~\ref{statmod-sem-obj-sec},
 and let us use $\Bstat$ to range over StaticBasis. Similarly, let
@@ -51,28 +51,28 @@ and let us use $\Bdyn$ to range over \mbox{DynamicBasis}.
 We now define
 \[\B\ {\rm or} \ (\Bstat,\Bdyn)\in{\rm Basis}={\rm Static Basis}
 \times {\rm DynamicBasis}.\]
-Further, we shall use $\tsstat$ for elaboration as defined in 
+Further, we shall use $\tsstat$ for elaboration as defined in
 Section~\ref{statmod-sec}, and $\tsdyn$ for evaluation
 as defined in Section~\ref{dynmod-sec}.
 Then $\ts$ will be reserved for the execution of
 programs, which thus is expressed by a sentence of the
 form
 \[\s,\B\ts\program\ra\B',\s'\]
-This may be read as follows: 
+This may be read as follows:
 starting in basis $\B$ with state $\s$ the execution of
 $\program$ results in a basis $\B'$ and a state $\s'$.
 
 It\index{64.2} must be understood  that executing a program never results in an
-exception. If the evaluation of a $\topdec$ yields an exception 
+exception. If the evaluation of a $\topdec$ yields an exception
 (for instance because of a $\RAISE$ expression\deletion{\thelibrary}{ or external intervention}) then
 the result of executing the program ``$\topdec\ \mbox{\ml{;}}$'' is the
 original basis together with the state which is in force when the exception is
-generated. In particular, the exception convention\index{65.1} of 
+generated. In particular, the exception convention\index{65.1} of
 Section~\ref{dyncor-inf-rules-sec}
 is not applicable to the ensuing rules.
 
 We represent the non-elaboration of a top-level declaration by
- $\ldots\tsstat\topdec\not\ra$. \deletion{\thelibrary}{(This covers also the case in which a 
+ $\ldots\tsstat\topdec\not\ra$. \deletion{\thelibrary}{(This covers also the case in which a
 user interrupts the elaboration.)}
 
 \rulesec{Programs}{\s,\B\ts\program\ra\B',s'}

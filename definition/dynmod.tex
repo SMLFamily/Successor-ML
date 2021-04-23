@@ -5,13 +5,13 @@
 \subsection{Reduced Syntax}
 Since\index{58.1} signature expressions
 are mostly dealt with in the static semantics,
-the dynamic semantics need only take limited account of them.  
+the dynamic semantics need only take limited account of them.
 \replacement{\theconstructors}{Unlike types,
 it cannot ignore them completely; }{However,
 they cannot be ignored completely; }the reason is that an explicit signature
 ascription plays the r\^ole of restricting the ``view'' of a structure -- that is,
-restricting the domains of its component environments\insertion{\theidstatus}{ and 
-imposing identifier status on value identifiers}.  
+restricting the domains of its component environments\insertion{\theidstatus}{ and
+imposing identifier status on value identifiers}.
 \replacement{\thenostrsharing}{However, the types
 and the sharing properties of structures and signatures are irrelevant to
 dynamic evaluation; the syntax is therefore
@@ -64,9 +64,9 @@ Core dynamic semantics, are shown in Figure~\ref{comp-dynmod-obj}.
 \insertion{\thedatatyperepl}{
 An {\sl interface} $\I\in\Int$ represents a ``view'' of a structure.
 Specifications and signature expressions will evaluate to interfaces;
-moreover, during the evaluation of a specification or signature expression, 
+moreover, during the evaluation of a specification or signature expression,
 structures (to which a specification or signature expression may
-refer via datatype replicating specifications) are represented 
+refer via datatype replicating specifications) are represented
 only by their interfaces.  To extract a value interface from
 a dynamic value environment we define the operation $\Inter: \ValEnv \to\ValInt$
 as follows:
@@ -75,7 +75,7 @@ In other words, $\Inter(\VE)$ is the value interface obtained from $\VE$ by
 removing all values from $\VE$. We then extend $\Inter$ to a function
 $\Inter:\Env\to\Int$ as follows:
 \[ \Inter(\SE,\TE,\VE)\ =\ (\SI,\TI,\VI)\]
-where $\VI$ = $\Inter(\VE)$ and 
+where $\VI$ = $\Inter(\VE)$ and
 \begin{eqnarray*}
 \SI & = & \{\strid\mapsto\Inter\E\;;\;\SE(\strid) = \E\}\\
 \TI & = & \{\tycon\mapsto\Inter\VE'\;;\;\TE(\tycon) = \VE'\}
@@ -89,8 +89,8 @@ from a basis $\B$ as follows:
 
 \deletion{\thedatatyperepl}{
 An {\sl interface} $\I\in\Int$ represents a ``view'' of a structure.
-Specifications and signature expressions will evaluate to interfaces; 
-moreover, during the evaluation of a specification or signature expression, 
+Specifications and signature expressions will evaluate to interfaces;
+moreover, during the evaluation of a specification or signature expression,
 structures (to which a specification or signature expression may
 refer via ``$\OPEN$'') are represented only by their interfaces.  To extract an
 interface from a dynamic environment we define the operation
@@ -113,7 +113,7 @@ representing the effect of an explicit signature ascription. We first
 define $\downarrow: \ValEnv\times\ValInt\to\ValEnv$ by
 \[\VE\downarrow\VI = \{\vid\mapsto(\V,\is)\;;\;\VE(\vid) = (\V,\is')\ {\rm and}\ \VI(\vid) = \is\}\]
 (Note that $\VE$ and $\VI$ need not have the same
-domain and that the identifier status is taken from $\VI$.) 
+domain and that the identifier status is taken from $\VI$.)
 We then define $\downarrow: \StrEnv \times \StrInt \to \StrEnv$,
 $\downarrow: \TyEnv \times\TyInt\to\TyEnv$ and
 $\downarrow: \Env\times\Int\to\Env$ simultaneously as follows:
@@ -121,10 +121,10 @@ $\downarrow: \Env\times\Int\to\Env$ simultaneously as follows:
 \begin{center}
  $\SE\downarrow\SI  =  \{\strid\mapsto\E\downarrow\I\ ;\
           	\SE(\strid)=\E\ {\rm and}\ \SI(\strid)=\I\}$\\[6pt]
- $ \TE\downarrow\TI =  \{\tycon\mapsto \VE'\downarrow\VI'\ ;\ 
+ $ \TE\downarrow\TI =  \{\tycon\mapsto \VE'\downarrow\VI'\ ;\
                \TE(\tycon) = \VE'\ {\rm and}\ \TI(\tycon) = \VI'\}$ \\[6pt]
  $
- (\SE,\TE,\VE)\downarrow(\SI,\FIXREPL{\TI\ }{\TE},\VI)  = 
+ (\SE,\TE,\VE)\downarrow(\SI,\FIXREPL{\TI\ }{\TE},\VI)  =
                (\SE\downarrow\SI, \TE\downarrow\TI, \VE\downarrow\VI) $
 \end{center}}
 
@@ -145,12 +145,12 @@ and (taking $\downarrow$ now to mean restriction of a function domain)
 \noindent
 It is important to note that an interface \replacement{\thedatatyperepl}{is also a projection of}{can
 also be obtained from} the
-{\sl static} value $\Sigma$ of a signature expression; 
+{\sl static} value $\Sigma$ of a signature expression;
 it is obtained by \replacement{\thedatatyperepl}{omitting structure names $\m$ and type environments
 $\TE$,}{first replacing every type
 structure $(\typefcn, \VE)$
 in the range of every type environment $\TE$ by $\VE$}
-and \insertion{\thece}{then} replacing each \replacement{\theidstatus}{variable environment $\VE$ and each 
+and \insertion{\thece}{then} replacing each \replacement{\theidstatus}{variable environment $\VE$ and each
 exception environment $\EE$ by its domain.}{pair $(\sigma,\is)$ in the range
 of every value environment $\VE$ by $\is$.}
 Thus in an implementation interfaces would naturally be obtained from the
@@ -166,10 +166,10 @@ $A'$ is some semantic
 object and $\s$,$\s'$ are the states before and after the evaluation
 represented by the sentence.  Some hypotheses in rules are not of this form;
 they are called {\sl side-conditions}.  The convention for options is
-the same as for the Core static semantics.  
+the same as for the Core static semantics.
 
 The state and exception conventions are adopted as in the Core dynamic
-semantics.  However, it may be shown that the only Modules phrases whose 
+semantics.  However, it may be shown that the only Modules phrases whose
 evaluation
 may cause a side-effect or generate an exception packet are of the form
 $\strexp$, $\strdec$, $\strbind$ or $\topdec$.
@@ -299,7 +299,7 @@ than anticipated during the static elaboration.
 dynamic semantics to ensure that any dynamic opening of the structure
 produces no more components than anticipated during the static
 elaboration.}{\begin{equation}                % structure binding
-\frac{ 
+\frac{
        \B\ts\strexp\ra\E\qquad
        \langle\B\ts\strbind\ra\SE\rangle
      }
@@ -587,6 +587,3 @@ not needed for the evaluation of $\spec_2$.
      {\B\ts\fundecintopdec\ra\FIXREPL{\B'\langle+\B''\rangle}{\B'\langle{}'\rangle}
      }
 \end{equation}
-
-
-

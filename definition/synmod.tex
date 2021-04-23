@@ -3,14 +3,14 @@
 \section{Syntax of Modules}
 \label{syn-mod-sec}
 For Modules there are further reserved words, identifier classes and derived
-forms. There are no further special constants; 
+forms. There are no further special constants;
 comments and lexical analysis are as for the Core.
-\replacement{\thenostrsharing}{The derived forms for modules concern functors and  appear in 
-Appendix~\ref{derived-forms-app}.}{The derived forms for modules  appear in 
+\replacement{\thenostrsharing}{The derived forms for modules concern functors and  appear in
+Appendix~\ref{derived-forms-app}.}{The derived forms for modules  appear in
 Appendix~\ref{derived-forms-app}.}
 
 %For Modules there are further keywords and identifier classes, but no
-%further special constants and at present no further derived forms.  
+%further special constants and at present no further derived forms.
 %Comments and lexical analysis are as for the Core.
 
 \subsection{Reserved Words}
@@ -28,7 +28,7 @@ The\index{14.1} following are the additional reserved words used in Modules.\not
 The additional identifier classes for Modules are SigId (signature identifiers)
 and FunId (functor identifiers). Functor and signature identifiers
 must be alphanumeric, not starting with a prime.  The class of each identifier occurrence
-is determined by the grammatical rules which follow.  
+is determined by the grammatical rules which follow.
 Henceforth, therefore,
 we consider all identifier classes to be disjoint.
 
@@ -36,7 +36,7 @@ we consider all identifier classes to be disjoint.
 \label{infixopmod.sec}
 In addition to the scope rules for fixity directives given for the Core syntax,
 there is a further scope limitation:
-if $\dir$ occurs in a structure-level declaration $\strdec$ in any of the 
+if $\dir$ occurs in a structure-level declaration $\strdec$ in any of the
 phrases
 \[ \LET\ \strdec\ \IN\ \cdots\ \END \]
 \[ \LOCAL\ \strdec\ \IN\ \cdots\ \END \]
@@ -51,7 +51,7 @@ as a functor body.
 \label{mod-gram-sec}
 The\index{14.2} phrase classes for Modules are shown in Figure~\ref{mod-phr}.
 We use the variable $\strexp$ to range over StrExp, etc.
-The conventions adopted in presenting the grammatical 
+The conventions adopted in presenting the grammatical
 %\pagebreak
 \begin{figure}[t]
 \vspace{4pt}
@@ -157,19 +157,19 @@ containing the declaration of $g$ may be loaded.}
 	\FIX{A declaration \dec\ appearing in a \strdec\ may not be a sequential or local declaration.}
 \item[\textcolor{\fixcolor}{$\bullet$}]
 	\FIX{In a sequential specification ``$\seqspec$,'' $\spec_2$ may not contain a sharing specification.}
-\item No description $\valdesc$, $\typdesc$, $\datdesc$, 
+\item No description $\valdesc$, $\typdesc$, $\datdesc$,
       $\exndesc$
       or $\strdesc$ may describe the same identifier
       twice; this applies also to value identifiers within a $\datdesc$.
 \item No ${\it tyvarseq}$ may contain the same ${\it tyvar}$ twice.
-\item 
+\item
 	Any $\tyvar$ occurring on the right side of a $\datdesc$ of the form
  	$\tyvarseq \;\tycon\;\boxml{=}$ $\cdots$ must occur
 	in the $\tyvarseq$; similarly, in signature expressions of the
 	form\hfill\break $\sigexp\ \boxml{where type}\, \tyvarseq\,\longtycon\,$
 	$\boxml{=}\,\ty$, any $\tyvar$ occurring in $\ty$ must occur in $\tyvarseq$.
-\item	No $\datdesc$, $\valdesc$ 
-	or $\exndesc$ may describe 
+\item	No $\datdesc$, $\valdesc$
+	or $\exndesc$ may describe
 	$\TRUE$, $\FALSE$, $\NIL$, \boxml{::} or $\REF$.
 	No $\datdesc$ or $\exndesc$ may describe {\tt it}.
 \item[\textcolor{\fixcolor}{$\bullet$}]
@@ -185,14 +185,14 @@ containing the declaration of $g$ may be loaded.}
 {#\hfil\tabskip1em&\hfil$#$\hfil&#\hfil&#\hfil\tabskip\@centering\cr
 \spec	& ::=	& \valspec		& value\cr
 	&	& \typespec		& type\cr
-	&	& \eqtypespec		& eqtype\cr 
+	&	& \eqtypespec		& eqtype\cr
 	&	& \datatypespec		& datatype\cr
 \adhocinsertion{\thedatatyperepl}{2cm}{&	& \datatypereplspec		& replication\cr}
 	&       & \exceptionspec        & exception\cr
         &	& \structurespec	& structure\cr\adhocdeletion{\thetypabbr}{15mm}{&	& \sharingspec	        & sharing
 	&	& \localspec    	& local\cr
-        &       & \openspec             & open ($n\geq 1$)\cr }\adhocreplacementtexl{\thesingleincludespec}{0mm}{        &       & \inclspec           
-  & include ($n\geq 1$)\cr}{        &       & \singleinclspec             & include \cr} 
+        &       & \openspec             & open ($n\geq 1$)\cr }\adhocreplacementtexl{\thesingleincludespec}{0mm}{        &       & \inclspec
+  & include ($n\geq 1$)\cr}{        &       & \singleinclspec             & include \cr}
         &       & \emptyspec            & empty \cr
         &       & \seqspec              & sequential \FIX{(L)}\cr
 \adhocinsertion{\thetypabbr}{0mm}{&     & \boxml{$\spec$ sharing type}      &  sharing\cr &&\boxml{\qquad$\longtycon_1$ = $\cdots$ = $\longtycon_n$}& $(n\geq 2)$\cr}
@@ -226,11 +226,11 @@ containing the declaration of $g$ may be loaded.}
 \note{\thenofuncspec}{Figure 8: Functor signature expressions and
 functor specifications have been removed. Sequential and empty
 functor declarations and signature declarations have been removed.
-The grammar for $\topdec$ now allows sequencing (without semicolon) 
+The grammar for $\topdec$ now allows sequencing (without semicolon)
 of structure-level declarations, signature declarations and functor
 declarations.}
 %
-%   1990 Definition: 
+%   1990 Definition:
 %
 %\begin{figure}[h]
 %\vspace{4pt}
@@ -298,7 +298,7 @@ contain, as an initial segment, a $\strdec$ followed by a semicolon.}}
 \subsection{Closure Restrictions}
 \label{closure-restr-sec}
 The\index{18.2} semantics presented in later sections requires no restriction on
-reference to non-local identifiers. For example, it allows a signature 
+reference to non-local identifiers. For example, it allows a signature
 expression to refer to external signature identifiers and
 (via ~$\SHARING$~ or ~$\OPEN$~) to external structure identifiers; it also
 allows a functor to refer to external identifiers of any kind.
@@ -335,27 +335,25 @@ its components.
 In the last two cases the final qualification allows, for example, sharing
 constraints to be specified between functor argument and result.
 (For a completely precise definition of these closure restrictions,
-see the comments to rules \ref{single-sigdec-rule} 
-(page~\pageref{single-sigdec-rule}), 
+see the comments to rules \ref{single-sigdec-rule}
+(page~\pageref{single-sigdec-rule}),
 \ref{singfunspec-rule} (page~\pageref{singfunspec-rule})
 and \ref{singfundec-rule} (page~\pageref{singfundec-rule})
 in the static semantics of modules, Section~\ref{statmod-sec}.)
 
-The\index{19.1} 
+The\index{19.1}
 significance of these restrictions is that they may ease separate
 compilation; this may be seen as follows. If one takes a {\sl module}
 to be a sequence of signature declarations, functor specifications
 and functor declarations satisfying the above restrictions then the
 elaboration of a module can be made to depend on the initial
 static basis alone (in particular, it will not rely on
-structures outside the module). Moreover, the elaboration 
-of a module cannot create new free structure or type names, so 
-name consistency (as defined in Section~\ref{consistency-sec}, 
+structures outside the module). Moreover, the elaboration
+of a module cannot create new free structure or type names, so
+name consistency (as defined in Section~\ref{consistency-sec},
 page \pageref{consistency-sec}) is automatically preserved
 across separately compiled modules. On the other hand,
 imposing these restrictions may force the programmer to write
 many more sharing equations than is needed if functors
 and signature expressions can refer to free structures.
 }
-
-

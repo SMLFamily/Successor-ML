@@ -10,20 +10,20 @@ execution. Richer bases may be provided by libraries.}
 We\index{73.1} shall indicate components of the initial basis by the subscript 0.
 The initial static basis is
 $\B_0 = \T_0,\F_0,\G_0,\E_0$,
-where $F_0 = \emptymap$, $\G_0 = \emptymap$ and 
+where $F_0 = \emptymap$, $\G_0 = \emptymap$ and
 $$\T_0\ =\ \{\BOOL,\INT,\REAL,\STRING,\CHAR,\WORD,\LIST,\FIX{\ARRAY,}\REF,\EXCN\}$$
 The members of $\T_0$ are type names, not type constructors; for convenience
 we have used type-constructor identifiers
 to stand also for the type names which are bound to them in the initial
 static type environment $\TE_0$.  Of these type names,
 \LIST\FIX{, \ARRAY,} and \REF\
-have arity 1, the rest have arity 0;  
+have arity 1, the rest have arity 0;
 all except $\EXCN$ \insertion{\thelibrary}{and $\REAL$} admit equality.
-Finally, $\E_0 = (\SE_0,\TE_0,\VE_0)$, where $\SE_0 = \emptymap$, 
+Finally, $\E_0 = (\SE_0,\TE_0,\VE_0)$, where $\SE_0 = \emptymap$,
 while $\TE_0$ and $\VE_0$ are shown in Figures~\ref{stat-te} and \ref{stat-ve},
 respectively.
 }
- 
+
 %\vskip-5mm
 \begin{figure}[h]
 \begin{center}
@@ -47,7 +47,7 @@ $\tycon$   & $\mapsto\ (\ \typefcn$, & $\{\vid_1\mapsto(\tych_1,\is_1),\ldots,\v
                                            \ \atyvar\ast\atyvar\ \LIST
                                            \to\atyvar\ \LIST, \isc)\}\ )$\\
 \FIX{\ARRAY}     & \FIX{$\mapsto\ (\ \ARRAY$,}    & \FIX{$\emptymap\ )$} \\
-\REF       & $\mapsto\ (\ \REF$,     & $\{\REF\mapsto(\forall\ \atyvar\ .\ 
+\REF       & $\mapsto\ (\ \REF$,     & $\{\REF\mapsto(\forall\ \atyvar\ .\
                                            \atyvar\to\atyvar\ \REF,\isc)\}\ )$\\
 \EXCN      & $\mapsto\ (\ \EXCN$,     & $\emptymap\ )$\\
 \hline
@@ -63,7 +63,7 @@ $\tycon$   & $\mapsto\ (\ \typefcn$, & $\{\vid_1\mapsto(\tych_1,\is_1),\ldots,\v
 \begin{tabular}{|rl|rl|}
 \multicolumn{2}{c}{NONFIX}&     \multicolumn{2}{c}{INFIX}\\
 \hline
-$\vid$     & $\mapsto\ (\tych,\is)$    
+$\vid$     & $\mapsto\ (\tych,\is)$
                           & $\vid$ & $\mapsto\ (\tych,\is)$\\
 \hline
 \REF & $\mapsto\ (\forall\ \atyvar\ .\ \atyvar\to\atyvar\ \REF$, \isc)

@@ -294,18 +294,18 @@
            {\mbox{$\langle\OP\rangle\vid\ \langle\OF\ \ty\rangle\
                    \langle\AND\ \exnbind\rangle$}}
 \newcommand{\eqexnbind}
-           {\mbox{$\langle\OP\rangle$\exn\ \ml{=} 
-                  $\langle\OP\rangle\longexn\ 
+           {\mbox{$\langle\OP\rangle$\exn\ \ml{=}
+                  $\langle\OP\rangle\longexn\
                   \langle\AND\ \exnbind\rangle$}}
 \newcommand{\eqexnvidbind}
-           {\mbox{$\langle\OP\rangle$\vid\ \ml{=} 
-                  $\langle\OP\rangle\longvid\ 
+           {\mbox{$\langle\OP\rangle$\vid\ \ml{=}
+                  $\langle\OP\rangle\longvid\
                   \langle\AND\ \exnbind\rangle$}}
 \newcommand{\longexnbinda}
-           {\mbox{\exn\ $\langle\OF\ \ty\rangle$\ 
+           {\mbox{\exn\ $\langle\OF\ \ty\rangle$\
                   $\langle\langle\AND\ \exnbind\rangle\rangle$}}
 \newcommand{\longvidexnbinda}
-           {\mbox{\vid\ $\langle\OF\ \ty\rangle$\ 
+           {\mbox{\vid\ $\langle\OF\ \ty\rangle$\
                   $\langle\langle\AND\ \exnbind\rangle\rangle$}}
 \newcommand{\longexnbindaa}
            {\mbox{\exn\
@@ -413,7 +413,7 @@
 \newcommand{\equivalentabststrbinder}
            {\boxml{$\strid\boxml{=}\strexp\ABSTRACT\sigexp\,\langle\boxml{and $\strbind$}\rangle$}}
 \newcommand{\barestrbinder}
-           {\mbox{$\strid\ 
+           {\mbox{$\strid\
             \ml{=} $\strexp\ \langle\langle\AND\ \strbind\rangle\rangle$}}
 \newcommand{\strbindera}
            {\mbox{$\strid\ \langle$\ml{:}$\ \sigexp\rangle$
@@ -482,10 +482,10 @@
            {\mbox{$\vid\ \langle\OF\ \ty\rangle\
                    \langle$ \ml{|} \condesc$\rangle$}}
 \newcommand{\shortcondesc}
-           {\mbox{$\con\ 
+           {\mbox{$\con\
                    \langle$ \ml{|} \condesc$\rangle$}}
 \newcommand{\shortconviddesc}
-           {\mbox{$\vid\ 
+           {\mbox{$\vid\
                    \langle$ \ml{|} \condesc$\rangle$}}
 
 \newcommand{\longcondescription}
@@ -578,7 +578,7 @@
             \ $\langle\AND\ \funbind\rangle$}}
 
 
-            % topdec 
+            % topdec
 
 \newcommand{\seqtopdec}{\boxml{$\topdec$ $\topdec$}}
 \newcommand{\strdecintopdec}{\boxml{$\hbox to12mm{\strdec}\;\langle\topdec\rangle$}}
@@ -601,7 +601,7 @@
 \newcommand{\emptyfunspec}{\emptyphrase}
 \newcommand{\seqfunspec}
            {\mbox{$\funspec_1\ \langle$\ml{;}$\rangle\ \funspec_2$}}
- 
+
 
         % functor descriptions
 
@@ -946,15 +946,15 @@
 %\halign{\indent$#$&\quad$#$&\quad$#$\hfil&\quad\parbox[t]{6cm}{\strut#\strut}\cr
 \newcounter{changeno}
 \newcounter{fixtypos}% 1 stands for true (i.e. fix typos)
-\setcounter{fixtypos}{1} 
+\setcounter{fixtypos}{1}
 \newcounter{noimptypes}% 1 stands for true (i.e. replace imperative types by value restriction)
-\setcounter{noimptypes}{1} 
+\setcounter{noimptypes}{1}
 \newcounter{typabbr}% 1 stands for true (i.e. introduce type abbreviations in signatures)
-\setcounter{typabbr}{1} 
+\setcounter{typabbr}{1}
 \newcounter{nostrsharing}% 1 stands for true (i.e. fix typos)
 \setcounter{nostrsharing}{1}
 \newcounter{newpreface}% 1 stands for true (i.e. new prefix)
-\setcounter{newpreface}{1} 
+\setcounter{newpreface}{1}
 \newcounter{noinfixinspec}% 1 stands for true (i.e. fix typos)
 \setcounter{noinfixinspec}{1}
 \newcounter{nofuncspec}% 1 stands for true (i.e. fix typos)
@@ -975,7 +975,7 @@
 \setcounter{notypexplication}{1}
 \newcounter{singleincludespec}
 \setcounter{singleincludespec}{1}
-\newcounter{idstatus} % 1 stands for true (i.e., fix identifier status problems 
+\newcounter{idstatus} % 1 stands for true (i.e., fix identifier status problems
 %                     % by eliminating exception environments)
 \setcounter{idstatus}{1}
 \newcounter{infixassociativity}
@@ -998,30 +998,30 @@
 \newcounter{datatyperepl}
 \setcounter{datatyperepl}{1} %1 stands for true (i.e., datatype replication adopted)
 \newcounter{marginalnote} % 1 stands for true (i.e. put comments in margin)
-\setcounter{marginalnote}{0} 
+\setcounter{marginalnote}{0}
 %
 %   note: #1 condition variable   #2 note to put in changes document (not
 %          in Definition itself)
-\newcommand{\note}[2]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\marginpar{{\rm\small note(\thechangeno)\index{note\thechangeno}}}\fi{}\else\fi} 
+\newcommand{\note}[2]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\marginpar{{\rm\small note(\thechangeno)\index{note\thechangeno}}}\fi{}\else\fi}
 %
 % replacement: #1: condition variable #2 old text, #3: new text
 %              condition variable true: replace old by new
-\newcommand{\replacement}[3]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\marginpar{\parbox{15mm}{{\rm\small repl (\thechangeno)\index{repl\thechangeno}}}}\else\fi{#3}\else{#2}\fi} 
+\newcommand{\replacement}[3]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\marginpar{\parbox{15mm}{{\rm\small repl (\thechangeno)\index{repl\thechangeno}}}}\else\fi{#3}\else{#2}\fi}
 %
 % addhocreplacementl:    #1 condition variable #2 back-up width (left), #3: old text #4 new text
 %                      condition variable true: replace old by new
 \newcommand{\adhocreplacementl}[4]{\ifnum#1=1\addtocounter{changeno}{1}%\index{repl\thechangeno}
-\ifnum\themarginalnote=1\llap{{\rm\small repl (\thechangeno)\index{repl\thechangeno}}\hskip#2}\else\fi{#4}\else{#3}\fi} 
+\ifnum\themarginalnote=1\llap{{\rm\small repl (\thechangeno)\index{repl\thechangeno}}\hskip#2}\else\fi{#4}\else{#3}\fi}
 \newcommand{\adhocreplacementtexl}[4]{\ifnum#1=1\addtocounter{changeno}{1}\index{repl\thechangeno}
-\ifnum\themarginalnote=1\llap{{\rm\small repl (\thechangeno)}\hskip#2}\else\fi#4\else#3\fi} 
+\ifnum\themarginalnote=1\llap{{\rm\small repl (\thechangeno)}\hskip#2}\else\fi#4\else#3\fi}
 %
 %  insertion:    #1  condition variable  #2 new text
 %                condition variable true: insert new text
-\newcommand{\insertion}[2]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\marginpar{{\rm\small ins(\thechangeno)\index{ins\thechangeno}}}\fi{#2}\else\fi} 
+\newcommand{\insertion}[2]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\marginpar{{\rm\small ins(\thechangeno)\index{ins\thechangeno}}}\fi{#2}\else\fi}
 %
 %  adhocinsertion:    #1  condition variable  #2 back up width (left) #3 new text
 %                condition variable true: insert new text
-\newcommand{\adhocinsertion}[3]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\llap{{\rm\small ins (\thechangeno)\index{ins\thechangeno}}\hskip#2}\fi#3\else\fi} 
+\newcommand{\adhocinsertion}[3]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\llap{{\rm\small ins (\thechangeno)\index{ins\thechangeno}}\hskip#2}\fi#3\else\fi}
 %
 %  deletion:     #1  condition variable  #2 text to be deleted, if condition variable is true
 %
@@ -1031,7 +1031,7 @@
 %
 %  adhocdeletion:    #1  condition variable  #2 back up width (left) #3 old text
 %                condition variable true: insert new text
-\newcommand{\adhocdeletion}[3]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\llap{{\rm\small del (\thechangeno)\index{del\thechangeno}}\hskip#2}\fi\else{#3}\fi} 
+\newcommand{\adhocdeletion}[3]{\ifnum#1=1\addtocounter{changeno}{1}\ifnum\themarginalnote=1\llap{{\rm\small del (\thechangeno)\index{del\thechangeno}}\hskip#2}\fi\else{#3}\fi}
 %
 %
 \newcommand{\replacementPage}[3]{\addtocounter{changeno}{1}\noindent{\bf (\thechangeno)\ Page #1: replace} \begin{quote}#2\end{quote} \begin{center}\bf by\end{center} \begin{quote} #3 \end{quote}}
@@ -1045,6 +1045,6 @@
 
 \newcommand{\oldpagebreak}{}
 \def\blankPage{\thispagestyle{empty}
-\ 
+\
 \clearpage
 \thispagestyle{headings}}
