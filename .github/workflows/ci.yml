@@ -1,0 +1,22 @@
+name: Build
+on:
+  push:
+  pull_request:
+#  schedule:
+    # Daily build.
+#   - cron: '30 8 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the Repository
+        uses: actions/checkout@v2
+
+      - name: Install latexmk
+        run: |
+          sudo apt-get install latexmk -y
+
+      - name: Build
+        run: |
+          cd definition
+          latexmk -pdf root
