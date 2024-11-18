@@ -20,9 +20,9 @@ of this document, we do give a complete list of the overloaded operators
 and of types with overloaded special constants.
 This list is consistent with the Basis Library\cite{sml-basis-lib}.
 
-Every overloaded constant and value identifier has among its types a 
+Every overloaded constant and value identifier has among its types a
 {\em default type},
-which is assigned to it, 
+which is assigned to it,
 when the surrounding text does not resolve the overloading.
 For this purpose, the surrounding text is \FIXREPL{%
 the smallest enclosing declaration
@@ -64,11 +64,11 @@ and they are:\medskip
   \end{array}%
 \end{displaymath}%
 
-\noindent 
+\noindent
 Among these, the five first ($\Int$, $\Real$, $\Word$, $\String$ and $\Char$) are said to be
 {\sl basic}; the remaining are said to be {\sl composite}.
 The reason that the basic classes are specified using
-$\supseteq$ rather than $=$ is that libraries may extend 
+$\supseteq$ rather than $=$ is that libraries may extend
 each of the  basic overloading
 classes with further type names.
 \FIX{But the class $\Real$ may not contain type names that admit equality.}
@@ -83,11 +83,11 @@ default type is used. The default types for the five sets are $\INT$,
 $\REAL$, $\WORD$, $\STRING$ and $\CHAR$ respectively.
 
        Once overloading resolution has determined the type of a special constant,
-       it is a compile-time error if the constant does not make sense or does not 
+       it is a compile-time error if the constant does not make sense or does not
        denote a value within the machine representation chosen for the type.
        For example, an escape sequence of the form $\uconst$ in a string constant
        of 8-bit characters only makes sense if $xxxx$  denotes
-       a number in the range $[0, 255]$. 
+       a number in the range $[0, 255]$.
 
 
 \subsection{Overloaded value identifiers}
@@ -102,15 +102,15 @@ the binding.
 \begin{tabular}{|rl|rl|}
 \multicolumn{2}{c}{NONFIX}&     \multicolumn{2}{c}{INFIX}\\
 \hline
-$\var$     & $\mapsto\ \hbox{set of monotypes}$    
+$\var$     & $\mapsto\ \hbox{set of monotypes}$
                           & $\var$ & $\mapsto\ \hbox{set of monotypes}$\\
 \hline
-\boxml{abs} & $\mapsto \REALINT\to\REALINT$ 
+\boxml{abs} & $\mapsto \REALINT\to\REALINT$
                        & \multicolumn{2}{l|}{Precedence 7, left associative :} \\
 \NEG    & $\mapsto \REALINT\to\REALINT $                      &
                             \boxml{div} & $\mapsto \WORDINT\ \ast\ \WORDINT
                                                                  \to\WORDINT$\\
- &  
+ &
                                              &
                             \boxml{mod} & $\mapsto \WORDINT\ \ast\ \WORDINT
                                                                  \to\WORDINT$\\
@@ -127,7 +127,7 @@ $\var$     & $\mapsto\ \hbox{set of monotypes}$
                                                                  \to\NUM$\\
   &                       &
                             \boxml{-} &$\mapsto \NUM\ \ast\ \NUM\to\NUM$\\
-  & 
+  &
                           & \multicolumn{2}{l|}{Precedence 4, left associative :}\\
               &           &
                             \boxml{<} & $\mapsto\NUMTEXT *\NUMTEXT \to \FIXREPL{\BOOL\ }{\NUMTEXT}$\\
@@ -149,7 +149,7 @@ For example, the entry
 $$\boxml{abs}\mapsto\REALINT\to\REALINT$$
 states that $\boxml{abs}$ may assume one of the types
 $\{\t\to\t\,\mid\,\t\in\RealInt\}$.
-In general, the same type name must be chosen 
+In general, the same type name must be chosen
 throughout the entire type of the overloaded operator;
 thus $\boxml{abs}$ does not have type $\REAL\to\INT$.
 
@@ -163,5 +163,4 @@ declares a function of type $\INT\ \ast\ \INT\to\INT$, while
 $\REAL\ \ast\ \REAL\to\REAL$.
 
 The dynamic semantics of the overloaded operators is defined in
-\cite{sml-basis-lib}. 
-
+\cite{sml-basis-lib}.

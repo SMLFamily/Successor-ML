@@ -5,7 +5,7 @@
 \label{statmod-sec}
 \subsection{Semantic Objects}
 \label{statmod-sem-obj-sec}
-The\index{34.1} simple 
+The\index{34.1} simple
 objects for Modules static semantics are exactly as for the Core.
 The compound objects are those for the Core,
 augmented by those in Figure~\ref{module-objects}.
@@ -52,7 +52,7 @@ augmented by those in Figure~\ref{module-objects}.
 \replacement{\thenostrsharing}{
 The prefix $(\N)$, in signatures and functor signatures, binds both type names
 and structure names. We shall always consider a set $\N$ of names as
-partitioned into a pair $(\M,\T)$ of sets of the two kinds of name.}{The 
+partitioned into a pair $(\M,\T)$ of sets of the two kinds of name.}{The
 prefix $(\T)$, in signatures and functor signatures, binds  type names.}
 \deletion{\thenostrsharing}{It is sometimes convenient to work with an arbitrary semantic object $A$, or
 assembly $A$ of such objects.
@@ -66,7 +66,7 @@ and arity) are preserved.\index{34.2}
 
 \deletion{\thenotypexplication}{For any structure $\S=\longS{}$ we call $m$ the {\sl structure name} or
 {\sl name} of $\S$; also, the {\sl proper substructures} of $\S$ are
-the members of $\Ran\SE$ and their proper substructures.  The 
+the members of $\Ran\SE$ and their proper substructures.  The
 {\sl substructures} of
 $\S$ are $\S$ itself and its proper substructures.  The structures
 {\sl occurring in}
@@ -80,15 +80,15 @@ explicit type variables.
 Also,
 we frequently need to modify a basis $\B$ by an environment $\E$
 (or a structure environment $\SE$ say),
-at the same time extending \replacement{\thenostrsharing}{$\of{\N}{\B}$}{$\of{\T}{\B}$} to include the type names 
+at the same time extending \replacement{\thenostrsharing}{$\of{\N}{\B}$}{$\of{\T}{\B}$} to include the type names
 \deletion{\thenostrsharing}{and
 structure names }of $\E$ (or of $\SE$ say).
 We therefore define $\B\oplus\SE$, for example, to mean
 \replacement{\thenostrsharing}{$\B+(\NamesFcn\SE,\SE)$}{$\B+(\TyNamesFcn\SE,\SE)$}.
 \index{34.3}
- 
+
 \insertion{\thenostrsharing}{
-There is no separate kind of semantic object to represent structures: 
+There is no separate kind of semantic object to represent structures:
 structure expressions elaborate to environments, just as structure-level
 declarations do. Thus, notions which are commonly associated with structures
 (for example the notion of matching a structure against a signature) are defined
@@ -100,13 +100,13 @@ in terms of environments.}
 A\index{35.1} set of type structures is said to be {\sl consistent} if, for all
 $(\theta_1,\CE_1)$ and $(\theta_2,\CE_2)$ in the set, if $\theta_1 = \theta_2$
 then
-\[\CE_1=\emptymap\ {\rm or}\ 
+\[\CE_1=\emptymap\ {\rm or}\
 \CE_2=\emptymap\ {\rm or}\ \Dom\CE_1=\Dom\CE_2\]
 A semantic object $A$ or assembly $A$ of objects is said to be
 {\sl consistent} if (after changing bound names to make all nameset prefixes
-in $A$ disjoint) 
+in $A$ disjoint)
 for all $\S_1$ and
-$\S_2$ occurring in $A$ and for every $\longstrid$ 
+$\S_2$ occurring in $A$ and for every $\longstrid$
 and every $\longtycon$
 \begin{enumerate}
 \item If $\of{\m}{\S_1}=\of{\m}{\S_2}$, and both
@@ -120,13 +120,13 @@ and every $\longtycon$
 \item The set of all type structures in $A$ is consistent
 \end{enumerate}
 
-As an example, a functor signature 
+As an example, a functor signature
 $\longfunsig{}$ is
-consistent if, assuming first that 
+consistent if, assuming first that
 $\N\cap\N'=\emptyset$,
 the assembly $A=\{\S,\S'\}$ is consistent.
 
-We may loosely say that two 
+We may loosely say that two
 structures $\S_1$ and $\S_2$
 are consistent if
 $\{\S_1,\S_2\}$ is consistent, but must remember that this is stronger than
@@ -138,7 +138,7 @@ also a consistent assembly.
 
 \deletion{\thenostrsharing}{
 \subsection{Well-formedness}
-A signature\index{35.2} $\longsig{}$ is {\sl well-formed} 
+A signature\index{35.2} $\longsig{}$ is {\sl well-formed}
 if $\N\subseteq\NamesFcn\S$,
 and also, whenever $(\m,\E)$ is a
 substructure of $\S$ and $\m\notin\N$, then $\N\cap(\NamesFcn\E)=\emptyset$.
@@ -163,15 +163,15 @@ $m_{i+1}$.
 \subsection{Admissibility}
 \label{admis-sec}
 An\index{36.1} object or assembly $A$ is {\sl admissible} if it is
-consistent, well-formed and cycle-free. 
+consistent, well-formed and cycle-free.
 Henceforth it is assumed
 that
-all objects mentioned are admissible.  
+all objects mentioned are admissible.
 We also require that
 \begin{enumerate}
 \item In every sentence $A\ts\phrase\ra A'$  inferred by the rules
 given in Section~\ref{statmod-rules-sec}, the assembly $\{A,A'\}$ is
-admissible.  
+admissible.
 \item In the special case of a sentence $\B\ts\sigexp\ra\S$,
 we further require that the assembly consisting of all semantic
 objects occurring in the entire inference of this sentence be
@@ -192,7 +192,7 @@ $\t$ and $\tyrea(\t)$ have the same arity, and
 if $t$ admits equality then so does $\tyrea(\t)$.
 
 The {\sl support} $\Supp\tyrea$ of a type realisation $\tyrea$ is the set of
-type names $\t$ for which $\tyrea(\t)\ne\t$.}{A 
+type names $\t$ for which $\tyrea(\t)\ne\t$.}{A
 {\sl (type) realisation}\index{36.2} is a map
 $\rea:\TyNames\to\TypeFcn$
 such that
@@ -229,7 +229,7 @@ changed so that, for each binding prefix \replacement{\thenostrsharing}{$(\N)$}{
 A\index{36.35} signature $(\N)\S$ is {\sl type-explicit\/} if,
 whenever $\t\in\N$ and occurs free in $\S$, then some substructure of
 $\S$ contains a type environment $\TE$ such that
-$\TE(\tycon)=(\t,\CE)$ for some $\tycon$ and some $\CE$.} 
+$\TE(\tycon)=(\t,\CE)$ for some $\tycon$ and some $\CE$.}
 %
 \subsection{Signature Instantiation}
 \replacement{\thenostrsharing}{
@@ -243,7 +243,7 @@ written $\siginst{\sig_1}{}{\E_2}$, if there exists a realisation
 $\rea$
 such that $\rea(\E_1)=\E_2$ and $\Supp\rea\subseteq\T_1$.}
 \deletion{\thenotypexplication}{(Note that if $\sig_1$ is type-explicit then there is at most one
-such $\rea$.)}\ 
+such $\rea$.)}\
 \deletion{\thenostrsharing}{A signature
 $\sig_2=\longsig{2}$ {\sl is an instance of}
 $\sig_1 =\longsig{1}$,
@@ -329,7 +329,7 @@ one such $\E^-$, given $\sig_1$ and $\E$.} \deletion{\thenotypexplication}{Moreo
 \longsig{1}$, if $\sig_1\geq\S^-$ then there exists a realisation $\rea$
 with $\Supp\rea\subseteq\N_1$ and $\rea(\S_1)=\S^-$.
 We shall then say that $\S$ matches $\sig_1$ {\em via} $\rea$.
-(Note that if $\sig_1$ is type-explicit 
+(Note that if $\sig_1$ is type-explicit
 then $\rea$ is uniquely determined by $\sig_1$ and $\S$.)}
 
 \deletion{\thenostrsharing}{A\index{37.2.5} signature $\sig_2$ {\em matches} a signature $\sig_1$
@@ -347,7 +347,7 @@ form $\B\ts\sigexp\ra\S$, where $\S$ is a structure and $\B$ is a basis.
 Recall, from Section~\ref{admis-sec}, that the assembly of all semantic
 objects in such an inference must be admissible.
 
-For any basis $\B$ and any structure $\S$, 
+For any basis $\B$ and any structure $\S$,
 we say that $\B$ {\sl covers} $\S$
 if for every substructure $(m,E)$ of $\S$ such that
 $m\in\of{\N}{\B}$:
@@ -361,7 +361,7 @@ For every type constructor $\tycon\in\Dom\E$,
 $\B$ contains a substructure $(m,\E')$ with $m$ free
 and $\tycon\in\Dom\E'$
 \end{enumerate}
-(This condition is not a consequence of consistency of $\{\B,\S\}$; 
+(This condition is not a consequence of consistency of $\{\B,\S\}$;
 informally, it states that if $\S$ shares a substructure with $\B$,
 then $\S$ mentions no more components of the substructure than
 $\B$ does.)
@@ -372,7 +372,7 @@ We\index{38.1} say that a signature
 $\longsig{}$ is {\sl principal for $\sigexp$ in $\B$} if, choosing $\N$
 so that $(\of{\N}{\B})\cap\N=\emptyset$,
 \begin{enumerate}
-\item $\B$ covers $\S$ 
+\item $\B$ covers $\S$
 \item $\B\vdash\sigexp\ra\S$
 \item Whenever $\B\vdash\sigexp\ra\S'$, then $\sigord{\longsig{}}{}{\S'}$
 \end{enumerate}
@@ -381,8 +381,8 @@ by $\B$, then it possesses a principal signature in $\B$.
 
 Analogous to the definition given for type environments in
 Section~\ref{typeenv-wf-sec}, we say that a semantic object $A$
-{\sl respects equality} if every type environment occurring in 
-$A$ respects equality. 
+{\sl respects equality} if every type environment occurring in
+$A$ respects equality.
 %
 %
 %Further, let $T$ be the set of type names
@@ -400,7 +400,7 @@ define, in terms of $\sig_0$, another signature $\sig$ which provides more
 information about the equality attributes of structures which will
 match $\sig_0$. To this end, let $\T_0$ be the set of type names $\t\in\N_0$
 which do not admit equality, and such that $(\t,\CE)$ occurs in $\S_0$
-for some $\CE\neq\emptymap$.  Then we say $\sig$ is 
+for some $\CE\neq\emptymap$.  Then we say $\sig$ is
 {\sl equality-principal for $\sigexp$ in $\B$} if
 \begin{enumerate}
 \item
@@ -427,13 +427,13 @@ sentences of the form
 \[ A\ts\phrase\ra A'\]
 to be inferred, where in this case $A$ is either a basis, a context or
 an environment and $A'$ is a semantic object.  The convention for options
-is as in the Core semantics. 
+is as in the Core semantics.
 
 Although not assumed in our definitions, it is intended that every basis
 \replacement{\thenostrsharing}{$\B=\N,\F,\G,\E$}{$\B=\T,\F,\G,\E$} in which a $\topdec$ is elaborated has the property
-that 
+that
 \replacement{\thenostrsharing}{$\NamesFcn\F\ \cup\NamesFcn\G\cup\NamesFcn\E\subseteq\N$}{$\TyNamesFcn\F
-\ \cup\TyNamesFcn\G\cup\TyNamesFcn\E\subseteq\T$}. 
+\ \cup\TyNamesFcn\G\cup\TyNamesFcn\E\subseteq\T$}.
 \replacement{\thenostrsharing}{
 This is not
 the case for bases in which signature expressions and specifications are
@@ -547,13 +547,13 @@ $\TyNamesFcn\E\subseteq\T$.}
 %
 \oldpagebreak
 \item{(\ref{functor-application-rule})}
-   The side condition 
+   The side condition
 \replacement{\thenostrsharing}{$ (\of{\N}{\B})\cap\N'=\emptyset$}{$(\TyNamesFcn\E \cup \of{\T}{\B})\cap\T'=\emptyset$}
   can always
 be satisfied by renaming bound names in \replacement{\thenostrsharing}{$(\N')S'$}{$(\T')E'$}; it ensures that the
 generated \replacement{\thenostrsharing}{structures}{datatypes} receive new names.\index{40.1}
 
-\replacement{\thenostrsharing}{Let $\B(\funid)=(N)(\S_f,(N')\S_f')$.}{Let $\B(\funid)=(\T)(\E_f,(T')\E_f')$.} 
+\replacement{\thenostrsharing}{Let $\B(\funid)=(N)(\S_f,(N')\S_f')$.}{Let $\B(\funid)=(\T)(\E_f,(T')\E_f')$.}
 \replacement{\thenotypexplication}{Assuming that $(\N)\S_f$ is
 type-explicit, the realisation $\rea$ for which
 $\rea(\S_f,(N')\S_f')=(\S'',(\N')\S')$ is uniquely determined by $\S$,
@@ -583,7 +583,7 @@ sub-phrase.
 \end{description}
 
 %                              declarations
-\rulesec{Structure-level Declarations}{\B\ts\strdec\ra\E}               
+\rulesec{Structure-level Declarations}{\B\ts\strdec\ra\E}
 \replacement{\thenostrsharing}{
 \begin{equation}                % core declaration
 \label{dec-rule}
@@ -644,7 +644,7 @@ general as possible.
 \rulesec{Structure Bindings}{\B\ts\strbind\ra\SE}
 \begin{equation}                % structure binding
 \label{structure-binding-rule}
-\frac{ 
+\frac{
        \B\ts\strexp\ra\E\quad
        \langle\plusmap{\B}{\TyNamesFcn\E}\ts
                                       \strbind\ra\SE\rangle
@@ -684,11 +684,11 @@ general as possible.
 \begin{description}
 \deletion{\thenostrsharing}{
 \item{(\ref{encapsulating-sigexp-rule})}
-   In contrast to rule~\ref{generative-strexp-rule}, $m$ is not here 
-required to be new. 
+   In contrast to rule~\ref{generative-strexp-rule}, $m$ is not here
+required to be new.
 The name $m$ may be chosen to achieve the sharing required
 in rule~\ref{strshareq-rule}, or to achieve the enrichment side conditions
-of rule~\ref{structure-binding-rule} or \ref{funbind-rule}. 
+of rule~\ref{structure-binding-rule} or \ref{funbind-rule}.
 The choice of $m$ must result in an admissible object.}
 \item{(\ref{signature-identifier-rule})}
    \replacement{\thenostrsharing}{The instance $\S$ of $\B(\sigid)$ is not determined by this rule,
@@ -715,16 +715,16 @@ if necessary.}
 \end{equation}}%
 \noindent\comment
 A signature expression $\sigexp$ which is an immediate constituent of
-\deletion{\thenostrsharing}{a structure binding, } a signature binding\replacement{\thenostrsharing}{, a 
+\deletion{\thenostrsharing}{a structure binding, } a signature binding\replacement{\thenostrsharing}{, a
 functor binding or a
 functor signature}{, a signature constraint, or a
 functor binding }is elaborated to \replacement{\thenostrsharing}{an equality-principal and type-explicit }{a }signature,
  see rules~\replacement{\thenostrsharing}{\ref{structure-binding-rule}, }{
-\ref{transparent-constraint-rule}, \ref{opaque-constraint-rule}, }\ref{sigbind-rule}\deletion{\thenostrsharing}{, 
-\ref{funsigexp-rule}} and \ref{funbind-rule}.  \deletion{\thenostrsharing}{By contrast, signature 
+\ref{transparent-constraint-rule}, \ref{opaque-constraint-rule}, }\ref{sigbind-rule}\deletion{\thenostrsharing}{,
+\ref{funsigexp-rule}} and \ref{funbind-rule}.  \deletion{\thenostrsharing}{By contrast, signature
 expressions occurring in structure descriptions are elaborated to
 structures using the liberal rules
-\ref{encapsulating-sigexp-rule} and \ref{signature-identifier-rule}, 
+\ref{encapsulating-sigexp-rule} and \ref{signature-identifier-rule},
 see rule~\ref{strdesc-rule}, so that names can be chosen to achieve
 sharing, when necessary.}
 \oldpagebreak
@@ -783,7 +783,7 @@ or types; hence the use of $+$ instead of $\oplus$.
      { \B\ts\typespec\ra\TE\ \In\ \Env }
 \end{equation}}{\begin{equation}        % type specification
 \label{typespec-rule}
-\frac{ 
+\frac{
          \of{\C}{\B}\ts\typdesc\ra\TE \quad
          \forall(\t,\VE)\in\Ran\TE,\hbox{\ $t$ does not admit equality}
      }
@@ -812,7 +812,7 @@ or types; hence the use of $+$ instead of $\oplus$.
 \begin{equation}        % data specification
 \label{datatypespec-rule}
 \frac{ \begin{array}{c}
-       \of{\C}{\B}\oplus\TE\ts\datdesc\ra\VE,\TE 
+       \of{\C}{\B}\oplus\TE\ts\datdesc\ra\VE,\TE
        \quad \forall(\t,\VE')\in\Ran\TE, \t\notin\of{\T}{\B}\\
        \hbox{$\TE$ maximises equality}
        \end{array}}
@@ -913,7 +913,7 @@ or types; hence the use of $+$ instead of $\oplus$.
    $\VE$ is determined by $\B$ and $\valdesc$.
 \item{(\ref{typespec-rule})--(\ref{datatypespec-rule})}
    \replacement{\thenostrsharing}{The type functions in $\TE$ may be chosen to achieve the sharing hypothesis
-of rule~\ref{typshareq-rule} or the enrichment conditions of 
+of rule~\ref{typshareq-rule} or the enrichment conditions of
 rules~\ref{structure-binding-rule} and~\ref{funbind-rule}. In particular, the type
 names in $\TE$ in rule~\ref{datatypespec-rule} need not be new.
 Also, in rule~\ref{typespec-rule} the type functions in $\TE$ may admit
@@ -928,7 +928,7 @@ enrichment conditions.\index{43.0}}
 \insertion{\thenostrsharing}{\item{(\ref{seqspec-rule})}
    Note that no sequential specification is allowed to specify the
    same identifier twice.}
-\end{description} 
+\end{description}
 
                   % Descriptions
 \rulesec{Value Descriptions}{\C\ts\valdesc\ra\VE}
@@ -980,7 +980,7 @@ does not bind any value constructors.
 \frac{ \begin{array}{c}
         \tyvarseq = \alphak\qquad\C,\alphakt\ts\condesc\ra\VE
            \quad\arity \t  =  k\\
-        \langle\C\ts\datdesc'\ra\VE',\TE'\qquad \forall(\t',\VE'')\in\Ran\TE',\,\t\neq\t'\rangle 
+        \langle\C\ts\datdesc'\ra\VE',\TE'\qquad \forall(\t',\VE'')\in\Ran\TE',\,\t\neq\t'\rangle
        \end{array}}
      { \begin{array}{l}
        \C\ts\newdatdescription\ra\\
@@ -1016,7 +1016,7 @@ does not bind any value constructors.
 \end{equation}}
 
 \replacement{\theidstatus}{
-\rulesec{Exception Descriptions}{\C\ts\exndesc\ra\EE}}{\rulesec{Exception 
+\rulesec{Exception Descriptions}{\C\ts\exndesc\ra\EE}}{\rulesec{Exception
 Descriptions}{\C\ts\exndesc\ra\VE}}
 \replacement{\theidstatus}{
 \begin{equation}         % exception description
@@ -1025,7 +1025,7 @@ Descriptions}{\C\ts\exndesc\ra\VE}}
        \langle\langle\C\ts\exndesc\ra\EE\rangle\rangle }
      { \begin{array}{l}
         \C\ts\exndescriptiona\ra\\
-        \quad\quad\{\exn\mapsto\EXCN\}\ \langle +\ \{\exn\mapsto\tau\rightarrow\EXCN\}\rangle\ \langle\langle +\ \EE\rangle\rangle 
+        \quad\quad\{\exn\mapsto\EXCN\}\ \langle +\ \{\exn\mapsto\tau\rightarrow\EXCN\}\rangle\ \langle\langle +\ \EE\rangle\rangle
        \end{array}
      }\index{43.4}
 \end{equation}}{\begin{equation}         % exception description
@@ -1034,7 +1034,7 @@ Descriptions}{\C\ts\exndesc\ra\VE}}
        \langle\langle\C\ts\exndesc\ra\VE\rangle\rangle }
      { \begin{array}{l}
         \C\ts\exnviddescriptiona\ra\\
-        \quad\quad\{\vid\mapsto(\EXCN,\ise)\}\ \langle +\ \{\vid\mapsto(\tau\rightarrow\EXCN,\ise)\}\rangle\ \langle\langle +\ \VE\rangle\rangle 
+        \quad\quad\{\vid\mapsto(\EXCN,\ise)\}\ \langle +\ \{\vid\mapsto(\tau\rightarrow\EXCN,\ise)\}\rangle\ \langle\langle +\ \VE\rangle\rangle
        \end{array}
      }\index{43.4}
 \end{equation}}
@@ -1081,23 +1081,23 @@ Descriptions}{\C\ts\exndesc\ra\VE}}
    By the definition of consistency the premise is weaker than\linebreak
 $\B(\longstrid_1) = \cdots = \B(\longstrid_n)$.
 Two different structures with the same name may be thought of
-as representing different views. The requirement that $\B$ is 
+as representing different views. The requirement that $\B$ is
 consistent forces different views to be consistent.
 \end{description}
 %
 \oldpagebreak
 \begin{description}
 \item{(\ref{typshareq-rule})}
-   By\index{44.1.5} 
+   By\index{44.1.5}
 the definition of consistency the premise is weaker than\linebreak
 $\B(\longtycon_1) = \cdots = \B(\longtycon_n)$.
 A type structure with empty constructor environment may have the
 same type name as one with a non-empty constructor environment;
 the former could arise from a type description, and the latter
-from a datatype description. 
+from a datatype description.
 However, the requirement that $\B$ is
 consistent will prevent two type structures with constructor
-environments which have different 
+environments which have different
 non-empty domains from sharing the same type name.
 end{description}
 }
@@ -1155,7 +1155,7 @@ can be enforced by replacing the $\B$ in the premise by $\B_0+\of{\G}{\B}$.
 %      \begin{array}{c}
 %      \B\ts\sigexp\ra\S\qquad\longsig{}{\rm\ principal\ in\ }\B\\
 %      \B\oplus\{\strid\mapsto\S\} \ts\sigexp'\ra\S'\\
-%      \N' = \NamesFcn\S'\setminus((\of{\N}{\B})\cup\N) 
+%      \N' = \NamesFcn\S'\setminus((\of{\N}{\B})\cup\N)
 %      \end{array}
 %     }
 %     {\B\ts\longfunsigexpa\ra(\N)(\S,(\N')\S')}\index{44.4}
@@ -1171,7 +1171,7 @@ can be enforced by replacing the $\B$ in the premise by $\B_0+\of{\G}{\B}$.
      {\B\ts\longfunsigexpa\ra(N)(S,(N')S')}\index{44.4}
 \end{equation}%
 \comment
-The signatures $(\N)\S$ and $(\N')\S'$ are equality-principal 
+The signatures $(\N)\S$ and $(\N')\S'$ are equality-principal
 and type-explicit, see rule~\ref{topmost-sigexp-rule}.
 } %deletion
 %                       Functor and Program rules
@@ -1204,7 +1204,7 @@ and type-explicit, see rule~\ref{topmost-sigexp-rule}.
 \begin{description}
 \item{(\ref{singfundec-rule})}
 The third closure restriction of Section~\ref{closure-restr-sec}
-can be enforced by replacing the $\B$ in the premise 
+can be enforced by replacing the $\B$ in the premise
 by $\B_0+(\of{\G}{\B})+(\of{\F}{\B})$.
 \end{description}}
 \rulesec{Functor Bindings}{\B\ts\funbind\ra\F}
@@ -1234,7 +1234,7 @@ by $\B_0+(\of{\G}{\B})+(\of{\F}{\B})$.
 \frac{
       \begin{array}{c}
       \B\ts\sigexp\ra(\T)\E\qquad
-      \B\oplus\{\strid\mapsto\E\} \ts\strexp\ra\E' 
+      \B\oplus\{\strid\mapsto\E\} \ts\strexp\ra\E'
       \\
       \T\cap(\of{\T}{\B}) = \emptyset\quad \T' = \TyNamesFcn\E'\setminus((\of{\T}{\B})\cup\T) \\
        \langle\B\ts\funbind\ra\F\rangle
@@ -1257,7 +1257,7 @@ at most one realisation via which an actual argument can match
 $(\N)\S$.}Since $\oplus$ is used, any \deletion{\thenostrsharing}{structure name $\m$ and}type name $\t$ in
 \replacement{\thenostrsharing}{$\S$ }{$\E$ }acts like a constant in the functor body; in particular,
 it ensures that further names generated during elaboration of the
-body are distinct from \deletion{\thenostrsharing}{$\m$ and }$\t$. 
+body are distinct from \deletion{\thenostrsharing}{$\m$ and }$\t$.
 \replacement{\thenostrsharing}{The set $\N'$ is
 chosen such that every  name free
 in $(\N)\S$ or $(\N)(\S,(\N')\S')$ is free in $\B$.}{The set $\T'$ is
@@ -1311,17 +1311,17 @@ in $(\T)\E$ or $(\T)(\E,(\T')\E')$ is free in $\B$.}
       \end{array}}
      {\B\ts\fundecintopdec\ra\B''}
 \end{equation}}
-  
+
 \comments
 \replacement{\thenostrsharing}{
 \begin{description}
 \item{(\ref{strdectopdec-rule})--(\ref{fundectopdec-rule})} The side
-conditions ensure that no free imperative 
-type variables enter the 
+conditions ensure that no free imperative
+type variables enter the
 basis.\index{46.01}
 \end{description}}{
 \begin{description}
-\item{(\ref{strdectopdec-rule})--(\ref{fundectopdec-rule})} 
+\item{(\ref{strdectopdec-rule})--(\ref{fundectopdec-rule})}
 No free type variables enter the  basis: if $\B\ts\topdec\ra\B'$
 then $\TyVarsFcn(\B') = \emptyset$.\index{46.01}
 \end{description}}
@@ -1329,12 +1329,12 @@ then $\TyVarsFcn(\B') = \emptyset$.\index{46.01}
 
 \deletion{\thenofuncspec}{\subsection{Functor Signature Matching}
 \label{fun-sig-match-sec}
-As\index{46} pointed out in Section~\ref{mod-gram-sec} on the 
-grammar for Modules, there is no phrase class whose elaboration 
+As\index{46} pointed out in Section~\ref{mod-gram-sec} on the
+grammar for Modules, there is no phrase class whose elaboration
 requires matching one functor signature to another functor signature.
-But a precise definition of this matching is needed, since a 
-functor $g$ may only be separately compiled in the presence of 
-specification of any functor $f$ to which $g$ refers, and then a 
+But a precise definition of this matching is needed, since a
+functor $g$ may only be separately compiled in the presence of
+specification of any functor $f$ to which $g$ refers, and then a
 real functor $f$ must match this specification.
 In the case, then, that $f$ has been specified by a functor signature
 \[\funsig_1\ =\ \longfunsig{1}\]
@@ -1344,7 +1344,7 @@ the following matching rule will be employed:
 
 A functor signature
 $\funsig_2\ =\ \longfunsig{2}$ {\sl matches} another functor signature,
-$\funsig_1\ =\ \longfunsig{1}$, if there exists a realisation $\rea$ 
+$\funsig_1\ =\ \longfunsig{1}$, if there exists a realisation $\rea$
 such that
 \begin{enumerate}
 \item $\longsig{1}$ matches $\longsig{2}$ via $\rea$, and

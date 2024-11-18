@@ -79,13 +79,13 @@ They allow functors to take, say, a single type or value as a parameter,
 in cases where it would seem clumsy to ``wrap up'' the argument as a
 structure expression.
 \deletion{\thenostrsharing}{
-These forms are currently more experimental than the bare syntax of modules, 
+These forms are currently more experimental than the bare syntax of modules,
 but we recommend implementers to include them so that they can be
 tested in practice.
 In the derived forms for functor bindings and functor signature expressions,
 $\strid$ is a new structure identifier and
 the form of $\sigexp'$ depends
-on the form of $\sigexp$ as follows. 
+on the form of $\sigexp$ as follows.
 If $\sigexp$ is simply a signature identifier
 $\sigid$, then $\sigexp'$ is also $\sigid$; otherwise $\sigexp$ must take
 the form  ~$\SIG\ \spec_1\ \END$~,
@@ -102,11 +102,11 @@ made by \typbind, analogous to \datbind\ above.
 The phrase ``\TYPE\ \typbind'' can be reinterpreted as a type specification that is subject to further transformation.
 }
 The last derived form for specifications allows sharing between structure
-identifiers as a shorthand for type sharing specifications. 
-%Standard ML no 
-%longer has a semantic notion of structure sharing; 
+identifiers as a shorthand for type sharing specifications.
+%Standard ML no
+%longer has a semantic notion of structure sharing;
 %however, for compatability with Standard ML '90, a weaker form
-%of structure sharing specification is provided. 
+%of structure sharing specification is provided.
 The phrase
 \[
 \boxml{$\spec$ sharing $\longstrid_1$ = $\cdots$ = $\longstrid_k$}
@@ -121,19 +121,19 @@ is a derived form whose equivalent form is
 \end{array}\]
 
 \noindent
-determined as follows. 
-First, note that  $\spec$  specifies a set of 
-(possibly long) type constructors and structure identifiers, either 
-directly or via signature identifiers and $\INCLUDE$ specifications.  
-Then the equivalent form contains all type-sharing constraints 
-of the form 
+determined as follows.
+First, note that  $\spec$  specifies a set of
+(possibly long) type constructors and structure identifiers, either
+directly or via signature identifiers and $\INCLUDE$ specifications.
+Then the equivalent form contains all type-sharing constraints
+of the form
 \[
 \boxml{sharing type $\longstrid_i.\longtycon$ = $\longstrid_j.longtycon$}
 \]
-$(1\leq i<j\leq k)$,  such that both sides of the equation are long type 
-constructors specified by  $\spec$. 
+$(1\leq i<j\leq k)$,  such that both sides of the equation are long type
+constructors specified by  $\spec$.
 
-The meaning of the derived form does not depend on the order of the 
+The meaning of the derived form does not depend on the order of the
 type-sharing constraints in the equivalent form.
 
 
@@ -375,9 +375,9 @@ $\langle\AND\ \fvalbind\rangle$
 \multicolumn{2}{c}{}\\
 %\multicolumn{2}{l}{FUNCTOR BINDINGS \funbind}\\
 \multicolumn{2}{l}{{\bf Functor Bindings} \funbind}\\
-\cline{1-2}        
+\cline{1-2}
 \mbox{\funid\ \ml{(}\ \spec\ \ml{)}\ $\langle$\ml{:}\ \sigexp$\rangle$\ \ml{=}}&
-\mbox{\funid\ \ml{(}\ \strid\ \ml{:} \SIG\ \spec\ \END\ \ml{)} 
+\mbox{\funid\ \ml{(}\ \strid\ \ml{:} \SIG\ \spec\ \END\ \ml{)}
               $\langle$\ml{:}\ $\sigexp'\rangle$\ \ml{=}}\\
 \mbox{\ \ \strexp\ $\langle$\AND\ \funbind$\rangle$} &
   \mbox{\ \ \LET\ \OPEN\ \strid\ \IN\ \strexp\ \END\ $\langle$\AND\ \funbind$\rangle$} \\
@@ -415,26 +415,26 @@ $\langle\AND\ \fvalbind\rangle$
 \multicolumn{2}{c}{}\\
 %\multicolumn{2}{l}{FUNCTOR BINDINGS \funbind}\\
 \multicolumn{2}{l}{{\bf Functor Bindings} \funbind}\\
-\cline{1-2}        
+\cline{1-2}
 \mbox{\funid\ \ml{(}\strid\ml{:}\sigexp\ml{)}\ml{:} $\sigexp'$ \ml{=}}&
 \mbox{\funid\ \ml{(}\strid\ \ml{:} \sigexp\ml{)} \ \ml{=}}\\
 \mbox{\ \ \strexp\ $\langle$\AND\ \funbind$\rangle$} &
   \mbox{\ \ \strexp\ml{:}$\sigexp'$\  $\langle$\AND\ \funbind$\rangle$} \\
-\cline{1-2}        
+\cline{1-2}
 \mbox{\funid\ \ml{(}\strid\ml{:}\sigexp\ml{)}\ABSTRACT $\sigexp'$ \ml{=}}&
 \mbox{\funid\ \ml{(}\strid\ \ml{:} \sigexp\ml{)} \ \ml{=}}\\
 \mbox{\ \ \strexp\ $\langle$\AND\ \funbind$\rangle$} &
   \mbox{\ \ \strexp\ABSTRACT$\sigexp'$\  $\langle$\AND\ \funbind$\rangle$} \\
-\cline{1-2}        
+\cline{1-2}
 \mbox{\funid\ \ml{(}\ \spec\ \ml{)}\ $\langle$\ml{:}\ \sigexp$\rangle$\ \ml{=}}&
-\mbox{\funid\ \ml{(}\ $\strid_\nu$\ \ml{:} \SIG\ \spec\ \END\ \ml{)} 
+\mbox{\funid\ \ml{(}\ $\strid_\nu$\ \ml{:} \SIG\ \spec\ \END\ \ml{)}
               \ \ml{=}}\\
 \mbox{\ \ \strexp\ $\langle$\AND\ \funbind$\rangle$} &
   \mbox{\ \ \LET\ \OPEN\ $\strid_\nu$ \IN\ \strexp$\langle$\ml{:}\ $\sigexp\rangle$}\\
 & \mbox{\ \ \END\ $\langle$\AND\ \funbind$\rangle$} \\
-\cline{1-2}        
+\cline{1-2}
 \mbox{\funid\ \ml{(}\ \spec\ \ml{)}\ $\langle$\ABSTRACT\ \sigexp$\rangle$\ \ml{=}}&
-\mbox{\funid\ \ml{(}\ $\strid_\nu$\ \ml{:} \SIG\ \spec\ \END\ \ml{)} 
+\mbox{\funid\ \ml{(}\ $\strid_\nu$\ \ml{:} \SIG\ \spec\ \END\ \ml{)}
               \ \ml{=}}\\
 \mbox{\ \ \strexp\ $\langle$\AND\ \funbind$\rangle$} &
   \mbox{\ \ \LET\ \OPEN\ $\strid_\nu$ \IN\ \strexp$\langle$\ABSTRACT $\sigexp\rangle$}\\
@@ -457,7 +457,7 @@ $\exp\boxml{;}\langle\program\rangle$           & $\VAL\ \boxml{it =}\; \exp\box
 \begin{tabular}{|l|l|}
 \multicolumn{1}{c}{Derived Form} & \multicolumn{1}{c}{Equivalent Form} \\
 \multicolumn{2}{c}{}\\
-\multicolumn{2}{l}{{\bf Specifications} \spec}\\ 
+\multicolumn{2}{l}{{\bf Specifications} \spec}\\
 \cline{1-2}
 \CUT{$\TYPE\;\tyvarseq\;\tycon\,\boxml{=}\,\ty$} & \CUT{\boxml{include}}\\
  &\CUT{\boxml{\ sig $\TYPE\;\tyvarseq\;\tycon$}}\\
@@ -493,13 +493,13 @@ $\inclspec$  & $\INCLUDE\,\sigid_1; \cdots\, ; \INCLUDE \,sigid_n$\\
 \multicolumn{2}{r}{\vrule height14pt depth0pt width0pt(see notes in text concerning $\longtycon_{1},\ldots,\longtycon_{m}'$ \ADD{and $\datdesc'$})}\\
 %\multicolumn{2}{r}{($n\geq 1$)}\\
 \multicolumn{2}{c}{}\\
-\multicolumn{2}{l}{\ADD{{\bf Datatype Descriptions} \datdesc}}\\ 
+\multicolumn{2}{l}{\ADD{{\bf Datatype Descriptions} \datdesc}}\\
 \cline{1-2}
 \ADD{\tyvarseq\ \tycon\ \ml{=} \ml{|} \condesc\ $\langle\AND\ \datdesc\rangle$}
 	& \ADD{\datdescription} \\
 \cline{1-2}
 \multicolumn{2}{c}{}\\
-\multicolumn{2}{l}{\CUT{{\bf Signature Expressions} \sigexp}}\\ 
+\multicolumn{2}{l}{\CUT{{\bf Signature Expressions} \sigexp}}\\
 \cline{1-2}
 \CUT{\boxml{$\sigexp$}} & \CUT{\boxml{$\sigexp$}}\\
 \CUT{\boxml{where type $\tyvarseq_1\; \longtycon_1$ = $\ty_1$}} & \CUT{\boxml{\ where type $\tyvarseq_1\; \longtycon_1$ = $\ty_1$}}\\
@@ -511,6 +511,3 @@ $\inclspec$  & $\INCLUDE\,\sigid_1; \cdots\, ; \INCLUDE \,sigid_n$\\
 \caption{Derived forms of Specifications \CUT{and Signature Expressions}}
 \label{spec-der-forms-fig}
 \end{figure}
-
-
-
